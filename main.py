@@ -3,8 +3,11 @@ import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 from matplotlib.widgets import Slider
 from scipy.interpolate import CubicSpline
+from tqdm import tqdm
 
-mu_r=1.05
+MU_R=1.05
+ETA=296548.4789
+EPSILON=9.78475592*10**-7
 
 def B_field_ring(z, R_1, R_2):
     return (z/1000)/2*(1/np.sqrt((z/1000)**2+(R_1/1000)**2)-1/np.sqrt((z/1000)**2+(R_2/1000)**2))
@@ -12,12 +15,22 @@ def B_field_ring(z, R_1, R_2):
 def B_field_z(z, R_1, R_2, d):
     return B_field_ring(z+d/2, R_1, R_2)-B_field_ring(z-d/2, R_1, R_2)
 
+def calculate_B_field(n, setup_length, lens_position, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet):
+    z_eval = np.linspace(0, setup_length, n)
+
+    A_magnet=(R_2_magnet**2-R_1_magnet**2)
+    A_gap=(R_2**2-R_1**2)
+    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
+    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
+
+    return B_r_yoke*B_field_z(z_eval-lens_position, R_1, R_2, d)
+
 def plot_B_field(ax, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, bounds=30, n=1000):
     z=np.linspace(-bounds, bounds, n)
 
     A_magnet=(R_2_magnet**2-R_1_magnet**2)
     A_gap=(R_2**2-R_1**2)
-    reluctance_correction=(1+mu_r*(A_magnet*d)/(A_gap*d_magnet))**-1
+    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
     B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
 
     B_z=B_r_yoke*B_field_z(z, R_1, R_2, d)
@@ -80,123 +93,9 @@ def plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_
 
     plt.show()
 
-def trajectory_solver(r0, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, eta=296548.4789, bounds=30, n=1000, object_plane = None):
-    if object_plane == None:
-        object_plane = -bounds
-
-    A_magnet=(R_2_magnet**2-R_1_magnet**2)
-    A_gap=(R_2**2-R_1**2)
-    reluctance_correction=(1+mu_r*(A_magnet*d)/(A_gap*d_magnet))**-1
-    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
-
-    def B(z): return B_r_yoke*B_field_z(z, R_1, R_2, d)
-
-    epsilon=9.78475592*10**-7
-    T=T*(1+epsilon*T) # Relativistic
-
-    def paraxialequations(z, r):
-        x1, x2 = r
-        dx1dz = x2
-        dx2dz = - (eta*B(z))**2/(4*T)*x1/10**6 # Conversion to mm
-        return [dx1dz, dx2dz]
-
-    z_span=(object_plane, bounds)
-    z_eval=np.linspace(*z_span, n)
-
-    sol=solve_ivp(paraxialequations, z_span, np.array(r0), t_eval=z_eval, method='DOP853')
-
-    return np.array(sol.y[0])
-
-def plot_trajectories(initial_values, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, eta=296548.4789, bounds=30, n=1000, object_plane = None):
-    if object_plane == None:
-        object_plane = -bounds
-
-    fig, ax=plt.subplots()
-    z_span=(object_plane, bounds)
-    z_eval=np.linspace(*z_span, n)
-
-    G=1/1000*trajectory_solver([1000, 0], R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, eta, bounds, n, object_plane)
-    H=1/1000*trajectory_solver([0, 1000], R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, eta, bounds, n, object_plane)
-
-
-    ### PLot trajectories ##
-    for i in range(0,np.shape(initial_values)[0]):
-        traj=initial_values[i, 0]*G+initial_values[i, 1]*H
-        ax.plot(z_eval, traj, color='blue', linewidth=1)
-
-    z_span_B_field=(-bounds, bounds)
-    z_eval=np.linspace(*z_span_B_field, n)
-
-    A_magnet=(R_2_magnet**2-R_1_magnet**2)
-    A_gap=(R_2**2-R_1**2)
-    reluctance_correction=(1+mu_r*(A_magnet*d)/(A_gap*d_magnet))**-1
-    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
-
-    B_field=B_r_yoke*B_field_z(z_eval, R_1, R_2, d)
-    ax.plot(z_eval, B_field/np.max(B_field)*3, color='red')
-    ax.grid()
-    plt.show()
-
-def calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds=30, n=500000, eta=296548.4789):
-    dx = 2 * bounds / (n - 1)
-    z_span=(-bounds, bounds)
-    z_eval=np.linspace(*z_span, n)
-
-    G=1/10*trajectory_solver([10, 0], R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, eta, bounds, n)
-    H=1/10*trajectory_solver([0, 10], R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, eta, bounds, n)
-
-    Gi=(G[-1]-G[-2])/dx
-    f=-1/Gi
-
-    y_intercept=G[-1]-Gi*bounds
-    Z_Fi=(np.argmin(np.abs(Gi * z_eval + y_intercept))-n/2)/n*bounds*2
-    Z_Pi=Z_Fi-f
-
-    return z_eval, G, Gi*z_eval+y_intercept, Z_Fi, Z_Pi, f
-
-def display_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, bounds=30, n=100000, eta=296548.4789):
-    z_eval, G, asymptotic_image_ray, Z_Fi, Z_Pi, f=calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n)
-
-    A_magnet=(R_2_magnet**2-R_1_magnet**2)
-    A_gap=(R_2**2-R_1**2)
-    reluctance_correction=(1+mu_r*(A_magnet*d)/(A_gap*d_magnet))**-1
-    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet_theoretical
-
-    print(f"Maximum flux density = {B_r_yoke:.6f} T")
-    print(f"Reluctance correction = {reluctance_correction:.6f}")
-    print(f"Z_Fi = {Z_Fi:.6f} mm")
-    print(f"Z_Pi = {Z_Pi:.6f} mm")
-    print(f"f = {f:.6f} mm")
-
-    fig, ax=plt.subplots()
-
-    ax.plot(z_eval, G, color='black', linewidth=2, label='Electron path')
-    ax.plot(z_eval, asymptotic_image_ray, color='red', linewidth=1, label='Asymtotic image ray')
-    ax.plot(z_eval, np.ones(n), color='blue', linewidth=1, label='Asymtotic object ray')
-    ax.plot(Z_Fi*np.ones(2), [-5, 5], linestyle='--', label='Backfocal plane')
-    ax.plot(Z_Pi*np.ones(2), [-5, 5], linestyle='--', label='Image principal plane')
-
-    A_magnet=(R_2_magnet**2-R_1_magnet**2)
-    A_gap=(R_2**2-R_1**2)
-    reluctance_correction=(1+mu_r*(A_magnet*d)/(A_gap*d_magnet))**-1
-    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
-
-    B_field=B_r_yoke*B_field_z(z_eval, R_1, R_2, d)
-    ax.plot(z_eval, B_field/np.max(B_field)*3, linewidth=0.5, linestyle='--', color='red', label='B-field')
-
-    ax.set_xlim(-bounds, bounds)
-    ax.set_ylim(-5, 5)
-    ax.set_xlabel("z (mm)")
-    ax.set_ylabel("r (mm)")
-    ax.set_title("Lens properties")
-    ax.grid()
-    ax.legend()
-
-    plt.show()
-
-def variable_R_1(R_1_min, R_1_max, R_1_n, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds=30, n=100000, eta=296548.4789):
+def variable_R_1(R_1_min, R_1_max, R_1_n, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds=30, n=100000):
     def return_properties(R_1):
-        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n, eta)
+        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n)
         return Z_Fi, Z_Pi, f
 
     R_1_eval=np.linspace(R_1_min, R_1_max, R_1_n)
@@ -205,7 +104,7 @@ def variable_R_1(R_1_min, R_1_max, R_1_n, R_2, R_1_magnet, R_2_magnet, d, d_magn
 
     A_magnet=(R_2_magnet**2-R_1_magnet**2)
     A_gap=(R_2**2-R_1_eval**2)
-    reluctance_correction=(1+mu_r*(A_magnet*d)/(A_gap*d_magnet))**-1
+    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
     B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
 
     fig, ax=plt.subplots(1, 3)
@@ -228,9 +127,9 @@ def variable_R_1(R_1_min, R_1_max, R_1_n, R_2, R_1_magnet, R_2_magnet, d, d_magn
     ax[2].grid()
     plt.show()
 
-def variable_R_2(R_2_min, R_2_max, R_2_n, R_1, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds=30, n=100000, eta=296548.4789):
+def variable_R_2(R_2_min, R_2_max, R_2_n, R_1, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds=30, n=100000):
     def return_properties(R_2):
-        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n, eta)
+        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n)
         return Z_Fi, Z_Pi, f
 
     R_2_eval=np.linspace(R_2_min, R_2_max, R_2_n)
@@ -239,7 +138,7 @@ def variable_R_2(R_2_min, R_2_max, R_2_n, R_1, R_1_magnet, R_2_magnet, d, d_magn
 
     A_magnet=(R_2_magnet**2-R_1_magnet**2)
     A_gap=(R_2_eval**2-R_1**2)
-    reluctance_correction=(1+mu_r*(A_magnet*d)/(A_gap*d_magnet))**-1
+    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
     B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
 
     fig, ax=plt.subplots(1, 3)
@@ -262,9 +161,9 @@ def variable_R_2(R_2_min, R_2_max, R_2_n, R_1, R_1_magnet, R_2_magnet, d, d_magn
     ax[2].grid()
     plt.show()
 
-def variable_d(d_min, d_max, d_n, R_1, R_2, R_1_magnet, R_2_magnet, d_magnet, B_r_magnet, T, bounds=30, n=100000, eta=296548.4789):
+def variable_d(d_min, d_max, d_n, R_1, R_2, R_1_magnet, R_2_magnet, d_magnet, B_r_magnet, T, bounds=30, n=100000):
     def return_properties(d):
-        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n, eta)
+        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n)
         return Z_Fi, Z_Pi, f
 
     d_eval=np.linspace(d_min, d_max, d_n)
@@ -273,7 +172,7 @@ def variable_d(d_min, d_max, d_n, R_1, R_2, R_1_magnet, R_2_magnet, d_magnet, B_
 
     A_magnet=(R_2_magnet**2-R_1_magnet**2)
     A_gap=(R_2**2-R_1**2)
-    reluctance_correction=(1+mu_r*(A_magnet*d_eval)/(A_gap*d_magnet))**-1
+    reluctance_correction=(1+MU_R*(A_magnet*d_eval)/(A_gap*d_magnet))**-1
     B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
 
     fig, ax=plt.subplots(1, 2)
@@ -292,9 +191,9 @@ def variable_d(d_min, d_max, d_n, R_1, R_2, R_1_magnet, R_2_magnet, d_magnet, B_
     ax[1].set_ylim(0, 1)
     plt.show()
 
-def variable_B_r(B_r_magnet_min, B_r_magnet_max, B_r_magnet_n, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, T, bounds=30, n=100000, eta=296548.4789):
+def variable_B_r(B_r_magnet_min, B_r_magnet_max, B_r_magnet_n, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, T, bounds=30, n=100000):
     def return_properties(B_r):
-        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r, T, bounds, n, eta)
+        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r, T, bounds, n)
         return Z_Fi, Z_Pi, f
 
     B_eval=np.linspace(B_r_magnet_min, B_r_magnet_max, B_r_magnet_n)
@@ -335,7 +234,7 @@ def plot_HB_Curve():
     plt.show()
 
 class Lens:
-    def __init__(self, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T):
+    def __init__(self, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=228, lens_position=114, n=10000):
 
         self.R_1 = R_1
         self.R_2 = R_2
@@ -346,66 +245,151 @@ class Lens:
         self.B_r_magnet = B_r_magnet
         self.B_r_magnet_theoretical = B_r_magnet_theoretical
         self.T = T
+        self.setup_length=setup_length
+        self.lens_position=lens_position
+        self.n=n
+        self.z_eval_full=np.linspace(0, setup_length, n)
+        
+        self.A_magnet=(self.R_2_magnet**2-self.R_1_magnet**2)
+        self.A_gap=(self.R_2**2-self.R_1**2)
+        self.reluctance_correction=(1+MU_R*(self.A_magnet*d)/(self.A_gap*self.d_magnet))**-1
+        self.B_r_yoke=self.A_magnet/self.A_gap*self.reluctance_correction*self.B_r_magnet
 
-    def calculate_properties(self, bounds=30, n=100000, eta=296548.4789):
-        _, _, _, self.Z_Fi, self.Z_Pi, self.f = calculate_properties(self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet, self.T, bounds, n, eta)
+        self.T_rel = self.T*(1+EPSILON*self.T) # Relativistic
+
+        self.dx = setup_length/(n-1)
+
+        self.mesh_list=[]
+
+    @staticmethod
+    def angle_to_slope(angle):
+        return np.tan(angle)
+
+    def setup_parameters(self, object_pos, object_height, lens_pos):
+        self.lens_position = lens_pos
+        self.object_height = object_height
+        self.object_plane = object_pos
+        self.object_plane_rel = object_pos-lens_pos
+
+        self.z_eval = np.linspace(self.object_plane, self.setup_length, int(self.n*(1-self.object_plane/self.setup_length)))
+
+        self.calculate_B_field()
+        self.calculate_lens_properties()
+        self.calculate_image_properties()
+
+    def calculate_B_field(self):
+        self.B_field = calculate_B_field(self.n, self.setup_length, self.lens_position, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet)
+
+    def plot_B_field(self):
+        fig, ax = plt.subplots()
+        ax.plot(self.z_eval_full, self.B_field, linestyle='-', color='b', label='$B_z$ veld')
+        ax.axhline(0, color='red', linewidth=1.5, linestyle='--', label='$B_z$=0')
+        ax.set_xlabel('z (mm)')
+        ax.set_ylabel('$B_z$ (Tesla)')
+        ax.grid()
+        ax.legend()
+        plt.show()
+
+    def ray_trace(self, initial_value, initial_slope, object_plane=None):
+        def B(z): return self.B_r_yoke*B_field_z(z-self.lens_position, self.R_1, self.R_2, self.d)
+
+        def paraxialequations(z, r):
+            x1, x2 = r
+            dx1dz = x2
+            dx2dz = - (ETA*B(z))**2/(4*self.T_rel)*x1/10**6 # Conversion to mm
+            return [dx1dz, dx2dz]
+        if object_plane is not None:
+            z_eval = np.linspace(object_plane, self.setup_length, int(self.n*(1-object_plane/self.setup_length)))
+            sol=solve_ivp(paraxialequations, (object_plane, self.setup_length), np.array([initial_value, initial_slope]), t_eval=z_eval, method='DOP853')
+        else:
+            z_eval = self.z_eval_full
+            sol=solve_ivp(paraxialequations, (0, self.setup_length), np.array([initial_value, initial_slope]), t_eval=self.z_eval_full, method='DOP853')
+
+        return np.array(sol.y[0]), z_eval
+
+    def calculate_GH(self, object_plane):
+        self.G, self.ray_trace_z=self.ray_trace(1, 0, object_plane)
+        self.H, _=self.ray_trace(0, 1, object_plane)
+        
+    def calculate_lens_properties(self):
+        self.G, _=self.ray_trace(1, 0)
+        self.H, _=self.ray_trace(0, 1)
+
+        self.Gi=(self.G[-1]-self.G[-2])/self.dx
+        self.f=-1/self.Gi
+
+        self.y_intercept = self.G[-1] - self.Gi * self.setup_length
+        Z_Fi_abs = -self.y_intercept / self.Gi
+        self.Z_Fi = Z_Fi_abs - self.lens_position   # relative to lens centre
+        self.Z_Pi = self.Z_Fi - self.f
         self.Z_Fo = -self.Z_Fi
         self.Z_Po = -self.Z_Pi
 
-    def plot_B_field(self, ax, bounds=30, n=1000):
-        plot_B_field(ax, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet, bounds, n)
+        self.asymptotic_image_ray = self.Gi*self.z_eval_full+self.y_intercept
 
-    def plot_trajectories(self, initial_values, eta=296548.4789, bounds=30, n=1000, object_plane=None):
-        plot_trajectories(initial_values, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet, self.T, eta, bounds, n, object_plane)
+    def calculate_image_properties(self):
+            self.image_plane_rel = self.Z_Pi + (self.object_plane_rel - self.Z_Po) * self.f / (self.object_plane_rel - self.Z_Po+self.f)
+            self.image_plane = self.image_plane_rel + self.lens_position
+            self.M = -(self.image_plane_rel - self.Z_Pi) / (self.object_plane_rel - self.Z_Po)
+            print(f"Object plane: {self.object_plane_rel} mm, Image plane: {self.image_plane_rel} mm, Magnification: {self.M}")
 
-    def display_properties(self, bounds=30, n=100000, eta=296548.4789):
-        display_properties(self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet, self.B_r_magnet_theoretical, self.T, bounds, n, eta)
-
-    def calculate_image_properties(self, object_plane, object_height = 1):
-        self.object_plane = object_plane
-        self.object_height = object_height
-        self.image_plane = self.Z_Pi + (self.object_plane - self.Z_Po) * self.f / (self.object_plane - self.Z_Po+self.f)
-        self.M = -(self.image_plane - self.Z_Pi) / (self.object_plane - self.Z_Po)
-        self.image_height = self.M * self.object_height
-        print(f"Object plane: {self.object_plane} mm, Image plane: {self.image_plane} mm, Magnification: {self.M}, Image height: {self.image_height} mm")
-
-    def calculate_image_properties_mag(self, mag):
-        self.object_plane = self.Z_Po-(mag+1)/mag*self.f
-        self.calculate_image_properties(self.object_plane)
-
-    def plot_setup(self, eta=296548.4789, bounds=30, n=1000):
-        r0_values = np.linspace(-self.object_height, self.object_height, 4)
-        slope0_values = np.linspace(0, 0, 1)
-        initial_values = np.array([[u, v] for u in r0_values for v in slope0_values])
+    def display_properties(self, limits = None):
+        print(f"Maximum flux density = {self.B_r_yoke:.6f} T")
+        print(f"Reluctance correction = {self.reluctance_correction:.6f}")
+        print(f"Z_Fi = {self.Z_Fi:.6f} mm")
+        print(f"Z_Pi = {self.Z_Pi:.6f} mm")
+        print(f"f = {self.f:.6f} mm")
 
         fig, ax=plt.subplots()
-        z_span=(self.object_plane, bounds)
-        z_eval=np.linspace(*z_span, n)
 
-        G=1/1000*trajectory_solver([1000, 0], R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, eta, bounds, n, self.object_plane)
-        H=1/1000*trajectory_solver([0, 1000], R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, eta, bounds, n, self.object_plane)
+        ax.plot(self.z_eval_full, self.G, color='black', linewidth=2, label='Electron path')
+        ax.plot(self.z_eval_full, self.asymptotic_image_ray, color='red', linewidth=1, label='Asymtotic image ray')
+        ax.plot(self.z_eval_full, np.ones(self.n), color='blue', linewidth=1, label='Asymtotic object ray')
+        ax.plot((self.lens_position + self.Z_Fi)*np.ones(2), [-5, 5], linestyle='--', label='Backfocal plane')
+        ax.plot((self.lens_position + self.Z_Pi)*np.ones(2), [-5, 5], linestyle='--', label='Image principal plane')
 
+        ax.plot(self.z_eval_full, self.B_field/np.max(self.B_field)*3, linewidth=0.5, linestyle='--', color='red', label='B-field')
+        ax.set_ylim(-5, 5)
+        ax.set_xlabel("z (mm)")
+        ax.set_ylabel("r (mm)")
+        ax.set_title("Lens properties")
+        ax.grid()
+        ax.legend()
+
+        if limits:
+            ax.set_xlim(limits[0], limits[1])
+
+        plt.show()
+
+    def plot_trajectories(self, initial_values, limits = None):
+        fig, ax = plt.subplots()
         ### PLot trajectories ##
         for i in range(0,np.shape(initial_values)[0]):
-            traj=initial_values[i, 0]*G+initial_values[i, 1]*H
-            ax.plot(z_eval, traj, color='blue', linewidth=1)
+            traj=initial_values[i, 0]*self.G+initial_values[i, 1]*self.H
+            ax.plot(self.z_eval_full, traj, color='blue', linewidth=1)
+        ax.plot(self.z_eval_full, self.B_field/np.max(self.B_field)*3, color='red')
+        ax.grid()
+        if limits:
+            ax.set_xlim(limits[0], limits[1])
+        plt.show()
 
-        z_span_B_field=(-bounds, bounds)
-        z_eval=np.linspace(*z_span_B_field, n)
+    def plot_setup(self, initial_values=None, limits = None):
+        self.calculate_GH(self.object_plane)
+        fig, ax = plt.subplots()
+        ### PLot trajectories ##
+        if initial_values is not None:
+            for i in range(0,np.shape(initial_values)[0]):
+                traj=initial_values[i, 0]*self.G+self.angle_to_slope(initial_values[i, 1])*self.H
+                ax.plot(self.z_eval, traj, color='blue', linewidth=1)
+        ax.plot(self.z_eval_full, self.B_field/np.max(self.B_field)*3, color='red')
 
-        A_magnet=(R_2_magnet**2-R_1_magnet**2)
-        A_gap=(R_2**2-R_1**2)
-        reluctance_correction=(1+mu_r*(A_magnet*d)/(A_gap*d_magnet))**-1
-        B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
-
-        B_field=B_r_yoke*B_field_z(z_eval, R_1, R_2, d)
-        ax.plot(z_eval, B_field/np.max(B_field)*3, color='red')
-
-        ax.plot(self.Z_Po*np.ones(2), [-5, 5], linestyle='--', label='Object principal plane')
-        ax.plot(self.Z_Fi*np.ones(2), [-5, 5], linestyle='--', label='Backfocal plane')
-        ax.plot(-self.Z_Fi*np.ones(2), [-5, 5], linestyle='--', label='Frontfocal plane')
-        ax.plot(self.image_plane*np.ones(2), [-5, 5], linestyle='--', label='Image plane')
-        ax.set_xlim(-bounds, bounds)
+        ax.plot((self.Z_Po+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Object principal plane')
+        ax.plot((self.Z_Fi+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Backfocal plane')
+        ax.plot((-self.Z_Fi+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Frontfocal plane')
+        ax.plot((self.object_plane)*np.ones(2), [-5, 5], linestyle='--', label='Object plane')
+        ax.plot((self.image_plane)*np.ones(2), [-5, 5], linestyle='--', label='Image plane')
+        if limits:
+            ax.set_xlim(limits[0], limits[1])
         ax.set_ylim(auto=True)
         ax.set_xlabel("z (mm)")
         ax.set_ylabel("r (mm)")
@@ -413,6 +397,130 @@ class Lens:
         ax.grid()
         ax.legend()
         plt.show()
+
+    def discretize_ray(self, ray, z_eval, bins, range_x, range_y):
+        hist, _, _ =np.histogram2d(ray, z_eval, bins, [range_x, range_y])
+        return (hist>0).astype(int) # Return binary histogram
+    
+    def random_ray(self, object_height, opening_angle):
+        initial_value = np.random.uniform(-object_height, object_height)
+        initial_slope = np.random.uniform(-self.angle_to_slope(opening_angle), self.angle_to_slope(opening_angle))
+        return initial_value*self.G + initial_slope*self.H
+    
+    def no_collision_ray(self, object_height, opening_angle):
+        ray = self.random_ray(object_height, opening_angle)
+        collision = False
+        for mesh in self.mesh_list:
+            if mesh.check_collision(ray, self.ray_trace_z):
+                collision = True
+        if collision==True:
+            return self.no_collision_ray(object_height, opening_angle)
+        else:
+            return ray
+
+    def monte_carlo(self, object_height, opening_angle, camera_pos=None, pixel_size=55*10**-3, pixel_count=256, voxel_length=0.1):
+        r_range = [-pixel_count/2 * pixel_size, pixel_count/2 * pixel_size]
+        z_bins = int(self.setup_length / voxel_length)
+        histogram = np.zeros((pixel_count, z_bins))
+        self.calculate_GH(self.object_plane)
+
+        # Default camera to end of setup if not specified
+        if camera_pos is None:
+            camera_pos = self.setup_length
+
+        plt.ion()
+        fig, (ax_hist, ax_cam) = plt.subplots(1, 2, figsize=(14, 5))
+
+        # --- Histogram plot ---
+        z_start = self.z_eval_full[0]
+        z_end = self.z_eval_full[-1]
+        histogram_plot = ax_hist.imshow(
+            histogram, origin='lower', aspect='auto',
+            extent=[z_start, z_end, r_range[0], r_range[1]]
+        )
+
+        lens_z_start = self.lens_position - self.d / 2
+        lens_z_end = self.lens_position + self.d / 2
+        ax_hist.axvspan(lens_z_start, lens_z_end, alpha=0.3, color='cyan', label='Lens')
+
+        for i, mesh in enumerate(self.mesh_list):
+            ax_hist.axvline(x=mesh.pos, color='red', linestyle='--',
+                            linewidth=1.5, label=f'Mesh {i+1} (period={mesh.line_dist}mm)')
+
+        # Draw camera position on histogram
+        ax_hist.axvline(x=camera_pos, color='yellow', linestyle='-',
+                        linewidth=1.5, label=f'Camera (z={camera_pos}mm)')
+
+        ax_hist.set_xlabel('z (mm)')
+        ax_hist.set_ylabel('r (mm)')
+        ax_hist.set_title('Ray Monte Carlo Simulation')
+        ax_hist.legend(loc='upper right', fontsize=8)
+
+        # --- Camera image plot ---
+        camera_image = self.camera_image(camera_pos, histogram)
+        camera_plot = ax_cam.imshow(
+            camera_image, origin='lower', aspect='equal', cmap='gist_gray'
+        )
+        ax_cam.set_xlabel('x (pixels)')
+        ax_cam.set_ylabel('y (pixels)')
+        ax_cam.set_title(f'Camera image at z = {camera_pos} mm')
+
+        plt.tight_layout()
+
+        i = 0
+        try:
+            while True:
+                ray = self.no_collision_ray(object_height, opening_angle)
+                histogram += self.discretize_ray(ray, self.ray_trace_z, [pixel_count, z_bins], r_range, [0, self.setup_length])
+                if i % 100 == 0:
+                    histogram_plot.set_data(histogram)
+                    histogram_plot.set_clim(vmin=0, vmax=histogram.max())
+
+                    camera_image = self.camera_image(camera_pos, histogram, voxel_length)
+                    camera_plot.set_data(camera_image)
+                    camera_plot.set_clim(vmin=0, vmax=camera_image.max())
+
+                    plt.draw()
+                    plt.pause(0.001)
+                i += 1
+        except KeyboardInterrupt:
+            print("Simulation ended.")
+
+    def add_mesh(self, mesh):
+        self.mesh_list.append(mesh)
+
+    def camera_image(self, pos, histogram, voxel_length=0.1):
+        z_bins = histogram.shape[1]
+        z_axis = np.linspace(0, self.setup_length, z_bins)
+        index = np.argmin(np.abs(z_axis - pos))
+        profile = histogram[:, index]
+        return np.outer(profile, profile)
+
+class Mesh:
+    def __init__(self, pos, line_dist, line_thickness, line_count=100, line_offset=0):
+        self.pos=pos
+        self.line_dist=line_dist
+        self.line_thickness=line_thickness
+        self.line_count=line_count
+        self.line_offset=line_offset
+
+    def mesh_array(self, pixel_size, pixel_count):
+        """Make a discretized array of the mesh"""
+        mesh_array=np.zeros(pixel_count)
+        for i in 1/2*np.linspace(-pixel_count, pixel_count):
+            dist = i*pixel_size
+            dist_rel = np.mod(dist+self.line_offset, self.line_dist)
+            mesh_array[i] = int(dist_rel>self.line_thickness)
+        pass
+
+    def check_collision(self, ray_r, ray_z):
+        """Check if a ray collides with the mesh"""
+        collision_index = np.argmin(np.abs(ray_z - self.pos))
+
+        collision_r_pos = ray_r[collision_index]
+        collision_r_pos_rel = np.mod(collision_r_pos+self.line_offset, self.line_dist)
+        return collision_r_pos_rel<self.line_thickness
+
 
 if __name__ == "__main__":
     R_1 = 0.8
@@ -426,27 +534,13 @@ if __name__ == "__main__":
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
-    plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
-
-    # display_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-
-    # variable_R_1(0.5, 1.5, 100, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T)
-    # variable_R_2(2, 4, 100, R_1, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T)
-    # variable_d(0.3, 1.2, 100, R_1, R_2, R_1_magnet, R_2_magnet, d_magnet, B_r_magnet, T)
-    # variable_B_r(0.5, 1.5, 100, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, T)
-
-    # r0_values = np.linspace(-5, 5, 10)
-    # slope0_values = np.linspace(-.4, .4, 5)
-    # initial_values = np.array([[u, v] for u in r0_values for v in slope0_values])
-    # plot_trajectories(initial_values, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds=15)
-
-    # plot_HB_Curve()
-
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.calculate_properties()
-    # permanent_magnet_lens.calculate_image_properties(-12.78)
-    permanent_magnet_lens.calculate_image_properties_mag(mag=2)
-    # permanent_magnet_lens.calculate_image_properties_mag(mag=3)
-    # permanent_magnet_lens.calculate_image_properties_mag(mag=5)
-    # permanent_magnet_lens.calculate_image_properties_mag(mag=10)
-    permanent_magnet_lens.plot_setup(bounds = 30)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=17)
+    mesh1 = Mesh(pos=42, line_dist=70*10**-3, line_thickness=20*10**-3)
+    permanent_magnet_lens.add_mesh(mesh1)
+
+    opening_angle=20*10**-3
+    initial_values = np.linspace(-1, 1, 3)
+    initial_angles = np.linspace(-opening_angle, opening_angle, 5)
+    combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
+    permanent_magnet_lens.monte_carlo(object_height=0.01, opening_angle=50*10**-3, pixel_size=55*10**-3, camera_pos=142, pixel_count=256, voxel_length=0.1)
