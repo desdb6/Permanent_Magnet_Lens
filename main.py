@@ -555,11 +555,12 @@ if __name__ == "__main__":
 
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
     permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=20)
-    mesh1 = Mesh(pos=40, line_dist=127e-3, line_thickness=26e-3)
+    mesh1 = Mesh(pos=40, line_dist=85e-3, line_thickness=25e-3)
     permanent_magnet_lens.add_mesh(mesh1)
+    permanent_magnet_lens.display_properties()
 
-    opening_angle=0e-3
+    opening_angle=100e-3
     initial_values = np.linspace(-1, 1, 3)
     initial_angles = np.linspace(-opening_angle, opening_angle, 5)
     combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
-    permanent_magnet_lens.monte_carlo(object_height=500e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=140, pixel_count=256, voxel_length=0.1, output_path="01042026/200mesh")
+    permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=180, pixel_count=256, voxel_length=0.05, output_path="01042026/300mesh_pointsource")
