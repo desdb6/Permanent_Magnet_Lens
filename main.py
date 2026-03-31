@@ -418,7 +418,7 @@ class Lens:
         else:
             return ray
 
-    def monte_carlo(self, object_height, opening_angle, camera_pos=None, pixel_size=55*10**-3, pixel_count=256, voxel_length=0.1):
+    def monte_carlo(self, object_height, opening_angle, camera_pos=None, pixel_size=55*10**-3, pixel_count=256, voxel_length=0.1, output_path=None):
         r_range = [-pixel_count/2 * pixel_size, pixel_count/2 * pixel_size]
         z_bins = int(self.setup_length / voxel_length)
         histogram = np.zeros((pixel_count, z_bins))
@@ -472,7 +472,7 @@ class Lens:
             while True:
                 ray = self.no_collision_ray(object_height, opening_angle)
                 histogram += self.discretize_ray(ray, self.ray_trace_z, [pixel_count, z_bins], r_range, [0, self.setup_length])
-                if i % 100 == 0:
+                if i % 500 == 0:
                     histogram_plot.set_data(histogram)
                     histogram_plot.set_clim(vmin=0, vmax=histogram.max())
 
@@ -485,6 +485,25 @@ class Lens:
                 i += 1
         except KeyboardInterrupt:
             print("Simulation ended.")
+            if output_path is not None:
+                plt.savefig(output_path + "_plot.png", dpi=360)
+                settings = {
+                    "lens position": self.lens_position,
+                    "mesh position": self.mesh_list[0].pos,
+                    "mesh line distance": self.mesh_list[0].line_dist,
+                    "mesh line thickness": self.mesh_list[0].line_thickness,
+                    "object position": self.object_plane,
+                    "object height": object_height,
+                    "opening angle": opening_angle,
+                    "camera position": camera_pos,
+                    "pixel size": pixel_size,
+                    "pixel count": pixel_count,
+                    "voxel length": voxel_length,
+                }
+
+                with open(output_path + "_settings.txt", "w") as f:
+                    for key, value in settings.items():
+                        f.write(f"{key}: {value}\n")
 
     def add_mesh(self, mesh):
         self.mesh_list.append(mesh)
@@ -535,12 +554,12 @@ if __name__ == "__main__":
     T = 30*10**3
 
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=17)
-    mesh1 = Mesh(pos=42, line_dist=70*10**-3, line_thickness=20*10**-3)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=20)
+    mesh1 = Mesh(pos=40, line_dist=127e-3, line_thickness=26e-3)
     permanent_magnet_lens.add_mesh(mesh1)
 
-    opening_angle=20*10**-3
+    opening_angle=0e-3
     initial_values = np.linspace(-1, 1, 3)
     initial_angles = np.linspace(-opening_angle, opening_angle, 5)
     combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
-    permanent_magnet_lens.monte_carlo(object_height=0.01, opening_angle=50*10**-3, pixel_size=55*10**-3, camera_pos=142, pixel_count=256, voxel_length=0.1)
+    permanent_magnet_lens.monte_carlo(object_height=500e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=140, pixel_count=256, voxel_length=0.1, output_path="01042026/200mesh")
