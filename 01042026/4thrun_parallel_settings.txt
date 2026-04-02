@@ -1,0 +1,11 @@
+lens position: 27.98
+mesh position: 10
+mesh line distance: 0.254
+mesh line thickness: 0.05
+object position: 0
+object height: 0.5
+opening angle: 0.0
+camera position: 132.42
+pixel size: 0.055
+pixel count: 256
+voxel length: 0.05
