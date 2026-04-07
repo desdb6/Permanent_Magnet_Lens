@@ -1,0 +1,38 @@
+"""
+Author: Des De Borger
+
+Script to process distances on images.
+"""
+
+import numpy as np
+
+def analyze_distances(file_path):
+    """
+    Reads distance data from a text file and calculates the 
+    average and standard error of the mean (SEM).
+    """
+    distances = []
+    
+    with open(file_path, 'r') as file:
+        for line in file:
+            # Remove "Dist:", "m", and whitespace
+            clean_line = line.replace('Dist:', '').replace('m', '').strip()
+            if clean_line:
+                distances.append(float(clean_line))
+        
+    # Convert to numpy array for calculations
+    data = np.array(distances)
+        
+    # Average (Mean)
+    avg = np.mean(data)
+        
+    # Standard Error of the Mean (SEM)
+    # Formula: Standard Deviation / sqrt(n)
+    std_dev = np.std(data, ddof=1) # Using sample standard deviation
+    std_error = std_dev / np.sqrt(len(data))
+        
+    print(f"Average mesh distance:{avg}, standard error:{std_error}")
+    return avg, std_error
+
+if __name__ == "__main__":
+    analyze_distances(r'01042026_images\np\Overview_np_shadow\75mm_mesh_measured_dist.txt')

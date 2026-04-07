@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from main import B_field_z
+from sim import B_field_z
 
 
 
