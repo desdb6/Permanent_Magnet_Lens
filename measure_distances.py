@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RangeSlider
 
-WORKING_DIRECTORY = Path(r'01042026_images\np\Overview_np_shadow')
+WORKING_DIRECTORY = Path(r'01042026_images\np\Resolution_np_image')
 PIXEL_SIZE = 55e-6
 
 image_path_list = [file for file in WORKING_DIRECTORY.glob('**/*.txt') if 'measured' not in str(file)]
