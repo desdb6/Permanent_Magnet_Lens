@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RangeSlider
 
-WORKING_DIRECTORY = Path(r'01042026_images\np\Resolution_np_image')
+WORKING_DIRECTORY = Path(r'01042026_images\np\Resolution_np_shadow')
 PIXEL_SIZE = 55e-6
 
 image_path_list = [file for file in WORKING_DIRECTORY.glob('**/*.txt') if 'measured' not in str(file)]
@@ -46,7 +46,7 @@ def load_image(index):
     ax.set_title(f"Working distance: {wd}, index: {index}")
 
     # Setup/Update Slider
-    img_min, img_max = np.min(img), np.max(img)
+    img_min, img_max = 0, np.max(img)
     slider_ax.clear()
     slider = RangeSlider(slider_ax, 'Threshold', img_min, img_max, valinit=(img_min, img_max))
     

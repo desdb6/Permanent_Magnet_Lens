@@ -555,7 +555,7 @@ if __name__ == "__main__":
     d = 0.8
     d_magnet=2
     B_r_magnet_theoretical=1.37
-    leak_factor=1
+    leak_factor=0.69
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
@@ -565,8 +565,8 @@ if __name__ == "__main__":
     permanent_magnet_lens.add_mesh(mesh1)
     permanent_magnet_lens.display_properties()
 
-    opening_angle=0e-3
-    initial_values = np.linspace(-1, 1, 3)
-    initial_angles = np.linspace(-opening_angle, opening_angle, 5)
-    combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
-    permanent_magnet_lens.monte_carlo(object_height=500e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=132.42, pixel_count=256, voxel_length=0.05)
+    # opening_angle=0e-3
+    # initial_values = np.linspace(-1, 1, 3)
+    # initial_angles = np.linspace(-opening_angle, opening_angle, 5)
+    # combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
+    # permanent_magnet_lens.monte_carlo(object_height=500e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=132.42, pixel_count=256, voxel_length=0.05)
