@@ -173,7 +173,7 @@ Merk op dat de paraxiale bewegingsvergelijking lineair is. Dit betekent dat twee
     g(z_0)=1, g'(z_0)=0 \\[6pt]
     h(z_0)=0, h'(z_0)=1
 \end{align}
-Merk op dat de oplossing $g$ het gedrag van een parallelle bundel beschrijft. Immers, de oplossing voor de paraxiale bewegingsvergelijking van een parallel elektron dat initieel op een constante afstand $r_0$ van de optische as beweegt kan geschreven worden als $r_0g(z)$. Stel dat $g(z)$ een nulpunt heeft, dan kruisen alle initieel parallel bewegende elektronen de optische as in dat nulpunt. Dit is exact de gewenste werking van een magnetische elektronenlens; het nulpunt van $g(z)$ is dan het brandpunt van de lens. Vergelijking \ref{eq:paraxialevgl_rel} lijkt erg op een harmonische oscillator (met een frequentie afhankelijk van $\mathbf{B}^2$), wat betekent dat de elektronen steeds naar de optische as worden afgebogen. In het algemeen zal $g(z)$ daarom altijd een nulpunt hebben als $B(z)\neq0$.
+Merk op dat de oplossing $g$ het gedrag van een parallelle bundel beschrijft. Immers, de oplossing voor de paraxiale bewegingsvergelijking van een parallel elektron dat initieel op een constante afstand $r_0$ van de optische as beweegt kan geschreven worden als $r_0g(z)$. Stel dat $g(z)$ een nulpunt heeft, dan kruisen alle initieel parallel bewegende elektronen de optische as in dat nulpunt. Dit is exact de gewenste werking van een magnetische elektronenlens; het nulpunt van $g(z)$ is dan het brandpunt van de lens. Vergelijking \ref{eq:paraxialevgl_rel} lijkt erg op een harmonische oscillator (met een frequentie afhankelijk van $B^2$), wat betekent dat de elektronen steeds naar de optische as worden afgebogen. In het algemeen zal $g(z)$ daarom altijd een nulpunt hebben als $B(z)\neq0$.
 \section{Mesh shadowgraph methode}
 Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen gebruiken we een aangepaste versie van de \textit{rear mesh shadowgraph methode} beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een divergerende elektronenbundel te maken. De focale lengte kan dan worden afgeleid door te meten hoe divergent deze elektronenbundel juist is. Concreet kunnen we dit meten door een fijnmazig rooster (mesh grid) achter de lens in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De magnificatie van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel. Hieronder werken we enkele gevallen wiskundig uit.\\
 
@@ -259,7 +259,7 @@ Aan de hand van dit vereenvoudigd model kunnen we een analytische uitdrukking vo
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{Images/analytic_expression_1_ring.png}
+    \includegraphics[width=0.5\linewidth]{Images/analytic_expression_1_ring.png}
     \caption{Systeem met 1 annulus rond een symmetrie-as. De annulus heeft een homogene oppervlaktepoollading gelijk aan $\sigma_M$, wat aanleiding geeft tot een magnetisch veld.}
     \label{fig:analytic_expression_1_ring}
 \end{figure}
@@ -269,14 +269,65 @@ Het magnetisch veld in een bepaald punt $\mathbf{r}$ kan nu bepaald worden door 
 \begin{split}
 B_{ring}(z) & = \int_S\mathbf{e}_z\cdot d\mathbf{B} = \int_S\cos \theta\frac{ \mu_0\sigma_M}{4\pi|\mathbf{
 r}'|^2}dS =  \frac{\mu_0\sigma_M}{4\pi}\int_S\frac{\cos \theta}{|\mathbf{r}'|^2}dS\\
- & = \frac{\mu_0\sigma_M}{4\pi}\int_S\frac{\frac{z}{\sqrt{z^2+\rho^2}}}{z^2+\rho^2}dS = \frac{\mu_0\sigma_M}{4\pi} \int_0^{2\pi}d\phi \int_{R_1}^{R_2}\rho d\rho \frac{z}{(z^2+\rho^2)^{\frac{3}{2}}}\\
- & = \frac{\mu_0\sigma_Mz}{2}\int_{R_1}^{R_2}\frac{\rho}{(z^2+\rho^2)^{\frac{3}{2}}}d\rho \quad \left(\text{Stel} u = z^2+\rho^2,\ du = 2\rho\, d\rho\right)\\
- & = \frac{\mu_0\sigma_Mz}{4}\int_{z^2+R_1^2}^{z^2+R_2^2}u^{-\frac{3}{2}}du = \frac{\mu_0\sigma_Mz}{2}\left[-u^{-\frac{1}{2}}\right]_{z^2+R_1^2}^{z^2+R_2^2}\\
- & = \frac{\mu_0\sigma_Mz}{2} \left(\frac{1}{\sqrt{z^2+R_1^2}}-\frac{1}{\sqrt{z^2+R_2^2}}\right)
+& = \frac{\mu_0\sigma_M}{4\pi}\int_S\frac{\frac{z}{\sqrt{z^2+\rho^2}}}{z^2+\rho^2}dS = \frac{\mu_0\sigma_M}{4\pi} \int_0^{2\pi}d\phi \int_{R_1}^{R_2}\rho d\rho \frac{z}{(z^2+\rho^2)^{\frac{3}{2}}}\\
+& = \frac{\mu_0\sigma_Mz}{2}\int_{R_1}^{R_2}\frac{\rho}{(z^2+\rho^2)^{\frac{3}{2}}}d\rho \quad \left(\text{Stel } u = z^2+\rho^2,\ du = 2\rho\, d\rho\right)\\
+& = \frac{\mu_0\sigma_Mz}{4}\int_{z^2+R_1^2}^{z^2+R_2^2}u^{-\frac{3}{2}}du = \frac{\mu_0\sigma_Mz}{2}\left[-u^{-\frac{1}{2}}\right]_{z^2+R_1^2}^{z^2+R_2^2}\\
+& = \frac{\mu_0\sigma_Mz}{2} \left(\frac{1}{\sqrt{z^2+R_1^2}}-\frac{1}{\sqrt{z^2+R_2^2}}\right)
 \end{split}
 \end{equation}
+Op Figuur \ref{fig:B_field_1_annulus} tonen we een plot van $B_{ring}$ voor parameters $R_1=1$ en $R_2=2$. Zoals we zouden verwachten uit de symmetrie van het systeem is het veld 0 in het midden van de ring. Vlak boven en onder de ring neemt het veld sterk toe in de zin weg van de ring, aangezien veldlijnen weg van positieve/noordelijke poolladingen bewegen. Onder de ring is het veld negatief, aangezien we de $z$-as als positieve richting hebben gekozen. Ver weg van de ring kunnen we de ladingsverdeling als een puntlading beschouwen en valt het veld af als $\frac{1}{z}$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/B_field_1_annulus.png}
+    \caption{Plot van $B_{ring}$ volgens vergelijking \ref{eq:1_annulus} voor parameters $R_1=1$ en $R_2=2$. Het veld is antisymmetrisch rond het midden van de ring, zoals men zou verwachten.}
+    \label{fig:B_field_1_annulus}
+\end{figure}
+Door te werken met poolladingsdichtheden kunnen we nu eenvoudig het veld met twee tegengesteld geladen ringvormige oppervlakken berekenen. We kunnen simpelweg een superpositie maken van twee velden veroorzaakt door een enkel oppervlak, aangezien elektromagnetische velden lineair zijn. Het systeem dat we nu beschrijven wordt getoont op Figuur \ref{fig:analytic_expression_2_rings}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\linewidth]{Images/analytic_expression_2_rings.png}
+    \caption{Systeem met 2 annula met een gapbreedte van $d$ rond een symmetrie-as. De annula hebben homogene oppervlaktepoolladingen gelijk aan $\pm\sigma_M$, wat aanleiding geeft tot een magnetisch veld. Dit is het systeem dat we beschouwen bij het afschatten van het magnetisch veld in onze lens.}
+    \label{fig:analytic_expression_2_rings}
+\end{figure}
+
+Het magnetisch veld wordt nu gegeven door:
+\begin{equation}\label{eq:2_annula}
+\begin{split}
+    B(z) & = B_{ring}\left(z+\frac{d}{2}\right)-B_{ring}\left(z-\frac{d}{2}\right)\\
+    & = \frac{\mu_0\sigma_M\left(z+\frac{d}{2}\right)}{2}\left(\frac{1}{\sqrt{\left(z+\frac{d}{2}\right)^2+R_1^2}}-\frac{1}{\sqrt{\left(z+\frac{d}{2}\right)^2+R_2^2}}\right)-\frac{\mu_0\sigma_M\left(z-\frac{d}{2}\right)}{2}\left(\frac{1}{\sqrt{\left(z-\frac{d}{2}\right)^2+R_1^2}}-\frac{1}{\sqrt{\left(z-\frac{d}{2}\right)^2+R_2^2}}\right)
+\end{split}
+\end{equation}
+Figuur \ref{fig:B_field_2_annula} toont een plot van onze analytische afschatting van $B(z)$ op de symmetrieas van de lens, met parameters $R_1=1$, $R_2=2$, $d=2$. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/B_field_2_annula.png}
+    \caption{Plot van $B$ volgens vergelijking \ref{eq:2_annula} voor parameters $R_1=1$, $R_2=2$, $d=2$. Het veld is nu symmetrisch rond het midden van de lens en maximaal in het midden van de lens, zoals men zou verwachten.}
+    \label{fig:B_field_2_annula}
+\end{figure}
+We verkrijgen op deze manier een sterk gepiekt magnetisch veld in het midden van de lens. Dit is exact wat we willen om een dunne lens met een bruikbare focale lengte te maken. Later zullen we onderzoeken hoe de geometrie van de ringoppervlakken het magnetisch veld verandert, en hoe dit de lenseigenschappen beïnvloedt.\\
+
+Een belangrijke opmerking bij deze afschatting is dat deze in principe enkel geldt in het gebied $-\frac{d}{2}<z<\frac{d}{2}$. De ringvormige ladingsoppervlakken zijn aan de buitenkanten immers begrensd door de polepieces, die een veel grotere permeabiliteit dan vacuüm hebben. In het ideale geval is het magnetisch veld geconcentreerd in de polepieces zonder dat het weglekt, en geldt er voor $z>\left|\frac{d}{2}\right|$ dat $B(z)=0$. Op bovenstaande figuur is echter te zien dat de velden buiten de lens heel wat kleiner zijn dan de velden in het centrum van de lens, en aangezien we in de paraxiale bewegingsvergelijkingen werken met $B^2$ zullen deze randvelden zeer weinig invloed hebben wanneer we de vergelijking numeriek zullen oplossen.\\
+
+Onze analytische afschatting kunnen we numeriek controleren met het ionen- en elektronenoptica simulatieprogramma \textit{SIMION}. Dit programma vindt de scalaire magnetische potentiaal door de Laplace-vergelijking voor een ladingsdichtheidverdeling op te lossen. Het programma kan dit door middel van finite-difference methoden; in dit geval werd het veld opgelost met een iteratieve over-relaxatie solver \cite{SIMIONuserguide}. SIMION is bovendien ontworpen om axissymetrische problemen als 2D-problemen op te lossen. Om het numeriek gevonden veld te vergelijken met de analytische uitdrukking, simuleerden we een systeem met twee homogeen geladen ringoppervlakken met $R_1=2\unit{mm}$, $R_2=3\unit{mm}$ en $d=4\unit{mm}$. De magnetische potentiaal werd berekend in een cilindrisch volume met een lengte van $3\unit{cm}$ en een straal van \color{red} NOG OP TE ZOEKEN \color{black}, met \color{red} Dirichlet \color{black}randvoorwaarden ($\phi=0$ op de rand\footnote{In werkelijkheid willen we $\phi=0$ op oneindig, maar we kunnen geen oneindig groot volume simuleren.}). De potentiaal op de symmetrie-as werd geëxporteerd, en het magnetisch $B(z)=\frac{\delta \phi}{\delta z}$ veld werd numeriek in python berekend. Op Figuur \ref{fig:B_field_SIMION} worden de analytische en numerieke velden vergeleken. Beide velden werden herschaald zodat $B_{max}=1$ aangezien we nog geen uitdrukking hebben voor $\sigma_M$. We zien een zeer goede overeenkomst, wat aangeeft dat onze analytische uitdrukking correct is.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/B_field_SIMION.png}
+    \caption{Vergelijking tussen analytische uitdrukking en numeriek gesimuleerd veld voor $R_1=2\unit{mm}$, $R_2=3\unit{mm}$ en $d=4\unit{mm}$. We zien dat de velden zeer goed overeenkomen.}
+    \label{fig:B_field_SIMION}
+\end{figure}
 
 \section{Magnetische reluctantie van het circuit}
+Nu we een benaderende analytische uitdrukking hebben gevonden voor het magnetisch veld voor ons lensontwerp, moeten we nadenken over welke waarde we moeten gebruiken voor de oppervlaktepoolladingsdichtheden $\sigma_M$. We moeten hiervoor met twee effecten rekening houden: de magnetische reluctantie $\mathcal{R}$ van het circuit in de lens en de verhouding $\frac{A_{magneet}}{A_{polepiece}}$.\\
+
+De eerste factor is de reluctantie van het circuit. De Nd-magneet heeft een remanent magneetveld $B_r$, dit is het magnetisch veld dat in de magneet overblijft wanneer we geen uitwendige magnetische velden aanleggen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/magnetic_circuit.png}
+    \caption{Illustratie van het magnetisch citcuit equivalent aan dat van de lens. De gap veroorzaakt  een reluctantie die ervoor zorgt dat het oppervlakteveld $B_m$ van de magneet kleiner wordt dan haar remanent veld $B_r$.}
+    \label{fig:magnetic_circuit}
+\end{figure}
 \section{Implementatie van paraxiale vergelijkingen in Python}
 
 \section{Lensontwerp}

@@ -10,10 +10,10 @@
 \contentsline {chapter}{\numberline {5}Eigen realisatie}{15}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Werking permanente magneetlens}{15}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Analytische afschatting magnetisch veld}{16}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Magnetische reluctantie van het circuit}{18}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Implementatie van paraxiale vergelijkingen in Python}{18}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Lensontwerp}{18}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Monte Carlo simulatie van experiment}{18}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Experimentele bepaling focale lengte}{18}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Besluit}{19}{chapter.6}%
+\contentsline {section}{\numberline {5.3}Magnetische reluctantie van het circuit}{20}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Implementatie van paraxiale vergelijkingen in Python}{21}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Lensontwerp}{21}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Monte Carlo simulatie van experiment}{21}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Experimentele bepaling focale lengte}{21}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Besluit}{23}{chapter.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

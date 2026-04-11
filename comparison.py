@@ -6,8 +6,8 @@ from sim import B_field_z
 
 
 ### Numeric Field###
-numericpotential1=np.loadtxt("numericpotential1.txt")[:, 4]
-numericpotential2=np.loadtxt("numericpotential2.txt")[:, 4]
+numericpotential1=np.loadtxt("simion_potential/numericpotential1.txt")[:, 4]
+numericpotential2=np.loadtxt("simion_potential/numericpotential2.txt")[:, 4]
 numericpotential=numericpotential1-numericpotential2
 
 numericfield=np.zeros(np.shape(numericpotential))
@@ -36,7 +36,7 @@ analyticalfield=B_field_z(z_analytic, R_1/1000, R_2/1000, d/1000)
 
 fig, ax=plt.subplots()
 ax.plot(z_analytic*100, analyticalfield/np.max(analyticalfield), color='r', label='Analytisch')
-ax.plot(z_numeric*100, numericfield/np.max(numericfield), color='b', label='Numeriek')
+ax.plot(z_numeric*100, numericfield/np.max(numericfield), linestyle='None', marker='x', markersize=4, color='b',  label='Numeriek')
 ax.grid()
 ax.legend()
 plt.show()

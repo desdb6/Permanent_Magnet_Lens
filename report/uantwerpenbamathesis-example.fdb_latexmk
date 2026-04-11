@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex uantwerpenbamathesis-example"] 1775900716.92491 "uantwerpenbamathesis-example.aux" "uantwerpenbamathesis-example.bbl" "uantwerpenbamathesis-example" 1775901062.88821 0
-  "./bibliography.bib" 1775810938 1412 84ab9fd4692d5260c00d838f1b18dc39 ""
+["bibtex uantwerpenbamathesis-example"] 1775918403.57132 "uantwerpenbamathesis-example.aux" "uantwerpenbamathesis-example.bbl" "uantwerpenbamathesis-example" 1775918413.0262 0
+  "./bibliography.bib" 1775914364 1681 a4cd11009be5f2de150a41a2f1963e98 ""
   "C:/Users/desde/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/alpha.bst" 1291864736 23907 a5f93555796fb564b924339521f10a7c ""
-  "uantwerpenbamathesis-example.aux" 1775900728 14445 e276c3f4a456f79e58e2563fb8079fe9 "pdflatex"
+  "uantwerpenbamathesis-example.aux" 1775918411 17685 5ee7ad598604e8bd1748c498f6effe23 "pdflatex"
   (generated)
   "uantwerpenbamathesis-example.bbl"
   "uantwerpenbamathesis-example.blg"
   (rewritten before read)
-["pdflatex"] 1775901060.80407 "c:/Users/desde/OneDrive/Desktop/School/Bachelor 3/Bachelorproef/Bachelorproef/uantwerpenbamathesis-example.tex" "uantwerpenbamathesis-example.pdf" "uantwerpenbamathesis-example" 1775901062.88862 2
-  "C:/Users/desde/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1775834860 82507 a9eef8696c92627b87e9975edea03b2a ""
+["pdflatex"] 1775918404.15895 "c:/Users/desde/OneDrive/Documents/GitHub/Permanent_Magnet_Lens/report/uantwerpenbamathesis-example.tex" "uantwerpenbamathesis-example.pdf" "uantwerpenbamathesis-example" 1775918413.02728 0
+  "C:/Users/desde/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1775901753 279613 fe62a258ff6d99cc2243c3a2d16aa767 ""
   "C:/Users/desde/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1775811785 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/desde/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1775812962 13333487 c72864734e5e2bb39bdab8a3c7a67e5e ""
   "C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -216,20 +216,25 @@
   "C:/Users/desde/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/desde/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/desde/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
+  "Images/B_field_1_annulus.png" 1775913544 22679 9c2d13a1b35a9b6cc077594c2d7ede21 ""
+  "Images/B_field_2_annula.png" 1775913544 18395 419066a606885674aa073d17868a7f31 ""
+  "Images/B_field_SIMION.png" 1775913547 27434 3dfdec226b6792a47bee3c58ea811465 ""
   "Images/analytic_expression_1_ring.png" 1775897570 80894 8116f8f5e86daeafb78a0121b082f203 ""
+  "Images/analytic_expression_2_rings.png" 1775903858 127286 591e29854106893b35ac5ec93d5b42eb ""
   "Images/lens_circuit_diagram.png" 1775842103 584445 9cfdfd7c05dcb86a1e2a78d1e2589a1e ""
+  "Images/magnetic_circuit.png" 1775918245 118205 23005aba8975885786886c7b17d098f3 ""
   "Images/maxwell_2_cilinder.png" 1775810939 25902 20ee096e60a6deb84f73d1b629ae272f ""
   "Images/rear_mesh_shadowgraph.png" 1775810939 102752 71c6b47a8a2ee8d48134011e9bfb1bd2 ""
   "Images/rear_mesh_shadowgraph_parallel_beam.png" 1775822570 98687 ddf7ea103b2e15dd71ca157b9091de4f ""
   "Images/rear_mesh_shadowgraph_virtual_image.png" 1775818014 44886 5ae8a65fa8401531c3c31aa4191ebdb4 ""
   "Logos/logo-uantwerpen-we-en-rgb-pos.pdf" 1775810945 8462 da1ad7b8d9445e1bc658d46022dd4afa ""
   "Logos/logo-uantwerpen-we-nl-rgb-pos.pdf" 1775810945 9551 18d75edb0e42308466208df32b9ba7bf ""
-  "c:/Users/desde/OneDrive/Desktop/School/Bachelor 3/Bachelorproef/Bachelorproef/uantwerpenbamathesis-example.tex" 1775901058 27166 f4f017d0da9df6998ce2105f47394fbe ""
-  "uantwerpenbamathesis-example.aux" 1775900728 14445 e276c3f4a456f79e58e2563fb8079fe9 "pdflatex"
-  "uantwerpenbamathesis-example.bbl" 1775900717 451 e9f37f0d48ba0777b2aa173e0cbcb007 "bibtex uantwerpenbamathesis-example"
-  "uantwerpenbamathesis-example.brf" 1775900728 150 7301cd6791f11f7b8950ec4cd4f45117 ""
-  "uantwerpenbamathesis-example.tex" 1775901058 27166 f4f017d0da9df6998ce2105f47394fbe ""
-  "uantwerpenbamathesis-example.toc" 1775900728 1540 a1397451637ade3af526e9f050b3edc5 ""
+  "c:/Users/desde/OneDrive/Documents/GitHub/Permanent_Magnet_Lens/report/uantwerpenbamathesis-example.tex" 1775918393 33942 91520fee627a6f73a2d9f7057c5c77c4 ""
+  "uantwerpenbamathesis-example.aux" 1775918411 17685 5ee7ad598604e8bd1748c498f6effe23 "pdflatex"
+  "uantwerpenbamathesis-example.bbl" 1775918404 653 ce30a415049d0d27532d8408b8ab4c0f "bibtex uantwerpenbamathesis-example"
+  "uantwerpenbamathesis-example.brf" 1775918411 201 b6ea36c55d23e0a58959dcdf52c912f1 "pdflatex"
+  "uantwerpenbamathesis-example.tex" 1775918393 33942 91520fee627a6f73a2d9f7057c5c77c4 ""
+  "uantwerpenbamathesis-example.toc" 1775918411 1540 7467e100412f4e780ad1f2636b856444 "pdflatex"
   "uantwerpenbamathesis.cls" 1775833045 17317 543b78871425bd418f17b8c69ea55a4d ""
   "uantwerpencolorlogoscheme.sty" 1775810938 3997 60fa40da65f1cc76f44a56ad0903d87d ""
   "uantwerpencommonoptions.clo" 1775810938 4339 d337bd93e0dd3d7f4efe9370b7db1688 ""
@@ -239,6 +244,8 @@
   "uantwerpendocs-nl.data" 1775810939 1994 d53872c70c0e164bd866b4db9543952a ""
   (generated)
   "uantwerpenbamathesis-example.aux"
+  "uantwerpenbamathesis-example.brf"
   "uantwerpenbamathesis-example.log"
   "uantwerpenbamathesis-example.pdf"
+  "uantwerpenbamathesis-example.toc"
   (rewritten before read)
