@@ -559,14 +559,16 @@ if __name__ == "__main__":
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
+    plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
+
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=27.98)
+    permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
     mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
     permanent_magnet_lens.add_mesh(mesh1)
     permanent_magnet_lens.display_properties()
 
-    # opening_angle=0e-3
-    # initial_values = np.linspace(-1, 1, 3)
-    # initial_angles = np.linspace(-opening_angle, opening_angle, 5)
-    # combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
-    # permanent_magnet_lens.monte_carlo(object_height=500e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=132.42, pixel_count=256, voxel_length=0.05)
+    opening_angle=100e-3
+    initial_values = np.linspace(-1, 1, 3)
+    initial_angles = np.linspace(-opening_angle, opening_angle, 5)
+    combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
+    permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=132.42, pixel_count=256, voxel_length=0.05)

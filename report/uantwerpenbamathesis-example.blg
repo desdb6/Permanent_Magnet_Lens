@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: uantwerpenbamathesis-example.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: alpha.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Database file #1: bibliography.bib
+Warning--there's a number but no volume in meshshadowgraphs
+Warning--empty year in meshshadowgraphs
+You've used 2 entries,
+            2543 wiz_defined-function locations,
+            570 strings with 4768 characters,
+and the built_in function-call counts, 573 in all, are:
+= -- 50
+> -- 16
+< -- 2
++ -- 4
+- -- 4
+* -- 36
+:= -- 104
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 9
+chr.to.int$ -- 2
+cite$ -- 4
+duplicate$ -- 30
+empty$ -- 47
+format.name$ -- 8
+if$ -- 111
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 3
+newline$ -- 13
+num.names$ -- 6
+pop$ -- 16
+preamble$ -- 1
+purify$ -- 12
+quote$ -- 0
+skip$ -- 18
+stack$ -- 0
+substring$ -- 14
+swap$ -- 2
+text.length$ -- 2
+text.prefix$ -- 2
+top$ -- 0
+type$ -- 12
+warning$ -- 2
+while$ -- 4
+width$ -- 3
+write$ -- 27
+(There were 2 warnings)

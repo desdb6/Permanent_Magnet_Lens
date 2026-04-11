@@ -79,7 +79,7 @@ def on_click(event):
         current_path = image_path_list[image_index]
         log_name = distance_file_path(current_path)
         with open(log_name, "a") as f:
-            f.write(f"Dist: {dist} m\n")
+            f.write(f"{dist*1000}\n")
         
         ax.plot([coords[0][0], coords[1][0]], [coords[0][1], coords[1][1]], 'r--')
         coords.clear()
