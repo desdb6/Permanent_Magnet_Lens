@@ -17,10 +17,11 @@ def plot_B_field_ring_report():
     ax.plot(z_eval, B_eval)
     ax.grid('on')
     ax.set_xlabel('$z$', fontsize=14)
-    ax.set_ylabel('$B_{ring}(z)$ (eenheid $\mu_0\sigma_M$)', fontsize=14)
+    ax.set_ylabel(r'$B_{ring}(z)$ (eenheid $\mu_0\sigma_M$)', fontsize=14)
     ax.set_title('$B_{ring}(z)$', fontsize=16)
     plt.tight_layout()
     plt.savefig('report/Images/B_field_1_annulus.png')
+    print(f'Saved B field ring plot')
 
 def plot_B_field_lens_report():
     z_eval = np.linspace(-15, 15, 1500)
@@ -30,11 +31,12 @@ def plot_B_field_lens_report():
     ax.plot(z_eval, B_eval)
     ax.grid('on')
     ax.set_xlabel('$z$', fontsize=14)
-    ax.set_ylabel('$B(z)$ (eenheid $\mu_0\sigma_M$)', fontsize=14)
+    ax.set_ylabel(r'$B(z)$ (eenheid $\mu_0\sigma_M$)', fontsize=14)
     ax.set_ylim(-(B_max+0.05), B_max+0.05)
     ax.set_title('$B(z)$', fontsize=16)
     plt.tight_layout()
     plt.savefig('report/Images/B_field_2_annula.png')
+    print(f'Saved B field lens plot')
 
 def plot_B_field_SIMION_comparison():
     ### Numeric Field###
@@ -66,6 +68,9 @@ def plot_B_field_SIMION_comparison():
     z_analytic=np.linspace(*z_span, n)
     analyticalfield=B_field_z(z_analytic, R_1/1000, R_2/1000, d/1000)
 
+    z_numeric = z_numeric[::3]
+    numericfield = numericfield[::3]
+
     fig, ax=plt.subplots()
     ax.plot(z_analytic*100, analyticalfield/np.max(analyticalfield), color='r', label='Analytisch')
     ax.plot(z_numeric*100, numericfield/np.max(numericfield), linestyle='None', marker='x', markersize=4, color='b',  label='Numeriek')
@@ -76,6 +81,7 @@ def plot_B_field_SIMION_comparison():
     ax.legend()
     plt.tight_layout()
     plt.savefig('report/Images/B_field_SIMION.png')
+    print(f'Saved B field SIMION comparison plot')
 
 def main():
     plot_B_field_ring_report()

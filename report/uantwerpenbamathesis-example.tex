@@ -26,7 +26,7 @@
 %%
 % !TEX root = uantwerpenbamathesis-example.tex
 \documentclass[we,twoside,openright,a4paper,11pt]{uantwerpenbamathesis}
-\usepackage{siunitx}
+\usepackage{subcaption}
 
 \usepackage[dutch]{babel} % or english if your text is in English
 \usepackage{amsmath}
@@ -127,7 +127,7 @@ We beschouwen nu enkel paraxiale elektronen, m.a.w. elektronen die zich dicht bi
 \begin{equation}\label{eq:b_z_expansion}
     B_z(r, z)=B(z)-\frac{r^2}{4}\frac{d^2B(z)}{dz^2}+\frac{r^4}{64}\frac{d^4B(z)}{dz^4}+O(r^6)
 \end{equation}
-Voor kleine $r$ maken we de benadering dat $B_z(r, z)=B(z)$. Nu leiden we een relatie tussen $B$ en $B_r$ af. We beschouwen een cilindrisch volume rond de z-as van het systeem zoals op Figuur \ref{fig:maxwell_2_cilinder} en gebruiken de tweede Maxwellvergelijking in integraalvorm, welke ons vertelt dat de totale fluw doorheen een gesloten ondervlak gelijk moet zijn aan $0$.
+Voor kleine $r$ maken we de benadering dat $B_z(r, z)=B(z)$. Nu leiden we een relatie tussen $B$ en $B_r$ af. We beschouwen een cilindrisch volume rond de z-as van het systeem zoals op Figuur \ref{fig:maxwell_2_cilinder} en gebruiken de tweede Maxwellvergelijking in integraalvorm, welke ons vertelt dat de totale flux doorheen een gesloten ondervlak gelijk moet zijn aan $0$.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Images/maxwell_2_cilinder.png}
@@ -142,7 +142,7 @@ Invullen van \ref{eq:Br_Bz_relation} in \ref{eq:theta_tussenstap} geeft:
 \begin{equation}
     \frac{d}{dt}\left(mr^2\frac{d\theta}{dt}\right)=er\left(B\frac{dr}{dt}+\frac{1}{2}r\frac{dB}{dz}\frac{dz}{dt}\right)=\frac{d}{dt}\left(\frac{1}{2}er^2B\right)
 \end{equation}
-Beide leden integreren\footnote{In principe moet hier nog een constante $+C$ bij, maar aangezien $\frac{d\theta}{dt}=$ bij $\mathbf{B}=0$ is $C=0$.} en vereenvoudigen geeft:
+Beide leden integreren\footnote{In principe moet hier nog een constante $+C$ bij, maar aangezien $\frac{d\theta}{dt}=0$ bij $\mathbf{B}=0$ is $C=0$.} en vereenvoudigen geeft:
 \begin{equation}\label{eq:precession}
     \frac{d\theta}{dt}=\frac{eB}{2m}=\eta^2B
 \end{equation}
@@ -232,10 +232,10 @@ In principe kan deze methode ook uitgebereid worden om de chromatische en sferis
 \section{Werking permanente magneetlens}
 Voor we in de details van het ontwerpsproces van de lens duiken, is het verstandig om het concept van het ontwerp helder uit te leggen. Het doel is om een magnetisch veld te ontwerpen dat de elektronen op zo'n manier afbuigt zodanig dat een paralelle bundel geconcentreerd zal worden in een punt op de optische as. Hierbij willen we dat de lens aan enkele gewenste eigenschappen voldoet.\\
 
-Ten eerste willen we een geschikte focale lengte zodat de lens bruikbaar is in een elektronenmicroscoop. Concreet zal deze lens getest worden in een Tescan MIRA SEM, waarin we een maximale totale afstand van $228.4\unit{mm}$ van elektronenbron tot detector ter beschikking hebben. Om een bruikbare lens te maken is het daarom gewenst dat de focale lengte niet veel langer dan $10\unit{mm}$ is. Verder zullen we werken we met een versnelspanning van $30\unit{KeV}$, wat een voorwaarde legt op de minimale sterkte van het magnetisch veld. \\
+Ten eerste willen we een geschikte focale lengte zodat de lens bruikbaar is in een elektronenmicroscoop. Concreet zal deze lens getest worden in een Tescan MIRA SEM, waarin we een maximale totale afstand van $228.4\mathrm{mm}$ van elektronenbron tot detector ter beschikking hebben. Om een bruikbare lens te maken is het daarom gewenst dat de focale lengte niet veel langer dan $10\mathrm{mm}$ is. Verder zullen we werken we met een versnelspanning van $30\mathrm{KeV}$, wat een voorwaarde legt op de minimale sterkte van het magnetisch veld. \\
 
 %% Meer uitleg over wat een hoofdvlak is?
-Ten tweede is het gewenst dat de lens die we maken, een dunne lens is. Meer concreet willen we dat de hoofdvlakken samenvallen in het midden van de lens. Op deze manier is het gemakkelijker om berekeningen te doen als we opstellingen met meerdere lenzen willen bouwen, aangezien de dunne lensformule dan toepasbaar is. Dit betekent dat we een sterk ruimtelijk geconcentreerd magnetisch veld in het midden van de lens willen; de elektronen interageren dan maar heel kort met het magnetisch veld, wat een dunne lenswerking geeft. Hoe geconcentreerder we het veld maken, hoe sterker het maximale veld moet zijn om dezelfde afbuiging te veroorzaken. Om een bruikbare lens te maken willen we op de optische as een magnetisch veld met een sterkte van $\sim0.1-1\unit{T}$ dat geconcentreerd is over een afstand van $<5\unit{mm}$. \\
+Ten tweede is het gewenst dat de lens die we maken, een dunne lens is. Meer concreet willen we dat de hoofdvlakken samenvallen in het midden van de lens. Op deze manier is het gemakkelijker om berekeningen te doen als we opstellingen met meerdere lenzen willen bouwen, aangezien de dunne lensformule dan toepasbaar is. Dit betekent dat we een sterk ruimtelijk geconcentreerd magnetisch veld in het midden van de lens willen; de elektronen interageren dan maar heel kort met het magnetisch veld, wat een dunne lenswerking geeft. Hoe geconcentreerder we het veld maken, hoe sterker het maximale veld moet zijn om dezelfde afbuiging te veroorzaken. Om een bruikbare lens te maken willen we op de optische as een magnetisch veld met een sterkte van $\sim0.1-1\mathrm{T}$ dat geconcentreerd is over een afstand van $<5\mathrm{mm}$. \\
 
 Het ontwerp dat we in deze thesis onderzoeken en aan beide voorwaarden voldoet, wordt getoont op Figuur \ref{fig:lens_circuit_diagram}.
 \begin{figure}[H]
@@ -245,7 +245,7 @@ Het ontwerp dat we in deze thesis onderzoeken en aan beide voorwaarden voldoet, 
     \label{fig:lens_circuit_diagram}
 \end{figure}
 
-Om een axissymetrisch veld te veroorzaken, maken we gebruik van een kleine ringvormige NdFeB magneet met een remanent magneetveld van $\sim1.4\unit{T}$. We kunnen in principe enkel de magneet als lens gebruiken, maar dit is niet optimaal; het magnetisch veld zou dan uitgebreid in de ruimte zijn, terwijl we een zo sterk mogelijk veld op de symmetrieas van de lens willen. We kunnen het veld naar het midden van de lens "begeleiden" d.m.v. polepieces gemaakt uit een zacht ferromagnetisch materiaal met een hoge permeabiliteit $\mu$. Als de permabiliteit voldoende hoog is, dan zullen de grote meerderheid van de veldlijnen in de polepieces blijven en in het midden van de lens de opening of \textit{gap} oversteken. Bij het oversteken van de opening tussen de polepieces lopen de velden niet perfect loodrecht van het ene oppervlak naar het andere, maar door randeffecten zullen ze naast de oppervlakken naar buiten buigen. Op deze manier krijgen we in het gat een lokaal sterk veld, zoals gewenst.
+Om een axissymetrisch veld te veroorzaken, maken we gebruik van een kleine ringvormige NdFeB magneet met een remanent magneetveld van $\sim1.4\mathrm{T}$. We kunnen in principe enkel de magneet als lens gebruiken, maar dit is niet optimaal; het magnetisch veld zou dan uitgebreid in de ruimte zijn, terwijl we een zo sterk mogelijk veld op de symmetrieas van de lens willen. We kunnen het veld naar het midden van de lens "begeleiden" d.m.v. polepieces gemaakt uit een zacht ferromagnetisch materiaal met een hoge permeabiliteit $\mu$. Als de permabiliteit voldoende hoog is, dan zullen de grote meerderheid van de veldlijnen in de polepieces blijven en in het midden van de lens de opening of \textit{gap} oversteken. Bij het oversteken van de opening tussen de polepieces lopen de velden niet perfect loodrecht van het ene oppervlak naar het andere, maar door randeffecten zullen ze naast de oppervlakken naar buiten buigen. Op deze manier krijgen we in het gat een lokaal sterk veld, zoals gewenst.
 \section{Analytische afschatting magnetisch veld}
 Vooraleer we de lenseigenschappen van de lens kunnen simuleren, willen we een analystische schatting maken van het magnetisch veld $B(z)$ op de symmetrieas van de lens. Hiervoor maken enkele belangrijke benaderingen om de berekeningen te vereenvoudigen.\\
 
@@ -309,25 +309,80 @@ We verkrijgen op deze manier een sterk gepiekt magnetisch veld in het midden van
 
 Een belangrijke opmerking bij deze afschatting is dat deze in principe enkel geldt in het gebied $-\frac{d}{2}<z<\frac{d}{2}$. De ringvormige ladingsoppervlakken zijn aan de buitenkanten immers begrensd door de polepieces, die een veel grotere permeabiliteit dan vacuüm hebben. In het ideale geval is het magnetisch veld geconcentreerd in de polepieces zonder dat het weglekt, en geldt er voor $z>\left|\frac{d}{2}\right|$ dat $B(z)=0$. Op bovenstaande figuur is echter te zien dat de velden buiten de lens heel wat kleiner zijn dan de velden in het centrum van de lens, en aangezien we in de paraxiale bewegingsvergelijkingen werken met $B^2$ zullen deze randvelden zeer weinig invloed hebben wanneer we de vergelijking numeriek zullen oplossen.\\
 
-Onze analytische afschatting kunnen we numeriek controleren met het ionen- en elektronenoptica simulatieprogramma \textit{SIMION}. Dit programma vindt de scalaire magnetische potentiaal door de Laplace-vergelijking voor een ladingsdichtheidverdeling op te lossen. Het programma kan dit door middel van finite-difference methoden; in dit geval werd het veld opgelost met een iteratieve over-relaxatie solver \cite{SIMIONuserguide}. SIMION is bovendien ontworpen om axissymetrische problemen als 2D-problemen op te lossen. Om het numeriek gevonden veld te vergelijken met de analytische uitdrukking, simuleerden we een systeem met twee homogeen geladen ringoppervlakken met $R_1=2\unit{mm}$, $R_2=3\unit{mm}$ en $d=4\unit{mm}$. De magnetische potentiaal werd berekend in een cilindrisch volume met een lengte van $3\unit{cm}$ en een straal van \color{red} NOG OP TE ZOEKEN \color{black}, met \color{red} Dirichlet \color{black}randvoorwaarden ($\phi=0$ op de rand\footnote{In werkelijkheid willen we $\phi=0$ op oneindig, maar we kunnen geen oneindig groot volume simuleren.}). De potentiaal op de symmetrie-as werd geëxporteerd, en het magnetisch $B(z)=\frac{\delta \phi}{\delta z}$ veld werd numeriek in python berekend. Op Figuur \ref{fig:B_field_SIMION} worden de analytische en numerieke velden vergeleken. Beide velden werden herschaald zodat $B_{max}=1$ aangezien we nog geen uitdrukking hebben voor $\sigma_M$. We zien een zeer goede overeenkomst, wat aangeeft dat onze analytische uitdrukking correct is.
+Onze analytische afschatting kunnen we numeriek controleren met het ionen- en elektronenoptica simulatieprogramma \textit{SIMION}. Dit programma vindt de scalaire magnetische potentiaal door de Laplace-vergelijking voor een ladingsdichtheidverdeling op te lossen. Het programma kan dit door middel van finite-difference methoden; in dit geval werd het veld opgelost met een iteratieve over-relaxatie solver \cite{SIMIONuserguide}. SIMION is bovendien ontworpen om axissymetrische problemen als 2D-problemen op te lossen. Om het numeriek gevonden veld te vergelijken met de analytische uitdrukking, simuleerden we een systeem met twee homogeen geladen ringoppervlakken met $R_1=2\mathrm{mm}$, $R_2=3\mathrm{mm}$ en $d=4\mathrm{mm}$. De magnetische potentiaal werd berekend in een cilindrisch volume met een lengte van $6\mathrm{cm}$ en een straal van $10\mathrm{mm}$, met Dirichlet randvoorwaarden ($\phi=0$ op de rand\footnote{In werkelijkheid willen we $\phi=0$ op oneindig, maar we kunnen geen oneindig groot volume simuleren.}). De potentiaal op de symmetrie-as werd geëxporteerd, en het magnetisch $B(z)=\frac{\delta \phi}{\delta z}$ veld werd numeriek in python berekend. Op Figuur \ref{fig:B_field_SIMION} worden de analytische en numerieke velden vergeleken. Beide velden werden herschaald zodat $B_{max}=1$ aangezien we nog geen uitdrukking hebben voor $\sigma_M$. We zien een zeer goede overeenkomst, wat aangeeft dat onze analytische uitdrukking correct is.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Images/B_field_SIMION.png}
-    \caption{Vergelijking tussen analytische uitdrukking en numeriek gesimuleerd veld voor $R_1=2\unit{mm}$, $R_2=3\unit{mm}$ en $d=4\unit{mm}$. We zien dat de velden zeer goed overeenkomen.}
+    \caption{Vergelijking tussen analytische uitdrukking en numeriek gesimuleerd veld voor $R_1=2\mathrm{mm}$, $R_2=3\mathrm{mm}$ en $d=4\mathrm{mm}$. We zien dat de velden zeer goed overeenkomen.}
     \label{fig:B_field_SIMION}
 \end{figure}
 
 \section{Magnetische reluctantie van het circuit}
-Nu we een benaderende analytische uitdrukking hebben gevonden voor het magnetisch veld voor ons lensontwerp, moeten we nadenken over welke waarde we moeten gebruiken voor de oppervlaktepoolladingsdichtheden $\sigma_M$. We moeten hiervoor met twee effecten rekening houden: de magnetische reluctantie $\mathcal{R}$ van het circuit in de lens en de verhouding $\frac{A_{magneet}}{A_{polepiece}}$.\\
+Nu we een benaderende analytische uitdrukking hebben gevonden voor het magnetisch veld voor ons lensontwerp, moeten we nadenken over welke waarde we moeten gebruiken voor de oppervlaktepoolladingsdichtheden $\sigma_M$. \\
 
-De eerste factor is de reluctantie van het circuit. De Nd-magneet heeft een remanent magneetveld $B_r$, dit is het magnetisch veld dat in de magneet overblijft wanneer we geen uitwendige magnetische velden aanleggen.
+De eerste factor waar we rekening mee moeten houden is de reluctantie van het circuit. De Nd-magneet heeft een remanent magneetveld $B_r$, dit is het magnetisch veld dat in de magneet overblijft wanneer we geen uitwendige magnetische velden aanleggen. Wanneer we de magneet in een magnetisch circuit met een gap gebruiken, zorgen de oppervlakteladingen aan de gap voor een demagnetiserend veld in de polepieces en de magneet dat het remanent veld tegenwerkt. Hierdoor is het werkelijke veld in de magneet $B_m$ kleiner dan het remanent veld $B_r$.\\
+
+Een elegante manier om dit effect wiskundig te berschrijven, is om de analogie te maken met elektrische weerstand en een magnetisch circuit te tekenen dat equivalent is met de geometrie van de lens. We maken eerst een magnetisch circuit equivalent\footnote{De figuur toont dus geen doorsnede van de lens, maar een ringvormig circuit.} aan de cilindrisch symmetrische lens, zoals wordt getoond op Figuur \ref{fig:magnetic_circuit_a}. Vervolgens tekenen we een symbolisch schema van dit circuit, getoond op Figuur \ref{fig:magnetic_circuit_b}. De magneet is dan een bron van magnetomotorische kracht $\mathcal{F}$. Zowel de magneet, de twee polepieces als de gap zorgen voor een reluctantie $\mathcal{R}$ in het circuit. De magnetische flux doorheen het circuit wordt dan gegeven door:
+\begin{equation}\label{eq:flux_mmf_reluctance}
+    \Phi = \frac{\mathcal{F}}{\mathcal{R}_{tot}}
+\end{equation}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{Images/magnetic_circuit.png}
-    \caption{Illustratie van het magnetisch citcuit equivalent aan dat van de lens. De gap veroorzaakt  een reluctantie die ervoor zorgt dat het oppervlakteveld $B_m$ van de magneet kleiner wordt dan haar remanent veld $B_r$.}
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/magnetic_circuit.png}
+        \caption{}
+        \label{fig:magnetic_circuit_a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.42\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/magnetic_circuit_symbolic.png}
+        \caption{}
+        \label{fig:magnetic_circuit_b}
+    \end{subfigure}
+    \caption{Illustratie van het magnetisch circuit equivalent aan dat van de lens. De gap veroorzaakt een reluctantie die ervoor zorgt dat het oppervlakteveld $B_m$ van de magneet kleiner wordt dan haar remanent veld $B_r$. Dit kunnen we wiskundig beschrijven door de analogie te maken met elektrische circuits, waarbij de magneet een bron van magnetomotorische kracht, en de gap een reluctantie voorstellen.}
     \label{fig:magnetic_circuit}
 \end{figure}
+
+De totale reluctantie van het circuit kan berekend worden uit\footnote{Hierbij benaderen we de permeabiliteit van lucht $\mu_{lucht}\approx\mu_0$.}:
+\begin{align}
+    & \mathcal{R}_{tot}= \int_\Gamma \frac{dl}{\mu(l)A(l)} = \mathcal{R}_{m} + 2\mathcal{R}_{p} + \mathcal{R}_{g}\\
+    &= \int_{magneet}\frac{dl}{\mu_{m}A(l)} + 2\int_{polepiece}\frac{dl}{\mu_{p}A(l)} + \int_{gap}\frac{dl}{\mu_{0}A(l)}
+\end{align}
+De permeabiliteit van de polepieces $\mu_p$ is heel groot, dus is $\mathcal{R}_{p}\approx 0$ en verwaarloosbaar. We kunnen de reluctantie van de magneet en de gap nu expliciet uitschrijven in functie van de lensparameters, met $A_m = \pi\left((R_{2, m}^2-R_{1, m}^2\right)$ de oppervlakte van de ringmagneet en $A_g = \pi\left((R_{2}^2-R_{1}^2\right)$ de oppervlakte van de polepieces aan de gap. Hierbij verwaarlozen we het naar buiten buigen van de veldlijnen, wat $A_g$ iets groter zou maken. Dit effect is echter klein in verhouding met de oppervlakte van de polepieces. De totale reluctantie wordt dan:
+\begin{equation}
+    \mathcal{R}_{tot}=\frac{d_m}{\mu_m A_m}+\frac{d_g}{\mu_0 A_g}
+\end{equation}
+Waarbij $d_m$ en $d_g$ respecievelijk de dikte van de magneet en van de gap voorstellen. De magnetomotorische kracht van de magneet wordt gegeven door\color{red} REFERENTIES? \color{black}:
+\begin{equation}
+    \mathcal{F}_m = H_c d_m = \frac{B_r d_m}{\mu_m }
+\end{equation}
+Hierbij geldt er dat $B_r = \mu_m H_c$ zolang de polepieces niet gesatureerd raken en de $B-H$ curve lineair blijft. Nu kunnen we de totale flux doorheen het circuit berekenen:
+\begin{equation}
+    \Phi = B_r\frac{d_m}{\mu_m  \left(\frac{d_m}{\mu_m A_m}+\frac{d_g}{\mu_0 A_g}\right)}=B_r\frac{A_m}{\left(1+\frac{\mu_m d_g A_m}{\mu_0 d_m A_g}\right)}
+\end{equation}
+Het magnetisch veld aan het oppervlak grenzend aan de gap kunnen we dan berekenen door rekening te houden met de oppervlaktes van de polepieces $A_g$:
+\begin{equation}
+    B_g = \frac{\Phi}{A_g} = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}
+\end{equation}
+Dit kunnen we nu gebruiken om de juiste waarde voor $\sigma_M$ te vinden. Voor een oneindige holomeen geladen vlakke plaat zou er gelden dat $H = \sigma_m$ en dus dat $B = \mu_0 \sigma_M$. In ons geval geldt er dus dat:
+
+\begin{equation}\label{eq:charge_density}
+    \sigma_M = \frac{B_g}{\mu_0} = \frac{B_r}{\left(\mu_0\frac{A_g}{A_m}+\frac{\mu_m d_g}{d_m}\right)}
+\end{equation}
+
+De volledige analytische uitdrukking van het magnetisch veld op de optische as van de lens verkrijgen we door de ladingsdichtheid in te vullen in vergelijking \ref{eq:2_annula} en wordt dus gegeven door de volgende vergelijking:\small
+\begin{align}\label{eq:analytical_B_field_final}
+    B(z) = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}\left[\frac{z+\frac{d_g}{2}}{2}\left(\frac{1}{\sqrt{\left(z+\frac{d_g}{2}\right)^2+R_1^2}}-\frac{1}{\sqrt{\left(z+\frac{d_g}{2}\right)^2+R_2^2}}\right)-\frac{z-\frac{d_g}{2}}{2}\left(\frac{1}{\sqrt{\left(z-\frac{d_g}{2}\right)^2+R_1^2}}-\frac{1}{\sqrt{\left(z-\frac{d_g}{2}\right)^2+R_2^2}}\right)\right]
+\end{align}
+
+\begin{align}\label{eq:analytical_B_field_final_alternative}
+    B(z) & = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}\sum_{\pm}\pm\frac{\zeta_{\pm}}{2}\left(\frac{1}{\sqrt{\zeta_{\pm}^2+R_1^2}}-\frac{1}{\sqrt{\zeta_{\pm}^2+R_2^2}}\right)\\
+    \zeta_{\pm} & = z \pm \frac{d_g}{2}
+\end{align}
+
 \section{Implementatie van paraxiale vergelijkingen in Python}
 
 \section{Lensontwerp}
