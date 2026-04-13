@@ -351,7 +351,7 @@ De totale reluctantie van het circuit kan berekend worden uit\footnote{Hierbij b
     & \mathcal{R}_{tot}= \int_\Gamma \frac{dl}{\mu(l)A(l)} = \mathcal{R}_{m} + 2\mathcal{R}_{p} + \mathcal{R}_{g}\\
     &= \int_{magneet}\frac{dl}{\mu_{m}A(l)} + 2\int_{polepiece}\frac{dl}{\mu_{p}A(l)} + \int_{gap}\frac{dl}{\mu_{0}A(l)}
 \end{align}
-De permeabiliteit van de polepieces $\mu_p$ is heel groot, dus is $\mathcal{R}_{p}\approx 0$ en verwaarloosbaar. We kunnen de reluctantie van de magneet en de gap nu expliciet uitschrijven in functie van de lensparameters, met $A_m = \pi\left((R_{2, m}^2-R_{1, m}^2\right)$ de oppervlakte van de ringmagneet en $A_g = \pi\left((R_{2}^2-R_{1}^2\right)$ de oppervlakte van de polepieces aan de gap. Hierbij verwaarlozen we het naar buiten buigen van de veldlijnen, wat $A_g$ iets groter zou maken. Dit effect is echter klein in verhouding met de oppervlakte van de polepieces. De totale reluctantie wordt dan:
+De permeabiliteit van de polepieces $\mu_p$ is heel groot, dus is $\mathcal{R}_{p}\approx 0$ en verwaarloosbaar. We kunnen de reluctantie van de magneet en de gap nu expliciet uitschrijven in functie van de lensparameters, met $A_m = \pi\left(R_{2, m}^2-R_{1, m}^2\right)$ de oppervlakte van de ringmagneet en $A_g = \pi\left(R_{2}^2-R_{1}^2\right)$ de oppervlakte van de polepieces aan de gap. Hierbij verwaarlozen we het naar buiten buigen van de veldlijnen, wat $A_g$ iets groter zou maken. Dit effect is echter klein in verhouding met de oppervlakte van de polepieces. De totale reluctantie wordt dan:
 \begin{equation}
     \mathcal{R}_{tot}=\frac{d_m}{\mu_m A_m}+\frac{d_g}{\mu_0 A_g}
 \end{equation}
@@ -374,18 +374,136 @@ Dit kunnen we nu gebruiken om de juiste waarde voor $\sigma_M$ te vinden. Voor e
 \end{equation}
 
 De volledige analytische uitdrukking van het magnetisch veld op de optische as van de lens verkrijgen we door de ladingsdichtheid in te vullen in vergelijking \ref{eq:2_annula} en wordt dus gegeven door de volgende vergelijking:\small
-\begin{align}\label{eq:analytical_B_field_final}
-    B(z) = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}\left[\frac{z+\frac{d_g}{2}}{2}\left(\frac{1}{\sqrt{\left(z+\frac{d_g}{2}\right)^2+R_1^2}}-\frac{1}{\sqrt{\left(z+\frac{d_g}{2}\right)^2+R_2^2}}\right)-\frac{z-\frac{d_g}{2}}{2}\left(\frac{1}{\sqrt{\left(z-\frac{d_g}{2}\right)^2+R_1^2}}-\frac{1}{\sqrt{\left(z-\frac{d_g}{2}\right)^2+R_2^2}}\right)\right]
-\end{align}
+\begin{equation}\label{eq:analytical_B_field_final}
+    B(z) = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}
+    \begin{aligned}[t]
+        &\left[ \frac{z+\frac{d_g}{2}}{2}\left(\frac{1}{\sqrt{\left(z+\frac{d_g}{2}\right)^2+R_1^2}}-\frac{1}{\sqrt{\left(z+\frac{d_g}{2}\right)^2+R_2^2}}\right)\right.\\
+        &\left.- \frac{z-\frac{d_g}{2}}{2}\left(\frac{1}{\sqrt{\left(z-\frac{d_g}{2}\right)^2+R_1^2}}-\frac{1}{\sqrt{\left(z-\frac{d_g}{2}\right)^2+R_2^2}}\right)\right]
+    \end{aligned}
+\end{equation}
 
-\begin{align}\label{eq:analytical_B_field_final_alternative}
-    B(z) & = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}\sum_{\pm}\pm\frac{\zeta_{\pm}}{2}\left(\frac{1}{\sqrt{\zeta_{\pm}^2+R_1^2}}-\frac{1}{\sqrt{\zeta_{\pm}^2+R_2^2}}\right)\\
-    \zeta_{\pm} & = z \pm \frac{d_g}{2}
-\end{align}
+% \begin{align}\label{eq:analytical_B_field_final_alternative}
+%     B(z) & = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}\sum_{\pm}\pm\frac{\zeta_{\pm}}{2}\left(\frac{1}{\sqrt{\zeta_{\pm}^2+R_1^2}}-\frac{1}{\sqrt{\zeta_{\pm}^2+R_2^2}}\right)\\
+%     \zeta_{\pm} & = z \pm \frac{d_g}{2}
+% \end{align}
 
-\section{Implementatie van paraxiale vergelijkingen in Python}
+\section{Implementatie van paraxiale bewegingsvergelijking in Python}
+Met de analytische uitdrukking voor het magnetisch veld kunnen we de paraxiale bewegingsvergelijking oplossen om uiteindelijk de lenseigenschappen van de lens te gaan voorspellen. Ter herinnering, de paraxiale bewegingsvergelijking wordt gegeven door:
+\begin{equation}\label{eq:paraxialevgl_rel_H54}
+    \frac{d^2r}{dz^2}+\frac{\eta^2B(z)^2}{4V}r=0
+\end{equation}
+Hoewel de vergelijking er niet al te complex uit ziet, is het helemaal niet triviaal om ze voor eender welk magnetisch veld exact op te lossen. Slechts in enkele gevallen is er een analytische oplossing in gesloten vorm gekend. Een voorbeeld hiervan is \textit{Glaser's bell-shaped field}:
+\begin{equation}\label{eq:Glasers_field}
+    B(z) = \frac{B_0}{1+\frac{z^2}{a^2}}
+\end{equation}
+De oplossing van vergelijking \ref{eq:paraxialevgl_rel_H54} kan voor dit veld worden uitgedrukt met goniometrische functies \cite{PWHawkes}. Het magnetisch veld kan ook benaderd worden door een constant veld:
+\begin{equation}\label{eq:constant_field}
+    B(z) = 
+    \begin{cases}
+        B_0 & z<\left|\frac{d}{2}\right|\\
+        0 & z>\left|\frac{d}{2}\right|\\
+    \end{cases}
+\end{equation}
+In dat geval heleidt vergelijking \ref{eq:paraxialevgl_rel_H54} zich tot een harmonische oscillator in de lens. Echter, beide velden zijn niet fysisch, en slechts benaderingen van werkelijke magnetische velden. Figuur \ref{fig:fields_comparison} geeft een vergelijking tussen deze twee velden en ons afgeschatte veld.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/Glasers_B_field.png}
+        \caption{}
+        \label{fig:fields_comparison_a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/Constant_B_field.png}
+        \caption{}
+        \label{fig:fields_comparison_b}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/Actual_B_field.png}
+        \caption{}
+        \label{fig:fields_comparison_c}
+    \end{subfigure}
+    \caption{Vergelijking tussen twee velden (Glaser's field en constant veld) waarvoor de paraxiale bewegingsvergelijking analytisch oplosbaar is en ons analytisch afgeschat veld. Het Glaser's field is gelijkaardig, maar heeft een bredere piek en valt trager af dan ons afgeschatte veld. Dit geeft een dikkere lens, wat ongewenst is.}
+    \label{fig:fields_comparison}
+\end{figure}
+We zien dat het Glaser's field een goede benadering zou geven, maar de piek in het magnetisch veld is breder het veld vlakt trager af dan het veld van onze lens. Om accurate voorspellingen van onze lens te kunnen maken, kiezen we er daarom voor om de paraxiale beweginsvergelijking numeriek op te lossen en hieruit de lenseigenschappen te bepalen. Dit laat ons ook toe om later Monte Carlo simulaties van experimentele opstellingen uit te voeren, zodat we kunnen inschatten welke opstellingen ons bruikbare resultaten kunnen geven.\\
+
+We maken hiervoor gebruik van Python. We schreven een klasse waarin we de parameters van de lens (binnen- en buitenstralen, diktes van de gap en magneet, sterkte van de magneet etc.) en de opstelling in de microscoop (afstanden tussen voorwerp en lens, versnelspanning etc.) kunnen instellen. Met deze parameters kunnen we dan het analytische veld berekenen en plotten. Dit laat ons toe om snel en efficient te bepalen hoe het magnetisch verandert in functie van de parameters. Dit zal in meer detal worden besproken in het volgende hoofdstuk.\\
+
+Om de paraxiale bewegingsvergelijking op te lossen, gebruiken we de solve\_ivp functie van de scipy.integrate bibliotheek. Het objectvlak $z_0$ kunnen we naar wens instellen, en we gebruiken een 8ste orde Runge-Kutta methode (DOP853) om de twee lineair onafhankelijke oplossingen $g$ en $h$ te berekenen. De oplossing $g(z)$, waarvoor geldt dat $g(z_0)=1$ en $g'(z_0)=0$, kunnen we dan gebruiken om de lenseigenschappen te berekenen. Ten eerste kijken we in welk vlak de twee asymtoten van $g(z)$, de object en beeld asymtotische bundels, elkaar snijden. Dit vlak is het achterste/beeld hoofdvlak van de lens $z_{Pi}$. Ten tweede kijken we waar de beeld asymtotische bundel de symmetrie-as van de lens snijdt. Alle parallel bewegende elektronen zullen door dit punt passeren, dus dit is het brandpunt in het focusvlak $z_{Fi}$ van de lens. De brandpuntsafstand kunnen we dan berekenen uit $f=z_{Fi}-z_{Pi}$. Door de symmetrie van het magnetisch veld kunnen we het object beeldvlak en het object focusvlak vinden uit $z_{Po}=-z_{Pi}$ en $z_{Fo}=-z_{Fi}$, Figuur \ref{fig:setup_1} toont een voorbeeld van een numerieke oplossing van $g$. In dit geval vinden we een brandpuntsafstand van $f=11.48\mathrm{mm}$ en bevindt het beeld hoofdvlak zich op $z_{Pi}=0.48\mathrm{mm}$ van het midden van de lens.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/setup_1.png}
+    \caption{Plot van numerieke oplossing van de paraxiale bewegingsvergelijking. De object en beeld asymptotische bundels snijden elkaar in het beeld hoofdvlak, en de beeld asymtotische straal snijdt de symmetrie-as in het achterste focaalvlak van de lens. Deze opstelling heeft de volgende parameters: $R_1=1.5\mathrm{mm},R_2=5\mathrm{mm},d=5\mathrm{mm}, B_g=0.447\mathrm{T},\Phi=30\mathrm{KeV}$.}
+    \label{fig:setup_1}
+\end{figure}
+
+Eens we de twee lineair onafhankelijke oplossingen hebben berekend, is het mogelijk om de baan van eender welk elektron af te beelden door een lineaire combinatie van de twee oplossingen te maken. Op deze manier kunnen we stralingsdiagrammen zoals Figuur \ref{fig:setup_2}, waarbij we de lens van de voorgaande figuur hebben gebruikt om een vergroting van $M=5$ te krijgen. We tekenen op de figuur de drie hoofdstralen: de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. Deze drie kruisen elkaar in 1 punt achter de lens, waar het beeld gevormd wordt. Merk ook op dat de straal die door het midden van de lens gaat niet wordt afgebogen, zoals men zou verwachten.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/setup_2.png}
+    \caption{Voorbeeld van beeldvorming met een permanente magneetlens. We beschouwen hier de drie hoofdstralen: de straal die door het achterste brandpunt gaat, de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. In dit geval krijgen we een magnificatie $M=5$.}
+    \label{fig:setup_2}
+\end{figure}
 
 \section{Lensontwerp}
+Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een lens te simuleren, kunnen de parameters van de lens gaan optimaliseren om een geschikte dunne lens te maken. Hierbij moeten we rekening houden met het volgende:
+\begin{enumerate}
+    \item We willen liefst een dunne lens, dus willen we $z_{Pi}\approx0$. Dit betekent dat dat $B(z)$ een smalle piek moet vertonen.
+    \item We willen een lens die we in de MIRA microscoop kunnen gebruiken. Concreet betekent dit dat we een focale lengte willen die rond de $5-10\mathrm{mm}$ ligt. Hiervoor moet $\sigma_M$ voldoende groot zijn, en moet $R_1$ voldoende klein zijn zodat de ladingen zich niet te ver van de opticshe as bevinden.
+    \item De verhouding tussen het remanent veld van de magneet en het werkelijke veld in de magneet wordt gegeven door:
+    \begin{equation}
+        \frac{B_m}{B_r} = \frac{1}{1+\frac{\mu_m A_m d_g}{\mu_0 A_g d_m}}
+    \end{equation}
+    Hoe groter het demagnetiserend veld dat het remanent veld tegenwerkt, hoe kleiner deze verhouding. Echter, bij een bepaald kritiek veld passeren we de "elleboog" van de hysteresiscurve van het materiaal waardoor de permanente magneet zal beginnen demagnetiseren. Dit effect willen we vermijden om te voorkomen dat de sterkte van de magneet, en dus ook de lens doorheen de tijd zal afnemen.
+
+\end{enumerate}
+
+
+\begin{figure}[H]
+    \centering
+    % --- First Row ---
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/variable_R_1.png}
+        \caption{}
+        \label{fig:variable_R_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/variable_R_2.png}
+        \caption{}
+        \label{fig:variable_R_2}
+    \end{subfigure}
+
+    \vspace{0.5cm} % Adds vertical spacing between rows
+
+    % --- Second Row ---
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/variable_d.png}
+        \caption{}
+        \label{fig:variable_d}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/variable_B_r.png}
+        \caption{}
+        \label{fig:variable_B_r}
+    \end{subfigure}
+
+    \caption{Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een geod beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen naar wens te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de polepieces, welke niet te hoog mag zijn om saturatie-effecten te voorkomen.}
+    \label{fig:grid_2x2}
+\end{figure}
+
 
 \section{Monte Carlo simulatie van experiment}
 

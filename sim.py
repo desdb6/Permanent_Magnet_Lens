@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 from matplotlib.widgets import Slider
 from scipy.interpolate import CubicSpline
-from tqdm import tqdm
 
 MU_R=1.05
 ETA=296548.4789
@@ -267,6 +266,12 @@ class Lens:
 
         self.mesh_list=[]
 
+    def update_B_r_yoke(self):
+        self.A_magnet=(self.R_2_magnet**2-self.R_1_magnet**2)
+        self.A_gap=(self.R_2**2-self.R_1**2)
+        self.reluctance_correction=(1+MU_R*(self.A_magnet*self.d)/(self.A_gap*self.d_magnet))**-1
+        self.B_r_yoke=self.A_magnet/self.A_gap*self.reluctance_correction*self.B_r_magnet
+
     @staticmethod
     def angle_to_slope(angle):
         return np.tan(angle)
@@ -339,7 +344,7 @@ class Lens:
             self.M = -(self.image_plane_rel - self.Z_Pi) / (self.object_plane_rel - self.Z_Po)
             print(f"Object plane: {self.object_plane_rel} mm, Image plane: {self.image_plane_rel} mm, Magnification: {self.M}")
 
-    def display_properties(self, limits = None):
+    def display_properties(self, limits = None, output_path=None, dpi=100):
         print(f"Maximum flux density = {self.B_r_yoke:.6f} T")
         print(f"Reluctance correction = {self.reluctance_correction:.6f}")
         print(f"Z_Fi = {self.Z_Fi:.6f} mm")
@@ -348,24 +353,28 @@ class Lens:
 
         fig, ax=plt.subplots()
 
-        ax.plot(self.z_eval_full, self.G, color='black', linewidth=2, label='Electron path')
-        ax.plot(self.z_eval_full, self.asymptotic_image_ray, color='red', linewidth=1, label='Asymtotic image ray')
-        ax.plot(self.z_eval_full, np.ones(self.n), color='blue', linewidth=1, label='Asymtotic object ray')
-        ax.plot((self.lens_position + self.Z_Fi)*np.ones(2), [-5, 5], linestyle='--', label='Backfocal plane')
-        ax.plot((self.lens_position + self.Z_Pi)*np.ones(2), [-5, 5], linestyle='--', label='Image principal plane')
+        ax.plot(self.z_eval_full, self.G, color='black', linewidth=2, label='Baan elektron')
+        ax.plot(self.z_eval_full, self.asymptotic_image_ray, color='red', linewidth=1, label='Beeld asymtotische bundel')
+        ax.plot(self.z_eval_full, np.ones(self.n), color='blue', linewidth=1, label='Object asymtotische bundel')
+        ax.plot((self.lens_position + self.Z_Fi)*np.ones(2), [-5, 5], linestyle='--', label='Achterste focaalvlak')
+        ax.plot((self.lens_position + self.Z_Pi)*np.ones(2), [-5, 5], linestyle='--', label='Beeld hoofdvlak')
 
-        ax.plot(self.z_eval_full, self.B_field/np.max(self.B_field)*3, linewidth=0.5, linestyle='--', color='red', label='B-field')
+        ax.plot(self.z_eval_full, self.B_field/np.max(self.B_field)*3, linewidth=0.5, linestyle='--', color='red', label='$B(z)$')
         ax.set_ylim(-5, 5)
-        ax.set_xlabel("z (mm)")
-        ax.set_ylabel("r (mm)")
-        ax.set_title("Lens properties")
+        ax.set_xlabel("$z$ (mm)", fontsize=14)
+        ax.set_ylabel("$r$ (mm)", fontsize=14)
+        ax.set_title("Lens eigenschappen", fontsize=16)
         ax.grid()
         ax.legend()
+        plt.tight_layout()
 
         if limits:
             ax.set_xlim(limits[0], limits[1])
 
-        plt.show()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
 
     def plot_trajectories(self, initial_values, limits = None):
         fig, ax = plt.subplots()
@@ -379,30 +388,33 @@ class Lens:
             ax.set_xlim(limits[0], limits[1])
         plt.show()
 
-    def plot_setup(self, initial_values=None, limits = None):
+    def plot_setup(self, initial_values=None, limits = None, report=False):
         self.calculate_GH(self.object_plane)
         fig, ax = plt.subplots()
-        ### PLot trajectories ##
         if initial_values is not None:
             for i in range(0,np.shape(initial_values)[0]):
                 traj=initial_values[i, 0]*self.G+self.angle_to_slope(initial_values[i, 1])*self.H
                 ax.plot(self.z_eval, traj, color='blue', linewidth=1)
-        ax.plot(self.z_eval_full, self.B_field/np.max(self.B_field)*3, color='red')
+        ax.plot(self.z_eval_full, self.B_field/np.max(self.B_field)*3, color='red', label='$B(z)$')
 
-        ax.plot((self.Z_Po+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Object principal plane')
-        ax.plot((self.Z_Fi+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Backfocal plane')
-        ax.plot((-self.Z_Fi+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Frontfocal plane')
-        ax.plot((self.object_plane)*np.ones(2), [-5, 5], linestyle='--', label='Object plane')
-        ax.plot((self.image_plane)*np.ones(2), [-5, 5], linestyle='--', label='Image plane')
+        ax.plot((self.Z_Po+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Object hoofdvlak')
+        ax.plot((self.Z_Fi+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Achterste focaalvlak')
+        ax.plot((-self.Z_Fi+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Voorste focaalvlak')
+        ax.plot((self.object_plane)*np.ones(2), [-5, 5], linestyle='--', label='Objectvlak')
+        ax.plot((self.image_plane)*np.ones(2), [-5, 5], linestyle='--', label='Beeldvlak')
         if limits:
             ax.set_xlim(limits[0], limits[1])
         ax.set_ylim(auto=True)
-        ax.set_xlabel("z (mm)")
-        ax.set_ylabel("r (mm)")
-        ax.set_title("Lens setup")
+        ax.set_xlabel("z (mm)", fontsize=14)
+        ax.set_ylabel("r (mm)", fontsize=14)
+        ax.set_title("Stralendiagram", fontsize=16)
         ax.grid()
         ax.legend()
-        plt.show()
+        plt.tight_layout()
+        if report==True:
+            return ax
+        else: 
+            plt.show()
 
     def discretize_ray(self, ray, z_eval, bins, range_x, range_y):
         hist, _, _ =np.histogram2d(ray, z_eval, bins, [range_x, range_y])
@@ -511,6 +523,162 @@ class Lens:
                     for key, value in settings.items():
                         f.write(f"{key}: {value}\n")
 
+    def variable_R_1(self, R_1_min, R_1_max, R_1_n, output_path=None, dpi=100):
+        original_R_1 = self.R_1
+        def return_properties(R_1):
+            self.R_1 = R_1
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            return self.Z_Fi, self.Z_Pi, self.f, self.reluctance_correction
+
+        R_1_eval=np.linspace(R_1_min, R_1_max, R_1_n)
+        results = np.array([return_properties(R_1) for R_1 in R_1_eval])
+        Z_Fi_values, Z_Pi_values, f_values, reluctance_correction_values = results.T
+        _, ax=plt.subplots()
+
+        _, ax1 = plt.subplots()
+
+        ax1.plot(R_1_eval, f_values, color='red', label='$f$')
+        ax1.plot(R_1_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
+        ax1.plot(R_1_eval, Z_Fi_values, color='green', label='$z_{Fi}$')
+        ax1.set_xlabel("$R_1$ (mm)", fontsize=14)
+        ax1.set_ylabel("Lenseigenschap (mm)", fontsize=14)
+        ax1.grid()
+
+        ax2 = ax1.twinx()
+        ax2.plot(R_1_eval, reluctance_correction_values, color='orange', linestyle='--', label='Reluctantieterm')
+        ax2.set_ylim(0, 1)
+        ax2.set_ylabel('Reluctantieterm', fontsize=14)
+
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2)
+
+        ax1.set_title(f"Lenseigenschappen voor variable $R_1$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_R_1)
+
+    def variable_R_2(self, R_2_min, R_2_max, R_2_n, output_path=None, dpi=100):
+        original_R_2 = self.R_2
+        def return_properties(R_2):
+            self.R_2 = R_2
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            return self.Z_Fi, self.Z_Pi, self.f, self.reluctance_correction
+
+        R_2_eval=np.linspace(R_2_min, R_2_max, R_2_n)
+        results = np.array([return_properties(R_2) for R_2 in R_2_eval])
+        Z_Fi_values, Z_Pi_values, f_values, reluctance_correction_values = results.T
+        _, ax=plt.subplots()
+
+        _, ax1 = plt.subplots()
+
+        ax1.plot(R_2_eval, f_values, color='red', label='$f$')
+        ax1.plot(R_2_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
+        ax1.plot(R_2_eval, Z_Fi_values, color='green', label='$z_{Fi}$')
+        ax1.set_xlabel("$R_2$ (mm)", fontsize=14)
+        ax1.set_ylabel("Lenseigenschap (mm)", fontsize=14)
+        ax1.grid()
+
+        ax2 = ax1.twinx()
+        ax2.plot(R_2_eval, reluctance_correction_values, color='orange', linestyle='--', label='Reluctantieterm')
+        ax2.set_ylim(0, 1)
+        ax2.set_ylabel('Reluctantieterm', fontsize=14)
+
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2)
+
+        ax1.set_title(f"Lenseigenschappen voor variable $R_2$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_R_2)
+    
+    def variable_d(self, d_min, d_max, d_n, output_path=None, dpi=100):
+        original_d = self.d
+        def return_properties(d):
+            self.d = d
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            return self.Z_Fi, self.Z_Pi, self.f, self.reluctance_correction
+        
+        d_eval = np.linspace(d_min, d_max, d_n)
+        results = np.array([return_properties(d) for d in d_eval])
+        Z_Fi_values, Z_Pi_values, f_values, reluctance_correction_values = results.T
+
+        _, ax1 = plt.subplots()
+
+        ax1.plot(d_eval, f_values, color='red', label='$f$')
+        ax1.plot(d_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
+        ax1.plot(d_eval, Z_Fi_values, color='green', label='$z_{Fi}$')
+        ax1.set_xlabel("$d$ (mm)", fontsize=14)
+        ax1.set_ylabel("Lenseigenschap (mm)", fontsize=14)
+        ax1.grid()
+
+        ax2 = ax1.twinx()
+        ax2.plot(d_eval, reluctance_correction_values, color='orange', linestyle='--', label='Reluctantieterm')
+        ax2.set_ylim(0, 1)
+        ax2.set_ylabel('Reluctantieterm', fontsize=14)
+
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2)
+
+        ax1.set_title(f"Lenseigenschappen voor variable $d$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_d)
+    
+    def variable_B_r(self, B_r_min, B_r_max, B_r_n, output_path=None, dpi=100):
+        original_B_r = self.B_r_magnet
+        def return_properties(B_r):
+            self.B_r_magnet = B_r
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            return self.Z_Fi, self.Z_Pi, self.f, self.reluctance_correction
+
+        B_r_eval=np.linspace(B_r_min, B_r_max, B_r_n)
+        results = np.array([return_properties(B_r) for B_r in B_r_eval])
+        Z_Fi_values, Z_Pi_values, f_values, reluctance_correction_values = results.T
+        _, ax=plt.subplots()
+
+        _, ax1 = plt.subplots()
+
+        ax1.plot(B_r_eval, f_values, color='red', label='$f$')
+        ax1.plot(B_r_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
+        ax1.plot(B_r_eval, Z_Fi_values, color='green', label='$z_{Fi}$')
+        ax1.set_xlabel("$B_r$ (mm)", fontsize=14)
+        ax1.set_ylabel("Lenseigenschap (mm)", fontsize=14)
+        ax1.grid()
+
+        ax1.legend()
+
+        ax1.set_title(f"Lenseigenschappen voor variable $B_r$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_B_r)
+
     def add_mesh(self, mesh):
         self.mesh_list.append(mesh)
 
@@ -555,7 +723,7 @@ if __name__ == "__main__":
     d = 0.8
     d_magnet=2
     B_r_magnet_theoretical=1.37
-    leak_factor=0.69
+    leak_factor=1
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
@@ -563,12 +731,14 @@ if __name__ == "__main__":
 
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
     permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
-    mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
-    permanent_magnet_lens.add_mesh(mesh1)
-    permanent_magnet_lens.display_properties()
+    # mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
+    # permanent_magnet_lens.add_mesh(mesh1)
+    # permanent_magnet_lens.display_properties()
 
-    opening_angle=100e-3
-    initial_values = np.linspace(-1, 1, 3)
-    initial_angles = np.linspace(-opening_angle, opening_angle, 5)
-    combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
-    permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=132.42, pixel_count=256, voxel_length=0.05)
+    # opening_angle=100e-3
+    # initial_values = np.linspace(-1, 1, 3)
+    # initial_angles = np.linspace(-opening_angle, opening_angle, 5)
+    # combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
+    # permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=132.42, pixel_count=256, voxel_length=0.05)
+
+    # permanent_magnet_lens.variable_B_r(0.7, 1.4, 100)
