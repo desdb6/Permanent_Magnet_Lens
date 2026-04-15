@@ -191,16 +191,16 @@ def plot_setup_2_report():
     lens.calculate_lens_properties()
     lens_position=25
     si = 6*lens.f+lens.Z_Pi+lens_position
-    s0 = -6/5*lens.f+lens.Z_Po+lens_position
-    lens.setup_parameters(s0, 1, lens_position)
+    so = -6/5*lens.f+lens.Z_Po+lens_position
+    lens.setup_parameters(so, 1, lens_position)
     initial_values = np.array([[1, 0],
-                      [1, -1/(lens_position-s0)],
-                      [1, -1/(lens_position-s0-lens.f+lens.Z_Po+0.1)]])
+                      [1, -1/(lens_position-so)],
+                      [1, -1/(lens_position-so-lens.f+lens.Z_Po+0.1)]])
     ax = lens.plot_setup(initial_values, report=True)
     ax.set_xlabel("$z$ (mm)", fontsize=14)
     ax.set_ylabel("$r$ (mm)", fontsize=14)
     ax.set_title("Stralendiagram", fontsize=16)
-    ax.annotate('', xy=(10, 1), xytext=(10, 0),
+    ax.annotate('', xy=(so, 1), xytext=(so, 0),
             arrowprops=dict(arrowstyle='->', color='black', lw=3.5))
     ax.text(8, 0.5, 'Object', ha='right', va='center', fontsize=12)
     ax.annotate('', xy=(si, -5), xytext=(si, 0),
