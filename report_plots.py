@@ -94,7 +94,7 @@ def variable_plots():
     R_2_magnet=6
     d = 0.8
     d_magnet=2
-    B_r_magnet_theoretical=1.37
+    B_r_magnet_theoretical=1.17
     leak_factor=1
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
@@ -108,7 +108,7 @@ def variable_plots():
     print("Saved variable R2 plot")
     permanent_magnet_lens.variable_d(0.6, 4, 50, 'report/Images/variable_d.png', dpi=DPI)
     print("Saved variable d plot")
-    permanent_magnet_lens.variable_B_r(0.7, 1.42, 50, 'report/Images/variable_B_r.png', dpi=DPI)
+    permanent_magnet_lens.variable_B_r(0.7, 1.3, 50, 'report/Images/variable_B_r.png', dpi=DPI)
     print("Saved variable Br plot")
 
 def plot_glasers_field():
@@ -164,7 +164,7 @@ def plot_setup_1_report():
     R_2_magnet=7
     d = 5
     d_magnet=4
-    B_r_magnet_theoretical=1.37
+    B_r_magnet_theoretical=1.17
     leak_factor=1
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
@@ -214,7 +214,7 @@ def main():
     plot_actual_field()
     plot_setup_1_report()
     plot_setup_2_report()
-    # variable_plots()
+    variable_plots()
 
 
 if __name__ == "__main__":

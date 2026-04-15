@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 from matplotlib.widgets import Slider
 from scipy.interpolate import CubicSpline
+from scipy.optimize import fsolve
 
 MU_R=1.05
 ETA=296548.4789
@@ -98,141 +99,41 @@ def plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_
 
     plt.show()
 
-def variable_R_1(R_1_min, R_1_max, R_1_n, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds=30, n=100000):
-    def return_properties(R_1):
-        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n)
-        return Z_Fi, Z_Pi, f
+def BH_curve_magnet(B_max=None):
+    comma_to_float = lambda s: float(s.replace(',', '.'))
 
-    R_1_eval=np.linspace(R_1_min, R_1_max, R_1_n)
-    results = np.array([return_properties(R_1) for R_1 in R_1_eval])
-    Z_Fi_values, Z_Pi_values, f_values = results.T
+    data = np.genfromtxt('NdFeB_BH_curve.csv', 
+                        delimiter=';', 
+                        converters={0: comma_to_float, 1: comma_to_float})
+    H = data[:, 0]/10 # Tesla
+    B = data[:, 1]/10 # Tesla
 
-    A_magnet=(R_2_magnet**2-R_1_magnet**2)
-    A_gap=(R_2**2-R_1_eval**2)
-    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
-    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
-
-    fig, ax=plt.subplots(1, 3)
-
-    ax[0].plot(R_1_eval, f_values, color='red', label='Focal length')
-    ax[0].plot(R_1_eval, Z_Pi_values, color='blue', label='Principal plane')
-    ax[0].plot(R_1_eval, Z_Fi_values, color='green', label='Backfocal plane')
-    ax[0].legend()
-    ax[0].grid()
-    ax[0].set_xlabel("R_1 (mm)")
-    ax[0].set_ylabel("(mm)")
-
-    ax[1].plot(R_1_eval, reluctance_correction, color='purple', label='Reluctance correction')
-    ax[1].legend()
-    ax[1].grid()
-    ax[1].set_ylim(0, 1)
-
-    ax[2].plot(R_1_eval, B_r_yoke, color='purple', label='Max flux density in polepiece')
-    ax[2].legend()
-    ax[2].grid()
-    plt.show()
-
-def variable_R_2(R_2_min, R_2_max, R_2_n, R_1, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds=30, n=100000):
-    def return_properties(R_2):
-        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n)
-        return Z_Fi, Z_Pi, f
-
-    R_2_eval=np.linspace(R_2_min, R_2_max, R_2_n)
-    results = np.array([return_properties(R_2) for R_2 in R_2_eval])
-    Z_Fi_values, Z_Pi_values, f_values = results.T
-
-    A_magnet=(R_2_magnet**2-R_1_magnet**2)
-    A_gap=(R_2_eval**2-R_1**2)
-    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
-    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
-
-    fig, ax=plt.subplots(1, 3)
-
-    ax[0].plot(R_2_eval, f_values, color='red', label='Focal length')
-    ax[0].plot(R_2_eval, Z_Pi_values, color='blue', label='Principal plane')
-    ax[0].plot(R_2_eval, Z_Fi_values, color='green', label='Backfocal plane')
-    ax[0].legend()
-    ax[0].grid()
-    ax[0].set_xlabel("R_2 (mm)")
-    ax[0].set_ylabel("(mm)")
-
-    ax[1].plot(R_2_eval, reluctance_correction, color='purple', label='Reluctance correction')
-    ax[1].legend()
-    ax[1].grid()
-    ax[1].set_ylim(0, 1)
-
-    ax[2].plot(R_2_eval, B_r_yoke, color='purple', label='Max flux density in polepiece')
-    ax[2].legend()
-    ax[2].grid()
-    plt.show()
-
-def variable_d(d_min, d_max, d_n, R_1, R_2, R_1_magnet, R_2_magnet, d_magnet, B_r_magnet, T, bounds=30, n=100000):
-    def return_properties(d):
-        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, T, bounds, n)
-        return Z_Fi, Z_Pi, f
-
-    d_eval=np.linspace(d_min, d_max, d_n)
-    results = np.array([return_properties(d) for d in d_eval])
-    Z_Fi_values, Z_Pi_values, f_values = results.T
-
-    A_magnet=(R_2_magnet**2-R_1_magnet**2)
-    A_gap=(R_2**2-R_1**2)
-    reluctance_correction=(1+MU_R*(A_magnet*d_eval)/(A_gap*d_magnet))**-1
-    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
-
-    fig, ax=plt.subplots(1, 2)
-
-    ax[0].plot(d_eval, f_values, color='red', label='Focal length')
-    ax[0].plot(d_eval, Z_Pi_values, color='blue', label='Principal plane')
-    ax[0].plot(d_eval, Z_Fi_values, color='green', label='Backfocal plane')
-    ax[0].legend()
-    ax[0].grid()
-    ax[0].set_xlabel("d (mm)")
-    ax[0].set_ylabel("(mm)")
-
-    ax[1].plot(d_eval, reluctance_correction, color='purple', label='Reluctance correction')
-    ax[1].legend()
-    ax[1].grid()
-    ax[1].set_ylim(0, 1)
-    plt.show()
-
-def variable_B_r(B_r_magnet_min, B_r_magnet_max, B_r_magnet_n, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, T, bounds=30, n=100000):
-    def return_properties(B_r):
-        _, _, _, Z_Fi, Z_Pi, f = calculate_properties(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r, T, bounds, n)
-        return Z_Fi, Z_Pi, f
-
-    B_eval=np.linspace(B_r_magnet_min, B_r_magnet_max, B_r_magnet_n)
-    results = np.array([return_properties(B) for B in B_eval])
-    Z_Fi_values, Z_Pi_values, f_values = results.T
-
-    fig, ax=plt.subplots()
-
-    ax.plot(B_eval, f_values, color='red', label='Focal length')
-    ax.plot(B_eval, Z_Pi_values, color='blue', label='Principal plane')
-    ax.plot(B_eval, Z_Fi_values, color='green', label='Backfocal plane')
-
-    ax.legend()
-    ax.grid()
-    ax.set_xlabel("B_r (T)")
-    ax.set_ylabel("(mm)")
-    plt.show()
-
-def plot_HB_Curve():
-    data = np.loadtxt('HBCurve.txt')
-    H = data[:, 0]
-    B = data[:, 1]
-
+    if B_max is not None:
+        B=B*B_max/B[0]
     spline = CubicSpline(H, B)
 
-    H_spline = np.linspace(H.min(), H.max(), 500)
-    B_spline = spline(H_spline)
+    return spline
 
+def calculate_operating_point(spline, reluctance_correction):
+    def func(x):
+        return spline(x)-x/(1-reluctance_correction)
+
+    h_op = float(fsolve(func, 1)[0])
+    b_op = float(spline(h_op))
+    return h_op, b_op
+
+def plot_operating_point(spline, reluctance_correction):
+    h_op, b_op = calculate_operating_point(spline, reluctance_correction)
     fig, ax = plt.subplots()
-    ax.plot(H, B, 'ro', label=None)
-    ax.plot(H_spline, B_spline, color = "b", label='H-B curve')
-
-    ax.set_xlabel("H (A/m)")
-    ax.set_ylabel("B (T)")
+    H_eval = np.linspace(spline.x[0],spline.x[-1], 100)
+    B_eval = spline(H_eval)
+    ax.plot(H_eval, B_eval, color='blue', label="B-H curve")
+    ax.plot(H_eval, H_eval/(1-reluctance_correction), color='red', label="Pci")
+    ax.plot(h_op, b_op, 'o', markersize=6, color='red', label="Operating point")
+    ax.set_xlabel('H (T)', fontsize=14)
+    ax.set_ylabel('B (T)', fontsize=14)
+    ax.set_ylim(0, np.max(B_eval)+0.1)
+    ax.set_title('Operating point', fontsize=16)
     ax.grid()
     ax.legend()
 
@@ -248,7 +149,6 @@ class Lens:
         self.d = d
         self.d_magnet = d_magnet
         self.B_r_magnet = B_r_magnet
-        self.B_r_magnet_theoretical = B_r_magnet_theoretical
         self.T = T
         self.setup_length=setup_length
         self.lens_position=lens_position
@@ -258,7 +158,8 @@ class Lens:
         self.A_magnet=(self.R_2_magnet**2-self.R_1_magnet**2)
         self.A_gap=(self.R_2**2-self.R_1**2)
         self.reluctance_correction=(1+MU_R*(self.A_magnet*d)/(self.A_gap*self.d_magnet))**-1
-        self.B_r_yoke=self.A_magnet/self.A_gap*self.reluctance_correction*self.B_r_magnet
+        self.H_op, self.B_op = calculate_operating_point(BH_curve_magnet(self.B_r_magnet), self.reluctance_correction)
+        self.B_r_yoke=self.A_magnet/self.A_gap*(self.B_op-self.H_op)
 
         self.T_rel = self.T*(1+EPSILON*self.T) # Relativistic
 
@@ -267,10 +168,12 @@ class Lens:
         self.mesh_list=[]
 
     def update_B_r_yoke(self):
+
         self.A_magnet=(self.R_2_magnet**2-self.R_1_magnet**2)
         self.A_gap=(self.R_2**2-self.R_1**2)
         self.reluctance_correction=(1+MU_R*(self.A_magnet*self.d)/(self.A_gap*self.d_magnet))**-1
-        self.B_r_yoke=self.A_magnet/self.A_gap*self.reluctance_correction*self.B_r_magnet
+        self.H_op, self.B_op = calculate_operating_point(BH_curve_magnet(self.B_r_magnet), self.reluctance_correction)
+        self.B_r_yoke=self.A_magnet/self.A_gap*(self.B_op-self.H_op)
 
     @staticmethod
     def angle_to_slope(angle):
@@ -722,18 +625,20 @@ if __name__ == "__main__":
     R_2_magnet=6
     d = 0.8
     d_magnet=2
-    B_r_magnet_theoretical=1.37
+    B_r_magnet_theoretical=1.17
     leak_factor=1
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
-    plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
+    # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
-    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
+    # permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
+    # permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
     # mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
     # permanent_magnet_lens.add_mesh(mesh1)
     # permanent_magnet_lens.display_properties()
+
+    # plot_operating_point(BH_curve_magnet(), 0.4)
 
     # opening_angle=100e-3
     # initial_values = np.linspace(-1, 1, 3)
