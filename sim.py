@@ -115,8 +115,9 @@ def BH_curve_magnet(B_max=None):
     return spline
 
 def calculate_operating_point(spline, reluctance_correction):
+    Pci = 1/(1-reluctance_correction)
     def func(x):
-        return spline(x)-x/(1-reluctance_correction)
+        return spline(x)-x*Pci
 
     h_op = float(fsolve(func, 1)[0])
     b_op = float(spline(h_op))
@@ -154,12 +155,7 @@ class Lens:
         self.lens_position=lens_position
         self.n=n
         self.z_eval_full=np.linspace(0, setup_length, n)
-        
-        self.A_magnet=(self.R_2_magnet**2-self.R_1_magnet**2)
-        self.A_gap=(self.R_2**2-self.R_1**2)
-        self.reluctance_correction=(1+MU_R*(self.A_magnet*d)/(self.A_gap*self.d_magnet))**-1
-        self.H_op, self.B_op = calculate_operating_point(BH_curve_magnet(self.B_r_magnet), self.reluctance_correction)
-        self.B_r_yoke=self.A_magnet/self.A_gap*(self.B_op-self.H_op)
+        self.update_B_r_yoke()
 
         self.T_rel = self.T*(1+EPSILON*self.T) # Relativistic
 
@@ -169,11 +165,15 @@ class Lens:
 
     def update_B_r_yoke(self):
 
+        self.BH_curve = BH_curve_magnet(self.B_r_magnet)
+        
         self.A_magnet=(self.R_2_magnet**2-self.R_1_magnet**2)
         self.A_gap=(self.R_2**2-self.R_1**2)
-        self.reluctance_correction=(1+MU_R*(self.A_magnet*self.d)/(self.A_gap*self.d_magnet))**-1
-        self.H_op, self.B_op = calculate_operating_point(BH_curve_magnet(self.B_r_magnet), self.reluctance_correction)
+        self.reluctance_correction = (1+(self.A_magnet*self.d)/(self.A_gap*self.d_magnet))**-1
+        self.H_op, self.B_op = calculate_operating_point(self.BH_curve, self.reluctance_correction)
         self.B_r_yoke=self.A_magnet/self.A_gap*(self.B_op-self.H_op)
+        self.Pci = 1+(self.A_gap*self.d_magnet)/(self.A_magnet*self.d)
+
 
     @staticmethod
     def angle_to_slope(angle):
@@ -249,7 +249,7 @@ class Lens:
 
     def display_properties(self, limits = None, output_path=None, dpi=100):
         print(f"Maximum flux density = {self.B_r_yoke:.6f} T")
-        print(f"Reluctance correction = {self.reluctance_correction:.6f}")
+        print(f"Pci = {self.Pci:.6f}")
         print(f"Z_Fi = {self.Z_Fi:.6f} mm")
         print(f"Z_Pi = {self.Z_Pi:.6f} mm")
         print(f"f = {self.f:.6f} mm")
@@ -432,11 +432,11 @@ class Lens:
             self.R_1 = R_1
             self.update_B_r_yoke()
             self.calculate_lens_properties()
-            return self.Z_Fi, self.Z_Pi, self.f, self.reluctance_correction
+            return self.Z_Fi, self.Z_Pi, self.f, self.Pci
 
         R_1_eval=np.linspace(R_1_min, R_1_max, R_1_n)
         results = np.array([return_properties(R_1) for R_1 in R_1_eval])
-        Z_Fi_values, Z_Pi_values, f_values, reluctance_correction_values = results.T
+        Z_Fi_values, Z_Pi_values, f_values, Pci_values = results.T
         _, ax=plt.subplots()
 
         _, ax1 = plt.subplots()
@@ -449,9 +449,8 @@ class Lens:
         ax1.grid()
 
         ax2 = ax1.twinx()
-        ax2.plot(R_1_eval, reluctance_correction_values, color='orange', linestyle='--', label='Reluctantieterm')
-        ax2.set_ylim(0, 1)
-        ax2.set_ylabel('Reluctantieterm', fontsize=14)
+        ax2.plot(R_1_eval, Pci_values, color='orange', linestyle='--', label='$P_{ci}$')
+        ax2.set_ylabel('$P_{ci}$', fontsize=14)
 
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
@@ -473,11 +472,11 @@ class Lens:
             self.R_2 = R_2
             self.update_B_r_yoke()
             self.calculate_lens_properties()
-            return self.Z_Fi, self.Z_Pi, self.f, self.reluctance_correction
+            return self.Z_Fi, self.Z_Pi, self.f, self.Pci
 
         R_2_eval=np.linspace(R_2_min, R_2_max, R_2_n)
         results = np.array([return_properties(R_2) for R_2 in R_2_eval])
-        Z_Fi_values, Z_Pi_values, f_values, reluctance_correction_values = results.T
+        Z_Fi_values, Z_Pi_values, f_values, Pci_values = results.T
         _, ax=plt.subplots()
 
         _, ax1 = plt.subplots()
@@ -490,9 +489,8 @@ class Lens:
         ax1.grid()
 
         ax2 = ax1.twinx()
-        ax2.plot(R_2_eval, reluctance_correction_values, color='orange', linestyle='--', label='Reluctantieterm')
-        ax2.set_ylim(0, 1)
-        ax2.set_ylabel('Reluctantieterm', fontsize=14)
+        ax2.plot(R_2_eval, Pci_values, color='orange', linestyle='--', label='$P_{ci}$')
+        ax2.set_ylabel('$P_{ci}$', fontsize=14)
 
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
@@ -514,11 +512,11 @@ class Lens:
             self.d = d
             self.update_B_r_yoke()
             self.calculate_lens_properties()
-            return self.Z_Fi, self.Z_Pi, self.f, self.reluctance_correction
+            return self.Z_Fi, self.Z_Pi, self.f, self.Pci
         
         d_eval = np.linspace(d_min, d_max, d_n)
         results = np.array([return_properties(d) for d in d_eval])
-        Z_Fi_values, Z_Pi_values, f_values, reluctance_correction_values = results.T
+        Z_Fi_values, Z_Pi_values, f_values, Pci_values = results.T
 
         _, ax1 = plt.subplots()
 
@@ -530,9 +528,8 @@ class Lens:
         ax1.grid()
 
         ax2 = ax1.twinx()
-        ax2.plot(d_eval, reluctance_correction_values, color='orange', linestyle='--', label='Reluctantieterm')
-        ax2.set_ylim(0, 1)
-        ax2.set_ylabel('Reluctantieterm', fontsize=14)
+        ax2.plot(d_eval, Pci_values, color='orange', linestyle='--', label='$P_{ci}$')
+        ax2.set_ylabel('$P_{ci}$', fontsize=14)
 
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
@@ -632,11 +629,11 @@ if __name__ == "__main__":
 
     # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
-    # permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    # permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
-    # mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
-    # permanent_magnet_lens.add_mesh(mesh1)
-    # permanent_magnet_lens.display_properties()
+    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
+    permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
+    mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
+    permanent_magnet_lens.add_mesh(mesh1)
+    permanent_magnet_lens.display_properties()
 
     # plot_operating_point(BH_curve_magnet(), 0.4)
 

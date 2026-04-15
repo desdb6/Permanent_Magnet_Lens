@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2026.4.12)  14 APR 2026 18:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2026.4.12)  15 APR 2026 19:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1164,12 +1164,12 @@ File: Images/lens_circuit_diagram.png Graphic file (type png)
 <use Images/lens_circuit_diagram.png>
 Package pdftex.def Info: Images/lens_circuit_diagram.png  used on input line 243.
 (pdftex.def)             Requested size: 271.44194pt x 201.56161pt.
-[15 <./Images/lens_circuit_diagram.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 
  []
 
-
+[15 <./Images/lens_circuit_diagram.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
@@ -1184,162 +1184,201 @@ Underfull \hbox (badness 10000) in paragraph at lines 256--257
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
+
+ []
+
 [16]
 <Images/analytic_expression_1_ring.png, id=213, 428.145pt x 378.651pt>
 File: Images/analytic_expression_1_ring.png Graphic file (type png)
 <use Images/analytic_expression_1_ring.png>
-Package pdftex.def Info: Images/analytic_expression_1_ring.png  used on input line 262.
+Package pdftex.def Info: Images/analytic_expression_1_ring.png  used on input line 264.
 (pdftex.def)             Requested size: 226.19933pt x 200.04852pt.
 
-Overfull \hbox (1.45282pt too wide) in paragraph at lines 267--268
+Overfull \hbox (1.45282pt too wide) in paragraph at lines 269--270
 []\OT1/ptm/m/n/10.95 Het mag-ne-tisch veld in een be-paald punt $\OT1/ptm/b/n/10.95 r$ \OT1/ptm/m/n/10.95 kan nu be-paald wor-den door de bij-dra-gen van alle opeprvlakte-
  []
 
 <Images/B_field_1_annulus.png, id=215, 462.528pt x 346.896pt>
 File: Images/B_field_1_annulus.png Graphic file (type png)
 <use Images/B_field_1_annulus.png>
-Package pdftex.def Info: Images/B_field_1_annulus.png  used on input line 281.
+Package pdftex.def Info: Images/B_field_1_annulus.png  used on input line 283.
 (pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
-
-Underfull \vbox (badness 1389) has occurred while \output is active []
-
- [17 <./Images/analytic_expression_1_ring.png>]
-<Images/analytic_expression_2_rings.png, id=227, 472.821pt x 398.142pt>
+[17 <./Images/analytic_expression_1_ring.png>]
+<Images/analytic_expression_2_rings.png, id=228, 472.821pt x 398.142pt>
 File: Images/analytic_expression_2_rings.png Graphic file (type png)
 <use Images/analytic_expression_2_rings.png>
-Package pdftex.def Info: Images/analytic_expression_2_rings.png  used on input line 289.
+Package pdftex.def Info: Images/analytic_expression_2_rings.png  used on input line 291.
 (pdftex.def)             Requested size: 203.578pt x 171.4225pt.
 
-Overfull \hbox (71.6885pt too wide) detected at line 300
-[]
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<Images/B_field_2_annula.png, id=229, 462.528pt x 346.896pt>
+ [18 <./Images/B_field_1_annulus.png> <./Images/analytic_expression_2_rings.png>]
+<Images/B_field_2_annula.png, id=237, 462.528pt x 346.896pt>
 File: Images/B_field_2_annula.png Graphic file (type png)
 <use Images/B_field_2_annula.png>
-Package pdftex.def Info: Images/B_field_2_annula.png  used on input line 304.
+Package pdftex.def Info: Images/B_field_2_annula.png  used on input line 307.
 (pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
-[18 <./Images/B_field_1_annulus.png> <./Images/analytic_expression_2_rings.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 308--309
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--312
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--311
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
 
  []
 
-<Images/B_field_SIMION.png, id=244, 462.528pt x 346.896pt>
+<Images/B_field_SIMION.png, id=243, 462.528pt x 346.896pt>
 File: Images/B_field_SIMION.png Graphic file (type png)
 <use Images/B_field_SIMION.png>
-Package pdftex.def Info: Images/B_field_SIMION.png  used on input line 315.
+Package pdftex.def Info: Images/B_field_SIMION.png  used on input line 318.
 (pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
-
-Underfull \vbox (badness 2486) has occurred while \output is active []
-
- [19 <./Images/B_field_2_annula.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
+[19 <./Images/B_field_2_annula.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 
  []
 
-<Images/magnetic_circuit.png, id=256, 462.966pt x 357.408pt>
+[20 <./Images/B_field_SIMION.png>]
+<Images/magnetic_circuit.png, id=266, 462.966pt x 357.408pt>
 File: Images/magnetic_circuit.png Graphic file (type png)
 <use Images/magnetic_circuit.png>
-Package pdftex.def Info: Images/magnetic_circuit.png  used on input line 334.
-(pdftex.def)             Requested size: 217.14941pt x 167.6382pt.
-<Images/magnetic_circuit_symbolic.png, id=257, 381.936pt x 328.062pt>
+Package pdftex.def Info: Images/magnetic_circuit.png  used on input line 337.
+(pdftex.def)             Requested size: 158.34229pt x 122.24243pt.
+<Images/magnetic_circuit_Hd.png, id=267, 287.109pt x 302.439pt>
+File: Images/magnetic_circuit_Hd.png Graphic file (type png)
+<use Images/magnetic_circuit_Hd.png>
+Package pdftex.def Info: Images/magnetic_circuit_Hd.png  used on input line 344.
+(pdftex.def)             Requested size: 113.09966pt x 119.13673pt.
+<Images/magnetic_circuit_symbolic.png, id=268, 381.936pt x 328.062pt>
 File: Images/magnetic_circuit_symbolic.png Graphic file (type png)
 <use Images/magnetic_circuit_symbolic.png>
-Package pdftex.def Info: Images/magnetic_circuit_symbolic.png  used on input line 341.
-(pdftex.def)             Requested size: 190.00659pt x 163.20963pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [20 <./Images/B_field_SIMION.png>] [21 <./Images/magnetic_circuit.png> <./Images/magnetic_circuit_symbolic.png>]
+Package pdftex.def Info: Images/magnetic_circuit_symbolic.png  used on input line 351.
+(pdftex.def)             Requested size: 135.72096pt x 116.58046pt.
+<Images/BH_curve_NdFeB.JPG, id=273, 797.98125pt x 519.44063pt>
+File: Images/BH_curve_NdFeB.JPG Graphic file (type jpg)
+<use Images/BH_curve_NdFeB.JPG>
+Package pdftex.def Info: Images/BH_curve_NdFeB.JPG  used on input line 412.
+(pdftex.def)             Requested size: 271.44194pt x 176.69466pt.
+ [21 <./Images/magnetic_circuit.png> <./Images/magnetic_circuit_Hd.png> <./Images/magnetic_circuit_symbolic.png>]
+<Images/operating_point_15.png, id=292, 462.528pt x 346.896pt>
+File: Images/operating_point_15.png Graphic file (type png)
+<use Images/operating_point_15.png>
+Package pdftex.def Info: Images/operating_point_15.png  used on input line 419.
+(pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
+ [22 <./Images/BH_curve_NdFeB.JPG> <./Images/operating_point_15.png>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 377.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 434.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 377.
-<Images/Glasers_B_field.png, id=286, 462.528pt x 346.896pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 434.
+<Images/Glasers_B_field.png, id=306, 462.528pt x 346.896pt>
 File: Images/Glasers_B_field.png Graphic file (type png)
 <use Images/Glasers_B_field.png>
-Package pdftex.def Info: Images/Glasers_B_field.png  used on input line 412.
+Package pdftex.def Info: Images/Glasers_B_field.png  used on input line 469.
 (pdftex.def)             Requested size: 135.72096pt x 101.78822pt.
-<Images/Constant_B_field.png, id=287, 462.528pt x 346.896pt>
+<Images/Constant_B_field.png, id=307, 462.528pt x 346.896pt>
 File: Images/Constant_B_field.png Graphic file (type png)
 <use Images/Constant_B_field.png>
-Package pdftex.def Info: Images/Constant_B_field.png  used on input line 419.
+Package pdftex.def Info: Images/Constant_B_field.png  used on input line 476.
 (pdftex.def)             Requested size: 135.72096pt x 101.78822pt.
-<Images/Actual_B_field.png, id=288, 462.528pt x 346.896pt>
+<Images/Actual_B_field.png, id=308, 462.528pt x 346.896pt>
 File: Images/Actual_B_field.png Graphic file (type png)
 <use Images/Actual_B_field.png>
-Package pdftex.def Info: Images/Actual_B_field.png  used on input line 426.
+Package pdftex.def Info: Images/Actual_B_field.png  used on input line 483.
 (pdftex.def)             Requested size: 135.72096pt x 101.78822pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
+Underfull \vbox (badness 3250) has occurred while \output is active []
+
+ [23]
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
 
  []
 
-[22 <./Images/Glasers_B_field.png> <./Images/Constant_B_field.png> <./Images/Actual_B_field.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+
+Underfull \hbox (badness 10000) in paragraph at lines 492--493
 
  []
 
-<Images/setup_1.png, id=303, 462.528pt x 346.896pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--495
+
+ []
+
+<Images/setup_1.png, id=321, 462.528pt x 346.896pt>
 File: Images/setup_1.png Graphic file (type png)
 <use Images/setup_1.png>
-Package pdftex.def Info: Images/setup_1.png  used on input line 441.
+Package pdftex.def Info: Images/setup_1.png  used on input line 500.
 (pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
-<Images/setup_2.png, id=305, 462.528pt x 346.896pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [24 <./Images/Glasers_B_field.png> <./Images/Constant_B_field.png> <./Images/Actual_B_field.png>]
+<Images/setup_2.png, id=331, 462.528pt x 346.896pt>
 File: Images/setup_2.png Graphic file (type png)
 <use Images/setup_2.png>
-Package pdftex.def Info: Images/setup_2.png  used on input line 450.
+Package pdftex.def Info: Images/setup_2.png  used on input line 507.
 (pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
+ [25 <./Images/setup_1.png> <./Images/setup_2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 517--518
+
+ []
+
+<Images/BH_curve_S235JR.png, id=345, 579.71419pt x 427.40323pt>
+File: Images/BH_curve_S235JR.png Graphic file (type png)
+<use Images/BH_curve_S235JR.png>
+Package pdftex.def Info: Images/BH_curve_S235JR.png  used on input line 527.
+(pdftex.def)             Requested size: 339.29898pt x 250.16357pt.
+<Images/operating_point_25.png, id=348, 462.528pt x 346.896pt>
+File: Images/operating_point_25.png Graphic file (type png)
+<use Images/operating_point_25.png>
+Package pdftex.def Info: Images/operating_point_25.png  used on input line 534.
+(pdftex.def)             Requested size: 339.29898pt x 254.48645pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23 <./Images/setup_1.png>]
-<Images/variable_R_1.png, id=313, 462.528pt x 346.896pt>
+ [26 <./Images/BH_curve_S235JR.png>]
+<Images/variable_R_1.png, id=360, 462.528pt x 346.896pt>
 File: Images/variable_R_1.png Graphic file (type png)
 <use Images/variable_R_1.png>
-Package pdftex.def Info: Images/variable_R_1.png  used on input line 474.
+Package pdftex.def Info: Images/variable_R_1.png  used on input line 546.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/variable_R_2.png, id=314, 462.528pt x 346.896pt>
+<Images/variable_R_2.png, id=361, 462.528pt x 346.896pt>
 File: Images/variable_R_2.png Graphic file (type png)
 <use Images/variable_R_2.png>
-Package pdftex.def Info: Images/variable_R_2.png  used on input line 481.
+Package pdftex.def Info: Images/variable_R_2.png  used on input line 553.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/variable_d.png, id=315, 462.528pt x 346.896pt>
+<Images/variable_d.png, id=362, 462.528pt x 346.896pt>
 File: Images/variable_d.png Graphic file (type png)
 <use Images/variable_d.png>
-Package pdftex.def Info: Images/variable_d.png  used on input line 491.
+Package pdftex.def Info: Images/variable_d.png  used on input line 563.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/variable_B_r.png, id=316, 462.528pt x 346.896pt>
+<Images/variable_B_r.png, id=363, 462.528pt x 346.896pt>
 File: Images/variable_B_r.png Graphic file (type png)
 <use Images/variable_B_r.png>
-Package pdftex.def Info: Images/variable_B_r.png  used on input line 498.
+Package pdftex.def Info: Images/variable_B_r.png  used on input line 570.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [24 <./Images/setup_2.png>] [25 <./Images/variable_R_1.png> <./Images/variable_R_2.png> <./Images/variable_d.png> <./Images/variable_B_r.png>] [26
-
-
-]
+ [27 <./Images/operating_point_25.png>] [28 <./Images/variable_R_1.png> <./Images/variable_R_2.png> <./Images/variable_d.png> <./Images/variable_B_r.png>]
 chapter 6.
 (uantwerpenbamathesis-example.bbl (uantwerpenbamathesis-example.brf)
 \tf@brf=\write6
 \openout6 = `uantwerpenbamathesis-example.brf'.
 
- [27] [28
+ [29
 
 
-]) [29] (uantwerpenbamathesis-example.aux)
+] [30
+
+
+]) [31] (uantwerpenbamathesis-example.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
@@ -1347,20 +1386,20 @@ L3 programming layer <2023-08-29>
 Package rerunfilecheck Info: File `uantwerpenbamathesis-example.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package rerunfilecheck Info: File `uantwerpenbamathesis-example.brf' has not changed.
-(rerunfilecheck)             Checksum: 19DF9293D20DC1B7FCDD15A4C48B3247;257.
+(rerunfilecheck)             Checksum: 9D39474478B8B5FD3D88D264138D8614;485.
  ) 
 Here is how much of TeX's memory you used:
- 29505 strings out of 475247
- 573748 string characters out of 5757792
- 1938785 words of memory out of 5000000
- 50348 multiletter control sequences out of 15000+600000
- 624434 words of font info for 168 fonts, out of 8000000 for 9000
+ 29572 strings out of 475247
+ 575631 string characters out of 5757792
+ 1937785 words of memory out of 5000000
+ 50410 multiletter control sequences out of 15000+600000
+ 623382 words of font info for 164 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,19n,131p,11035b,1435s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on uantwerpenbamathesis-example.pdf (33 pages, 1588736 bytes).
+Output written on uantwerpenbamathesis-example.pdf (35 pages, 1949768 bytes).
 PDF statistics:
- 490 PDF objects out of 1000 (max. 8388607)
- 115 named destinations out of 1000 (max. 500000)
- 264 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 534 PDF objects out of 1000 (max. 8388607)
+ 124 named destinations out of 1000 (max. 500000)
+ 289 words of extra memory for PDF output out of 10000 (max. 10000000)
 

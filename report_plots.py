@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from sim import B_field_z, Lens
+from sim import B_field_z, Lens, calculate_operating_point, BH_curve_magnet
 
 plt.rcParams['text.usetex'] = True
 DPI=100
@@ -182,16 +182,20 @@ def plot_setup_2_report():
     R_2_magnet=7
     d = 5
     d_magnet=4
-    B_r_magnet_theoretical=1.37
+    B_r_magnet_theoretical=1.17
     leak_factor=1
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
     lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=130)
-    lens.setup_parameters(10, 1, 23.3)
+    lens.calculate_lens_properties()
+    lens_position=25
+    si = 6*lens.f+lens.Z_Pi+lens_position
+    s0 = -6/5*lens.f+lens.Z_Po+lens_position
+    lens.setup_parameters(s0, 1, lens_position)
     initial_values = np.array([[1, 0],
-                      [1, -0.070160398],
-                      [1, -0.41]])
+                      [1, -1/(lens_position-s0)],
+                      [1, -1/(lens_position-s0-lens.f+lens.Z_Po+0.1)]])
     ax = lens.plot_setup(initial_values, report=True)
     ax.set_xlabel("$z$ (mm)", fontsize=14)
     ax.set_ylabel("$r$ (mm)", fontsize=14)
@@ -199,11 +203,58 @@ def plot_setup_2_report():
     ax.annotate('', xy=(10, 1), xytext=(10, 0),
             arrowprops=dict(arrowstyle='->', color='black', lw=3.5))
     ax.text(8, 0.5, 'Object', ha='right', va='center', fontsize=12)
-    ax.annotate('', xy=(91.4169, -5), xytext=(91.4169, 0),
+    ax.annotate('', xy=(si, -5), xytext=(si, 0),
             arrowprops=dict(arrowstyle='->', color='black', lw=3.5))
-    ax.text(90, -2.5, 'Beeld', ha='right', va='center', fontsize=12)
+    ax.text(si-5, -2.5, 'Beeld', ha='right', va='center', fontsize=12)
     plt.savefig('report/Images/setup_2.png', dpi=DPI)
     print("Saved setup plot")
+
+def plot_operating_point_15_report():
+    BH_curve=BH_curve_magnet()
+    reluctance_correction=1/3
+    Pci=1/(1-reluctance_correction)
+    h_op, b_op = calculate_operating_point(BH_curve, reluctance_correction)
+    fig, ax = plt.subplots()
+    H_eval = np.linspace(BH_curve.x[0],BH_curve.x[-1], 100)
+    B_eval = BH_curve(H_eval)
+    ax.plot(H_eval, B_eval, color='blue', label="$BH$ curve")
+    ax.plot(H_eval, H_eval/(1-reluctance_correction), color='red', label="$P_{ci}$")
+    ax.plot(h_op, b_op, 'o', markersize=6, color='red', label="Werkingspunt")
+    ax.xaxis.set_inverted(True)
+    ax.yaxis.set_label_position("right")
+    ax.yaxis.tick_right()
+    ax.set_xlabel(r'$H_d/\mu_m (\mathrm{T})$', fontsize=14)
+    ax.set_ylabel(r'$B_r (\mathrm{T})$', fontsize=14)
+    ax.set_ylim(0, np.max(B_eval)+0.1)
+    ax.set_title(f'Werkingspunt van de magneet bij  $P_{{ci}}={Pci: .2f}$', fontsize=14)
+    ax.grid()
+    ax.legend()
+
+    plt.savefig('report/Images/operating_point_15.png', dpi=DPI)
+
+def plot_operating_point_25_report():
+    BH_curve=BH_curve_magnet()
+    reluctance_correction=0.6
+    Pci=1/(1-reluctance_correction)
+    h_op, b_op = calculate_operating_point(BH_curve, reluctance_correction)
+    fig, ax = plt.subplots()
+    H_eval = np.linspace(BH_curve.x[0],BH_curve.x[-1], 100)
+    B_eval = BH_curve(H_eval)
+    ax.plot(H_eval, B_eval, color='blue', label="$BH$ curve")
+    ax.plot(H_eval, H_eval/(1-reluctance_correction), color='red', label="$P_{ci}$")
+    ax.plot(h_op, b_op, 'o', markersize=6, color='red', label="Werkingspunt")
+    ax.xaxis.set_inverted(True)
+    ax.yaxis.set_label_position("right")
+    ax.yaxis.tick_right()
+    ax.set_xlabel(r'$H_d/\mu_m (\mathrm{T})$', fontsize=14)
+    ax.set_ylabel(r'$B_r (\mathrm{T})$', fontsize=14)
+    ax.set_ylim(0, np.max(B_eval)+0.1)
+    ax.set_title(f'Werkingspunt van de magneet bij  $P_{{ci}}={Pci: .2f}$', fontsize=14)
+    ax.grid()
+    ax.legend()
+
+    plt.savefig('report/Images/operating_point_25.png', dpi=DPI)
+    
 
 def main():
     plot_B_field_ring_report()
@@ -214,6 +265,8 @@ def main():
     plot_actual_field()
     plot_setup_1_report()
     plot_setup_2_report()
+    plot_operating_point_15_report()
+    plot_operating_point_25_report()
     variable_plots()
 
 
