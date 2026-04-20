@@ -42,19 +42,19 @@ def plot_B_field(ax, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, 
     B_z=B_r_yoke*B_field_z(z, R_1, R_2, d)
 
     ax.clear()
-    ax.plot(z, B_z, linestyle='-', color='b', label='$B_z$ veld')
-    ax.axhline(0, color='red', linewidth=1.5, linestyle='--', label='$B_z$=0')
-    ax.set_xlabel('z (mm)')
-    ax.set_ylabel('$B_z$ (Tesla)')
+    ax.plot(z, B_z, linestyle='-', color='b', label='$B(z)$')
+    ax.axhline(0, color='red', linewidth=1.5, linestyle='--', label='0')
+    ax.set_xlabel('$z$ (mm)', fontsize=14)
+    ax.set_ylabel('$B(z)$ (T)', fontsize=14)
+    ax.set_title('Interactief $B(z)$ veld', fontsize=16)
     ax.grid()
     ax.legend()
 
     return
 
 def plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, bounds=30, n=1000):
-    # Create plot
     fig, ax = plt.subplots()
-    plt.subplots_adjust(left=0.25, bottom=0.55)  # leave space for more sliders
+    plt.subplots_adjust(left=0.25, bottom=0.55)
 
     plot_B_field(ax, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, bounds, n)
 
@@ -70,11 +70,11 @@ def plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_
     # Sliders
     s_R1 = Slider(ax_R1, "$R_1$ (mm)", 0.1, 5, valinit=R_1)
     s_R2 = Slider(ax_R2, "$R_2$ (mm)", 0.15, 15, valinit=R_2)
-    s_R1_magnet = Slider(ax_R1_magnet, "$R_{1, magnet}$ (mm)", 1, 20, valinit=R_1_magnet)
-    s_R2_magnet = Slider(ax_R2_magnet, "$R_{2, magnet}$ (mm)", 1, 20, valinit=R_2_magnet)
-    s_d = Slider(ax_d, "$d$ (mm)", 0.1, 6, valinit=d)
-    s_d_magnet = Slider(ax_d_magnet, "$d_{ magnet}$ (mm)", 0.1, 10, valinit=d_magnet)
-    s_B_r_magnet = Slider(ax_B_r_magnet, "$B_{remanence}$", 0, 2, valinit=B_r_magnet)
+    s_R1_magnet = Slider(ax_R1_magnet, "$R_{1, m}$ (mm)", 1, 20, valinit=R_1_magnet)
+    s_R2_magnet = Slider(ax_R2_magnet, "$R_{2, m}$ (mm)", 1, 20, valinit=R_2_magnet)
+    s_d = Slider(ax_d, "$d_g$ (mm)", 0.1, 6, valinit=d)
+    s_d_magnet = Slider(ax_d_magnet, "$d_{m}$ (mm)", 0.1, 10, valinit=d_magnet)
+    s_B_r_magnet = Slider(ax_B_r_magnet, "$B_r (T)$", 0, 2, valinit=B_r_magnet)
 
     # Update function
     def update(val):
@@ -140,6 +140,118 @@ def plot_operating_point(spline, reluctance_correction):
 
     plt.show()
 
+def make_lens_interactive():
+
+    # ── Magic constants ───────────────────────────────────────────────────────
+    R_1 = 0.8
+    R_2 = 3.25
+    R_1_magnet=4.5
+    R_2_magnet=6
+    d = 0.8
+    d_magnet=2
+    B_r_magnet_theoretical=1.17
+    leak_factor=1
+    B_r_magnet=B_r_magnet_theoretical*leak_factor
+    T = 30*10**3
+    SETUP_LENGTH          = 228
+    LENS_POSITION         = 114
+    BOUNDS                = 30
+    N                     = 1000
+
+    # ── Stage 1 : interactive B-field plot ───────────────────────────────────
+    fig, ax = plt.subplots(figsize=(9, 7))
+    fig.suptitle(
+        "Adjust sliders, then press  Enter  or close the window\n"
+        "to simulate lens properties",
+        fontsize=11,
+    )
+    plt.subplots_adjust(left=0.25, bottom=0.55)
+
+    plot_B_field(ax, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, BOUNDS, N)
+
+    SL, SW, SH = 0.25, 0.65, 0.03
+    ax_R1        = fig.add_axes([SL, 0.45, SW, SH])
+    ax_R2        = fig.add_axes([SL, 0.40, SW, SH])
+    ax_R1_magnet = fig.add_axes([SL, 0.35, SW, SH])
+    ax_R2_magnet = fig.add_axes([SL, 0.30, SW, SH])
+    ax_d         = fig.add_axes([SL, 0.25, SW, SH])
+    ax_d_magnet  = fig.add_axes([SL, 0.20, SW, SH])
+    ax_B_r       = fig.add_axes([SL, 0.15, SW, SH])
+
+    s_R1        = Slider(ax_R1,        r"$R_1$ (mm)",       0.10, 5.0,  valinit=R_1)
+    s_R2        = Slider(ax_R2,        r"$R_2$ (mm)",       0.15, 15.0, valinit=R_2)
+    s_R1_magnet = Slider(ax_R1_magnet, r"$R_{1,m}$ (mm)",   1.0,  20.0, valinit=R_1_magnet)
+    s_R2_magnet = Slider(ax_R2_magnet, r"$R_{2,m}$ (mm)",   1.0,  20.0, valinit=R_2_magnet)
+    s_d         = Slider(ax_d,         r"$d_g$ (mm)",       0.10, 6.0,  valinit=d)
+    s_d_magnet  = Slider(ax_d_magnet,  r"$d_m$ (mm)",       0.10, 10.0, valinit=d_magnet)
+    s_B_r       = Slider(ax_B_r,       r"$B_r$ (T)",        0.0,  2.0,  valinit=B_r_magnet)
+
+    def update(_val):
+        plot_B_field(
+            ax,
+            s_R1.val, s_R2.val,
+            s_R1_magnet.val, s_R2_magnet.val,
+            s_d.val, s_d_magnet.val,
+            s_B_r.val,
+            BOUNDS, N,
+        )
+        fig.canvas.draw_idle()
+
+    for s in (s_R1, s_R2, s_R1_magnet, s_R2_magnet, s_d, s_d_magnet, s_B_r):
+        s.on_changed(update)
+
+    # Capture slider values when the user is done (Enter or window close)
+    captured = {}
+
+    def _capture():
+        captured["R_1"]        = s_R1.val
+        captured["R_2"]        = s_R2.val
+        captured["R_1_magnet"] = s_R1_magnet.val
+        captured["R_2_magnet"] = s_R2_magnet.val
+        captured["d"]          = s_d.val
+        captured["d_magnet"]   = s_d_magnet.val
+        captured["B_r_magnet"] = s_B_r.val
+
+    def on_key(event):
+        if event.key == "enter":
+            _capture()
+            plt.close(fig)
+
+    def on_close(_event):
+        if not captured:   # only fill if Enter wasn't pressed already
+            _capture()
+
+    fig.canvas.mpl_connect("key_press_event", on_key)
+    fig.canvas.mpl_connect("close_event",     on_close)
+
+    plt.show()   # blocks here until the window is closed
+
+    if not captured:
+        return   # user closed without interacting
+
+    # ── Stage 2 : build lens and show properties ──────────────────────────────
+    print("Simulating lens — please wait …")
+
+    lens = Lens(
+        captured["R_1"],
+        captured["R_2"],
+        captured["R_1_magnet"],
+        captured["R_2_magnet"],
+        captured["d"],
+        captured["d_magnet"],
+        captured["B_r_magnet"],
+        B_r_magnet_theoretical,
+        T,
+        setup_length=SETUP_LENGTH,
+        lens_position=LENS_POSITION,
+        n=N,
+    )
+
+    lens.calculate_B_field()
+    lens.calculate_lens_properties()
+    lens.display_properties()
+
+
 class Lens:
     def __init__(self, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=228, lens_position=114, n=10000):
 
@@ -156,6 +268,7 @@ class Lens:
         self.n=n
         self.z_eval_full=np.linspace(0, setup_length, n)
         self.update_B_r_yoke()
+        self.update_T()
 
         self.T_rel = self.T*(1+EPSILON*self.T) # Relativistic
 
@@ -173,6 +286,9 @@ class Lens:
         self.H_op, self.B_op = calculate_operating_point(self.BH_curve, self.reluctance_correction)
         self.B_r_yoke=self.A_magnet/self.A_gap*(self.B_op-self.H_op)
         self.Pci = 1+(self.A_gap*self.d_magnet)/(self.A_magnet*self.d)
+
+    def update_T(self):
+        self.T_rel = self.T*(1+EPSILON*self.T)
 
 
     @staticmethod
@@ -579,6 +695,40 @@ class Lens:
 
         return_properties(original_B_r)
 
+    def variable_T(self, T_min, T_max, T_n, output_path=None, dpi=100):
+        original_T = self.T*10**-3
+        def return_properties(T):
+            self.T = T*10**3
+            self.update_T()
+            self.calculate_lens_properties()
+            return self.Z_Fi, self.Z_Pi, self.f
+
+        T_eval=np.linspace(T_min, T_max, T_n)
+        results = np.array([return_properties(T) for T in T_eval])
+        Z_Fi_values, Z_Pi_values, f_values = results.T
+        _, ax=plt.subplots()
+
+        _, ax1 = plt.subplots()
+
+        ax1.plot(T_eval, f_values, color='red', label='$f$')
+        ax1.plot(T_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
+        ax1.plot(T_eval, Z_Fi_values, color='green', label='$z_{Fi}$')
+        ax1.set_xlabel("$T$ (KeV)", fontsize=14)
+        ax1.set_ylabel("Lenseigenschap (mm)", fontsize=14)
+        ax1.grid()
+
+        ax1.legend()
+
+        ax1.set_title(f"Lenseigenschappen voor variable $T$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_T)
+
     def add_mesh(self, mesh):
         self.mesh_list.append(mesh)
 
@@ -629,11 +779,11 @@ if __name__ == "__main__":
 
     # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
-    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
-    mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
-    permanent_magnet_lens.add_mesh(mesh1)
-    permanent_magnet_lens.display_properties()
+    # permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
+    # permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
+    # mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
+    # permanent_magnet_lens.add_mesh(mesh1)
+    # permanent_magnet_lens.display_properties()
 
     # plot_operating_point(BH_curve_magnet(), 0.4)
 
@@ -643,4 +793,6 @@ if __name__ == "__main__":
     # combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
     # permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=132.42, pixel_count=256, voxel_length=0.05)
 
-    # permanent_magnet_lens.variable_B_r(0.7, 1.4, 100)
+    # permanent_magnet_lens.variable_T(28, 32, 100)
+
+    make_lens_interactive()

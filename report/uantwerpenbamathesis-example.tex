@@ -92,7 +92,7 @@ Dit soort lenzen hebben enkele nadelen, met name dat ze redelijk groot zijn, de 
 
 Eerst berekenen we d.m.v. een analytische uitdrukking en een numerieke simulatie in het simulatieprogramma SIMION hoe het magnetisch veld er in functie van de vorm van de polepieces uit ziet. Vervolgens kunnen we de baan van de elektronen doorheen de lens met Python simuleren om de lenseigenschappen te berekenen (focaalafstand, object principal plane, image principal plane). Hierbij is het uiterst belangrijk om rekening te houden met eventuele magnetische saturatie van de polepieces. We trachtten een dunne lens te ontwerpen met een focaalafstand van $\sim8.5\text{mm}$.\\
 
-Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens realiseren. De lenseigenschappen worden gekarakteriseerd in een 30keV SEM waarvan het optisch systeem sterk lijkt op een de werking van een TEM. We willen hierbij nagaan hoe de werkelijke lenseigenschappen en het magnetisch veld van de voorspelde grootheden afwijken, en wat de mogelijke storingen zouden kunnen zijn. Daarnaast willen we ook onderzoeken welke abberaties in welke mate aanwezig zijn. Op deze manier krijgen we meer inzicht in het ontwerp en de werking van permanente-magneet elektronenlenzen.
+Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens realiseren. De lenseigenschappen worden gekarakteriseerd in een 30keV SEM waarvan het optisch systeem sterk lijkt op een de werking van een TEM. We willen hierbij nagaan hoe de werkelijke lenseigenschappen en het magnetisch veld van de voorspelde grootheden afwijken, en wat de mogelijke storingen zouden kunnen zijn. Daarnaast willen we ook onderzoeken welke aberraties in welke mate aanwezig zijn. Op deze manier krijgen we meer inzicht in het ontwerp en de werking van permanente-magneet elektronenlenzen.
 \end{multicols}
 \makeatother
 
@@ -226,7 +226,7 @@ Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een 
     \caption{Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt.}
     \label{fig:rear_mesh_shadowgraph_parallel}
 \end{figure}
-In principe kan deze methode ook uitgebereid worden om de chromatische en sferische abberatiecoëfficienten van de lens te berekenen. De sferische abberatiecoëfficient kan worden afgeleid door de afgebeeldde grootte van de individuele roosteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de roosteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische abberatie kan worden uitgedrukt als $\Delta z' = -C_s \alpha^2$, dus door $z'$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische abberatiecoëfficient $C_s$ fitten. De chromatische abberatie kunnen we berekenen door de versnelspanning van de micrscoop aan te passen. De chromatische abberatiecoëfficient $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
+In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele roosteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de roosteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z' = -C_s \alpha^2$, dus door $z'$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kunnen we berekenen door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
 
 \chapter{Eigen realisatie}
 \section{Werking permanente magneetlens}
@@ -249,9 +249,9 @@ Om een axissymetrisch veld te veroorzaken, maken we gebruik van een kleine ringv
 
 Voor de ringmagneet kiezen we een NdFeB van graad N35. Er bestaan magneten met betere graden, maar voor een relatief kleine versnelspanning van $30\mathrm{KeV}$ is dit materiaal voldoende sterk. Voor de polepieces gebruiken S235JR, een zacht ferromagnetisch staal dat geschikt is om gebruikt te worden in een CNC-machine. Deze materialen zullen meer in detail besproken worden in sectie \ref{ch:lensontwerp}.
 \section{Analytische afschatting magnetisch veld}
-Vooraleer we de lenseigenschappen van de lens kunnen simuleren, willen we een analystische schatting maken van het magnetisch veld $B(z)$ op de symmetrieas van de lens. Hiervoor maken enkele belangrijke benaderingen om de berekeningen te vereenvoudigen.\\
+Vooraleer we de lenseigenschappen van de lens kunnen simuleren, willen we een analytische schatting maken van het magnetisch veld $B(z)$ op de symmetrieas van de lens. Hiervoor maken enkele belangrijke benaderingen om de berekeningen te vereenvoudigen.\\
 
-Ten eerste veronderstellen we dat de magnetische veldlijnen volledig in de polepieces zullen blijven tot ze de gap tussen de polepieces bereiken, zonder dat er magetisch veld op andere plaatsen naar buiten lekt. We zorgen ervoor dat dit een goede benadering blijft door de geometrie van de polepieces zo te ontwerpen dat het magnetisch veld nergens anders kan kortsluiten. We willen met andere woorden dat er geen andere paden $C$ van de bovenkant naar de onderkant van de ringmagneet mogelijk zijn die een een kleinere/gelijkaardige reluctantie $\mathcal{R}=\int_C\frac{dl}{\mu(l)A(l)}$ hebben. Daarnaast zorgen we ervoor dat de polepieces gladde en afgeronde oppervlakken hebben om randeffecten te voorkomen, aangezien magnetische veldlijnen de neiging hebben om zich te concentreren rond oppervlakken met een kleine kromtestraal, zoals randen en hoeken.\\
+Ten eerste veronderstellen we dat de magnetische veldlijnen volledig in de polepieces zullen blijven tot ze de gap tussen de polepieces bereiken, zonder dat er magnetisch veld op andere plaatsen naar buiten lekt. We zorgen ervoor dat dit een goede benadering blijft door de geometrie van de polepieces zo te ontwerpen dat het magnetisch veld nergens anders kan kortsluiten. We willen met andere woorden dat er geen andere paden $C$ van de bovenkant naar de onderkant van de ringmagneet mogelijk zijn die een een kleinere/gelijkaardige reluctantie $\mathcal{R}=\int_C\frac{dl}{\mu(l)A(l)}$ hebben. Daarnaast zorgen we ervoor dat de polepieces gladde en afgeronde oppervlakken hebben om randeffecten te voorkomen, aangezien magnetische veldlijnen de neiging hebben om zich te concentreren rond oppervlakken met een kleine kromtestraal, zoals randen en hoeken.\\
 
 Om wiskundig te beschrijven waar de magnetische velden de polepieces verlaten of weglekken, is het gemakkelijk om gebruik te maken van magnetische poolladingen. De magnetische lading aan het oppervlak van een gemagnetiseerd volume wordt gegeven door $\sigma_M=\mathbf{M}\cdot\mathbf{n}$ met $\mathbf{M}$ de magnetisatie van het materiaal en $\mathbf{n}$ een normaalvector op het oppervlak. In het ideale geval zijn de polepieces zo gemagnetiseerd dat de magnetisatie altijd parallel ligtaan de zijoppervlakken ligt zodat $\sigma_M=0$. Alleen bij de oppervlakken die aan de gap grenzen staat de magnetisatie loodracht op het oppervlak, waardoor we daar wel een poollading krijgen. In deze benadering hebben de polepieces dus enkel oppervlakteladigen aan de gap tussen de polepieces.\\
 
@@ -325,7 +325,7 @@ Nu we een benaderende analytische uitdrukking hebben gevonden voor het magnetisc
 
 De eerste factor waar we rekening mee moeten houden is de reluctantie van het circuit. De Nd-magneet heeft een remanent magneetveld $B_r$, dit is het magnetisch veld dat in de magneet overblijft wanneer we geen uitwendige magnetische velden aanleggen. Wanneer we de magneet in een magnetisch circuit met een gap gebruiken, zorgen de oppervlakteladingen aan de gap voor een demagnetiserend veld in de polepieces en de magneet dat het remanent veld tegenwerkt. Hierdoor is het werkelijke veld in de magneet $B_m$ kleiner dan het remanent veld $B_r$.\\
 
-Een elegante manier om dit effect wiskundig te berschrijven, is om de analogie te maken met elektrische weerstand en een magnetisch circuit te tekenen dat equivalent is met de geometrie van de lens. We maken eerst een magnetisch circuit equivalent\footnote{De figuur toont dus geen doorsnede van de lens, maar equivalent circuit dat niet meer axissymetrisch is.} aan de cilindrisch symmetrische lens, zoals wordt getoond op Figuur \ref{fig:magnetic_circuit_a}. We krijgen door de oppervlakteladingen een demagnetiserend veld, getoond op Figuur \ref{fig:fields_comparison_b}. Vervolgens tekenen we een symbolisch schema van dit circuit, getoond op Figuur \ref{fig:magnetic_circuit_c}. De magneet is dan een bron van magnetomotorische kracht $\mathcal{F}$. Zowel de magneet, de twee polepieces als de gap zorgen voor een reluctantie $\mathcal{R}$ in het circuit. De magnetische flux doorheen het circuit wordt dan gegeven door:
+Een elegante manier om dit effect wiskundig te beschrijven, is om de analogie te maken met elektrische weerstand en een magnetisch circuit te tekenen dat equivalent is met de geometrie van de lens. We maken eerst een magnetisch circuit equivalent\footnote{De figuur toont dus geen doorsnede van de lens, maar equivalent circuit dat niet meer axissymetrisch is.} aan de cilindrisch symmetrische lens, zoals wordt getoond op Figuur \ref{fig:magnetic_circuit_a}. We krijgen door de oppervlakteladingen een demagnetiserend veld, getoond op Figuur \ref{fig:fields_comparison_b}. Vervolgens tekenen we een symbolisch schema van dit circuit, getoond op Figuur \ref{fig:magnetic_circuit_c}. De magneet is dan een bron van magnetomotorische kracht $\mathcal{F}$. Zowel de magneet, de twee polepieces als de gap zorgen voor een reluctantie $\mathcal{R}$ in het circuit. De magnetische flux doorheen het circuit wordt dan gegeven door:
 \begin{equation}\label{eq:flux_mmf_reluctance}
     \Phi = \frac{\mathcal{F}}{\mathcal{R}_{tot}}
 \end{equation}
@@ -379,7 +379,7 @@ Een elegante manier om dit effect wiskundig te berschrijven, is om de analogie t
 % \begin{equation}
 %     B_m = B_r\frac{1}{\left(1+\frac{\mu_m d_g A_m}{\mu_0 d_m A_g}\right)}
 % \end{equation}
-% De correctieterm geeft dus aan welke fractie van het magnetisch veld er overblijft wanneer we het demagnetiserend veld $H_d$ in rekening nemen. Het is meer gebruikelijk om dit uit te drukken als de interne permanentiecoëfficient $P_{ci}=\frac{B_m}{\mu_m H_d}$. Deze kunnen in dit specifiek geval uitrekenen:
+% De correctieterm geeft dus aan welke fractie van het magnetisch veld er overblijft wanneer we het demagnetiserend veld $H_d$ in rekening nemen. Het is meer gebruikelijk om dit uit te drukken als de interne permeantiecoëfficiënt $P_{ci}=\frac{B_m}{\mu_m H_d}$. Deze kunnen in dit specifiek geval uitrekenen:
 % \begin{equation}
 %     \frac{B_m}{B_r}=\frac{B_r-\mu_m H_d}{B_r} = \frac{1}{\left(1+\frac{\mu_m d_g A_m}{\mu_0 d_m A_g}\right)}\Leftrightarrow P_{ci} = \frac{d_m A_g}{d_g A_m}+\frac{\mu_m}{\mu_0}
 % \end{equation}
@@ -401,7 +401,7 @@ Door dit dan weer in te vullen in \ref{eq:H_m_H_g} vinden we de relatie:
 \begin{equation}
     H_m = \frac{B_m A_g d_g}{\mu_0 A_g d_m} \Leftrightarrow \frac{B_m}{\mu_0 H_m} = \frac{A_g d_m}{A_g d_g} = P_c
 \end{equation}
-Deze coëfficient $P_c$ wordt de \textit{permeantiecoëccifient} genoemd en drukt de verhouding uit tussen de overgebleven magnetische fluxdichtheid en het demagnetiserend veld in de magneet \cite{mmpa_permanent_magnet_guidelines}. Voor onze doeleinden is het gemakkelijker om te werken met de intrinsieke permeantiecoëccifient $P_{ci}$, welke het verband uitdrukt tussen het remanent veld $B_r$ en het demagnetiserend veld $H_d$.
+Deze coëfficiënt $P_c$ wordt de \textit{permeantiecoëccifient} genoemd en drukt de verhouding uit tussen de overgebleven magnetische fluxdichtheid en het demagnetiserend veld in de magneet \cite{mmpa_permanent_magnet_guidelines}. Voor onze doeleinden is het gemakkelijker om te werken met de intrinsieke permeantiecoëccifient $P_{ci}$, welke het verband uitdrukt tussen het remanent veld $B_r$ en het demagnetiserend veld $H_d$.
 \begin{equation}
     P_{ci}=\frac{B_r}{\mu_0 H_m}=\frac{B_m+\mu_0 H_m}{\mu_0 H_m}=1+\frac{B_m}{\mu_0 H_m}=1+P_c = 1+\frac{A_g d_m}{A_g d_g}. 
 \end{equation}
@@ -417,7 +417,7 @@ Op de figuur staan zowel de normale ($B_m(H_d)$) als de intrinsieke ($B_r(H_d)$)
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Images/operating_point_15.png}
-    \caption{Het werkingspunt van de magneet kunnen we vinden door het snijpunt te bepalen van de $BH$-curve en de load line, waarvan de richtingscoëfficient afhant van de intrinsieke permeantiecoëccifient $P_c$. Als het werkingspunt niet voorbij de elleboog van de curve ligt, dan zal de magneet niet demagnetiseren.}
+    \caption{Het werkingspunt van de magneet kunnen we vinden door het snijpunt te bepalen van de $BH$-curve en de load line, waarvan de richtingscoëfficiënt afhant van de intrinsieke permeantiecoëccifient $P_c$. Als het werkingspunt niet voorbij de elleboog van de curve ligt, dan zal de magneet niet demagnetiseren.}
     \label{fig:operating_point}
 \end{figure}
 Een we het veld gegenereerd door de magneet $B_m=B_r-\mu_0 H_d$ hebben gevongen, kunnen we het magnetisch veld aan het oppervlak grenzend aan de gap kunnen berekenen door rekening te houden met de oppervlaktes van de polepieces $A_g$:
@@ -444,7 +444,19 @@ De volledige analytische uitdrukking van het magnetisch veld op de optische as v
 %     \zeta_{\pm} & = z \pm \frac{d_g}{2}
 % \end{align}
 
-\section{Implementatie van paraxiale bewegingsvergelijking in Python}
+\section{Implementatie in Python}\label{ch:implementatie}
+Om de afhankelijkheid van de lenseigenschappen ($f, z_{Fi}, z_{Pi}$, etc.) van de lensparameters ($R_1, R_2, d_g, B_r$, etc.) te analyseren, hebben we een klasse in python geschreven. Hiermee kunnen we snel de het magnetisch veld berekenen en plotten voor een bepaalde geometrie van de magneet en de polepieces, en vervolgens de paraxiale bewegingsvergelijkingen voor dit veld oplossen om zo de lenseigenschappen te berekenen. 
+
+\subsection{Paraxiaal magnetisch veld}
+Om de afhankelijkheid van het magnetisch veld van de lensparameters te onderzoeken, maken we een functie die ons toelaat om de lensparameters met sliders aan te passen, terwijl het magnetisch veld continu wordt geupdated. In deze functie is ook het remanent veld $B_r$ instelbaar, wat beter gedefiniëerd moet worden aangezien de magneet niet 1 waarde voor $B_r$ heeft (maar een $BH$-curve). Deze instelling herschaalt de $BH$-curve zodanig dat het remanent veld voor $H_d=0\frac{\mathrm{A}}{\mathrm{m}}$ gelijk is aan de ingestelde waarde voor $B_r$. Een voorbeeld van een plot wordt getoond op Figuur \ref{fig:Interactive_B_field} voor de parameters $R_1=0.8\mathrm{mm}$, $R_2=3.25\mathrm{mm}$, en $d_g=0.8\mathrm{mm}$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Images/Interactive_B_field.JPG}
+    \caption{Interactieve plot van $B(z)$ in functie van de lensparameters. Deze functie kunnen we gebruiken om de afhankelijkheid van de verschillende parameters te bestuderen, en de lensparameters te optimaliseren om een gewenst magnetisch veld te krijgen. In dit geval gebruiken we de parameters $R_1=0.8\mathrm{mm}$, $R_2=3.25\mathrm{mm}$, en $d_g=0.8\mathrm{mm}$. De $B_r$ instelling zorgt voor een herschaling van de $BH$-curve.}
+    \label{fig:Interactive_B_field}
+\end{figure}
+
+\subsection{Paraxiale bewegingsvergelijkingen}
 Met de analytische uitdrukking voor het magnetisch veld kunnen we de paraxiale bewegingsvergelijking oplossen om uiteindelijk de lenseigenschappen van de lens te gaan voorspellen. Ter herinnering, de paraxiale bewegingsvergelijking wordt gegeven door:
 \begin{equation}\label{eq:paraxialevgl_rel_H54}
     \frac{d^2r}{dz^2}+\frac{\eta^2B(z)^2}{4V}r=0
@@ -489,8 +501,6 @@ In dat geval heleidt vergelijking \ref{eq:paraxialevgl_rel_H54} zich tot een har
 \end{figure}
 We zien dat het Glaser's field een goede benadering zou geven, maar de piek in het magnetisch veld is breder het veld vlakt trager af dan het veld van onze lens. Om accurate voorspellingen van onze lens te kunnen maken, kiezen we er daarom voor om de paraxiale beweginsvergelijking numeriek op te lossen en hieruit de lenseigenschappen te bepalen. Dit laat ons ook toe om later Monte Carlo simulaties van experimentele opstellingen uit te voeren, zodat we kunnen inschatten welke opstellingen ons bruikbare resultaten kunnen geven.\\
 
-We maken hiervoor gebruik van Python. We schreven een klasse waarin we de parameters van de lens (binnen- en buitenstralen, diktes van de gap en magneet, sterkte van de magneet etc.) en de opstelling in de microscoop (afstanden tussen voorwerp en lens, versnelspanning etc.) kunnen instellen. Met deze parameters kunnen we dan het analytische veld berekenen en plotten. Dit laat ons toe om snel en efficient te bepalen hoe het magnetisch verandert in functie van de parameters. Dit zal in meer detal worden besproken in het volgende hoofdstuk.\\
-
 Om de paraxiale bewegingsvergelijking op te lossen, gebruiken we de solve\_ivp functie van de scipy.integrate bibliotheek. Het objectvlak $z_0$ kunnen we naar wens instellen, en we gebruiken een 8ste orde Runge-Kutta methode (DOP853) om de twee lineair onafhankelijke oplossingen $g$ en $h$ te berekenen. De oplossing $g(z)$, waarvoor geldt dat $g(z_0)=1$ en $g'(z_0)=0$, kunnen we dan gebruiken om de lenseigenschappen te berekenen. Ten eerste kijken we in welk vlak de twee asymtoten van $g(z)$, de object en beeld asymtotische bundels, elkaar snijden. Dit vlak is het achterste/beeld hoofdvlak van de lens $z_{Pi}$. Ten tweede kijken we waar de beeld asymtotische bundel de symmetrie-as van de lens snijdt. Alle parallel bewegende elektronen zullen door dit punt passeren, dus dit is het brandpunt in het focusvlak $z_{Fi}$ van de lens. De brandpuntsafstand kunnen we dan berekenen uit $f=z_{Fi}-z_{Pi}$. Door de symmetrie van het magnetisch veld kunnen we het object beeldvlak en het object focusvlak vinden uit $z_{Po}=-z_{Pi}$ en $z_{Fo}=-z_{Fi}$, Figuur \ref{fig:setup_1} toont een voorbeeld van een numerieke oplossing van $g$. In dit geval vinden we een brandpuntsafstand van $f=15.50\mathrm{mm}$ en bevindt het beeld hoofdvlak zich op $z_{Pi}=-0.33\mathrm{mm}$ van het midden van de lens.\\
 
 Eens we de twee lineair onafhankelijke oplossingen hebben berekend, is het mogelijk om de baan van eender welk elektron af te beelden door een lineaire combinatie van de twee oplossingen te maken. Op deze manier kunnen we stralingsdiagrammen zoals Figuur \ref{fig:setup_2}, waarbij we de lens van de voorgaande figuur hebben gebruikt om een vergroting van $M=5$ te krijgen. We tekenen op de figuur de drie hoofdstralen: de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. Deze drie kruisen elkaar in 1 punt achter de lens, waar het beeld gevormd wordt. Merk ook op dat de straal die door het midden van de lens gaat niet wordt afgebogen, zoals men zou verwachten.
@@ -513,34 +523,39 @@ Eens we de twee lineair onafhankelijke oplossingen hebben berekend, is het mogel
 Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een lens te simuleren, kunnen de parameters van de lens gaan optimaliseren om een geschikte dunne lens te maken. Hierbij moeten we rekening houden met het volgende:
 \begin{enumerate}
     \item We willen liefst een dunne lens, dus willen we $z_{Pi}\approx0$. Dit betekent dat dat $B(z)$ een smalle piek moet vertonen.
-    \item We willen een lens die we in de MIRA microscoop kunnen gebruiken. Concreet betekent dit dat we een focale lengte willen die rond de $5-10\mathrm{mm}$ ligt. Hiervoor moet $\sigma_M$ voldoende groot zijn, en moet $R_1$ voldoende klein zijn zodat de ladingen zich niet te ver van de opticshe as bevinden.
+
+    \item We willen een lens die we in de MIRA microscoop kunnen gebruiken. Concreet betekent dit dat we een focale lengte willen die rond de $5-10\mathrm{mm}$ ligt. Hiervoor moet $\sigma_M$ voldoende groot zijn, en moet $R_1$ voldoende klein zijn zodat de ladingen zich niet te ver van de optische as bevinden.
+
     \item Figuur \ref{fig:operating_point} toonde de $BH$-curve van graad N35 NdFeB. We willen ten eerste dat het werkingspunt de elleboog van deze curve niet overschrijdt, omdat het remanent veld van de magneet dan snel zou afnemen of zelfs zou omkeren. Echter, de elleboog bevindt zich ongeveer bij $B_r=1.1\mathrm{T}, \mu_0 H_d = 1.2\mathrm{T}$, dus bij $\mu_0 H_d>B_r$. Het is met andere woorden niet mogelijk om de magneet (bij kamertemperatuur) in een circuit te demagnetiseren zonder een extern magnetisch veld aan te leggen.\\
 
-    Echter, het is nog steeds gewenst dat het demagnetiserend veld zo klein mogelijk blijft; een groot demagnetiserend veld zorgt nog steeds voor een instabieler circuit. Een exterm demagnetiserend veld of een hogere temperatuur kunnen de magneet in dat geval makkelijker irreversiebel doen demagnetiseren. In onze berekening van $H_d$ hebben we bovendien een versimpeld en geïdealiseerd systeem beschouwd; dit is slechts een schatting van de exacte waarde. De werkelijke waarde van $H_d$ kan zelfs tot $\sim1.5$ keer groter zijn dan de analytsich geschatte waarde \cite{MagnetFAQ}. Dit betekent dat we de interne permeantiecoëccifient $P_{ci}=\frac{B_r}{\mu_0 H_d}$ liefst zo groot mogelijk houden. Om ongewenste effecten te voorkomen, stellen we voor onszelf een (arbitrair gekozen) ondergrens van $P_{ci}>2.5$ in. Figuur \ref{fig:operating_point_25} toont het werkingspunt bij deze ondergrens.
+    Echter, het is nog steeds gewenst dat het demagnetiserend veld zo klein mogelijk blijft; een groot demagnetiserend veld zorgt nog steeds voor een instabieler circuit. Een exterm demagnetiserend veld of een hogere temperatuur kunnen de magneet in dat geval makkelijker irreversiebel doen demagnetiseren. In onze berekening van $H_d$ hebben we bovendien een versimpeld en geïdealiseerd systeem beschouwd; dit is slechts een schatting van de exacte waarde. De werkelijke waarde van $H_d$ kan zelfs tot $\sim1.5$ keer groter zijn dan de analytisch geschatte waarde \cite{MagnetFAQ}. Dit betekent dat we de interne permeantiecoëccifient $P_{ci}=\frac{B_r}{\mu_0 H_d}$ liefst zo groot mogelijk houden. Om ongewenste effecten te voorkomen, stellen we voor onszelf een (arbitrair gekozen) ondergrens van $P_{ci}>2.5$ in. Figuur \ref{fig:operating_point_25} toont het werkingspunt bij deze ondergrens.
 
-    \item Een andere belangrijke factor waarmee we rekening moeten houden is de $BH$-curve van de polepieces. We gaan er in vergelijking \ref{eq:Br_yoke} van uit dat alle veldlijnen vanuit de magneet worden uitgespreid over de oppervlaktes van de polepieces. In het algemeen is de oppervlakte van de polepieces kleiner dan die van de magneet, waardoor de veldlijnen zullen concentreren en de fluxdichtheid toeneemt. Dit betekent dat we moeten oppassen dat de polepieces niet gesatureerd raken, want dan zou er magnetisch veld weglekken wat allerlij ongewenste effecten met zich meebrengt. Om een bovengrens voor $B_g$ vast te leggen, moeten we naar de $BH$-curve van S235JR kijken. Deze wordt getoond op Figuur \ref{fig:BH_curve_S235JR}. Er treedt saturatie op wanneer deze curve afvlakt, dus we willen in het lineair deel van de curve blijven werken. De curve vlakt af bij $\sim1.5\mathrm{T}$, dus willen we dat de maximale fluxdichtheid in onze polepieces hieronder blijft. Bij het ontwerp proberen we de parameters zo te kiezen dat $B_g<1.25\mathrm{T}$.
+    \item Een andere belangrijke factor waarmee we rekening moeten houden is de $BH$-curve van de polepieces. We gaan er in vergelijking \ref{eq:Br_yoke} van uit dat alle veldlijnen vanuit de magneet worden uitgespreid over de oppervlaktes van de polepieces. In het algemeen is de oppervlakte van de polepieces kleiner dan die van de magneet, waardoor de veldlijnen zullen concentreren en de fluxdichtheid toeneemt. Dit betekent dat we moeten oppassen dat de polepieces niet gesatureerd raken, want dan zou er magnetisch veld weglekken wat allerlei ongewenste effecten met zich meebrengt. Om een bovengrens voor $B_g$ vast te leggen, moeten we naar de $BH$-curve van S235JR kijken. Deze wordt getoond op Figuur \ref{fig:BH_curve_S235JR}. Er treedt saturatie op wanneer deze curve afvlakt, dus we willen in het lineair deel van de curve blijven werken. De curve vlakt af bij $\sim1.5\mathrm{T}$, dus willen we dat de maximale fluxdichtheid in onze polepieces hieronder blijft. Bij het ontwerp proberen we de parameters zo te kiezen dat $B_g<1.25\mathrm{T}$.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{Images/BH_curve_S235JR.png}
+        \caption{$BH$-curve van S235JR. Het is belangrijk dat de curve bij onze waarde voor $B_g$ lineair is, zodat er geen saturatie optreedt en er geen magnetisch veld weglekt. \cite{Buchenau_2014}}
+        \label{fig:BH_curve_S235JR}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{Images/operating_point_25.png}
+        \caption{Het werkingspunt van de magneet bij $P_{ci}=2.5$. Dit is de ondergrens die we voor voor ons ontwerp kiezen om te voorkomen dat er demagnetisatie van de magneet zou optreden. Het werkingspunt kan door een groot aantal onvoorziene factoren dichter dan verwacht bij de elleboog van de curve liggen, dus moeten we ervoor zorgen dat $P_{ci}$ groot genoeg blijft.}
+        \label{fig:operating_point_25}
+    \end{figure}
+
+    \item Ten slotte moeten we rekening houden met geometrische beperkingen. De binnenstraal $R_1$ moet groter dan $\sim 0.5\mathrm{mm}$ zijn om te voorkomen dat de elektronen door de gaten van beide polepieces kunnen en niet op een oppervlak botsen. De buitenstraal $R_2$ moet uiteraard kleiner zijn dan de binnenstraal van de magneet $R_{1, m}$, maar kiezen we best nog kleiner ($R_2<R_{1, m}-1\mathbf{mm}$) om te voorkomen dat het magnetisch circuit kan kortsluiten doordat de veldlijnen van de magneet naar de oppervlakken van de polepieces kunnen overslaan. Bovendien mogen de toleranties van het ontwerp niet te klein worden voor de CNC machines waarmee de polepieces gemaakt worden. Bij voorkeur zijn de gekozen afmetingen ook afgeronde getallen, zodat er bv. standaard boorgaten kunnen worden gebruikt bij het produceren van de polepieces. Ten slotte kunnen we de afmetingen van de magneet niet vrij kiezen; deze worden niet op maat gemaakt, dus we hebben keuze tussen een beperkt aantal dimensies.
     
 \end{enumerate}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{Images/BH_curve_S235JR.png}
-    \caption{$BH$-curve van S235JR. Het is belangrijk dat de curve bij onze waarde voor $B_g$ lineair is, zodat er geen saturatie optreedt en er geen magnetisch veld weglekt. \cite{Buchenau_2014}}
-    \label{fig:BH_curve_S235JR}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{Images/operating_point_25.png}
-    \caption{Het werkingspunt van de magneet bij $P_{ci}=2.5$. Dit is de ondergrens die we voor voor ons ontwerp kiezen om te voorkomen dat er demagnetisatie van de magneet zou optreden. Het werkingspunt kan door een groot aantal onvoorziene factoren dichter dan verwacht bij de elleboog van de curve liggen, dus moeten we ervoor zorgen dat $P_{ci}$ groot genoeg blijft.}
-    \label{fig:operating_point_25}
-\end{figure}
-
+\subsection{Simulatie van lenseigenschappen}
+Zoals beschreven in hoofdstuk \ref{ch:implementatie}, hebben we in Python een klasse geschreven waarmee we snel de lenseigenschappen van een bepaald lensontwerp kunnen berekenen. Het bepalen van de optimale lensparameters kunnen we hiermee bepalen gewoonweg via trial-and-error, door steeds de lensparameters aan te passen en de lenseigenschappen te berekenen. Het is echter nuttig om de invloed van de verschillende parameters te onderscheiden om ze individueel te kunnen onderzoeken. Hiervoor kiezen we voor een bepaalde lensparameter een boven en ondergrens en berekenen we (voor vaste overige lensparameters) de lenseigenschappen voor een groot aantal punten tussen deze twee grenzen. De resultaten kunnen we dan op een grafiek weergeven om zo efficiënter de lensparameters te optimaliseren. We hebben voor vier verschillende lensparameters ($R_1$, $R_2$, $d_g$, en $B_r$) een functie geïmplementeerd waarmee we dit soort grafieken kunnen plotten. Op deze grafieken plotten we ook de permeantiecoëfficiënt\footnote{Voor $B_r$ doen we dit niet aangezien $P_{ci}$ onveranderd blijft onder een herschaling van de $BH$-curve.} $P_{ci}$ om te voorkomen dat we de reluctantie van het magnetisch circuit niet te groot maken. Het variëren van de de afmetingen van de magneet heeft enkle een verandering van $B_m$ als gevolg, en kunnen dus ook gemodelleerd worden door het variëren van $B_r$. Naast de vier genoemde lensparameters maken we ook een grafiek voor variaties van de versnelspanning\footnote{Ook voor $T$ heeft het geen zin om $P_{ci}$ te plotten aangezien dit een eigenschap van de lens (en niet de microscoop) is.} $T$. Merk op dat de afgeleiden van de lenseigenschappen in functie van $T$ van een maat zijn voor de chromatische aberratie. Hoe groter de afhankelijkheid van de versnelspanning, hoe groter de fouten bij een kleine variatie van de energie/versnelspanning.
 
 
 \begin{figure}[H]
     \centering
-    % --- First Row ---
+
     \begin{subfigure}[b]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Images/variable_R_1.png}
@@ -555,9 +570,7 @@ Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een 
         \label{fig:variable_R_2}
     \end{subfigure}
 
-    \vspace{0.5cm} % Adds vertical spacing between rows
-
-    % --- Second Row ---
+    \vspace{0.5cm} 
     \begin{subfigure}[b]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Images/variable_d.png}
@@ -572,7 +585,7 @@ Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een 
         \label{fig:variable_B_r}
     \end{subfigure}
 
-    \caption{Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een geod beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen naar wens te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de polepieces, welke niet te hoog mag zijn om saturatie-effecten te voorkomen.}
+    \caption{Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen naar wens te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de polepieces, welke niet te hoog mag zijn om saturatie-effecten te voorkomen.}
     \label{fig:grid_2x2}
 \end{figure}
 

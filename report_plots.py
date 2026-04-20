@@ -110,6 +110,8 @@ def variable_plots():
     print("Saved variable d plot")
     permanent_magnet_lens.variable_B_r(0.7, 1.3, 50, 'report/Images/variable_B_r.png', dpi=DPI)
     print("Saved variable Br plot")
+    permanent_magnet_lens.variable_T(25, 35, 50, 'report/Images/variable_T.png', dpi=DPI)
+    print("Saved variable T plot")
 
 def plot_glasers_field():
     z_eval = np.linspace(-5, 5, 1000)
