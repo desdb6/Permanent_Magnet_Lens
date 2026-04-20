@@ -27,6 +27,7 @@
 % !TEX root = uantwerpenbamathesis-example.tex
 \documentclass[we,twoside,openright,a4paper,11pt]{uantwerpenbamathesis}
 \usepackage{subcaption}
+\usepackage{booktabs}
 
 \usepackage[dutch]{babel} % or english if your text is in English
 \usepackage{amsmath}
@@ -88,9 +89,9 @@ Elektronenmicroscopie is een uiterst belangrijke beeldvormingstechniek waarmee m
 
 Een magnetische lens bestaat typisch uit een solenoïde die een axissymetrisch magnetisch veld opwekt. Twee polepieces met een hoge permeabiliteit zullen dit veld dan beïnvloeden zodat we op de as van de optische opstelling de gewenste vorm van het magneetveld krijgen. Wanneer elektronen doorheen de opstelling bewegen wordt hun beweging door de Lorentzkracht van het magnetisch veld, waardoor we het beeld kunnen focussen, vergroten of verkleinen.\\
 
-Dit soort lenzen hebben enkele nadelen, met name dat ze redelijk groot zijn, de productie ervan duur is, en dat er een zeer precieze constante stroom nodig is om het magnetisch veld in stand te houden. In deze bachelorproef onderzoeken we de viabiliteit van een miniatuurlens op basis van een permanente NdFeB-magneet, welke zowel kleiner, goedkoper als toegankelijker in gebruik zou zijn. De lens bestaat uit een kleine ($12\text{mm}$ buitendiameter) ringmagneet en twee symmetrische polepieces uit S235JR staal.\\
+Dit soort lenzen hebben enkele nadelen, met name dat ze redelijk groot zijn, de productie ervan duur is, en dat er een zeer precieze constante stroom nodig is om het magnetisch veld in stand te houden. In deze bachelorproef onderzoeken we de viabiliteit van een miniatuurlens op basis van een permanente NdFeB-magneet, welke zowel kleiner, goedkoper als toegankelijker in gebruik zou zijn. De lens bestaat uit een kleine ($12\text{mm}$ buitendiameter) ringmagneet en twee symmetrische polepieces uit ASI1018 staal.\\
 
-Eerst berekenen we d.m.v. een analytische uitdrukking en een numerieke simulatie in het simulatieprogramma SIMION hoe het magnetisch veld er in functie van de vorm van de polepieces uit ziet. Vervolgens kunnen we de baan van de elektronen doorheen de lens met Python simuleren om de lenseigenschappen te berekenen (focaalafstand, object principal plane, image principal plane). Hierbij is het uiterst belangrijk om rekening te houden met eventuele magnetische saturatie van de polepieces. We trachtten een dunne lens te ontwerpen met een focaalafstand van $\sim8.5\text{mm}$.\\
+Eerst berekenen we d.m.v. een analytische uitdrukking en een numerieke simulatie in het simulatieprogramma SIMION hoe het magnetisch veld er in functie van de vorm van de polepieces uit ziet. Vervolgens kunnen we de baan van de elektronen doorheen de lens met Python simuleren om de lenseigenschappen te berekenen (focaalafstand, object principal plane, image principal plane). Hierbij is het uiterst belangrijk om rekening te houden met eventuele magnetische saturatie van de polepieces. We trachtten een dunne lens te ontwerpen met een focaalafstand van $\sim11.5\text{mm}$.\\
 
 Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens realiseren. De lenseigenschappen worden gekarakteriseerd in een 30keV SEM waarvan het optisch systeem sterk lijkt op een de werking van een TEM. We willen hierbij nagaan hoe de werkelijke lenseigenschappen en het magnetisch veld van de voorspelde grootheden afwijken, en wat de mogelijke storingen zouden kunnen zijn. Daarnaast willen we ook onderzoeken welke aberraties in welke mate aanwezig zijn. Op deze manier krijgen we meer inzicht in het ontwerp en de werking van permanente-magneet elektronenlenzen.
 \end{multicols}
@@ -103,7 +104,32 @@ Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens r
 \chapter{Onderzoeksvraag}
 
 \chapter{Literatuurstudie}
+\section{Elektronenoptica}
+
 \section{Magnetische elektronenlenzen}
+
+\subsection{Aberraties}
+
+\subsubsection{Distortie}
+\cite{PWHawkes}
+\begin{equation}\label{eq:distortion}
+    \begin{split}
+        x_i & = M\left(x_0+Dx_0\left(x_0^2+y_0^2\right)\right)\\
+        y_i & = M\left(y_0+Dy_0\left(x_0^2+y_0^2\right)\right)\\
+    \end{split}
+\end{equation}
+
+\subsubsection{Chromatische aberratie}
+\begin{equation}\label{eq:chr_ab}
+    \begin{split}
+        x_i & = M\left(x_0+C_mx_0\frac{\Delta\Phi}{\Phi}\right)\\
+        y_i & = M\left(y_0+C_my_0\frac{\Delta\Phi}{\Phi}\right)\\
+    \end{split}
+\end{equation}
+
+\subsubsection{Sferische aberratie}
+
+\subsection{State of the art}
 
 \section{Permanente magneet elektronenlenzen}
 
@@ -169,7 +195,7 @@ De relativistisch correcte versie van deze vergelijking is:
 Met $V=\Phi\left(1+\frac{e}{2mc^2}\Phi\right)$. Deze vergelijking zullen we later numeriek oplossen voor het geschatte magnetisch veld om de lenseigenschappen van lenzen te simuleren. \\
 
 Merk op dat de paraxiale bewegingsvergelijking lineair is. Dit betekent dat twee lineair onafhankelijke oplossingen voldoende is om de algemene oplossing van deze vergelijking op te stellen. Conventioneel noemt men $z_0$ de positie van het vlak van het voorwerp dat we met een magnetische lens willen uitvergroten, en kiest met twee basisoplossingen $g(z)$ en $h(z)$ zodanig dat:
-\begin{align}
+\begin{align}\label{eq:gh}
     g(z_0)=1, g'(z_0)=0 \\[6pt]
     h(z_0)=0, h'(z_0)=1
 \end{align}
@@ -228,6 +254,8 @@ Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een 
 \end{figure}
 In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele roosteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de roosteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z' = -C_s \alpha^2$, dus door $z'$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kunnen we berekenen door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
 
+\color{red} Extra sectie met uitleg waarom we best meer dan 1 lens nodig hebben om een diffractiepatroon uit te vergroten? \color{black}
+
 \chapter{Eigen realisatie}
 \section{Werking permanente magneetlens}
 Voor we in de details van het ontwerpsproces van de lens duiken, is het verstandig om het concept van het ontwerp helder uit te leggen. Het doel is om een magnetisch veld te ontwerpen dat de elektronen op zo'n manier afbuigt zodanig dat een paralelle bundel geconcentreerd zal worden in een punt op de optische as. Hierbij willen we dat de lens aan enkele gewenste eigenschappen voldoet.\\
@@ -247,7 +275,7 @@ Het ontwerp dat we in deze thesis onderzoeken en aan beide voorwaarden voldoet, 
 
 Om een axissymetrisch veld te veroorzaken, maken we gebruik van een kleine ringvormige NdFeB magneet met een remanent magneetveld van $\sim1.4\mathrm{T}$. We kunnen in principe enkel de magneet als lens gebruiken, maar dit is niet optimaal; het magnetisch veld zou dan uitgebreid in de ruimte zijn, terwijl we een zo sterk mogelijk veld op de symmetrieas van de lens willen. We kunnen het veld naar het midden van de lens "begeleiden" d.m.v. polepieces gemaakt uit een zacht ferromagnetisch materiaal met een hoge permeabiliteit $\mu$. Als de permabiliteit voldoende hoog is, dan zullen de grote meerderheid van de veldlijnen in de polepieces blijven en in het midden van de lens de opening of \textit{gap} oversteken. Bij het oversteken van de opening tussen de polepieces lopen de velden niet perfect loodrecht van het ene oppervlak naar het andere, maar door randeffecten zullen ze naast de oppervlakken naar buiten buigen. Op deze manier krijgen we in het gat een lokaal sterk veld, zoals gewenst.\\
 
-Voor de ringmagneet kiezen we een NdFeB van graad N35. Er bestaan magneten met betere graden, maar voor een relatief kleine versnelspanning van $30\mathrm{KeV}$ is dit materiaal voldoende sterk. Voor de polepieces gebruiken S235JR, een zacht ferromagnetisch staal dat geschikt is om gebruikt te worden in een CNC-machine. Deze materialen zullen meer in detail besproken worden in sectie \ref{ch:lensontwerp}.
+Voor de ringmagneet kiezen we een NdFeB van graad N35. Er bestaan magneten met betere graden, maar voor een relatief kleine versnelspanning van $30\mathrm{KeV}$ is dit materiaal voldoende sterk. Voor de polepieces gebruiken ASI1018, een zacht ferromagnetisch staal dat geschikt is om gebruikt te worden in een CNC-machine. Deze materialen zullen meer in detail besproken worden in sectie \ref{ch:lensontwerp}.
 \section{Analytische afschatting magnetisch veld}
 Vooraleer we de lenseigenschappen van de lens kunnen simuleren, willen we een analytische schatting maken van het magnetisch veld $B(z)$ op de symmetrieas van de lens. Hiervoor maken enkele belangrijke benaderingen om de berekeningen te vereenvoudigen.\\
 
@@ -571,7 +599,7 @@ We zien dat het Glaser's field een goede benadering zou geven, maar de piek in h
 
 Om de paraxiale bewegingsvergelijking op te lossen, gebruiken we de solve\_ivp functie van de scipy.integrate bibliotheek. Het objectvlak $z_0$ kunnen we naar wens instellen, en we gebruiken een 8ste orde Runge-Kutta methode (DOP853) om de twee lineair onafhankelijke oplossingen $g$ en $h$ te berekenen. De oplossing $g(z)$, waarvoor geldt dat $g(z_0)=1$ en $g'(z_0)=0$, kunnen we dan gebruiken om de lenseigenschappen te berekenen. Ten eerste kijken we in welk vlak de twee asymtoten van $g(z)$, de object en beeld asymtotische bundels, elkaar snijden. Dit vlak is het achterste/beeld hoofdvlak van de lens $z_{Pi}$. Ten tweede kijken we waar de beeld asymtotische bundel de symmetrie-as van de lens snijdt. Alle parallel bewegende elektronen zullen door dit punt passeren, dus dit is het brandpunt in het focusvlak $z_{Fi}$ van de lens. De brandpuntsafstand kunnen we dan berekenen uit $f=z_{Fi}-z_{Pi}$. Door de symmetrie van het magnetisch veld kunnen we het object beeldvlak en het object focusvlak vinden uit $z_{Po}=-z_{Pi}$ en $z_{Fo}=-z_{Fi}$, Figuur \ref{fig:setup_1} toont een voorbeeld van een numerieke oplossing van $g$. In dit geval vinden we een brandpuntsafstand van $f=15.50\mathrm{mm}$ en bevindt het beeld hoofdvlak zich op $z_{Pi}=-0.33\mathrm{mm}$ van het midden van de lens.\\
 
-Eens we de twee lineair onafhankelijke oplossingen hebben berekend, is het mogelijk om de baan van eender welk elektron af te beelden door een lineaire combinatie van de twee oplossingen te maken. Op deze manier kunnen we stralingsdiagrammen zoals Figuur \ref{fig:setup_2}, waarbij we de lens van de voorgaande figuur hebben gebruikt om een vergroting van $M=5$ te krijgen. We tekenen op de figuur de drie hoofdstralen: de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. Deze drie kruisen elkaar in 1 punt achter de lens, waar het beeld gevormd wordt. Merk ook op dat de straal die door het midden van de lens gaat niet wordt afgebogen, zoals men zou verwachten.
+Eens we de twee lineair onafhankelijke oplossingen hebben berekend, is het mogelijk om de baan van eender welk elektron af te beelden door een lineaire combinatie van de twee oplossingen te maken. Op deze manier kunnen we stralingsdiagrammen zoals Figuur \ref{fig:setup_2}, waarbij we de lens van de voorgaande figuur hebben gebruikt om een vergroting van $M=5$ te krijgen. We tekenen op de figuur de drie hoofdstralen: de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. Deze drie kruisen elkaar in 1 punt achter de lens, waar het beeld gevormd wordt. Merk ook op dat de straal die door het midden van de lens gaat bijna niet wordt afgebogen, zoals men zou verwachten bij een dunne lens in de geometrische optica.
 
 \begin{figure}[H]
     \centering
@@ -587,12 +615,13 @@ Eens we de twee lineair onafhankelijke oplossingen hebben berekend, is het mogel
     \label{fig:setup_2}
 \end{figure}
 \subsection{Aberratiecoëfficienten}
-Met de analystische afschatting van het veld en de analytische afgeleiden zijn we instaat om de asymtotische aberratiecoëfficiënten van de lens te berekenen. De uitdrukkingen van deze coëfficiënten worden hieronder gertoond \cite{PWHawkes}.
+Met de analystische afschatting van het veld en de analytische afgeleiden zijn we in staat om de asymtotische aberratiecoëfficiënten in vergelijkingen \ref{eq:distortion} en \ref{eq:chr_ab} van de lens te berekenen. De uitdrukkingen van deze coëfficiënten worden hieronder gertoond \cite{PWHawkes}.
 \begin{align}
-    D&=\frac{3}{8f}+\frac{\eta^2}{48V}\int_{-\infty}^{+\infty}\left(\frac{4\eta^2}{V}B^4+5B'^2-BB''\right)G^3Hdz\\
-    C_M&=-\frac{\eta^2}{4V}\int_{-\infty}^{+\infty}B^2GHdz\\
-    C_\theta&=\frac{\eta}{4\sqrt{V}}\int_{-\infty}^{+\infty}Bdz
+    D&=\frac{3}{8f}+\frac{\eta^2}{48V}\int_{-\infty}^{+\infty}\left(\frac{4\eta^2}{V}B^4+5B'^2-BB''\right)g^3hdz\\
+    C_M&=-\frac{\eta^2}{4V}\int_{-\infty}^{+\infty}B^2ghdz
 \end{align}
+Merk op dat de oplossinge $g$ en $h$ van vergelijking \ref{eq:gh} optreden. Deze opolssingen worden als dimensieloos beschouwd. Deze integralen zijn zeer zelden analytisch oplosbaar, en ook aangezien we geen anaylitische uitdrukkingen voor $g$ en $h$ hebben moeten we deze numeriek oplossen door de Riemann-som met een kleine $\Delta z$ te nemen. 
+\color{red} Sferische aberratie ook nog te berekenen \color{black}
 
 \section{Lensontwerp}\label{ch:lensontwerp}
 Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een lens te simuleren, kunnen de parameters van de lens gaan optimaliseren om een geschikte dunne lens te maken. Hierbij moeten we rekening houden met het volgende:
@@ -600,22 +629,24 @@ Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een 
     \item We willen liefst een dunne lens, dus willen we $z_{Pi}\approx0$. Dit betekent dat dat $B(z)$ een smalle piek moet vertonen.
 
     \item We willen een lens die we in de MIRA microscoop kunnen gebruiken. Concreet betekent dit dat we een focale lengte willen die rond de $5-10\mathrm{mm}$ ligt. Hiervoor moet $\sigma_M$ voldoende groot zijn, en moet $R_1$ voldoende klein zijn zodat de ladingen zich niet te ver van de optische as bevinden.
+    
+    \item We willen dat de berekende aberratiecoëfficiënten $D$ en $C_M$ niet al te groot zijn om vervormde beelden te voorkomen. Typische waarden voor $D$ en $C_M$ zijn respectievelijk $\sim0.5\mathrm{mm}^{-2}$ en $\sim1-3$ \cite{Abbas_2016} \cite{JEOL_Aberrations}. We proberen daarom de coëfficiënten onder deze waarden te houden.
 
     \item Figuur \ref{fig:operating_point} toonde de $BH$-curve van graad N35 NdFeB. We willen ten eerste dat het werkingspunt de elleboog van deze curve niet overschrijdt, omdat het remanent veld van de magneet dan snel zou afnemen of zelfs zou omkeren. Echter, de elleboog bevindt zich ongeveer bij $B_r=1.1\mathrm{T}, \mu_0 H_d = 1.2\mathrm{T}$, dus bij $\mu_0 H_d>B_r$. Het is met andere woorden niet mogelijk om de magneet (bij kamertemperatuur) in een circuit te demagnetiseren zonder een extern magnetisch veld aan te leggen.\\
 
     Echter, het is nog steeds gewenst dat het demagnetiserend veld zo klein mogelijk blijft; een groot demagnetiserend veld zorgt nog steeds voor een instabieler circuit. Een exterm demagnetiserend veld of een hogere temperatuur kunnen de magneet in dat geval makkelijker irreversiebel doen demagnetiseren. In onze berekening van $H_d$ hebben we bovendien een versimpeld en geïdealiseerd systeem beschouwd; dit is slechts een schatting van de exacte waarde. De werkelijke waarde van $H_d$ kan zelfs tot $\sim1.5$ keer groter zijn dan de analytisch geschatte waarde \cite{MagnetFAQ}. Dit betekent dat we de interne permeantiecoëccifient $P_{ci}=\frac{B_r}{\mu_0 H_d}$ liefst zo groot mogelijk houden. Om ongewenste effecten te voorkomen, stellen we voor onszelf een (arbitrair gekozen) ondergrens van $P_{ci}>2.5$ in. Figuur \ref{fig:operating_point_25} toont het werkingspunt bij deze ondergrens.
 
-    \item Een andere belangrijke factor waarmee we rekening moeten houden is de $BH$-curve van de polepieces. We gaan er in vergelijking \ref{eq:Br_yoke} van uit dat alle veldlijnen vanuit de magneet worden uitgespreid over de oppervlaktes van de polepieces. In het algemeen is de oppervlakte van de polepieces kleiner dan die van de magneet, waardoor de veldlijnen zullen concentreren en de fluxdichtheid toeneemt. Dit betekent dat we moeten oppassen dat de polepieces niet gesatureerd raken, want dan zou er magnetisch veld weglekken wat allerlei ongewenste effecten met zich meebrengt. Om een bovengrens voor $B_g$ vast te leggen, moeten we naar de $BH$-curve van S235JR kijken. Deze wordt getoond op Figuur \ref{fig:BH_curve_S235JR}. Er treedt saturatie op wanneer deze curve afvlakt, dus we willen in het lineair deel van de curve blijven werken. De curve vlakt af bij $\sim1.5\mathrm{T}$, dus willen we dat de maximale fluxdichtheid in onze polepieces hieronder blijft. Bij het ontwerp proberen we de parameters zo te kiezen dat $B_g<1.25\mathrm{T}$.
+    \item Een andere belangrijke factor waarmee we rekening moeten houden is de $BH$-curve van de polepieces. We gaan er in vergelijking \ref{eq:Br_yoke} van uit dat alle veldlijnen vanuit de magneet worden uitgespreid over de oppervlaktes van de polepieces. In het algemeen is de oppervlakte van de polepieces kleiner dan die van de magneet, waardoor de veldlijnen zullen concentreren en de fluxdichtheid toeneemt. Dit betekent dat we moeten oppassen dat de polepieces niet gesatureerd raken, want dan zou er magnetisch veld weglekken wat allerlei ongewenste effecten met zich meebrengt. Om een bovengrens voor $B_g$ vast te leggen, moeten we naar de $BH$-curve van ASI1018 kijken. Deze wordt getoond op Figuur \ref{fig:BH_curve_ASI1018}. Er treedt saturatie op wanneer deze curve afvlakt, dus we willen in het lineair deel van de curve blijven werken. De curve vlakt af bij $\sim1.5\mathrm{T}$, dus willen we dat de maximale fluxdichtheid in onze polepieces hieronder blijft. Bij het ontwerp proberen we de parameters zo te kiezen dat $B_g<1.25\mathrm{T}$.
 
-    \item Ten slotte moeten we rekening houden met geometrische beperkingen. De binnenstraal $R_1$ moet groter dan $\sim 0.5\mathrm{mm}$ zijn om te voorkomen dat de elektronen door de gaten van beide polepieces kunnen en niet op een oppervlak botsen. De buitenstraal $R_2$ moet uiteraard kleiner zijn dan de binnenstraal van de magneet $R_{1, m}$, maar kiezen we best nog kleiner ($R_2<R_{1, m}-1\mathbf{mm}$) om te voorkomen dat het magnetisch circuit kan kortsluiten doordat de veldlijnen van de magneet naar de oppervlakken van de polepieces kunnen overslaan. Bovendien mogen de toleranties van het ontwerp niet te klein worden voor de CNC machines waarmee de polepieces gemaakt worden. Bij voorkeur zijn de gekozen afmetingen ook afgeronde getallen, zodat er bv. standaard boorgaten kunnen worden gebruikt bij het produceren van de polepieces. Ten slotte kunnen we de afmetingen van de magneet niet vrij kiezen; deze worden niet op maat gemaakt, dus we hebben keuze tussen een beperkt aantal dimensies.
+    \item Ten slotte moeten we rekening houden met geometrische beperkingen. De binnenstraal $R_1$ moet groter dan $\sim 0.5\mathrm{mm}$ zijn om te voorkomen dat de elektronen door de gaten van beide polepieces kunnen en niet op een oppervlak botsen. De buitenstraal $R_2$ moet uiteraard kleiner zijn dan de binnenstraal van de magneet $R_{1, m}$, maar kiezen we best nog kleiner ($R_2<R_{1, m}-1\mathrm{mm}$) om te voorkomen dat het magnetisch circuit kan kortsluiten doordat de veldlijnen van de magneet naar de oppervlakken van de polepieces kunnen overslaan. Bovendien mogen de toleranties van het ontwerp niet te klein worden voor de CNC machines waarmee de polepieces gemaakt worden. Bij voorkeur zijn de gekozen afmetingen ook afgeronde getallen, zodat er bv. standaard boorgaten kunnen worden gebruikt bij het produceren van de polepieces. Ten slotte kunnen we de afmetingen van de magneet niet vrij kiezen; deze worden niet op maat gemaakt, dus we hebben keuze tussen een beperkt aantal dimensies.
     
 \end{enumerate}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{Images/BH_curve_S235JR.png}
-    \caption{$BH$-curve van S235JR. Het is belangrijk dat de curve bij onze waarde voor $B_g$ lineair is, zodat er geen saturatie optreedt en er geen magnetisch veld weglekt. \cite{Buchenau_2014}}
-    \label{fig:BH_curve_S235JR}
+    \includegraphics[width=0.75\linewidth]{Images/BH_curve_ASI1018.png}
+    \caption{$BH$-curve van ASI1018. Het is belangrijk dat de curve bij onze waarde voor $B_g$ lineair is, zodat er geen saturatie optreedt en er geen magnetisch veld weglekt. \cite{Buchenau_2014}}
+    \label{fig:BH_curve_ASI1018}
 \end{figure}
 
 \begin{figure}[H]
@@ -626,7 +657,7 @@ Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een 
 \end{figure}
 
 \subsection{Simulatie van lenseigenschappen}
-Zoals beschreven in hoofdstuk \ref{ch:implementatie}, hebben we in Python een klasse geschreven waarmee we snel de lenseigenschappen van een bepaald lensontwerp kunnen berekenen. Het bepalen van de optimale lensparameters kunnen we hiermee bepalen gewoonweg via trial-and-error, door steeds de lensparameters aan te passen en de lenseigenschappen te berekenen. Het is echter nuttig om de invloed van de verschillende parameters te onderscheiden om ze individueel te kunnen onderzoeken. Hiervoor kiezen we voor een bepaalde lensparameter een boven en ondergrens en berekenen we (voor vaste overige lensparameters) de lenseigenschappen voor een groot aantal punten tussen deze twee grenzen. De resultaten kunnen we dan op een grafiek weergeven om zo efficiënter de lensparameters te optimaliseren. We hebben voor vier verschillende lensparameters ($R_1$, $R_2$, $d_g$, en $B_r$) een functie geïmplementeerd waarmee we dit soort grafieken kunnen plotten. Op deze grafieken plotten we ook de permeantiecoëfficiënt\footnote{Voor $B_r$ doen we dit niet aangezien $P_{ci}$ onveranderd blijft onder een herschaling van de $BH$-curve.} $P_{ci}$ om te voorkomen dat we de reluctantie van het magnetisch circuit niet te groot maken. Het variëren van de de afmetingen van de magneet heeft enkle een verandering van $B_m$ als gevolg, en kunnen dus ook gemodelleerd worden door het variëren van $B_r$. Naast de vier genoemde lensparameters maken we ook een grafiek voor variaties van de versnelspanning\footnote{Ook voor $T$ heeft het geen zin om $P_{ci}$ te plotten aangezien dit een eigenschap van de lens (en niet de microscoop) is.} $T$. Merk op dat de afgeleiden van de lenseigenschappen in functie van $T$ van een maat zijn voor de chromatische aberratie. Hoe groter de afhankelijkheid van de versnelspanning, hoe groter de fouten bij een kleine variatie van de energie/versnelspanning.
+Zoals beschreven in hoofdstuk \ref{ch:implementatie}, hebben we in Python een klasse geschreven waarmee we snel de lenseigenschappen van een bepaald lensontwerp kunnen berekenen. Het bepalen van de optimale lensparameters kunnen we hiermee bepalen gewoonweg via trial-and-error, door steeds de lensparameters aan te passen en de lenseigenschappen te berekenen. Het is echter nuttig om de invloed van de verschillende parameters te onderscheiden om ze individueel te kunnen onderzoeken. Hiervoor kiezen we voor een bepaalde lensparameter een boven en ondergrens en berekenen we (voor vaste overige lensparameters) de lenseigenschappen voor een groot aantal punten tussen deze twee grenzen. De resultaten kunnen we dan op een grafiek weergeven om zo efficiënter de lensparameters te optimaliseren. We hebben voor vier verschillende lensparameters ($R_1$, $R_2$, $d_g$, en $B_r$) een functie geïmplementeerd waarmee we dit soort grafieken kunnen plotten. Op deze grafieken plotten we ook de permeantiecoëfficiënt\footnote{Voor $B_r$ doen we dit niet aangezien $P_{ci}$ onveranderd blijft onder een herschaling van de $BH$-curve.} $P_{ci}$ om te voorkomen dat we de reluctantie van het magnetisch circuit niet te groot maken. Het variëren van de de afmetingen van de magneet heeft enkle een verandering van $B_m$ als gevolg, en kunnen dus ook gemodelleerd worden door het variëren van $B_r$. Naast de vier genoemde lensparameters maken we ook een grafiek voor variaties van de versnelspanning\footnote{Ook voor $T$ heeft het geen zin om $P_{ci}$ te plotten aangezien dit een eigenschap van de lens (en niet de microscoop) is.} $T$. Merk op dat de afgeleiden van de lenseigenschappen in functie van $T$ van een maat zijn voor de chromatische aberratie. Hoe groter de afhankelijkheid van de versnelspanning, hoe groter de fouten bij een kleine variatie van de energie/versnelspanning. Voorbeelden van deze plots worden getoond op Figuur \ref{fig:prop_grid_2x2} en \ref{fig:variable_T}.
 
 
 \begin{figure}[H]
@@ -662,8 +693,131 @@ Zoals beschreven in hoofdstuk \ref{ch:implementatie}, hebben we in Python een kl
     \end{subfigure}
 
     \caption{Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen naar wens te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de polepieces, welke niet te hoog mag zijn om saturatie-effecten te voorkomen.}
-    \label{fig:grid_2x2}
+    \label{fig:prop_grid_2x2}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/variable_T.png}
+    \caption{Plot van de lenseigenschappen in functie van de versnelspanning $\Phi$. De afgeleiden van de lenseigenschappen naar de versnelspanning geven een maat voor de chromatische aberratie.}
+    \label{fig:variable_T}
+\end{figure}
+
+We impementeren een gelijkaardige functie om ook de aberratiecoëfficiënten $D$ en $C_M$ in functie van de lensparameters $R_1$, $R_2$, $d_g$, en $B_r$ te bepalen. Deze worden getoond op Figuur \ref{fig:ab_grid_2x2}.
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/variable_R_1_ab.png}
+        \caption{}
+        \label{fig:variable_R_1_ab}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/variable_R_2_ab.png}
+        \caption{}
+        \label{fig:variable_R_2_ab}
+    \end{subfigure}
+
+    \vspace{0.5cm} 
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/variable_d_ab.png}
+        \caption{}
+        \label{fig:variable_d_ab}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/variable_B_r_ab.png}
+        \caption{}
+        \label{fig:variable_B_r_ab}
+    \end{subfigure}
+
+    \caption{Plots van aberratiecoëfficiënten $D$ en $C_M$ in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de aberratiecoëfficiënten te minimaliseren.}
+    \label{fig:ab_grid_2x2}
+\end{figure}
+Met deze hulpmiddelen kunnen we een geschikte set lensparameters kiezen die een optimale combinatie geeft van gewenste lenseigenschappen, klein demagnetiserend veld en minimale aberratiecoëfficiënten. We hebben gekozen voor de volgende lensparameters:
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}cl@{}}
+\toprule
+Lensparameter                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
+\multicolumn{1}{|c|}{$R_1$}        & \multicolumn{1}{c|}{$0.8\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$R_2$}        & \multicolumn{1}{c|}{$3.25\mathrm{mm}$} \\ \midrule
+\multicolumn{1}{|c|}{$d_g$}        & \multicolumn{1}{l|}{$0.8\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$R_{1, m}$} & \multicolumn{1}{l|}{$4.5\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$R_{2, m}$} & \multicolumn{1}{l|}{$6\mathrm{mm}$}    \\ \midrule
+\multicolumn{1}{|c|}{$d_m$}        & \multicolumn{1}{l|}{$2\mathrm{mm}$}    \\ \midrule
+\multicolumn{1}{|c|}{$B_r$}        & \multicolumn{1}{l|}{$1.17\mathrm{T}$} \\ \midrule
+\end{tabular}
+\caption{Gekozen lensparameters die een optimale lenswerking geven. We gebruiken een N35 graad NdfeB magneet, die een remanent veld van ongeveer $1.17\mathrm{T}$ heeft.}\label{tab:lens_parameters}
+\end{table}
+In de tabel staat er een enkele waarde voor het remanent veld, maar zoals eerder vermeld moeten we in feite heel de $BH$-curve in rekening nemen. Deze hangt af van de graad van de magneet die we gebruiken. De ringmagneten werden geleverd door \textit{Magnet Outlet} \cite{Magnet_Outlet}. De gebruikte magneet is van de graad N35, maar jammer genoeg is er geen datasheet met alle specificaties van de magneet beschikbaar \cite{Magnet_Grade}. We gebruiken daarom de $BH$-curve getoond op Figuur \ref{fig:BH_curve_NdFeB} bij het bepalen van de lenseigenschappen. De gekozen lensparameters geven aanleiding tot de volgende lenseigenschappen:
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}cl@{}}
+\toprule
+Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
+\multicolumn{1}{|c|}{$f$}        & \multicolumn{1}{c|}{$11.432\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$z_{Pi}$}        & \multicolumn{1}{c|}{$-0.061\mathrm{mm}$} \\ \midrule
+\multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{l|}{$11.371\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{l|}{$2.575$}  \\ \midrule
+\multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{l|}{$1.120\mathrm{T}$}    \\ \midrule
+\multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{l|}{$0.213\mathrm{mm}^{-2}$}    \\ \midrule
+\multicolumn{1}{|c|}{$C_M$}        & \multicolumn{1}{l|}{$2.237$} \\ \midrule
+\end{tabular}
+\caption{Lenseigenschappen voor de gekozen lensparameters.}\label{tab:lens_properties}
+\end{table}
+
+Deze lenseigenschappen voldoen aan onze eisen. De lens is bij benadering een dunne lens met een focale lengte die voldoende kort is voor de MIRA SEM. Het demagnetiserend veld is niet te groot en de maximale fluxdichtheid in de polepieces is voldoende klein zodat we ons nog steeds in het lineair gebied van de $BH$-curve op Figuur \ref{fig:BH_curve_ASI1018} bevinden. De aberratiecoëfficiënten zijn ook vergelijkbaar met typische waarden voor bruikbare elektronenlenzen. Eens we deze parameters hebben vastgelegd, moeten we een driedimensionaal model van de lens maken zodat de onderdelen door een CNC-service geproduceerd kunnen worden. We kiezen ervoor om het ontwerp in FreeCAD te maken. Dit kunnen we eenvoudig doen door een 2D sketch van een doorsnede van de lens met de gekozen afmetingen te maken, en vervolgens met de \textit{Revolution} functie van het programma een cilindrisch symmetrisch onderdeel op basis van de sketch te maken. Figuur \ref{fig:FreeCAD_2D} toont de 2D sketch met de afmetingen en Figuur \ref{fig:FreeCAD_grid_2x2} toont enkele screenshots van het driedimensionaal model van de polepieces. We zorgen ervoor dat de polepiece zo min mogelijk scherpe hoeken heeft, zodat het magnetisch veld nergens aan de buitenkant concentreert of weglekt. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/FreeCAD_2D.JPG}
+    \caption{2D sketch in FreeCAD van een polepiece met de gekozen lensparameters \color{red} Vervangen door technische tekening? \color{black}.}
+    \label{fig:FreeCAD_2D}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}[b]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/FreeCAD_3D_1.JPG}
+        \caption{}
+        \label{fig:FreeCAD_3D_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/FreeCAD_3D_2.JPG}
+        \caption{}
+        \label{fig:FreeCAD_3D_2}
+    \end{subfigure}
+
+    \vspace{0.5cm} 
+    \begin{subfigure}[b]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/FreeCAD_3D_3.JPG}
+        \caption{}
+        \label{fig:FreeCAD_3D_3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/FreeCAD_3D_4.JPG}
+        \caption{}
+        \label{fig:FreeCAD_3D_4}
+    \end{subfigure}
+
+    \caption{Verschillende aanzichten van het ontwerp van de polepieces in FreeCAD.}
+    \label{fig:FreeCAD_grid_2x2}
+\end{figure}
+
+Deze stepfile hebben we opgestuurd naar de CNC-service \textit{Protolabs Network} \cite{Hubs}. We hebben de polepieces laten maken in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden.
 
 
 \section{Monte Carlo simulatie van experiment}
@@ -672,7 +826,7 @@ Zoals beschreven in hoofdstuk \ref{ch:implementatie}, hebben we in Python een kl
 
 \chapter{Besluit}
 
-\bibliographystyle{alpha}
+\bibliographystyle{abbrv}
 \bibliography{bibliography}
 
 \end{document}
