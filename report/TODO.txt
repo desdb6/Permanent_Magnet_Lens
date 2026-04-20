@@ -1,6 +1,5 @@
 TODO
 
-- Maak hoofdstuk af voor Jo
 - Verduidelijk aberratiecoëfficienten
 - Literatuurstudie
 - Monte Carlo Simulaties (?)
