@@ -1,24 +1,10 @@
-\begin{thebibliography}{{Arn}19}
+\begin{thebibliography}{Haw72}
 
 \bibitem[Alm]{meshshadowgraphs}
 Luis~Thomas Almaraz.
 \newblock Measurement of the focal properties of a magnetic electron lens using
   the shadowgraph method.
 \newblock {\em Dissertations and Theses}, (Paper 6279).
-
-\bibitem[{Arn}19]{arnold_ndfeb_2019}
-{Arnold Magnetic Technologies Corp.}
-\newblock {\em Neodymium-Iron-Boron Magnet Grades Summary Product List \&
-  Reference Guide}.
-\newblock Arnold Magnetic Technologies Corporation, 770 Linden Ave., Rochester,
-  NY 14625-2764 USA, 2019.
-\newblock Rev. 181031 / 151021a.
-
-\bibitem[BSE14]{Buchenau_2014}
-D~Buchenau, G~Schmidt, and S~Eckert.
-\newblock Contact-less magneto-elastic torsional sensor based on phase-shift
-  measurements.
-\newblock {\em Measurement Science and Technology}, 25(7):075901, may 2014.
 
 \bibitem[DM08]{SIMIONuserguide}
 David~A. Dahl and David~J. Manura.
@@ -30,15 +16,5 @@ David~A. Dahl and David~J. Manura.
 P.~W. Hawkes.
 \newblock {\em Electron Optics and Electron Microscopy}.
 \newblock Taylor \& Francis LTD, 10-14 Macklin Street, London, 1972.
-
-\bibitem[{Mag}]{mmpa_permanent_magnet_guidelines}
-{Magnetic Materials Producers Association}.
-\newblock {\em Permanent Magnet Guidelines}.
-\newblock Magnetic Materials Producers Association, 8 South Michigan Avenue,
-  Suite 1000, Chicago, Illinois 60603.
-
-\bibitem[{Ste}]{MagnetFAQ}
-{Steve Constantinides}.
-\newblock Magnet faqs.
 
 \end{thebibliography}
