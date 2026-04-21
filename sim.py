@@ -429,13 +429,13 @@ class Lens:
         self.calculate_B_field()
         self.calculate_GH(0)
 
-        first_term = 3/(8*self.f)
-        integral1 = 4*ETA**2/self.T_rel*self.B_field**4
+        first_term = 3/(8*self.f**2)
+        integral1 = 4*ETA**2/self.T_rel*self.B_field**4/10**6
         integral2 = 5*self.B_field_d1**2
         integral3 = -self.B_field*self.B_field_d2
-        self.D=first_term + ETA**2/(48*self.T_rel)*np.sum((integral1 + integral2 + integral3)*self.G**3 * self.H*10**-12)*self.dx
-        self.C_M=-ETA**2/(4*self.T_rel)*np.sum(self.B_field**2 * self.G * self.H*10**-6)*self.dx
-        self.C_theta=ETA/(4*np.sqrt(self.T_rel))*np.sum(self.B_field)*self.dx
+        self.D=first_term + ETA**2/(48*self.T_rel)*np.sum((integral1 + integral2 + integral3)*self.G**3 * self.H)*self.dx/10**6
+        self.C_M=-ETA**2/(4*self.T_rel)*np.sum(self.B_field**2 * self.G * self.H)*self.dx/10**6
+        self.C_theta=ETA/(4*np.sqrt(self.T_rel))*np.sum(self.B_field)*self.dx/10**3
 
     def calculate_lens_properties(self):
         self.G, _=self.ray_trace(1, 0)
