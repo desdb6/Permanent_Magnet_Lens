@@ -195,7 +195,7 @@ def variable_plots():
     T = 30*10**3
     
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1, lens_pos=100)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=25)
 
     permanent_magnet_lens.variable_R_1(0.6, 1.2, 50, 'report/Images/variable_R_1.png', dpi=DPI)
     print("Saved variable R1 plot")

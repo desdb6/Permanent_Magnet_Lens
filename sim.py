@@ -347,11 +347,6 @@ class Lens:
         self.lens_position=lens_position
         self.n=n
         self.z_eval_full=np.linspace(0, setup_length, n)
-        self.update_T()
-        self.update_B_r_yoke()
-
-
-
         self.mesh_list=[]
 
     def update_B_r_yoke(self):
@@ -383,14 +378,17 @@ class Lens:
 
         self.z_eval = np.linspace(self.object_plane, self.setup_length, int(self.n*(1-self.object_plane/self.setup_length)))
 
+        self.update_T()
+        self.update_B_r_yoke()
         self.calculate_B_field()
         self.calculate_lens_properties()
         self.calculate_image_properties()
+        
 
     def calculate_B_field(self):
-        self.B_field = calculate_B_field(self.n, self.setup_length, self.lens_position, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet)
-        self.B_field_d1 = calculate_B_field_d1(self.n, self.setup_length, self.lens_position, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet)
-        self.B_field_d2 = calculate_B_field_d2(self.n, self.setup_length, self.lens_position, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet)
+        self.B_field = self.B_r_yoke*B_field_z(self.z_eval-self.lens_position, self.R_1, self.R_2, self.d)
+        self.B_field_d1 = self.B_r_yoke*B_field_z_d1(self.z_eval-self.lens_position, self.R_1, self.R_2, self.d)
+        self.B_field_d2 = self.B_r_yoke*B_field_z_d2(self.z_eval-self.lens_position, self.R_1, self.R_2, self.d)
 
     def plot_B_field(self):
         fig, ax = plt.subplots()
@@ -429,13 +427,15 @@ class Lens:
         self.calculate_B_field()
         self.calculate_GH(0)
 
+        mask = np.abs(self.B_field) > 0.01
+
         first_term = 3/(8*self.f**2)
         integral1 = 4*ETA**2/self.T_rel*self.B_field**4/10**6
         integral2 = 5*self.B_field_d1**2
         integral3 = -self.B_field*self.B_field_d2
-        self.D=first_term + ETA**2/(48*self.T_rel)*np.sum((integral1 + integral2 + integral3)*self.G**3 * self.H)*self.dx/10**6
-        self.C_M=-ETA**2/(4*self.T_rel)*np.sum(self.B_field**2 * self.G * self.H)*self.dx/10**6
-        self.C_theta=ETA/(4*np.sqrt(self.T_rel))*np.sum(self.B_field)*self.dx/10**3
+        self.D=first_term + ETA**2/(48*self.T_rel)*np.sum((integral1 + integral2 + integral3)[mask]*self.G[mask]**3 * self.H[mask])*self.dx/10**6
+        self.C_M=-ETA**2/(4*self.T_rel)*np.sum(self.B_field[mask]**2 * self.G[mask] * self.H[mask])*self.dx/10**6
+        self.C_theta=ETA/(4*np.sqrt(self.T_rel))*np.sum(self.B_field[mask])*self.dx/10**3
 
     def calculate_lens_properties(self):
         self.G, _=self.ray_trace(1, 0)
@@ -895,7 +895,7 @@ class Lens:
         ax1.plot(B_r_eval, f_values, color='red', label='$f$')
         ax1.plot(B_r_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
         ax1.plot(B_r_eval, Z_Fi_values, color='green', label='$z_{Fi}$')
-        ax1.set_xlabel("$B_r$ (mm)", fontsize=14)
+        ax1.set_xlabel("$B_r$ (T)", fontsize=14)
         ax1.set_ylabel("Lenseigenschap (mm)", fontsize=14)
         ax1.grid()
 
@@ -927,7 +927,7 @@ class Lens:
         _, ax1 = plt.subplots()
 
         ax1.plot(B_r_eval, C_M_values, color='blue', label='$C_M$')
-        ax1.set_xlabel("$B_r$ (mm)", fontsize=14)
+        ax1.set_xlabel("$B_r$ (T)", fontsize=14)
         ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
         ax1.grid()
         ax1.legend()
@@ -1035,7 +1035,7 @@ if __name__ == "__main__":
     plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=25)
     mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
     permanent_magnet_lens.add_mesh(mesh1)
     permanent_magnet_lens.calculate_aberration_coeff()

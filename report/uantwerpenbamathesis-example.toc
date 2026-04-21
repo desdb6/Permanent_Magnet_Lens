@@ -1,29 +1,34 @@
 \babel@toc {dutch}{}\relax 
 \contentsline {chapter}{\numberline {1}Inleiding}{3}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Onderzoeksvraag}{5}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Literatuurstudie}{7}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Elektronenoptica}{7}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Magnetische elektronenlenzen}{7}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Aberraties}{7}{subsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.1.1}Distortie}{7}{subsubsection.3.2.1.1}%
-\contentsline {subsubsection}{\numberline {3.2.1.2}Chromatische aberratie}{7}{subsubsection.3.2.1.2}%
-\contentsline {subsubsection}{\numberline {3.2.1.3}Sferische aberratie}{7}{subsubsection.3.2.1.3}%
-\contentsline {subsection}{\numberline {3.2.2}State of the art}{7}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Permanente magneet elektronenlenzen}{7}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Theoretische achtergrond}{9}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Paraxiale vergelijkingen}{9}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Mesh shadowgraph methode}{11}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Eigen realisatie}{15}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Werking permanente magneetlens}{15}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Analytische afschatting magnetisch veld}{16}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Magnetische reluctantie van het circuit}{21}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Implementatie in Python}{24}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Paraxiaal magnetisch veld}{24}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Paraxiale bewegingsvergelijkingen}{25}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Aberratiecoëfficienten}{27}{subsection.5.4.3}%
-\contentsline {section}{\numberline {5.5}Lensontwerp}{27}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Simulatie van lenseigenschappen}{29}{subsection.5.5.1}%
-\contentsline {section}{\numberline {5.6}Monte Carlo simulatie van experiment}{33}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Experimentele bepaling focale lengte}{33}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Besluit}{35}{chapter.6}%
+\contentsline {chapter}{\numberline {2}Literatuurstudie}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Elektronenoptica}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Scanning/Transmissie Elektronenmicroscopie}{5}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Magnetische elektronenlenzen}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Condenser/objectief/projector lenzen}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Aberraties}{7}{subsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2.1}Distortie}{7}{subsubsection.2.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2.2}Chromatische aberratie}{7}{subsubsection.2.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2.3}Sferische aberratie}{7}{subsubsection.2.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.3}State of the art}{7}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Permanente magneet elektronenlenzen}{7}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Motivatie}{7}{subsection.2.3.1}%
+\contentsline {chapter}{\numberline {3}Theoretische achtergrond}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Paraxiale vergelijkingen}{9}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Reële/Asymtotische lenseigenschappen}{11}{subsection.3.1.1}%
+\contentsline {chapter}{\numberline {4}Eigen realisatie}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Werking permanente magneetlens}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Analytische afschatting magnetisch veld}{14}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Magnetische reluctantie van het circuit}{19}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Implementatie in Python}{22}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Paraxiaal magnetisch veld}{22}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Paraxiale bewegingsvergelijkingen}{23}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Aberratiecoëfficienten}{25}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Lensontwerp}{25}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Simulatie van lenseigenschappen}{27}{subsection.4.5.1}%
+\contentsline {section}{\numberline {4.6}Karakterisatie in de microscoop}{32}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Experimentele bepaling focale lengte}{32}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Mesh shadowgraph methode}{32}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Monte Carlo simulatie van het experiment}{35}{subsection.4.7.2}%
+\contentsline {chapter}{\numberline {5}Vooruitzicht}{37}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Besluit}{39}{chapter.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

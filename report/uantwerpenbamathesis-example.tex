@@ -28,6 +28,8 @@
 \documentclass[we,twoside,openright,a4paper,11pt]{uantwerpenbamathesis}
 \usepackage{subcaption}
 \usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{svg}
 
 \usepackage[dutch]{babel} % or english if your text is in English
 \usepackage{amsmath}
@@ -100,13 +102,105 @@ Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens r
 \pagestyle{fancy}
 
 \chapter{Inleiding}
+Elektronenmicroscopie is een uiterst krachtige techniek die wordt gebruikt om objecten op nanometerschaal in beeld te brengen \cite{EM_Overview}. De grote magnificaties die met elektronenmicroscopen bereikbaar zijn maakt het een zeer belangrijk hulpmiddel met toepassingen in uiteenlopende gebieden zoals halfgeleiderfysica, geneeskunde, forensische onderzoeken enzovoorts. De discipline van de elektronenmicroscopie is ontwikkeld na het besef dat het oplossend vermogen van een lichtmicroscoop fundamenteel is gelimiteerd door de golflengte van zichtbaar licht, wat ontdekt werd door Ernst Karl Abbe in 1873. Een oplossing voor dit probleem werd aangeboden door Louis de Broglie in 1924 met zijn theorie van elektronengolven \cite{deBroglie1924}, waarvan de golflengte omgekeerd evenredig is met het impuls $p$ van het elektron, wat toeliet om met elektronen een groter oplossend vermogen te verkrijgen. In 1926 toonde Hans Busch aan dat het mogelijk is om met een cilindrische magnetische lens een elektronenbundel te deflecteren en te focusseren, wat nieuwe mogelijkheden bood voor het ontwikkelen van elektronenlenzen \cite{Busch1926}.\\
 
-\chapter{Onderzoeksvraag}
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{0pt}
+Doorheen de jaren heeft de theorie van elektronenoptica zich verder ontwikkeld en zijn elektronenmicroscopen door nieuwe inzichten en vooruitgang in productiemogelijkheden enkel beter geworden. Met \textit{High Resolution Transmissie Elektronenmicroscopie} (HRTEM) is het mogelijk om resoluties van de orde van $\sim50\mathrm{pm}$ te bereiken. Een krachtige elektronenmicroscoop bestaat intussen typisch uit meer dan 7 lenzen, aangevuld door aberratiecorrectoren of specifieke specimenhouders om in-situ experimenten mogelijk te maken \cite{MyscopeCourse}. \\
 
-\chapter{Literatuurstudie}
+Klassiek gebruikte magnetische elektronenlenzen bestaan uit een solenoïde om een magnetisch veld te maken dat de elektronen doet deflecteren d.m.v. de Lorentzkracht \cite{Shiltsev2021ElectronLenses}. Om een voldoende groot magnetisch veld ($\sim 2-3\mathrm{T}$) te kunnen induceren hebben dit soort lenzen en correctoren een of meerdere geleidende spoelen met een kleine weerstand nodig. Dit maakt dat de spoel een groot aantal windingen moet hebben, wat een grote hoeveelheid koperdraad vereist. Hierdoor zijn magnetische solenoïdelenzen typisch groot, zwaar en kostelijk.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Images/Doorsnede_Microscoop.jpg}
+\captionof{figure}{Doorsnede van een Darmstadt aberratiecorrector. In een typische elektronenlens maakt men gebruik van spoelen om een magnetisch veld op te wekken. \cite{HAWKES2015A1}}
+\label{fig:Doorsnede_Microscoop}
+\end{minipage}
+
+\vspace{1em}
+
+Mede om deze redenen blijkt de ontwikkeling van een open-source elektronenmicroscoop een traag en moeizaam proces. Wanneer men een toegankelijke, kleinere elektronenmicroscoop ontwerpt (zoals het open source NanoMi project), kiest men er vaak voor om een elektrostatische Einzellens te gebruiken \cite{MALAC2022103362}. Dit brengt enkele nadelen met zich mee, voorlamelijk dat er een relatief grote voeding nodig is om een voldoende grote spanning op te wekken die de elektronen genoeg kan deflecteren. Een andere optie is het gebruik van permanente magneet elektronenlenzen: met behulp van kleine NdFeB magneten en ferromagnetische polepieces is het mogelijk om een magnetisch veld te maken dat een elektronenbundel kan focusseren.\\
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=gray!75!black,title=Onderzoeksvraag]
+    In deze thesis onderzoeken we de viabiliteit van een elektronenlens gebaseerd op een ringvormige NdFeB magneet met twee symmetrische polepieces die worden geproduceerd door een CNC-service. Hierbij zullen we een model van de lens moeten opstellen om het magnetisch veld af te schatten, het gedrag van de lens in Python simuleren om de de lenseigenschappen te bepalen, en de lens karakteriseren in een elektronenmicroscoop met een versnelspanning van $30\mathrm{KeV}$. Hierbij zullen we analyseren hoe de experimenteel bepaalde lenseigenschappen zoals de focale lengte afwijken van de gesimuleerde waarden, en welke aberraties de lens vertoont. Onze onderzoeksvraag luidt daarom as volgt:\\
+
+    In hoeverre is het mogelijk om een miniatuur-elektronenlens bestaande op een ringvormige NdFeB en ferromagnetische polepieces te ontwerpen en gebruiken in een elektronenmicroscoop met een versnelspanning van $30\mathrm{KeV}$?\\
+\end{tcolorbox}
+
+Hoofdstuk \ref{ch:literatuur} geeft een overzicht van enkele begrippen en principes die belangrijk zijn bij het ontwerpen van een elektronenlens, en beargumenteren we welke voordelen een permanente magneet elektronenlens heeft t.o.v. de klassiek gebruikte lenzen. Hoofdstuk \ref{ch:theorie} geeft een afleiding van de paraxiale bewegingsvergelijkingen, die we nodig zullen hebben om de lenseigenschappen te simuleren eens we het magnetisch veld van de lens kennen. Hoofdstuk \ref{ch:eigen_realisatie} gaat dieper in op de eigen implementatie van deze thesis. Hierbij geven we een beschrijving van hoe de lens werkt, maken we een analytische afschatting van het magnetisch veld in de lens, implementeren we een klasse in Python om de lenseigenschappen te voorspellen, en geven we een beschrijving van de experimentele resultaten wanneer we de lens in de microscoop hebben getest. In hoofdstuk \ref{ch:vooruitzicht} bespreken we hoe het ontwerp verbeterd kan worden en hoe dit onderzoek kan bijdragen aan het ontwikkelen van een toegankelijkere open-source elektronenmicroscoop. Hoofdstuk \ref{ch:besluit} geeft nog enkele laatste opmerkingen en een conclusie van dit onderzoek.
+
+\chapter{Literatuurstudie}\label{ch:literatuur}
 \section{Elektronenoptica}
+In elektronenoptica maakt men gebruik van elektronen in plaats van fotonen om beelden te vormen. Dit laat ons toe om een grotere resolutie te krijgen dan met optische microscopen, aangezien het oplossend vermogen van een microscoop gelimiteerd wordt door de golflengte van de golven die de beelden vormen. De afmetingen van de kleinste details $d_{min}$ die kunnen worden waargenomen met een golflengte $\lambda$ is \cite{PWHawkes}:
+\begin{equation}\label{eq:d_min}
+    d_{min}=\frac{k\lambda}{A}
+\end{equation}
+Hierbij is $k$ een constante tussen $0.6-0.8$ en $A$ is de numerieke apertuur van de lens. Door dit verband is de golflengte de beperkende factor voor de magnificatie van een optische microscoop. Met een elektronenmicroscoop is het daardoor niet mogelijk om voorwerpen kleiner dan $\sim125\mathrm{nm}$ in beeld te brengen. Voor elektronen wordt de golflengte echter gegeven door:
+\begin{equation}
+    \lambda=\frac{h}{p}=\frac{h}{\sqrt{2m_e E}}
+\end{equation}
+Als we de elektronen vanuit rust versnellen met een versnelspanning $\Phi$, dan krijgen we:
+\begin{equation}
+    \lambda=\frac{h}{\sqrt{2m_e e\Phi}}
+\end{equation}
+Op deze manier kunnen we dus de golflengte verkleinen door een grotere versnelspanning te gebruiken. Bij HRTEM gebruikt men typisch versnelspanningen tot $300\mathrm{KeV}$, waarmee picometer resoluties bereikt kunnen worden. Het huidige record voor beste resolutie staat op $0.5\mathring{A}$, wat bereikt werd m.b.v. elektronen pytografie \cite{Jiang2018Ptychography}. Elektronenoptica is op deze manier een enorm grote verbetering op "gewone" optica. De instrumenten die nodig zijn om aan elektronenoptica te doen (zoals elektronenlenzen), zijn echter veel complexer dan hun tegenhangers die met lichtgolven beelden vormen. Een elektronenmicroscoop bestaat uit een elektronengun, een of meerdere elektromagnetische lenzen met aberratiecorrectoren, eventueel een of meerdere aperturen, en een elektronendetector. Op deze manier kunnen we op dezelfde manier als met licht een voorwerp bestralen met elektronen, zodanig dat de lenzen een uitvergroot beeld van dat voorwerp op de detector zullen afbeelden.
+
+\subsection{Scanning/Transmissie Elektronenmicroscopie}
+De twee belangrijkste vormen van elektronenmicroscopie zijn \textit{Scanning Elektronenmicroscopie} (SEM) en \textit{Transmissie Elektronenmicroscopie} (TEM). De beeldvorming gebeurt bij beide technieken op een andere manier, en de opstellingen in de microscoop zijn daardoor ook anders. In deze sectie geven we een korte beschrijving van deze twee technieken.\\
+
+In een SEM zal men een elektronenbundel m.b.v. elektronenlenzen in een zeer smalle spot gaan focusseren ($\sim 3\mathrm{nm}$), welke dan over het sample gescand wordt. Deze elektronenbundel zal dan secondaire elektronen uit het oppervlak van het sample losslaan. De richting waarin deze secundaire elektronen loskomen, wordt beïnvloed door het oppervlak aan het punt waar ze loskomen en bevatten zo dus informatie over het oppervlak. Een elektronendetector die zich ergens boven het sample bevindt zal de secundaire elektronen dan verzamelen. Door de elektronenbundel met \textit{scanning coils} over het oppervlak te scannen, kunnen we voor elk punt op het oppervlak meten hoeveel elektronen er in de richting van de detector vrijkomen en op deze manier een beeld van het oppervlak vormen. De maximale versnelspanning van een SEM ligt typisch tussen $0-30\mathrm{KeV}$ \cite{PWHawkes} omdat een grotere energie te veel schade aan het sample kan opbrengen. Figuur \ref{fig:SEM_principle} toont een illustratie van het werkingsprincipe van een SEM en Figuur \ref{fig:SEM_image} toont een SEM beeld van rode bloedcellen.
+
+\begin{figure}[H]
+    \centering
+    
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/SEM_principle.png}
+        \caption{Werkingsprincipe van een SEM waarbij de elektronenbundel over het sample wordt gescand en er secundaire elektronen los worden geslagen. \cite{MyscopeCourse}}
+        \label{fig:SEM_principle}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/SEM_image.png}
+        \caption{Beeld van rode bloedcellen opgenomen met een SEM. \cite{Geekiyanage2019RBC}}
+        \label{fig:SEM_image}
+    \end{subfigure}
+    
+    \caption{}
+    \label{fig:SEM}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/TEM_principle.JPG}
+        \caption{Werkingsprincipe van een TEM waarbij een brede elektronenbundel heel het sample belicht en heel het beeld in 1 keer wordt opgenomen met een detector onder het sample. \cite{MyscopeCourse}}
+        \label{fig:TEM_principle}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/TEM_image.png}
+        \caption{Beeld van celorganellen opgenomen met een TEM. \cite{Winey2014TEM}}
+        \label{fig:TEM_image}
+    \end{subfigure}
+    
+    \caption{}
+    \label{fig:TEM}
+\end{figure}
+
+In een TEM gaat men niet scannen over het oppervlak, maar belichten we een uiterst dun en elektronentransparant specimen met een brede bundel elektronen, welke in het indeale geval een perfecte vlakke golf voorstellen. De elektronen zullen dan interageren met het specimen, en op sommige plaatsen meer of minder geabsorbeerd of gescattered worden. De uitgaande elektronenbundel bevat dan opnieuw informatie over het specimen. Door gebruik te maken van een of meerdere elektronenlenzen kunnen we dan een uitvergroot beeld van het sample afbeelden op een elektronendetector die zich onder het sample bevindt. De detector is in dit geval bijvoorbeeld een fluorescerend scherm, waarop heel het beeld in een keer afgebeeld wordt (in tegenstelling tot een SEM). De versnelspanning in een TEM kan tot $300\mathrm{KeV}$ bedragen, waardoor het oplossend vermogen beter is dan dat van een SEM. Figuur \ref{fig:TEM_principle} toont een illustratie van het werkingsprincipe van een TEM en Figuur \ref{fig:TEM_image} toont een TEM beeld van celorganellen.
+
 
 \section{Magnetische elektronenlenzen}
+
+\subsection{Condenser/objectief/projector lenzen}
 
 \subsection{Aberraties}
 
@@ -122,8 +216,8 @@ Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens r
 \subsubsection{Chromatische aberratie}
 \begin{equation}\label{eq:chr_ab}
     \begin{split}
-        x_i & = M\left(x_0+C_mx_0\frac{\Delta\Phi}{\Phi}\right)\\
-        y_i & = M\left(y_0+C_my_0\frac{\Delta\Phi}{\Phi}\right)\\
+        x_i & = M\left(x_0+C_Mx_0\frac{\Delta\Phi}{\Phi}\right)\\
+        y_i & = M\left(y_0+C_My_0\frac{\Delta\Phi}{\Phi}\right)\\
     \end{split}
 \end{equation}
 
@@ -132,8 +226,9 @@ Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens r
 \subsection{State of the art}
 
 \section{Permanente magneet elektronenlenzen}
+\subsection{Motivatie}
 
-\chapter{Theoretische achtergrond}
+\chapter{Theoretische achtergrond}\label{ch:theorie}
 \section{Paraxiale vergelijkingen}
 In deze sectie geven we een verkorte afleiding van de paraxiale vergelijking die de baan van een elektronenbundel in een axissymetrisch magnetisch veld beschrijft. De afleiding is gebaseerd op \cite{PWHawkes}. De meest algemene bewegingsvergelijking van een elektron in een elektromagnetisch veld wordt gegeven door de tweede wet van Newton waarbij de Lorentzkracht op het elektron inwerkt:
 \begin{equation}\label{eq:2nd_law_newton}
@@ -199,70 +294,23 @@ Merk op dat de paraxiale bewegingsvergelijking lineair is. Dit betekent dat twee
     g(z_0)=1, g'(z_0)=0 \\[6pt]
     h(z_0)=0, h'(z_0)=1
 \end{align}
-Merk op dat de oplossing $g$ het gedrag van een parallelle bundel beschrijft. Immers, de oplossing voor de paraxiale bewegingsvergelijking van een parallel elektron dat initieel op een constante afstand $r_0$ van de optische as beweegt kan geschreven worden als $r_0g(z)$. Stel dat $g(z)$ een nulpunt heeft, dan kruisen alle initieel parallel bewegende elektronen de optische as in dat nulpunt. Dit is exact de gewenste werking van een magnetische elektronenlens; het nulpunt van $g(z)$ is dan het brandpunt van de lens. Vergelijking \ref{eq:paraxialevgl_rel} lijkt erg op een harmonische oscillator (met een frequentie afhankelijk van $B^2$), wat betekent dat de elektronen steeds naar de optische as worden afgebogen. In het algemeen zal $g(z)$ daarom altijd een nulpunt hebben als $B(z)\neq0$.
-\section{Mesh shadowgraph methode}
-Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen gebruiken we een aangepaste versie van de \textit{rear mesh shadowgraph methode} beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een divergerende elektronenbundel te maken. De focale lengte kan dan worden afgeleid door te meten hoe divergent deze elektronenbundel juist is. Concreet kunnen we dit meten door een fijnmazig rooster (mesh grid) achter de lens in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De magnificatie van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel. Hieronder werken we enkele gevallen wiskundig uit.\\
+Merk op dat de oplossing $g$ het gedrag van een parallelle bundel beschrijft. Immers, de oplossing voor de paraxiale bewegingsvergelijking van een parallel elektron dat initieel op een constante afstand $r_0$ van de optische as beweegt kan geschreven worden als $r_0g(z)$. Stel dat $g(z)$ een nulpunt heeft, dan kruisen alle initieel parallel bewegende elektronen de optische as in dat nulpunt. Dit is exact de gewenste werking van een magnetische elektronenlens; het nulpunt van $g(z)$ is dan het brandpunt van de lens. Vergelijking \ref{eq:paraxialevgl_rel} lijkt erg op een harmonische oscillator (met een frequentie afhankelijk van $B^2$), wat betekent dat de elektronen steeds naar de optische as worden afgebogen. In het algemeen zal $g(z)$ daarom altijd een nulpunt hebben als $B(z)\neq0$.7
 
-Een van de methodes beschreven in \cite{meshshadowgraphs} maakt gebruik van een puntbron op de optische as die we een afstand $z>f$ van de lens plaatsen. We veronderstellen dat we een dunne lens gebruiken, waardoor we de dunne lensformule kunnen gebruiken:
-\begin{equation}\label{eq:thin_lens_formula}
-    \frac{1}{f}=\frac{1}{z}+\frac{1}{z'}
-\end{equation}
-De puntbron wordt dan achter de lens afgebeeld op een afstand $z'>f$ van de lens. We plaatsen nu een grid met een nauwkeurig gekende periode van $e_1$ op een afstand $b$ van de lens, waarbij $b>z'$ zodat de elektronenbundel wordt gefocusseerd voor het grid. Op een afstand $d$ van het grid plaatsen we een elektronendetector. Het beeld van de puntbron op $z'$ veroorzaakt nu een divergerende elektronenbundel die een uitvergroot schaduwbeeld van het grid op de detector werpt. De opstelling wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph}.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{Images/rear_mesh_shadowgraph.png}
-    \caption{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de magnificatie $M=\frac{E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen.}
-    \label{fig:rear_mesh_shadowgraph}
-\end{figure}
-Op het detectorbeeld meten we de grootte van 1 of meerdere afgebeeldde roosteropeningen, welke we aanduiden met $E$. De werkelijke afmeting van de roosteropeningen duiden we aan met $e=ne_1$ met $n$ het aantal roosteropeningen dat we beschouwen. De magnificatie van het schaduwbeeld is gelijk aan $M\frac{E}{e}$. Uit gelijkvormigheid van driehoeken volgt dan:
-\begin{equation}
-    \frac{c}{e}=\frac{c+d}{E}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{c}
-\end{equation}
-Dit kunnen we omvormen om $c$ te vinden:
-\begin{equation}
-    c=\frac{d}{M-1}
-\end{equation}
-Hiermee kunnen we eenvoudig de beeldafstand $z'$ bepalen:
-\begin{equation}\label{eq:image_dist_real}
-    z'=b-c=b-\frac{d}{M-1}
-\end{equation}
-Met de beeldafstand kunnen we de focaalafstand berekenen door vergelijking \ref{eq:thin_lens_formula} om te vormen. In het experiment dat we in deze thesis zullen uitvoeren passen we de voorgaande methode op twee manieren aanpassen, welke hieronder in meer detail worden uitgelegd.\\
+\subsection{Reële/Asymtotische lenseigenschappen}
 
-Het is mogelijk dat de werkelijke focale lengte van de lens groter is dan de voorspelde focale lengte, waardoor de initiële puntbron achter het voorste focaalvlak van de lens ligt. In dat geval wordt er geen reëel beeld achter de lens, maar een virtueel beeld voor de lens gevormd. Dit wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph_virtual}.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{Images/rear_mesh_shadowgraph_virtual_image.png}
-    \caption{Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een magnificatie $M>1$ geeft. }
-    \label{fig:rear_mesh_shadowgraph_virtual}
-\end{figure}
-Het is met deze opstelling nog steeds mogelijk om op deze manier de focale lengte te berekenen. Opnieuw vinden we uit gelijkvormigheid dat:
-\begin{equation}
-    \frac{e}{z'+b}=\frac{E}{z'+c+d}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{z'+b}
-\end{equation}
-Dit omvormen naar $z'$ geeft:
-\begin{equation}
-    z'=b-\frac{d}{M-1}
-\end{equation}
-Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:image_dist_real}). Opnieuw gebruiken we \ref{eq:thin_lens_formula} om $f$ te berekenen.\\
 
-Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een paralelle i.p.v. een conische elektronenbundel op de lens in te sturen. In dat geval is $z=\infty$, waardoor uit \ref{eq:thin_lens_formula} volgt dat $z'=f$. We kunnen dezelfde procedure als in de originele methode gebruiken om $c$ te bepalen, maar nu kunnen we de focale lengte rechtstreeks bepalen uit $f=b-c$. Figuur \ref{fig:rear_mesh_shadowgraph_parallel} toont de opstelling in dit geval.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{Images/rear_mesh_shadowgraph_parallel_beam.png}
-    \caption{Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt.}
-    \label{fig:rear_mesh_shadowgraph_parallel}
-\end{figure}
-In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele roosteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de roosteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z' = -C_s \alpha^2$, dus door $z'$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kunnen we berekenen door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
+\color{red} 
+Extra sectie met uitleg waarom we best meer dan 1 lens nodig hebben om een diffractiepatroon uit te vergroten?
+Meer uitleg over wat een hoofdvlak is? 
+\color{black}
 
-\color{red} Extra sectie met uitleg waarom we best meer dan 1 lens nodig hebben om een diffractiepatroon uit te vergroten? \color{black}
-
-\chapter{Eigen realisatie}
+\chapter{Eigen realisatie}\label{ch:eigen_realisatie}
 \section{Werking permanente magneetlens}
 Voor we in de details van het ontwerpsproces van de lens duiken, is het verstandig om het concept van het ontwerp helder uit te leggen. Het doel is om een magnetisch veld te ontwerpen dat de elektronen op zo'n manier afbuigt zodanig dat een paralelle bundel geconcentreerd zal worden in een punt op de optische as. Hierbij willen we dat de lens aan enkele gewenste eigenschappen voldoet.\\
 
 Ten eerste willen we een geschikte focale lengte zodat de lens bruikbaar is in een elektronenmicroscoop. Concreet zal deze lens getest worden in een Tescan MIRA SEM, waarin we een maximale totale afstand van $228.4\mathrm{mm}$ van elektronenbron tot detector ter beschikking hebben. Om een bruikbare lens te maken is het daarom gewenst dat de focale lengte niet veel langer dan $10\mathrm{mm}$ is. Verder zullen we werken we met een versnelspanning van $30\mathrm{KeV}$, wat een voorwaarde legt op de minimale sterkte van het magnetisch veld. \\
 
-%% Meer uitleg over wat een hoofdvlak is?
+
 Ten tweede is het gewenst dat de lens die we maken, een dunne lens is. Meer concreet willen we dat de hoofdvlakken samenvallen in het midden van de lens. Op deze manier is het gemakkelijker om berekeningen te doen als we opstellingen met meerdere lenzen willen bouwen, aangezien de dunne lensformule dan toepasbaar is. Dit betekent dat we een sterk ruimtelijk geconcentreerd magnetisch veld in het midden van de lens willen; de elektronen interageren dan maar heel kort met het magnetisch veld, wat een dunne lenswerking geeft. Hoe geconcentreerder we het veld maken, hoe sterker het maximale veld moet zijn om dezelfde afbuiging te veroorzaken. Om een bruikbare lens te maken willen we op de optische as een magnetisch veld met een sterkte van $\sim0.1-1\mathrm{T}$ dat geconcentreerd is over een afstand van $<5\mathrm{mm}$. \\
 
 Het ontwerp dat we in deze thesis onderzoeken en aan beide voorwaarden voldoet, wordt getoont op Figuur \ref{fig:lens_circuit_diagram}.
@@ -406,7 +454,7 @@ Deze functies worden getoond op Figuur \ref{fig:derivatives2x2}.
     \label{fig:derivatives2x2}
 \end{figure}
 
-Onze analytische afschatting kunnen we numeriek controleren met het ionen- en elektronenoptica simulatieprogramma \textit{SIMION}. Dit programma vindt de scalaire magnetische potentiaal door de Laplace-vergelijking voor een ladingsdichtheidverdeling op te lossen. Het programma kan dit door middel van finite-difference methoden; in dit geval werd het veld opgelost met een iteratieve over-relaxatie solver \cite{SIMIONuserguide}. SIMION is bovendien ontworpen om axissymetrische problemen als 2D-problemen op te lossen. Om het numeriek gevonden veld te vergelijken met de analytische uitdrukking, simuleerden we een systeem met twee homogeen geladen ringoppervlakken met $R_1=2\mathrm{mm}$, $R_2=3\mathrm{mm}$ en $d=4\mathrm{mm}$. De magnetische potentiaal werd berekend in een cilindrisch volume met een lengte van $6\mathrm{cm}$ en een straal van $10\mathrm{mm}$, met Dirichlet randvoorwaarden ($\phi=0$ op de rand\footnote{In werkelijkheid willen we $\phi=0$ op oneindig, maar we kunnen geen oneindig groot volume simuleren.}). De potentiaal op de symmetrie-as werd geëxporteerd, en het magnetisch $B(z)=\frac{\delta \phi}{\delta z}$ veld werd numeriek in python berekend. Op Figuur \ref{fig:B_field_SIMION} worden de analytische en numerieke velden vergeleken. Beide velden werden herschaald zodat $B_{max}=1$ aangezien we nog geen uitdrukking hebben voor $\sigma_M$. We zien een zeer goede overeenkomst, wat aangeeft dat onze analytische uitdrukking correct is.
+Onze analytische afschatting kunnen we numeriek controleren met het ionen- en elektronenoptica simulatieprogramma \textit{SIMION}. Dit programma vindt de scalaire magnetische potentiaal door de Laplace-vergelijking voor een ladingsdichtheidverdeling op te lossen. Het programma kan dit door middel van finite-difference methoden; in dit geval werd het veld opgelost met een iteratieve over-relaxatie solver \cite{SIMIONuserguide}. SIMION is bovendien ontworpen om axissymetrische problemen als 2D-problemen op te lossen. Om het numeriek gevonden veld te vergelijken met de analytische uitdrukking, simuleerden we een systeem met twee homogeen geladen ringoppervlakken met $R_1=2\mathrm{mm}$, $R_2=3\mathrm{mm}$ en $d=4\mathrm{mm}$. De magnetische potentiaal werd berekend in een cilindrisch volume met een lengte van $6\mathrm{cm}$ en een straal van $10\mathrm{mm}$, met Dirichlet randvoorwaarden ($\phi=0$ op de rand\footnote{In werkelijkheid willen we $\phi=0$ op oneindig, maar we kunnen geen oneindig groot volume simuleren.}). De potentiaal op de symmetrie-as werd geëxporteerd, en het magnetisch $B(z)=\frac{\delta \phi}{\delta z}$ veld werd numeriek in Python berekend. Op Figuur \ref{fig:B_field_SIMION} worden de analytische en numerieke velden vergeleken. Beide velden werden herschaald zodat $B_{max}=1$ aangezien we nog geen uitdrukking hebben voor $\sigma_M$. We zien een zeer goede overeenkomst, wat aangeeft dat onze analytische uitdrukking correct is.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Images/B_field_SIMION.png}
@@ -541,7 +589,7 @@ De volledige analytische uitdrukking van het magnetisch veld op de optische as v
 % \end{align}
 
 \section{Implementatie in Python}\label{ch:implementatie}
-Om de afhankelijkheid van de lenseigenschappen ($f, z_{Fi}, z_{Pi}$, etc.) van de lensparameters ($R_1, R_2, d_g, B_r$, etc.) te analyseren, hebben we een klasse in python geschreven. Hiermee kunnen we snel de het magnetisch veld berekenen en plotten voor een bepaalde geometrie van de magneet en de polepieces, en vervolgens de paraxiale bewegingsvergelijkingen voor dit veld oplossen om zo de lenseigenschappen te berekenen. 
+Om de afhankelijkheid van de lenseigenschappen ($f, z_{Fi}, z_{Pi}$, etc.) van de lensparameters ($R_1, R_2, d_g, B_r$, etc.) te analyseren, hebben we een klasse in Python geschreven. Hiermee kunnen we snel de het magnetisch veld berekenen en plotten voor een bepaalde geometrie van de magneet en de polepieces, en vervolgens de paraxiale bewegingsvergelijkingen voor dit veld oplossen om zo de lenseigenschappen te berekenen. 
 
 \subsection{Paraxiaal magnetisch veld}
 Om de afhankelijkheid van het magnetisch veld van de lensparameters te onderzoeken, maken we een functie die ons toelaat om de lensparameters met sliders aan te passen, terwijl het magnetisch veld continu wordt geupdated. In deze functie is ook het remanent veld $B_r$ instelbaar, wat beter gedefiniëerd moet worden aangezien de magneet niet 1 waarde voor $B_r$ heeft (maar een $BH$-curve). Deze instelling herschaalt de $BH$-curve zodanig dat het remanent veld voor $H_d=0\frac{\mathrm{A}}{\mathrm{m}}$ gelijk is aan de ingestelde waarde voor $B_r$. Een voorbeeld van een plot wordt getoond op Figuur \ref{fig:Interactive_B_field} voor de parameters $R_1=0.8\mathrm{mm}$, $R_2=3.25\mathrm{mm}$, en $d_g=0.8\mathrm{mm}$.
@@ -620,7 +668,7 @@ Met de analystische afschatting van het veld en de analytische afgeleiden zijn w
     D&=\frac{3}{8f}+\frac{\eta^2}{48V}\int_{-\infty}^{+\infty}\left(\frac{4\eta^2}{V}B^4+5B'^2-BB''\right)g^3hdz\\
     C_M&=-\frac{\eta^2}{4V}\int_{-\infty}^{+\infty}B^2ghdz
 \end{align}
-Merk op dat de oplossinge $g$ en $h$ van vergelijking \ref{eq:gh} optreden. Deze opolssingen worden als dimensieloos beschouwd. Deze integralen zijn zeer zelden analytisch oplosbaar, en ook aangezien we geen anaylitische uitdrukkingen voor $g$ en $h$ hebben moeten we deze numeriek oplossen door de Riemann-som met een kleine $\Delta z$ te nemen. 
+Merk op dat de oplossinge $g$ en $h$ van vergelijking \ref{eq:gh} optreden. Deze opolssingen worden als dimensieloos beschouwd. Bovendien zijn deze oplossingen afhankelijk van de objectpositie $z_0$, dus zijn ook de aberratiecoëfficienten afhankelijk van de afstand tussen de lens en het object.Deze integralen zijn zeer zelden analytisch oplosbaar, en ook aangezien we geen anaylitische uitdrukkingen voor $g$ en $h$ hebben moeten we deze numeriek oplossen door de Riemann-som met een kleine $\Delta z$ te nemen. 
 \color{red} Sferische aberratie ook nog te berekenen \color{black}
 
 \section{Lensontwerp}\label{ch:lensontwerp}
@@ -703,7 +751,7 @@ Zoals beschreven in hoofdstuk \ref{ch:implementatie}, hebben we in Python een kl
     \label{fig:variable_T}
 \end{figure}
 
-We impementeren een gelijkaardige functie om ook de aberratiecoëfficiënten $D$ en $C_M$ in functie van de lensparameters $R_1$, $R_2$, $d_g$, en $B_r$ te bepalen. Deze worden getoond op Figuur \ref{fig:ab_grid_2x2}.
+We impementeren een gelijkaardige functie om ook de aberratiecoëfficiënten $D$ en $C_M$ in functie van de lensparameters $R_1$, $R_2$, $d_g$, en $B_r$ te bepalen. Zoals eerder vermeld zijn $D$ en $C_M$ afhankelijk van de objectafstand $z_0$, dus om een correcte vergelijking tussen verschillende lensiegenschappen te maken, houden we de objectafstand constant op $z_0=25\mathrm{mm}$, wat een typicshe afstand is bij een focales lengtes waarbij we werken ()$f\sim 10\mathrm{mm}$). Grafieken van de aberratiecoëfficiënten in functie van de lensparameters worden getoond op Figuur \ref{fig:ab_grid_2x2}.
 \begin{figure}[H]
     \centering
 
@@ -736,7 +784,7 @@ We impementeren een gelijkaardige functie om ook de aberratiecoëfficiënten $D$
         \label{fig:variable_B_r_ab}
     \end{subfigure}
 
-    \caption{Plots van aberratiecoëfficiënten $D$ en $C_M$ in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de aberratiecoëfficiënten te minimaliseren.}
+    \caption{Plots van aberratiecoëfficiënten $D$ en $C_M$ in functie van de geometrie van de lens bij $z_0=25\mathrm{mm}$. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de aberratiecoëfficiënten te minimaliseren.}
     \label{fig:ab_grid_2x2}
 \end{figure}
 Met deze hulpmiddelen kunnen we een geschikte set lensparameters kiezen die een optimale combinatie geeft van gewenste lenseigenschappen, klein demagnetiserend veld en minimale aberratiecoëfficiënten. We hebben gekozen voor de volgende lensparameters:
@@ -761,18 +809,20 @@ In de tabel staat er een enkele waarde voor het remanent veld, maar zoals eerder
 \begin{tabular}{@{}cl@{}}
 \toprule
 Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
-\multicolumn{1}{|c|}{$f$}        & \multicolumn{1}{c|}{$11.432\mathrm{mm}$}  \\ \midrule
-\multicolumn{1}{|c|}{$z_{Pi}$}        & \multicolumn{1}{c|}{$-0.061\mathrm{mm}$} \\ \midrule
-\multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{l|}{$11.371\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$f$}        & \multicolumn{1}{c|}{$11.437\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$z_{Pi}$}        & \multicolumn{1}{c|}{$-0.060\mathrm{mm}$} \\ \midrule
+\multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{l|}{$11.377\mathrm{mm}$}  \\ \midrule
 \multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{l|}{$2.575$}  \\ \midrule
 \multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{l|}{$1.120\mathrm{T}$}    \\ \midrule
-\multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{l|}{$1.098\mathrm{mm}^{-2}$}    \\ \midrule
-\multicolumn{1}{|c|}{$C_M$}        & \multicolumn{1}{l|}{$2.237$} \\ \midrule
+\multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{l|}{$0.994\mathrm{mm}^{-2}$}    \\ \midrule
+\multicolumn{1}{|c|}{$C_M$}        & \multicolumn{1}{l|}{$0.840$} \\ \midrule
 \end{tabular}
 \caption{Lenseigenschappen voor de gekozen lensparameters.}\label{tab:lens_properties}
 \end{table}
 
-Deze lenseigenschappen voldoen aan onze eisen. De lens is bij benadering een dunne lens met een focale lengte die voldoende kort is voor de MIRA SEM. Het demagnetiserend veld is niet te groot en de maximale fluxdichtheid in de polepieces is voldoende klein zodat we ons nog steeds in het lineair gebied van de $BH$-curve op Figuur \ref{fig:BH_curve_ASI1018} bevinden. De aberratiecoëfficiënten zijn ook vergelijkbaar met typische waarden voor bruikbare elektronenlenzen. Eens we deze parameters hebben vastgelegd, moeten we een driedimensionaal model van de lens maken zodat de onderdelen door een CNC-service geproduceerd kunnen worden. We kiezen ervoor om het ontwerp in FreeCAD te maken. Dit kunnen we eenvoudig doen door een 2D sketch van een doorsnede van de lens met de gekozen afmetingen te maken, en vervolgens met de \textit{Revolution} functie van het programma een cilindrisch symmetrisch onderdeel op basis van de sketch te maken. Figuur \ref{fig:FreeCAD_2D} toont de 2D sketch met de afmetingen en Figuur \ref{fig:FreeCAD_grid_2x2} toont enkele screenshots van het driedimensionaal model van de polepieces. We zorgen ervoor dat de polepiece zo min mogelijk scherpe hoeken heeft, zodat het magnetisch veld nergens aan de buitenkant concentreert of weglekt. 
+Deze lenseigenschappen voldoen aan onze eisen. De lens is bij benadering een dunne lens met een focale lengte die voldoende kort is voor de MIRA SEM. Het demagnetiserend veld is niet te groot en de maximale fluxdichtheid in de polepieces is voldoende klein zodat we ons nog steeds in het lineair gebied van de $BH$-curve op Figuur \ref{fig:BH_curve_ASI1018} bevinden. De aberratiecoëfficiënten $C_M$ is ook vergelijkbaar met typische waarden voor bruikbare elektronenlenzen. De coëfficiënt $D$ is echter redelijk groot vergeleken met literatuurwaarden. Het is echter zeer moeilijk om deze aberratiecoëfficienten nog kleiner te maken. Als we kijken naar Figuren \ref{fig:ab_grid_2x2} en \ref{fig:prop_grid_2x2}, dan zien we dat het veranderen van een van de lensparameters om $D$ te verkleinen steeds ongewenste neveneffecten heeft. Het vergroten van $R_1$ zorgt voor een kleinere focale lengte en een grotere fluxdichtheid in de polepieces. Ook het vergtoten van $R_2$ zal $f$ doen toenemen, en verkleint de afstand tussen de buitenkant van de polepieces en de binnenkant van de magneet waardoor de kans op een kortsluiting in het circuit groter is. Het vergroten van $d_g$ tot voorbij het maxima van $D$ geeft dan weer een te kleine $P_{ci}$ en een zwakkere magneet gebruiken zodat $B_r$ verkleint geeft ook een te lange focale lengte. Om deze redenen beargumenteren we dat dit de ideale set parameters is ook als is $D$ groot t.o.v. typische waarden uit de literatuur. Bovendien kunnen we de distorie op andere manieren experimenteel minimaliseren, hierover meer in hoofdstuk \ref{ch:karakterisatie}.\\
+
+Eens we deze parameters hebben vastgelegd, moeten we een driedimensionaal model van de lens maken zodat de onderdelen door een CNC-service geproduceerd kunnen worden. We kiezen ervoor om het ontwerp in FreeCAD te maken. Dit kunnen we eenvoudig doen door een 2D sketch van een doorsnede van de lens met de gekozen afmetingen te maken, en vervolgens met de \textit{Revolution} functie van het programma een cilindrisch symmetrisch onderdeel op basis van de sketch te maken. Figuur \ref{fig:FreeCAD_2D} toont de 2D sketch met de afmetingen en Figuur \ref{fig:FreeCAD_grid_2x2} toont enkele screenshots van het driedimensionaal model van de polepieces. We zorgen ervoor dat de polepiece zo min mogelijk scherpe hoeken heeft, zodat het magnetisch veld nergens aan de buitenkant concentreert of weglekt. 
 
 \begin{figure}[H]
     \centering
@@ -819,15 +869,73 @@ Deze lenseigenschappen voldoen aan onze eisen. De lens is bij benadering een dun
 
 Deze stepfile hebben we opgestuurd naar de CNC-service \textit{Protolabs Network} \cite{Hubs}. We hebben de polepieces laten maken in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden.
 
-
-\section{Monte Carlo simulatie van experiment}
+\section{Karakterisatie in de microscoop}\label{ch:karakterisatie}
 
 \section{Experimentele bepaling focale lengte}
 
-\chapter{Besluit}
+\subsection{Mesh shadowgraph methode}
+Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen gebruiken we een aangepaste versie van de \textit{rear mesh shadowgraph methode} beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een divergerende elektronenbundel te maken. De focale lengte kan dan worden afgeleid door te meten hoe divergent deze elektronenbundel juist is. Concreet kunnen we dit meten door een fijnmazig rooster (mesh grid) achter de lens in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De magnificatie van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel. Hieronder werken we enkele gevallen wiskundig uit.\\
+
+Een van de methodes beschreven in \cite{meshshadowgraphs} maakt gebruik van een puntbron op de optische as die we een afstand $z>f$ van de lens plaatsen. We veronderstellen dat we een dunne lens gebruiken, waardoor we de dunne lensformule kunnen gebruiken:
+\begin{equation}\label{eq:thin_lens_formula}
+    \frac{1}{f}=\frac{1}{z}+\frac{1}{z'}
+\end{equation}
+De puntbron wordt dan achter de lens afgebeeld op een afstand $z'>f$ van de lens. We plaatsen nu een grid met een nauwkeurig gekende periode van $e_1$ op een afstand $b$ van de lens, waarbij $b>z'$ zodat de elektronenbundel wordt gefocusseerd voor het grid. Op een afstand $d$ van het grid plaatsen we een elektronendetector. Het beeld van de puntbron op $z'$ veroorzaakt nu een divergerende elektronenbundel die een uitvergroot schaduwbeeld van het grid op de detector werpt. De opstelling wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/rear_mesh_shadowgraph.png}
+    \caption{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de magnificatie $M=\frac{E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen.}
+    \label{fig:rear_mesh_shadowgraph}
+\end{figure}
+Op het detectorbeeld meten we de grootte van 1 of meerdere afgebeeldde roosteropeningen, welke we aanduiden met $E$. De werkelijke afmeting van de roosteropeningen duiden we aan met $e=ne_1$ met $n$ het aantal roosteropeningen dat we beschouwen. De magnificatie van het schaduwbeeld is gelijk aan $M\frac{E}{e}$. Uit gelijkvormigheid van driehoeken volgt dan:
+\begin{equation}
+    \frac{c}{e}=\frac{c+d}{E}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{c}
+\end{equation}
+Dit kunnen we omvormen om $c$ te vinden:
+\begin{equation}
+    c=\frac{d}{M-1}
+\end{equation}
+Hiermee kunnen we eenvoudig de beeldafstand $z'$ bepalen:
+\begin{equation}\label{eq:image_dist_real}
+    z'=b-c=b-\frac{d}{M-1}
+\end{equation}
+Met de beeldafstand kunnen we de focaalafstand berekenen door vergelijking \ref{eq:thin_lens_formula} om te vormen. In het experiment dat we in deze thesis zullen uitvoeren passen we de voorgaande methode op twee manieren aanpassen, welke hieronder in meer detail worden uitgelegd.\\
+
+Het is mogelijk dat de werkelijke focale lengte van de lens groter is dan de voorspelde focale lengte, waardoor de initiële puntbron achter het voorste focaalvlak van de lens ligt. In dat geval wordt er geen reëel beeld achter de lens, maar een virtueel beeld voor de lens gevormd. Dit wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph_virtual}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/rear_mesh_shadowgraph_virtual_image.png}
+    \caption{Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een magnificatie $M>1$ geeft. }
+    \label{fig:rear_mesh_shadowgraph_virtual}
+\end{figure}
+Het is met deze opstelling nog steeds mogelijk om op deze manier de focale lengte te berekenen. Opnieuw vinden we uit gelijkvormigheid dat:
+\begin{equation}
+    \frac{e}{z'+b}=\frac{E}{z'+c+d}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{z'+b}
+\end{equation}
+Dit omvormen naar $z'$ geeft:
+\begin{equation}
+    z'=b-\frac{d}{M-1}
+\end{equation}
+Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:image_dist_real}). Opnieuw gebruiken we \ref{eq:thin_lens_formula} om $f$ te berekenen.\\
+
+Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een paralelle i.p.v. een conische elektronenbundel op de lens in te sturen. In dat geval is $z=\infty$, waardoor uit \ref{eq:thin_lens_formula} volgt dat $z'=f$. We kunnen dezelfde procedure als in de originele methode gebruiken om $c$ te bepalen, maar nu kunnen we de focale lengte rechtstreeks bepalen uit $f=b-c$. Figuur \ref{fig:rear_mesh_shadowgraph_parallel} toont de opstelling in dit geval.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/rear_mesh_shadowgraph_parallel_beam.png}
+    \caption{Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt.}
+    \label{fig:rear_mesh_shadowgraph_parallel}
+\end{figure}
+In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele roosteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de roosteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z' = -C_s \alpha^2$, dus door $z'$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kunnen we berekenen door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
+
+\subsection{Monte Carlo simulatie van het experiment}
+
+
+\chapter{Vooruitzicht}\label{ch:vooruitzicht}
+
+\chapter{Besluit}\label{ch:besluit}
 
 \bibliographystyle{abbrv}
-\bibliography{bibliography}
+\bibliography{bibliography}   % your .bib filename without .bib extension
 
 \end{document}
 
