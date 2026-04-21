@@ -11,6 +11,41 @@ def B_field_ring(z, R_1, R_2):
 def B_field_lens(z, R_1, R_2, d):
     return B_field_ring(z+d/2, R_1, R_2)-B_field_ring(z-d/2, R_1, R_2)
 
+def B_field_ring_d1(z, R_1, R_2):
+    r1_sq = R_1 ** 2
+    r2_sq = R_2 ** 2
+
+    term1 =  1 / np.sqrt(z ** 2 + r1_sq)
+    term2 = -1 / np.sqrt(z ** 2 + r2_sq)
+    term3 = z * (
+        -z / (z ** 2 + r1_sq) ** (3 / 2)
+        + z / (z ** 2 + r2_sq) ** (3 / 2)
+    )
+
+    return (1 / 2) * (term1 + term2 + term3)
+
+def B_field_lens_d1(z, R_1, R_2, d):
+    return B_field_ring_d1(z+d/2, R_1, R_2)-B_field_ring_d1(z-d/2, R_1, R_2)
+
+def B_field_ring_d2(z, R_1, R_2):
+    r1_sq = R_1 ** 2
+    r2_sq = R_2 ** 2
+    
+    # First part: z * (A - B - C + D)
+    A = (3 * z ** 2) / (z ** 2 + r1_sq) ** (5 / 2)
+    B = 1 / (z ** 2 + r1_sq) ** (3 / 2)
+    C = (3 * z ** 2) / (z ** 2 + r2_sq) ** (5 / 2)
+    D = 1 / (z ** 2 + r2_sq) ** (3 / 2)
+    
+    # Second part: 2 * (-E + F)
+    E = z / (z ** 2 + r1_sq) ** (3 / 2)
+    F = z / (z ** 2 + r2_sq) ** (3 / 2)
+
+    return z/2 * (A - B - C + D) + 2 * (-E + F)
+
+def B_field_lens_d2(z, R_1, R_2, d):
+    return B_field_ring_d2(z+d/2, R_1, R_2)-B_field_ring_d2(z-d/2, R_1, R_2)
+
 def plot_B_field_ring_report():
     z_eval = np.linspace(-10, 10, 1000)
     B_eval = B_field_ring(z_eval, 1, 2)
@@ -40,6 +75,66 @@ def plot_B_field_lens_report():
     plt.tight_layout()
     plt.savefig('report/Images/B_field_2_annula.png', dpi=DPI)
     print(f'Saved B field lens plot')
+
+def plot_B_field_ring_d1_report():
+    z_eval = np.linspace(-10, 10, 1000)
+    B_eval = B_field_ring_d1(z_eval, 1, 2)
+    _, ax = plt.subplots()
+    ax.plot([-10, 10], [0, 0], color='red', linestyle='dashed')
+    ax.plot(z_eval, B_eval)
+    ax.grid('on')
+    ax.set_xlabel('$z$', fontsize=14)
+    ax.set_ylabel(r"$B_{ring}(z)'$ (eenheid $\mu_0\sigma_M$)", fontsize=14)
+    ax.set_title("$B_{ring}(z)'$", fontsize=16)
+    plt.tight_layout()
+    plt.savefig('report/Images/B_field_1_annulus_d1.png', dpi=DPI)
+    print(f'Saved B field first derivative ring plot')
+
+def plot_B_field_lens_d1_report():
+    z_eval = np.linspace(-15, 15, 1500)
+    B_eval = B_field_lens_d1(z_eval, 1, 2, 2)
+    B_max = np.max(B_eval)
+    _, ax = plt.subplots()
+    ax.plot([-15, 15], [0, 0], color='red', linestyle='dashed')
+    ax.plot(z_eval, B_eval)
+    ax.grid('on')
+    ax.set_xlabel('$z$', fontsize=14)
+    ax.set_ylabel(r"$B(z)'$ (eenheid $\mu_0\sigma_M$)", fontsize=14)
+    ax.set_ylim(-(B_max+0.05), B_max+0.05)
+    ax.set_title("$B(z)'$", fontsize=16)
+    plt.tight_layout()
+    plt.savefig('report/Images/B_field_2_annula_d1.png', dpi=DPI)
+    print(f'Saved B field first derivative lens plot')
+
+def plot_B_field_ring_d2_report():
+    z_eval = np.linspace(-10, 10, 1000)
+    B_eval = B_field_ring_d2(z_eval, 1, 2)
+    _, ax = plt.subplots()
+    ax.plot([-10, 10], [0, 0], color='red', linestyle='dashed')
+    ax.plot(z_eval, B_eval)
+    ax.grid('on')
+    ax.set_xlabel('$z$', fontsize=14)
+    ax.set_ylabel(r"$B_{ring}(z)''$ (eenheid $\mu_0\sigma_M$)", fontsize=14)
+    ax.set_title("$B_{ring}(z)''$", fontsize=16)
+    plt.tight_layout()
+    plt.savefig('report/Images/B_field_1_annulus_d2.png', dpi=DPI)
+    print(f'Saved B field second derivative ring plot')
+
+def plot_B_field_lens_d2_report():
+    z_eval = np.linspace(-15, 15, 1500)
+    B_eval = B_field_lens_d2(z_eval, 1, 2, 2)
+    B_min = np.min(B_eval)
+    _, ax = plt.subplots()
+    ax.plot([-15, 15], [0, 0], color='red', linestyle='dashed')
+    ax.plot(z_eval, B_eval)
+    ax.grid('on')
+    ax.set_xlabel('$z$', fontsize=14)
+    ax.set_ylabel(r"$B(z)''$ (eenheid $\mu_0\sigma_M$)", fontsize=14)
+    ax.set_ylim(-(-B_min+0.05), -B_min+0.05)
+    ax.set_title("$B(z)''$", fontsize=16)
+    plt.tight_layout()
+    plt.savefig('report/Images/B_field_2_annula_d2.png', dpi=DPI)
+    print(f'Saved B field second derivative lens plot')
 
 def plot_B_field_SIMION_comparison():
     ### Numeric Field###
@@ -112,6 +207,14 @@ def variable_plots():
     print("Saved variable Br plot")
     permanent_magnet_lens.variable_T(25, 35, 50, 'report/Images/variable_T.png', dpi=DPI)
     print("Saved variable T plot")
+    permanent_magnet_lens.variable_R_1_ab(0.6, 1.2, 50, 'report/Images/variable_R_1_ab.png', dpi=DPI)
+    print("Saved variable R1 aberration plot")
+    permanent_magnet_lens.variable_R_2_ab(2.5, 4, 50, 'report/Images/variable_R_2_ab.png', dpi=DPI)
+    print("Saved variable R2 aberration plot")
+    permanent_magnet_lens.variable_d_ab(0.6, 4, 50, 'report/Images/variable_d_ab.png', dpi=DPI)
+    print("Saved variable d aberration plot")
+    permanent_magnet_lens.variable_B_r_ab(0.7, 1.3, 50, 'report/Images/variable_B_r_ab.png', dpi=DPI)
+    print("Saved variable Br aberration plot")
 
 def plot_glasers_field():
     z_eval = np.linspace(-5, 5, 1000)
@@ -261,6 +364,10 @@ def plot_operating_point_25_report():
 def main():
     plot_B_field_ring_report()
     plot_B_field_lens_report()
+    plot_B_field_ring_d1_report()
+    plot_B_field_lens_d1_report()
+    plot_B_field_ring_d2_report()
+    plot_B_field_lens_d2_report()
     plot_B_field_SIMION_comparison()
     plot_glasers_field()
     plot_constant_field()
@@ -273,4 +380,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    variable_plots()

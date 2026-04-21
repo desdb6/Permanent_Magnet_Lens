@@ -1,0 +1,6 @@
+TODO
+
+- Verduidelijk aberratiecoëfficienten
+- Literatuurstudie
+- Monte Carlo Simulaties (?)
+- Bespreking experimenten

@@ -21,6 +21,41 @@ def B_field_ring(z, R_1, R_2):
 def B_field_z(z, R_1, R_2, d):
     return B_field_ring(z+d/2, R_1, R_2)-B_field_ring(z-d/2, R_1, R_2)
 
+def B_field_ring_d1(z, R_1, R_2):
+    r1_sq = R_1 ** 2
+    r2_sq = R_2 ** 2
+
+    term1 = 1 / np.sqrt(z ** 2 + r1_sq)
+    term2 = -1 / np.sqrt(z ** 2 + r2_sq)
+
+    inner1 = -(1 / (z ** 2 + r1_sq)) ** (3 / 2)
+    inner2 = (1 / (z ** 2 + r2_sq)) ** (3 / 2)
+    term3 = z**2 * (inner1 + inner2)
+
+    return (1/2000)*(term1 + term2 + term3)
+
+def B_field_z_d1(z, R_1, R_2, d):
+    return B_field_ring_d1(z+d/2, R_1, R_2)-B_field_ring_d1(z-d/2, R_1, R_2)
+
+def B_field_ring_d2(z, R_1, R_2):
+    r1_sq = R_1 ** 2
+    r2_sq = R_2 ** 2
+
+    # First part: z * (A - B - C + D)
+    A = (3 * z ** 2) / (z ** 2 + r1_sq) ** (5 / 2)
+    B = 1 / (z ** 2 + r1_sq) ** (3 / 2)
+    C = (3 * z ** 2) / (z ** 2 + r2_sq) ** (5 / 2)
+    D = 1 / (z ** 2 + r2_sq) ** (3 / 2)
+
+    # Second part: 2 * (-E + F)
+    E = z / (z ** 2 + r1_sq) ** (3 / 2)
+    F = z / (z ** 2 + r2_sq) ** (3 / 2)
+
+    return z/2000 * (A - B - C + D) + 2 * (-E + F)
+
+def B_field_z_d2(z, R_1, R_2, d):
+    return B_field_ring_d2(z+d/2, R_1, R_2)-B_field_ring_d2(z-d/2, R_1, R_2)
+
 def calculate_B_field(n, setup_length, lens_position, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet):
     z_eval = np.linspace(0, setup_length, n)
 
@@ -30,6 +65,28 @@ def calculate_B_field(n, setup_length, lens_position, R_1, R_2, R_1_magnet, R_2_
     B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
 
     return B_r_yoke*B_field_z(z_eval-lens_position, R_1, R_2, d)
+
+def calculate_B_field_d1(n, setup_length, lens_position, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet):
+    z_eval = np.linspace(0, setup_length, n)
+
+    A_magnet=(R_2_magnet**2-R_1_magnet**2)
+    A_gap=(R_2**2-R_1**2)
+    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
+    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
+
+    return B_r_yoke*B_field_z_d1(z_eval-lens_position, R_1, R_2, d)
+
+
+def calculate_B_field_d2(n, setup_length, lens_position, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet):
+    z_eval = np.linspace(0, setup_length, n)
+
+    A_magnet=(R_2_magnet**2-R_1_magnet**2)
+    A_gap=(R_2**2-R_1**2)
+    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
+    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
+
+    return B_r_yoke*B_field_z_d2(z_eval-lens_position, R_1, R_2, d)
+
 
 def plot_B_field(ax, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, bounds=30, n=1000):
     z=np.linspace(-bounds, bounds, n)
@@ -51,6 +108,28 @@ def plot_B_field(ax, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, 
     ax.legend()
 
     return
+
+def plot_B_field(ax, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, bounds=30, n=1000):
+    z=np.linspace(-bounds, bounds, n)
+
+    A_magnet=(R_2_magnet**2-R_1_magnet**2)
+    A_gap=(R_2**2-R_1**2)
+    reluctance_correction=(1+MU_R*(A_magnet*d)/(A_gap*d_magnet))**-1
+    B_r_yoke=A_magnet/A_gap*reluctance_correction*B_r_magnet
+
+    B_z=B_r_yoke*B_field_z(z, R_1, R_2, d)
+
+    ax.clear()
+    ax.plot(z, B_z, linestyle='-', color='b', label='$B(z)$')
+    ax.axhline(0, color='red', linewidth=1.5, linestyle='--', label='0')
+    ax.set_xlabel('$z$ (mm)', fontsize=14)
+    ax.set_ylabel('$B(z)$ (T)', fontsize=14)
+    ax.set_title('Interactief $B(z)$ veld', fontsize=16)
+    ax.grid()
+    ax.legend()
+
+    return
+
 
 def plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, bounds=30, n=1000):
     fig, ax = plt.subplots()
@@ -102,8 +181,8 @@ def plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_
 def BH_curve_magnet(B_max=None):
     comma_to_float = lambda s: float(s.replace(',', '.'))
 
-    data = np.genfromtxt('NdFeB_BH_curve.csv', 
-                        delimiter=';', 
+    data = np.genfromtxt('NdFeB_BH_curve.csv',
+                        delimiter=';',
                         converters={0: comma_to_float, 1: comma_to_float})
     H = data[:, 0]/10 # Tesla
     B = data[:, 1]/10 # Tesla
@@ -255,6 +334,7 @@ def make_lens_interactive():
 class Lens:
     def __init__(self, R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=228, lens_position=114, n=10000):
 
+        self.dx = setup_length/(n-1)
         self.R_1 = R_1
         self.R_2 = R_2
         self.R_1_magnet = R_1_magnet
@@ -267,25 +347,25 @@ class Lens:
         self.lens_position=lens_position
         self.n=n
         self.z_eval_full=np.linspace(0, setup_length, n)
-        self.update_B_r_yoke()
         self.update_T()
+        self.update_B_r_yoke()
 
-        self.T_rel = self.T*(1+EPSILON*self.T) # Relativistic
 
-        self.dx = setup_length/(n-1)
 
         self.mesh_list=[]
 
     def update_B_r_yoke(self):
 
         self.BH_curve = BH_curve_magnet(self.B_r_magnet)
-        
+
         self.A_magnet=(self.R_2_magnet**2-self.R_1_magnet**2)
         self.A_gap=(self.R_2**2-self.R_1**2)
         self.reluctance_correction = (1+(self.A_magnet*self.d)/(self.A_gap*self.d_magnet))**-1
         self.H_op, self.B_op = calculate_operating_point(self.BH_curve, self.reluctance_correction)
         self.B_r_yoke=self.A_magnet/self.A_gap*(self.B_op-self.H_op)
         self.Pci = 1+(self.A_gap*self.d_magnet)/(self.A_magnet*self.d)
+
+        self.calculate_B_field()
 
     def update_T(self):
         self.T_rel = self.T*(1+EPSILON*self.T)
@@ -309,6 +389,8 @@ class Lens:
 
     def calculate_B_field(self):
         self.B_field = calculate_B_field(self.n, self.setup_length, self.lens_position, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet)
+        self.B_field_d1 = calculate_B_field_d1(self.n, self.setup_length, self.lens_position, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet)
+        self.B_field_d2 = calculate_B_field_d2(self.n, self.setup_length, self.lens_position, self.R_1, self.R_2, self.R_1_magnet, self.R_2_magnet, self.d, self.d_magnet, self.B_r_magnet)
 
     def plot_B_field(self):
         fig, ax = plt.subplots()
@@ -340,7 +422,21 @@ class Lens:
     def calculate_GH(self, object_plane):
         self.G, self.ray_trace_z=self.ray_trace(1, 0, object_plane)
         self.H, _=self.ray_trace(0, 1, object_plane)
-        
+
+    def calculate_aberration_coeff(self):
+        self.update_T()
+        self.update_B_r_yoke()
+        self.calculate_B_field()
+        self.calculate_GH(0)
+
+        first_term = 3/(8*self.f**2)
+        integral1 = 4*ETA**2/self.T_rel*self.B_field**4/10**6
+        integral2 = 5*self.B_field_d1**2
+        integral3 = -self.B_field*self.B_field_d2
+        self.D=first_term + ETA**2/(48*self.T_rel)*np.sum((integral1 + integral2 + integral3)*self.G**3 * self.H)*self.dx/10**6
+        self.C_M=-ETA**2/(4*self.T_rel)*np.sum(self.B_field**2 * self.G * self.H)*self.dx/10**6
+        self.C_theta=ETA/(4*np.sqrt(self.T_rel))*np.sum(self.B_field)*self.dx/10**3
+
     def calculate_lens_properties(self):
         self.G, _=self.ray_trace(1, 0)
         self.H, _=self.ray_trace(0, 1)
@@ -369,6 +465,8 @@ class Lens:
         print(f"Z_Fi = {self.Z_Fi:.6f} mm")
         print(f"Z_Pi = {self.Z_Pi:.6f} mm")
         print(f"f = {self.f:.6f} mm")
+        print(f"D = {self.D:.6f} mm^-2")
+        print(f"C_M = {self.M:.6f}")
 
         fig, ax=plt.subplots()
 
@@ -432,18 +530,18 @@ class Lens:
         plt.tight_layout()
         if report==True:
             return ax
-        else: 
+        else:
             plt.show()
 
     def discretize_ray(self, ray, z_eval, bins, range_x, range_y):
         hist, _, _ =np.histogram2d(ray, z_eval, bins, [range_x, range_y])
         return (hist>0).astype(int) # Return binary histogram
-    
+
     def random_ray(self, object_height, opening_angle):
         initial_value = np.random.uniform(-object_height, object_height)
         initial_slope = np.random.uniform(-self.angle_to_slope(opening_angle), self.angle_to_slope(opening_angle))
         return initial_value*self.G + initial_slope*self.H
-    
+
     def no_collision_ray(self, object_height, opening_angle):
         ray = self.random_ray(object_height, opening_angle)
         collision = False
@@ -582,6 +680,46 @@ class Lens:
 
         return_properties(original_R_1)
 
+    def variable_R_1_ab(self, R_1_min, R_1_max, R_1_n, output_path=None, dpi=100):
+        plt.rcParams['text.usetex'] = True
+        original_R_1 = self.R_1
+        def return_properties(R_1):
+            self.R_1 = R_1
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            self.calculate_aberration_coeff()
+            return self.D, self.C_M, self.C_theta
+
+        R_1_eval=np.linspace(R_1_min, R_1_max, R_1_n)
+        results = np.array([return_properties(R_1) for R_1 in R_1_eval])
+        D_values, C_M_values, _ = results.T
+        _, ax1 = plt.subplots()
+
+        ax1.plot(R_1_eval, C_M_values, color='blue', label='$C_M$')
+        ax1.set_xlabel("$R_1$ (mm)", fontsize=14)
+        ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
+        ax1.grid()
+        ax1.legend()
+
+        ax2 = ax1.twinx()
+        ax2.plot(R_1_eval, D_values, color='red', label='$D$')
+        ax2.set_ylabel("$D$ ($mm^{-2}$)", fontsize=14)
+
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2)
+
+        ax1.set_title(f"Aberratiecoëfficienten voor variable $R_1$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_R_1)
+
+
     def variable_R_2(self, R_2_min, R_2_max, R_2_n, output_path=None, dpi=100):
         original_R_2 = self.R_2
         def return_properties(R_2):
@@ -621,7 +759,46 @@ class Lens:
             plt.show()
 
         return_properties(original_R_2)
-    
+
+    def variable_R_2_ab(self, R_2_min, R_2_max, R_2_n, output_path=None, dpi=100):
+        plt.rcParams['text.usetex'] = True
+        original_R_2 = self.R_2
+        def return_properties(R_2):
+            self.R_2 = R_2
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            self.calculate_aberration_coeff()
+            return self.D, self.C_M, self.C_theta
+
+        R_2_eval=np.linspace(R_2_min, R_2_max, R_2_n)
+        results = np.array([return_properties(R_2) for R_2 in R_2_eval])
+        D_values, C_M_values, _ = results.T
+        _, ax1 = plt.subplots()
+
+        ax1.plot(R_2_eval, C_M_values, color='blue', label='$C_M$')
+        ax1.set_xlabel("$R_2$ (mm)", fontsize=14)
+        ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
+        ax1.grid()
+        ax1.legend()
+
+        ax2 = ax1.twinx()
+        ax2.plot(R_2_eval, D_values, color='red', label='$D$')
+        ax2.set_ylabel("$D$ ($mm^{-2}$)", fontsize=14)
+
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2)
+
+        ax1.set_title(f"Aberratiecoëfficienten voor variable $R_2$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_R_2)
+
     def variable_d(self, d_min, d_max, d_n, output_path=None, dpi=100):
         original_d = self.d
         def return_properties(d):
@@ -629,7 +806,7 @@ class Lens:
             self.update_B_r_yoke()
             self.calculate_lens_properties()
             return self.Z_Fi, self.Z_Pi, self.f, self.Pci
-        
+
         d_eval = np.linspace(d_min, d_max, d_n)
         results = np.array([return_properties(d) for d in d_eval])
         Z_Fi_values, Z_Pi_values, f_values, Pci_values = results.T
@@ -661,6 +838,45 @@ class Lens:
 
         return_properties(original_d)
     
+    def variable_d_ab(self, d_min, d_max, d_n, output_path=None, dpi=100):
+        plt.rcParams['text.usetex'] = True
+        original_d = self.d
+        def return_properties(d):
+            self.d = d
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            self.calculate_aberration_coeff()
+            return self.D, self.C_M, self.C_theta
+
+        d_eval=np.linspace(d_min, d_max, d_n)
+        results = np.array([return_properties(d) for d in d_eval])
+        D_values, C_M_values, _ = results.T
+        _, ax1 = plt.subplots()
+
+        ax1.plot(d_eval, C_M_values, color='blue', label='$C_M$')
+        ax1.set_xlabel("$d$ (mm)", fontsize=14)
+        ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
+        ax1.grid()
+        ax1.legend()
+
+        ax2 = ax1.twinx()
+        ax2.plot(d_eval, D_values, color='red', label='$D$')
+        ax2.set_ylabel("$D$ ($mm^{-2}$)", fontsize=14)
+
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2)
+
+        ax1.set_title(f"Aberratiecoëfficienten voor variable $d$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_d)
+
     def variable_B_r(self, B_r_min, B_r_max, B_r_n, output_path=None, dpi=100):
         original_B_r = self.B_r_magnet
         def return_properties(B_r):
@@ -686,6 +902,45 @@ class Lens:
         ax1.legend()
 
         ax1.set_title(f"Lenseigenschappen voor variable $B_r$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_B_r)
+
+    def variable_B_r_ab(self, B_r_min, B_r_max, B_r_n, output_path=None, dpi=100):
+        plt.rcParams['text.usetex'] = True
+        original_B_r = self.B_r_magnet
+        def return_properties(B_r):
+            self.B_r_magnet = B_r
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            self.calculate_aberration_coeff()
+            return self.D, self.C_M, self.C_theta
+
+        B_r_eval=np.linspace(B_r_min, B_r_max, B_r_n)
+        results = np.array([return_properties(B_r) for B_r in B_r_eval])
+        D_values, C_M_values, _ = results.T
+        _, ax1 = plt.subplots()
+
+        ax1.plot(B_r_eval, C_M_values, color='blue', label='$C_M$')
+        ax1.set_xlabel("$B_r$ (mm)", fontsize=14)
+        ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
+        ax1.grid()
+        ax1.legend()
+
+        ax2 = ax1.twinx()
+        ax2.plot(B_r_eval, D_values, color='red', label='$D$')
+        ax2.set_ylabel("$D$ ($mm^{-2}$)", fontsize=14)
+
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2)
+
+        ax1.set_title(f"Aberratiecoëfficienten voor variable $B_r$", fontsize=16)
 
         plt.tight_layout()
         if output_path is not None:
@@ -777,13 +1032,14 @@ if __name__ == "__main__":
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
-    # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
+    plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
-    # permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    # permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
-    # mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
-    # permanent_magnet_lens.add_mesh(mesh1)
-    # permanent_magnet_lens.display_properties()
+    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
+    permanent_magnet_lens.setup_parameters(object_pos=11.5, object_height=1.5, lens_pos=27.98)
+    mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
+    permanent_magnet_lens.add_mesh(mesh1)
+    permanent_magnet_lens.calculate_aberration_coeff()
+    permanent_magnet_lens.display_properties()
 
     # plot_operating_point(BH_curve_magnet(), 0.4)
 
@@ -795,4 +1051,4 @@ if __name__ == "__main__":
 
     # permanent_magnet_lens.variable_T(28, 32, 100)
 
-    make_lens_interactive()
+    # make_lens_interactive()
