@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.optimize import root_scalar
 from sim import B_field_z, Lens, calculate_operating_point, BH_curve_magnet
 
 plt.rcParams['text.usetex'] = True
@@ -59,6 +60,7 @@ def plot_B_field_ring_report():
     plt.tight_layout()
     plt.savefig('report/Images/B_field_1_annulus.png', dpi=DPI)
     print(f'Saved B field ring plot')
+    plt.close()
 
 def plot_B_field_lens_report():
     z_eval = np.linspace(-15, 15, 1500)
@@ -75,6 +77,7 @@ def plot_B_field_lens_report():
     plt.tight_layout()
     plt.savefig('report/Images/B_field_2_annula.png', dpi=DPI)
     print(f'Saved B field lens plot')
+    plt.close()
 
 def plot_B_field_ring_d1_report():
     z_eval = np.linspace(-10, 10, 1000)
@@ -89,6 +92,7 @@ def plot_B_field_ring_d1_report():
     plt.tight_layout()
     plt.savefig('report/Images/B_field_1_annulus_d1.png', dpi=DPI)
     print(f'Saved B field first derivative ring plot')
+    plt.close()
 
 def plot_B_field_lens_d1_report():
     z_eval = np.linspace(-15, 15, 1500)
@@ -105,6 +109,7 @@ def plot_B_field_lens_d1_report():
     plt.tight_layout()
     plt.savefig('report/Images/B_field_2_annula_d1.png', dpi=DPI)
     print(f'Saved B field first derivative lens plot')
+    plt.close()
 
 def plot_B_field_ring_d2_report():
     z_eval = np.linspace(-10, 10, 1000)
@@ -119,6 +124,7 @@ def plot_B_field_ring_d2_report():
     plt.tight_layout()
     plt.savefig('report/Images/B_field_1_annulus_d2.png', dpi=DPI)
     print(f'Saved B field second derivative ring plot')
+    plt.close()
 
 def plot_B_field_lens_d2_report():
     z_eval = np.linspace(-15, 15, 1500)
@@ -135,6 +141,7 @@ def plot_B_field_lens_d2_report():
     plt.tight_layout()
     plt.savefig('report/Images/B_field_2_annula_d2.png', dpi=DPI)
     print(f'Saved B field second derivative lens plot')
+    plt.close()
 
 def plot_B_field_SIMION_comparison():
     ### Numeric Field###
@@ -181,6 +188,7 @@ def plot_B_field_SIMION_comparison():
     plt.tight_layout()
     plt.savefig('report/Images/B_field_SIMION.png', dpi=DPI)
     print(f'Saved B field SIMION comparison plot')
+    plt.close()
 
 def variable_plots():
     R_1 = 0.8
@@ -215,6 +223,7 @@ def variable_plots():
     print("Saved variable d aberration plot")
     permanent_magnet_lens.variable_B_r_ab(0.7, 1.3, 50, 'report/Images/variable_B_r_ab.png', dpi=DPI)
     print("Saved variable Br aberration plot")
+    plt.close()
 
 def plot_glasers_field():
     z_eval = np.linspace(-5, 5, 1000)
@@ -230,6 +239,7 @@ def plot_glasers_field():
     plt.tight_layout()
     plt.savefig('report/Images/Glasers_B_field.png', dpi=DPI)
     print(f'Saved Glasers B field lens plot')
+    plt.close()
 
 def plot_constant_field():
     z_eval = np.linspace(-5, 5, 1000)
@@ -246,6 +256,7 @@ def plot_constant_field():
     plt.tight_layout()
     plt.savefig('report/Images/Constant_B_field.png', dpi=DPI)
     print(f'Saved Constant B field lens plot')
+    plt.close()
 
 def plot_actual_field():
     z_eval = np.linspace(-5, 5, 1000)
@@ -261,6 +272,7 @@ def plot_actual_field():
     plt.tight_layout()
     plt.savefig('report/Images/Actual_B_field.png', dpi=DPI)
     print(f'Saved Actual B field lens plot')
+    plt.close()
 
 def plot_setup_1_report():
     R_1 = 1.5
@@ -276,9 +288,10 @@ def plot_setup_1_report():
 
     lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=50)
     lens.setup_parameters(0, 1, 25)
+    lens.calculate_aberration_coeff()
     lens.display_properties(output_path='report/Images/setup_1.png', dpi=DPI)
-    print(lens.B_r_yoke)
     print("Saved setup plot")
+    plt.close()
 
 def plot_setup_2_report():
     R_1 = 1.5
@@ -293,7 +306,10 @@ def plot_setup_2_report():
     T = 30*10**3
 
     lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=130)
+    lens.update_B_r_yoke()
+    lens.update_T()
     lens.calculate_lens_properties()
+    lens.calculate_aberration_coeff()
     lens_position=25
     si = 6*lens.f+lens.Z_Pi+lens_position
     so = -6/5*lens.f+lens.Z_Po+lens_position
@@ -313,6 +329,7 @@ def plot_setup_2_report():
     ax.text(si-5, -2.5, 'Beeld', ha='right', va='center', fontsize=12)
     plt.savefig('report/Images/setup_2.png', dpi=DPI)
     print("Saved setup plot")
+    plt.close()
 
 def plot_operating_point_15_report():
     BH_curve=BH_curve_magnet()
@@ -336,6 +353,7 @@ def plot_operating_point_15_report():
     ax.legend()
 
     plt.savefig('report/Images/operating_point_15.png', dpi=DPI)
+    plt.close()
 
 def plot_operating_point_25_report():
     BH_curve=BH_curve_magnet()
@@ -359,7 +377,62 @@ def plot_operating_point_25_report():
     ax.legend()
 
     plt.savefig('report/Images/operating_point_25.png', dpi=DPI)
+    plt.close()
     
+def real_asymptotic_properties():
+    lens = Lens(R_1=0.8, R_2=15, R_1_magnet=4.5, R_2_magnet=10, d=4.2, d_magnet=2, B_r_magnet=2, B_r_magnet_theoretical=2, T=30000, setup_length=50, lens_position=25)
+    lens.update_B_r_yoke()
+    lens.update_T()
+    lens.calculate_B_field()
+    lens.calculate_lens_properties()
+    lens.calculate_aberration_coeff()
+    lens.calculate_GH(0)
+
+    fig, ax = plt.subplots()
+    ax.plot(lens.z_eval, lens.B_field*10, alpha=0.5, label="$B$", color="#379DF1")
+    ax.plot(lens.z_eval, lens.G, label="$g$", color="#000000")
+    ax.plot(lens.z_eval, lens.asymptotic_image_ray, label="Asymtotische straal", color="#FF0000")
+    ax.plot(lens.z_eval, np.zeros(len(lens.z_eval)), label=None, color="#379DF1", linestyle='dashed')
+
+    # Find focal points (where rays cross zero)
+    real_f_idx = np.argmin(np.abs(lens.G))
+    asymptotic_f_idx = np.argmin(np.abs(lens.asymptotic_image_ray))
+
+    real_f_z = lens.z_eval[real_f_idx]
+    asymptotic_f_z = lens.z_eval[asymptotic_f_idx]
+
+    # Plot focal points
+    ax.plot(real_f_z, 0, 'o', color="#000000", zorder=5)
+    ax.plot(asymptotic_f_z, 0, 'o', color="#FF0000", zorder=5)
+
+    # Annotate focal points
+    ax.annotate(f"$f$ (reëel)",
+        xy=(real_f_z, 0),
+        xytext=(real_f_z +1, 0.5),
+        arrowprops=dict(arrowstyle="->", color="#000000"),
+        color="#000000", fontsize=10,
+        usetex=False)
+
+    ax.annotate(f"$f$ (asym.)",
+        xy=(asymptotic_f_z, 0),
+        xytext=(asymptotic_f_z - 1, 1.0),
+        arrowprops=dict(arrowstyle="->", color="#FF0000"),
+        color="#FF0000", fontsize=10,
+        usetex=False)
+
+    
+    ax.set_xticks(np.arange(15, 36, 1.5))  # set tick positions
+    ax.set_yticks(np.arange(-2, 5, 0.6))
+    ax.grid(True, alpha=0.4)
+
+    # Now hide the tick labels and tick marks
+    ax.tick_params(labelbottom=False, labelleft=False, length=0)
+    ax.set_xlim(15, 35)
+    ax.set_ylim(-2, 4)
+    ax.legend()
+    plt.savefig('report/Images/reeel_asymptotisch.png', dpi=DPI)
+    print("Saved real/asymptotic plot")
+    plt.close()
 
 def main():
     plot_B_field_ring_report()
@@ -377,7 +450,8 @@ def main():
     plot_operating_point_15_report()
     plot_operating_point_25_report()
     variable_plots()
+    real_asymptotic_properties()
 
 
 if __name__ == "__main__":
-    variable_plots()
+    main()

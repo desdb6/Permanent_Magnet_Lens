@@ -325,9 +325,27 @@ def make_lens_interactive():
         lens_position=LENS_POSITION,
         n=N,
     )
+    
+    print(
+        f"Lens properties:\n"
+        f"  R_1            = {lens.R_1}\n"
+        f"  R_2            = {lens.R_2}\n"
+        f"  R_1_magnet     = {lens.R_1_magnet}\n"
+        f"  R_2_magnet     = {lens.R_2_magnet}\n"
+        f"  d              = {lens.d}\n"
+        f"  d_magnet       = {lens.d_magnet}\n"
+        f"  B_r_magnet     = {lens.B_r_magnet}\n"
+        f"  T              = {lens.T}\n"
+        f"  Setup length   = {lens.setup_length}\n"
+        f"  Lens position  = {lens.lens_position}\n"
+        f"  n              = {lens.n}\n"
+    )
 
+    lens.update_B_r_yoke()
+    lens.update_T()
     lens.calculate_B_field()
     lens.calculate_lens_properties()
+    lens.calculate_aberration_coeff()
     lens.display_properties()
 
 
@@ -347,6 +365,7 @@ class Lens:
         self.lens_position=lens_position
         self.n=n
         self.z_eval_full=np.linspace(0, setup_length, n)
+        self.z_eval=self.z_eval_full
         self.mesh_list=[]
 
     def update_B_r_yoke(self):
@@ -466,7 +485,7 @@ class Lens:
         print(f"Z_Pi = {self.Z_Pi:.6f} mm")
         print(f"f = {self.f:.6f} mm")
         print(f"D = {self.D:.6f} mm^-2")
-        print(f"C_M = {self.M:.6f}")
+        print(f"C_M = {self.C_M:.6f}")
 
         fig, ax=plt.subplots()
 
@@ -505,20 +524,26 @@ class Lens:
             ax.set_xlim(limits[0], limits[1])
         plt.show()
 
-    def plot_setup(self, initial_values=None, limits = None, report=False):
+    def plot_setup(self, initial_values=None, limits=None, report=False):
         self.calculate_GH(self.object_plane)
         fig, ax = plt.subplots()
-        if initial_values is not None:
-            for i in range(0,np.shape(initial_values)[0]):
-                traj=initial_values[i, 0]*self.G+self.angle_to_slope(initial_values[i, 1])*self.H
-                ax.plot(self.z_eval, traj, color='blue', linewidth=1)
-        ax.plot(self.z_eval_full, self.B_field/np.max(self.B_field)*3, color='red', label='$B(z)$')
 
-        ax.plot((self.Z_Po+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Object hoofdvlak')
-        ax.plot((self.Z_Fi+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Achterste focaalvlak')
-        ax.plot((-self.Z_Fi+self.lens_position)*np.ones(2), [-5, 5], linestyle='--', label='Voorste focaalvlak')
-        ax.plot((self.object_plane)*np.ones(2), [-5, 5], linestyle='--', label='Objectvlak')
-        ax.plot((self.image_plane)*np.ones(2), [-5, 5], linestyle='--', label='Beeldvlak')
+        # Compute B field over the full z range for plotting
+        B_field_full = self.B_r_yoke * B_field_z(self.z_eval_full - self.lens_position, self.R_1, self.R_2, self.d)
+
+        if initial_values is not None:
+            for i in range(0, np.shape(initial_values)[0]):
+                traj = initial_values[i, 0] * self.G + self.angle_to_slope(initial_values[i, 1]) * self.H
+                ax.plot(self.z_eval, traj, color='blue', linewidth=1)
+
+        ax.plot(self.z_eval_full, B_field_full / np.max(B_field_full) * 3, color='red', label='$B(z)$')  # <-- fixed
+
+        ax.plot((self.Z_Po + self.lens_position) * np.ones(2), [-5, 5], linestyle='--', label='Object hoofdvlak')
+        ax.plot((self.Z_Fi + self.lens_position) * np.ones(2), [-5, 5], linestyle='--', label='Achterste focaalvlak')
+        ax.plot((-self.Z_Fi + self.lens_position) * np.ones(2), [-5, 5], linestyle='--', label='Voorste focaalvlak')
+        ax.plot((self.object_plane) * np.ones(2), [-5, 5], linestyle='--', label='Objectvlak')
+        ax.plot((self.image_plane) * np.ones(2), [-5, 5], linestyle='--', label='Beeldvlak')
+
         if limits:
             ax.set_xlim(limits[0], limits[1])
         ax.set_ylim(auto=True)
@@ -528,7 +553,8 @@ class Lens:
         ax.grid()
         ax.legend()
         plt.tight_layout()
-        if report==True:
+
+        if report:
             return ax
         else:
             plt.show()
@@ -1032,14 +1058,14 @@ if __name__ == "__main__":
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
-    plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
+    # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
-    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=25)
-    mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
-    permanent_magnet_lens.add_mesh(mesh1)
-    permanent_magnet_lens.calculate_aberration_coeff()
-    permanent_magnet_lens.display_properties()
+    # permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
+    # permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=25)
+    # mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
+    # permanent_magnet_lens.add_mesh(mesh1)
+    # permanent_magnet_lens.calculate_aberration_coeff()
+    # permanent_magnet_lens.display_properties()
 
     # plot_operating_point(BH_curve_magnet(), 0.4)
 
@@ -1051,4 +1077,4 @@ if __name__ == "__main__":
 
     # permanent_magnet_lens.variable_T(28, 32, 100)
 
-    # make_lens_interactive()
+    make_lens_interactive()

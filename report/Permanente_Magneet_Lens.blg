@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Permanente_Magneet_Lens.aux
+The style file: abbrv.bst
+Database file #1: bibliography.bib
+Warning--entry type for "MagnetFAQ" isn't style-file defined
+--line 70 of file bibliography.bib
+Warning--entry type for "JEOL_Aberrations" isn't style-file defined
+--line 106 of file bibliography.bib
+Warning--to sort, need author or key in Magnet_Outlet
+Warning--to sort, need author or key in Hubs
+Warning--there's a number but no volume in meshshadowgraphs
+Warning--empty year in meshshadowgraphs
+You've used 24 entries,
+            2118 wiz_defined-function locations,
+            658 strings with 7702 characters,
+and the built_in function-call counts, 7004 in all, are:
+= -- 645
+> -- 383
+< -- 0
++ -- 158
+- -- 132
+* -- 501
+:= -- 1222
+add.period$ -- 67
+call.type$ -- 24
+change.case$ -- 132
+chr.to.int$ -- 0
+cite$ -- 28
+duplicate$ -- 228
+empty$ -- 538
+format.name$ -- 132
+if$ -- 1410
+int.to.chr$ -- 0
+int.to.str$ -- 24
+missing$ -- 14
+newline$ -- 118
+num.names$ -- 44
+pop$ -- 144
+preamble$ -- 1
+purify$ -- 114
+quote$ -- 0
+skip$ -- 170
+stack$ -- 0
+substring$ -- 325
+swap$ -- 26
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 94
+warning$ -- 4
+while$ -- 56
+width$ -- 26
+write$ -- 244
+(There were 6 warnings)
