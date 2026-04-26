@@ -1,55 +1,51 @@
-This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Permanente_Magneet_Lens.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: abbrv.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliography.bib
-Warning--entry type for "MagnetFAQ" isn't style-file defined
---line 70 of file bibliography.bib
-Warning--entry type for "JEOL_Aberrations" isn't style-file defined
---line 106 of file bibliography.bib
-Warning--to sort, need author or key in Magnet_Outlet
-Warning--to sort, need author or key in Hubs
 Warning--there's a number but no volume in meshshadowgraphs
 Warning--empty year in meshshadowgraphs
 You've used 24 entries,
             2118 wiz_defined-function locations,
-            658 strings with 7702 characters,
-and the built_in function-call counts, 7004 in all, are:
-= -- 645
-> -- 383
+            664 strings with 8108 characters,
+and the built_in function-call counts, 7154 in all, are:
+= -- 675
+> -- 395
 < -- 0
-+ -- 158
-- -- 132
-* -- 501
-:= -- 1222
-add.period$ -- 67
++ -- 161
+- -- 136
+* -- 494
+:= -- 1274
+add.period$ -- 81
 call.type$ -- 24
-change.case$ -- 132
+change.case$ -- 135
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 228
-empty$ -- 538
-format.name$ -- 132
-if$ -- 1410
+cite$ -- 26
+duplicate$ -- 224
+empty$ -- 533
+format.name$ -- 136
+if$ -- 1438
 int.to.chr$ -- 0
 int.to.str$ -- 24
-missing$ -- 14
-newline$ -- 118
-num.names$ -- 44
-pop$ -- 144
+missing$ -- 13
+newline$ -- 132
+num.names$ -- 48
+pop$ -- 155
 preamble$ -- 1
-purify$ -- 114
+purify$ -- 116
 quote$ -- 0
-skip$ -- 170
+skip$ -- 147
 stack$ -- 0
-substring$ -- 325
+substring$ -- 306
 swap$ -- 26
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 94
-warning$ -- 4
-while$ -- 56
+warning$ -- 2
+while$ -- 59
 width$ -- 26
-write$ -- 244
-(There were 6 warnings)
+write$ -- 273
+(There were 2 warnings)
