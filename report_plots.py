@@ -4,7 +4,7 @@ from scipy.optimize import root_scalar
 from sim import B_field_z, Lens, calculate_operating_point, BH_curve_magnet
 
 plt.rcParams['text.usetex'] = True
-DPI=100
+DPI=360
 
 def B_field_ring(z, R_1, R_2):
     return (z)/2*(1/np.sqrt((z)**2+(R_1)**2)-1/np.sqrt((z)**2+(R_2)**2))
@@ -389,8 +389,8 @@ def real_asymptotic_properties():
     lens.calculate_GH(0)
 
     fig, ax = plt.subplots()
-    ax.plot(lens.z_eval, lens.B_field*10, alpha=0.5, label="$B$", color="#379DF1")
-    ax.plot(lens.z_eval, lens.G, label="$g$", color="#000000")
+    ax.plot(lens.z_eval, lens.B_field*10, alpha=0.5, label="$B(z)$", color="#379DF1")
+    ax.plot(lens.z_eval, lens.G, label="$g(z)$", color="#000000")
     ax.plot(lens.z_eval, lens.asymptotic_image_ray, label="Asymtotische straal", color="#FF0000")
     ax.plot(lens.z_eval, np.zeros(len(lens.z_eval)), label=None, color="#379DF1", linestyle='dashed')
 
