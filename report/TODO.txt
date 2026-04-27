@@ -1,6 +1,6 @@
 TODO
 
-- Verduidelijk inleiding en literatuurstudie
+- Verduidelijk en literatuurstudie
 - Beslis wat te doen met sferische aberratie
 - Pas figuren aan (reele/asymptotische aberraties, schets lensontwerp enz.)
 - Vervang engelse termen

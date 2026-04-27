@@ -90,11 +90,11 @@
 
 Elektronenmicroscopie is een uiterst belangrijke beeldvormingstechniek waarmee men voorwerpen met afmetingen in het nanometergebied kan bestuderen. Bij een Transmissie Elektronenmicroscopie (TEM) wordt een elektronentransparant preparaat bestraald met elektronen, waarna het resulterende beeld uitvergroot en op een detector gefocust moet worden. Het elektronenoptisch systeem van een elektronenmicroscoop bestaat typisch uit een objectief- en een projectorlens, aangevuld met verschillende aberratiecorrectoren en aperturen.\\
 
-Een magnetische lens bestaat typisch uit een solenoïde die een axissymetrisch magnetisch veld opwekt. Twee poleschoenen met een hoge permeabiliteit zullen dit veld dan beïnvloeden zodat we op de as van de optische opstelling de gewenste vorm van het magneetveld krijgen. Wanneer elektronen doorheen de opstelling bewegen wordt hun beweging door de Lorentzkracht van het magnetisch veld, waardoor we het beeld kunnen focussen, vergroten of verkleinen.\\
+Een magnetische lens bestaat typisch uit een solenoïde die een axissymetrisch magnetisch veld opwekt. Twee poolschoenen met een hoge permeabiliteit zullen dit veld dan beïnvloeden zodat we op de as van de optische opstelling de gewenste vorm van het magneetveld krijgen. Wanneer elektronen doorheen de opstelling bewegen wordt hun beweging door de Lorentzkracht van het magnetisch veld, waardoor we het beeld kunnen focussen, vergroten of verkleinen.\\
 
-Dit soort lenzen hebben enkele nadelen, met name dat ze redelijk groot zijn, de productie ervan duur is, en dat er een zeer precieze constante stroom nodig is om het magnetisch veld in stand te houden. In deze bachelorproef onderzoeken we de viabiliteit van een miniatuurlens op basis van een permanente NdFeB-magneet, welke zowel kleiner, goedkoper als toegankelijker in gebruik zou zijn. De lens bestaat uit een kleine ($12\text{mm}$ buitendiameter) ringmagneet en twee symmetrische poleschoenen uit ASI1018 staal.\\
+Dit soort lenzen hebben enkele nadelen, met name dat ze redelijk groot zijn, de productie ervan duur is, en dat er een zeer precieze constante stroom nodig is om het magnetisch veld in stand te houden. In deze bachelorproef onderzoeken we de viabiliteit van een miniatuurlens op basis van een permanente NdFeB-magneet, welke zowel kleiner, goedkoper als toegankelijker in gebruik zou zijn. De lens bestaat uit een kleine ($12\text{mm}$ buitendiameter) ringmagneet en twee symmetrische poolschoenen uit ASI1018 staal.\\
 
-Eerst berekenen we d.m.v. een analytische uitdrukking en een numerieke simulatie in het simulatieprogramma SIMION hoe het magnetisch veld er in functie van de vorm van de poleschoenen uit ziet. Vervolgens kunnen we de baan van de elektronen doorheen de lens met Python simuleren om de lenseigenschappen te berekenen (focaalafstand, object principal plane, image principal plane). Hierbij is het uiterst belangrijk om rekening te houden met eventuele magnetische saturatie van de poleschoenen. We trachtten een dunne lens te ontwerpen met een focaalafstand van $\sim11.5\text{mm}$.\\
+Eerst berekenen we d.m.v. een analytische uitdrukking en een numerieke simulatie in het simulatieprogramma SIMION hoe het magnetisch veld er in functie van de vorm van de poolschoenen uit ziet. Vervolgens kunnen we de baan van de elektronen doorheen de lens met Python simuleren om de lenseigenschappen te berekenen (focaalafstand, object principal plane, image principal plane). Hierbij is het uiterst belangrijk om rekening te houden met eventuele magnetische saturatie van de poolschoenen. We trachtten een dunne lens te ontwerpen met een focaalafstand van $\sim11.5\text{mm}$.\\
 
 Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens realiseren. De lenseigenschappen worden gekarakteriseerd in een 30keV SEM waarvan het optisch systeem sterk lijkt op een de werking van een TEM. We willen hierbij nagaan hoe de werkelijke lenseigenschappen en het magnetisch veld van de voorspelde grootheden afwijken, en wat de mogelijke storingen zouden kunnen zijn. Daarnaast willen we ook onderzoeken welke aberraties in welke mate aanwezig zijn. Op deze manier krijgen we meer inzicht in het ontwerp en de werking van permanente-magneet elektronenlenzen.
 \end{multicols}
@@ -102,40 +102,53 @@ Eens we een ontwerp hebben vastgelegd kunnen we m.b.v. een CNC service de lens r
 
 \pagestyle{fancy}
 
-\chapter{Inleiding}
+\chapter{Inleiding}\label{ch:inleiding}
 Elektronenmicroscopie is een uiterst krachtige techniek die wordt gebruikt om objecten op nanometerschaal in beeld te brengen \cite{EM_Overview}. De goede spatiale resolutie die met elektronenmicroscopen bereikbaar zijn maakt het een zeer belangrijk hulpmiddel met toepassingen in uiteenlopende gebieden zoals halfgeleiderfysica, geneeskunde, forensische onderzoeken enzovoorts. 
 
-\section{Historische kadering}
-De discipline van de elektronenmicroscopie werd ontwikkeld nadat Ernst Karl Abbe in 1873 tot het inzicht kwam dat het oplossend vermogen van een lichtmicroscoop fundamenteel is gelimiteerd door de golflengte van zichtbaar licht. Een doorbraak volgde in 1924 toen Louis de Broglie aantoonde dat elektronen een golfkarakter bezitten \cite{deBroglie1924}, met een golflengte omgekeerd evenredig met het impuls $p$ van het elektron. Door elektronen te versnellen kan die golflengte onder de limiet van het zichtbaar licht gebracht worden, wat een veel grotere spatiale resolutie kan opleveren. In 1926 toonde Hans Busch aan dat het mogelijk is om met een cilindrische magnetische lens een elektronenbundel af te buigen en te focusseren, wat zo de weg vrijmaakte voor de ontwikkeling van magnetische elektronenlenzen \cite{Busch1926}.\\
+\section{Historische kadering}De discipline van de elektronenmicroscopie werd ontwikkeld nadat Ernst Karl Abbe in 1873 tot het inzicht kwam dat het oplossend vermogen van een lichtmicroscoop fundamenteel is gelimiteerd door de golflengte van zichtbaar licht. Een doorbraak volgde in 1924 toen Louis de Broglie aantoonde dat elektronen een golfkarakter bezitten \cite{deBroglie1924}, met een golflengte omgekeerd evenredig met het impuls $p$ van het elektron. Door elektronen te versnellen kan die golflengte onder de limiet van het zichtbaar licht gebracht worden, wat een veel grotere spatiale resolutie kan opleveren. In 1926 toonde Hans Busch aan dat het mogelijk is om met een cilindrische magnetische lens een elektronenbundel af te buigen en te focusseren, wat zo de weg vrijmaakte voor de ontwikkeling van magnetische elektronenlenzen \cite{Busch1926}.\\
 
-\noindent
-\begin{minipage}[t]{0.45\textwidth}
-\vspace{0pt}
 Doorheen de jaren heeft de theorie van elektronenoptica zich verder ontwikkeld en zijn elektronenmicroscopen door nieuwe inzichten en vooruitgang in productiemogelijkheden steeds beter geworden. Met \textit{Hoge Resolutie Transmissie-Elektronenmicroscopie} (HRTEM) is het momenteel mogelijk om voor stabiele samples resoluties van de orde van $\sim50\mathrm{pm}$ te bereiken. Een typische elektronenmicroscoop bestaat tegenwoodig uit meerdere lenzen, aangevuld door aberratiecorrectoren of specifieke specimenhouders om in situ experimenten mogelijk te maken \cite{MyscopeCourse}. \\
 
+
 \section{Open-source elektronenmicroscopen}
-Conventionele magnetische elektronenlenzen bestaan uit een solenoïde om een magnetisch veld te maken dat de elektronen doet afbuigen d.m.v. de Lorentzkracht \cite{Shiltsev2021ElectronLenses}. Om een voldoende groot magnetisch veld ($\sim 2-3\mathrm{T}$) te kunnen induceren hebben dit soort lenzen en correctoren een of meerdere geleidende spoelen met een kleine weerstand nodig. Dit maakt dat de spoel een groot aantal windingen moet hebben, wat een grote hoeveelheid koperdraad vereist. Hierdoor zijn magnetische solenoïdelenzen typisch groot, zwaar en kostelijk.
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.45\textwidth}
-\vspace{0pt}
-\centering
-\includegraphics[width=\linewidth]{Images/Phillips_CrossSection.jpg}
-\captionof{figure}{Doorsnede van een Philips CM200 transmissie-elektronenmicroscoop. In een typische elektronenlens maakt men gebruik van spoelen om een magnetisch veld op te wekken. \cite{gonzalez2023}}
-\label{fig:Doorsnede_Microscoop}
-\end{minipage}
+Conventionele magnetische elektronenlenzen bestaan uit een solenoïde om een magnetisch veld te maken dat de elektronen doet afbuigen d.m.v. de Lorentzkracht \cite{Shiltsev2021ElectronLenses}. Figuur \ref{fig:Doorsnede_Microscoop} toont een doorsnede van een Philips CM200 transmissie-elektronenmicroscoop waarop de aanzienlijke grootte van de elektronenlenzen duidelijk wordt. Om een voldoende groot magnetisch veld ($\sim 2-3\mathrm{T}$) te kunnen induceren hebben dit soort lenzen een of meerdere geleidende spoelen met een kleine weerstand nodig. Dit maakt dat de spoel een groot aantal windingen moet hebben, wat een grote hoeveelheid koperdraad vereist en resulteert in een omvangrijk en zwaar systeem. Bovendien is een uiterst stabiele stroombron nodig, aangezien zelfs kleine fluctuaties in de stroom het magnetisch veld en daarmee de beeldkwaliteit beïnvloeden. Hierdoor zijn magnetische solenoïdelenzen typisch groot, zwaar en kostelijk. \color{red} Kwantificatie? \color{black}\\
 
-\vspace{1em}
+Het ontwerpen en fabriceren van elektronenlenzen is om deze redenen een gespecialiseerd proces, waardoor de commercïele markt wordt gedomineerd door een klein aantal fabrikanten. Dit heeft tot gevolg dat de aanschafprijs van een typische elektronenlens in de honderdduizenden tot miljoenen euro's ligt. Naast deze hoge kosten zijn ontwerpen vrijwel altijd beschermd door intellectueel eigendom. Deze economische en juridische drempels maken elektronenmicroscopie een vrij ontoegankelijke discipline voor kleinere onderzoeksinstellingen, scholen, en hobbyisten.\\
 
-Mede om deze redenen blijkt de ontwikkeling van een open-source elektronenmicroscoop een traag en moeizaam proces. Wanneer men een toegankelijke, kleinere elektronenmicroscoop ontwerpt (zoals het open source NanoMi project), kiest men er vaak voor om een elektrostatische Einzellens te gebruiken \cite{MALAC2022103362}. Dit brengt enkele nadelen met zich mee, voorlamelijk dat er een relatief grote voeding nodig is om een voldoende grote spanning op te wekken die de elektronen genoeg kan afbuigen. Een andere optie is het gebruik van permanente magneet elektronenlenzen: met behulp van kleine NdFeB magneten en ferromagnetische poleschoenen is het mogelijk om een magnetisch veld te maken dat een elektronenbundel kan focusseren.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Images/Phillips_CrossSection.jpg}
+    \caption{Doorsnede van een Philips CM200 transmissie-elektronenmicroscoop. In een typische elektronenlens maakt men gebruik van spoelen om een magnetisch veld op te wekken. \cite{gonzalez2023}}
+    \label{fig:Doorsnede_Microscoop}
+\end{figure}
 
+Ook de ontwikkeling van een open-source elektronenmicroscoop blijkt een traag en moeizaam proces te zijn. Een voorbeeld hiervan is het NanoMi project, dat streeft naar een modulaire $50$~keV transmissie-elektronenmicroscoop (TEM), zoals getoond op Figuur \ref{fig:NanoMI}. Bij het verkleinen of goedkoper maken van elektronenmicroscopen botst echter men op de fundamentele beperkingen opgelegd door conventionele magnetische lenzen: de hoge prijs, het grote formaat en gewicht, en de complexe stroomvoeding maken ze ongeschikt voor een compacte, betaalbare opstelling. Open-source initatieven zoals het NanoMi project trachtten hierrond te werken, bijvoorbeeld door het gebruik van een elektrostatische Einzellens. Ook dit brengt enkele nadelen met zich mee: er is er een relatief grote voeding nodig is om een voldoende grote spanning op te wekken die de elektronen genoeg kan afbuigen, en een elektrisch veld introduceert extra chromatische aberratie doordat ze de energieverdeling van de elektronenbundel beïnvloedt.\\
+
+Een permanente magneet lens biedt een veelbelovend alternatief. Door gebruik te maken van kleine NdFeB-magneten en ferromagnetische poolschoenen kan een sterk, ruimtelijk geconcentreerd magnetisch veld worden opgewekt zonder enige externe stroomvoorziening. Dit maakt dit type lens compact, energiezuinig, en potentieel veel goedkoper vergeleken met conventionele solenoïdelenzen. Een dergelijke lens zou dan ook een waardevolle component kunnen vormen voor de volgende generatie open-source elektronenmicroscopen. De vevaardiging van de poolschoenen is bovendien efficïent te realiseren met moderne productietechnieken. Gebruikmakend van Computer Numerical Control (CNC) machines kunnen toleranties van $\sim0.25\mathrm{mm}$ worden behaald \cite{ModusEngineering2025}. Externe CNC-services kunnen op basis van 3D-modellen met hoge precisie componenten aanleveren.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Images/NanoMI.jpg}
+    \caption{NanoMI is een open-source project waarbij men tracht een modulaire transmissie-elektronenmicroscoop met een versnelspanning van $50$~keV te ontwikkelen. Men gebruikt elektrostatische Einzellenzen voor het afbuigen van de elektronen. \cite{MALAC2022103362}}
+    \label{fig:NanoMI}
+\end{figure}
+
+In deze thesis tracht ik een prototype van een permanente magneet lens gebaseerd op een \textit{ringvormige} NdFeB magneet te ontwerpen en realiseren m.b.v. een externe CNC-service. Deze lens zal gekarakteriseerd worden in een raster-elektronenmicroscoop met een versnelspanning van $30$~keV. Om dit ontwerp te optimaliseren, is de ontwikkeling van een Python-toolbox voor het simuleren van de lenswerking van de lens noodzakelijk. Daarnaast moeten het gesimuleerde en werkelijke lensgedrag met elkaar vergeleken worden om eventuele verschillen tussen de theoretische modellen en de fysieke realiteit te identificeren en te verklaren. De onderzoeksvraag luidt als volgt:
+\vspace{5mm}
 \begin{tcolorbox}[colback=gray!10!white,colframe=gray!75!black,title=Onderzoeksvraag]
-    In deze thesis onderzoeken we de viabiliteit van een elektronenlens gebaseerd op een ringvormige NdFeB magneet met twee symmetrische poleschoenen die worden geproduceerd door een CNC-service. Hierbij zullen we een model van de lens moeten opstellen om het magnetisch veld af te schatten, het gedrag van de lens in Python simuleren om de de lenseigenschappen te bepalen, en de lens karakteriseren in een elektronenmicroscoop met een versnelspanning van $30\mathrm{keV}$. Hierbij zullen we analyseren hoe de experimenteel bepaalde lenseigenschappen zoals de focale lengte afwijken van de gesimuleerde waarden, en welke aberraties de lens vertoont. Onze onderzoeksvraag luidt daarom as volgt:\\
-
-    In hoeverre is het mogelijk om een miniatuur-elektronenlens bestaande op een ringvormige NdFeB en ferromagnetische poleschoenen te ontwerpen en gebruiken in een elektronenmicroscoop met een versnelspanning van $30\mathrm{keV}$?\\
+    In hoeverre is het mogelijk om een miniatuur-elektronenlens bestaande op een ringvormige NdFeB en ferromagnetische poolschoenen te ontwerpen en gebruiken in een elektronenmicroscoop met een versnelspanning van $30$~keV?
 \end{tcolorbox}
+\vspace{5mm}
 
-Hoofdstuk \ref{ch:literatuur} geeft een overzicht van enkele begrippen en principes die belangrijk zijn bij het ontwerpen van een elektronenlens, en beargumenteren we welke voordelen een permanente magneet elektronenlens heeft t.o.v. de klassiek gebruikte lenzen. Hoofdstuk \ref{ch:theorie} geeft een afleiding van de paraxiale bewegingsvergelijkingen, die we nodig zullen hebben om de lenseigenschappen te simuleren eens we het magnetisch veld van de lens kennen. Hoofdstuk \ref{ch:eigen_realisatie} gaat dieper in op de eigen implementatie van deze thesis. Hierbij geven we een beschrijving van hoe de lens werkt, maken we een analytische afschatting van het magnetisch veld in de lens, implementeren we een klasse in Python om de lenseigenschappen te voorspellen, en geven we een beschrijving van de experimentele resultaten wanneer we de lens in de microscoop hebben getest. In hoofdstuk \ref{ch:vooruitzicht} bespreken we hoe het ontwerp verbeterd kan worden en hoe dit onderzoek kan bijdragen aan het ontwikkelen van een toegankelijkere open-source elektronenmicroscoop. Hoofdstuk \ref{ch:besluit} geeft nog enkele laatste opmerkingen en een conclusie van dit onderzoek.
+Hoofdstuk \ref{ch:literatuur} gaat dieper in op de werking van een elektronenmicroscoop en geeft een overzicht van enkele begrippen en principes die belangrijk zijn bij het ontwerpen van een elektronenlens. Hier wordt ook een afleiding  van de bewegingsvergelijking die beschrijft hoe een elekrtonenbundel wordt gefocusseerd door een cilindersymmetrisch magnetisch veld.\\
+
+Hoofdstuk \ref{ch:methodologie} betreft de ontwikkeling van een Python-toolbox voor het simuleren van de lenswerking en het numeriek bepalen van de lenseigenschappen.\\
+
+Hoofdstuk \ref{ch:optimalisatie} zal dieper ingaan op het toepassen van de Python-toolbox om de geometrie van de lens te optimaliseren, het vervaardigen van de lens door een CNC-service, en de experimentele karakterisering van de lens.\\
+
+Hoofdstuk \ref{ch:vooruitzicht} bespreekt hoe het ontwerp van de lens verbeterd kan worden en hoe dit onderzoek kan bijdragen aan het ontwikkelen van een toegankelijkere open-source elektronenmicroscoop.\\
+
+Hoofdstuk \ref{ch:besluit} geeft nog enkele laatste opmerkingen en een conclusie van dit onderzoek.\\
 
 \chapter{Literatuurstudie}\label{ch:literatuur}
 \section{Elektronenoptica}
@@ -143,7 +156,7 @@ In elektronenoptica maakt men gebruik van elektronen in plaats van fotonen om be
 \begin{equation}\label{eq:d_min}
     d_{min}=\frac{k\lambda}{A}
 \end{equation}
-Hierbij is $k$ een constante tussen $0.6-0.8$ en $A$ is de numerieke apertuur van de lens. Door dit verband is de golflengte de beperkende factor voor de magnificatie van een optische microscoop. Met een elektronenmicroscoop is het daardoor niet mogelijk om voorwerpen kleiner dan $\sim125\mathrm{nm}$ in beeld te brengen. Voor elektronen wordt de golflengte echter gegeven door:
+Hierbij is $k$ een constante tussen $0.6-0.8$ en $A$ is de numerieke apertuur van de lens. Door dit verband is de golflengte de beperkende factor voor de magnificatie van een optische microscoop. Met een optische microscoop is het daardoor niet mogelijk om voorwerpen kleiner dan $\sim125\mathrm{nm}$ in beeld te brengen. Voor elektronen wordt de golflengte echter gegeven door:
 \begin{equation}
     \lambda=\frac{h}{p}=\frac{h}{\sqrt{2m_e E}}
 \end{equation}
@@ -151,12 +164,12 @@ Als we de elektronen vanuit rust versnellen met een versnelspanning $\Phi$, dan 
 \begin{equation}
     \lambda=\frac{h}{\sqrt{2m_e e\Phi}}
 \end{equation}
-Op deze manier kunnen we dus de golflengte verkleinen door een grotere versnelspanning te gebruiken. Bij HRTEM gebruikt men typisch versnelspanningen tot $300\mathrm{keV}$, waarmee picometer resoluties bereikt kunnen worden. Het huidige record voor beste resolutie staat op $0.5\mathring{A}$, wat bereikt werd m.b.v. elektronen pytografie \cite{Jiang2018Ptychography}. Elektronenoptica is op deze manier een enorm grote verbetering op 'gewone' optica. De instrumenten die nodig zijn om aan elektronenoptica te doen (zoals elektronenlenzen), zijn echter veel complexer dan hun tegenhangers die met lichtgolven beelden vormen. Een elektronenmicroscoop bestaat minstens uit een elektronengun, een of meerdere elektromagnetische lenzen met aberratiecorrectoren, eventueel een of meerdere aperturen, en een elektronendetector. Op deze manier kunnen we op dezelfde manier als met licht een voorwerp bestralen met elektronen, zodanig dat de lenzen een uitvergroot beeld van dat voorwerp op de detector zullen afbeelden.
+Op deze manier kunnen we dus de golflengte verkleinen door een grotere versnelspanning te gebruiken. Bij HRTEM gebruikt men typisch versnelspanningen tot $300$~keV, waarmee picometer resoluties bereikt kunnen worden. Het huidige record voor beste resolutie staat op $0.5\mathring{A}$, wat bereikt werd m.b.v. elektronen pytografie \cite{Jiang2018Ptychography}. Elektronenoptica is op deze manier een enorm grote verbetering op 'gewone' optica. De instrumenten die nodig zijn om aan elektronenoptica te doen (zoals elektronenlenzen), zijn echter veel complexer dan hun tegenhangers die met lichtgolven beelden vormen. Een elektronenmicroscoop bestaat minstens uit een elektronengun, een of meerdere elektromagnetische lenzen met aberratiecorrectoren, eventueel een of meerdere aperturen, en een elektronendetector. Op deze manier kunnen we op dezelfde manier als met licht een voorwerp bestralen met elektronen, zodanig dat de lenzen een uitvergroot beeld van dat voorwerp op de detector zullen afbeelden.
 
 \subsection{Scanning/Transmissie Elektronenmicroscopie}
 De twee belangrijkste vormen van elektronenmicroscopie zijn \textit{Scanning Elektronenmicroscopie} (SEM) en \textit{Transmissie Elektronenmicroscopie} (TEM). De beeldvorming gebeurt bij beide technieken op een andere manier, en de opstellingen in de microscoop zijn daardoor ook anders. In deze sectie geven we een korte beschrijving van deze twee technieken.\\
 
-In een SEM zal men een elektronenbundel m.b.v. elektronenlenzen in een zeer smalle spot gaan focusseren ($\sim 3\mathrm{nm}$), welke dan over het sample gescand wordt. Deze elektronenbundel zal dan secundaire elektronen uit het oppervlak van het sample losslaan. De richting waarin deze secundaire elektronen loskomen, wordt beïnvloed door het oppervlak aan het punt waar ze loskomen en bevatten zo dus informatie over het oppervlak. Een elektronendetector die zich ergens boven het sample bevindt zal de secundaire elektronen dan verzamelen. Door de elektronenbundel met \textit{scanning coils} over het oppervlak te scannen, kunnen we voor elk punt op het oppervlak meten hoeveel elektronen er in de richting van de detector vrijkomen en op deze manier een beeld van het oppervlak vormen. De maximale versnelspanning van een SEM ligt typisch tussen $0-30\mathrm{keV}$ \cite{PWHawkes} omdat een grotere energie te veel schade aan het sample kan opbrengen. Figuur \ref{fig:SEM_principle} toont een illustratie van het werkingsprincipe van een SEM en Figuur \ref{fig:SEM_image} toont een SEM beeld van rode bloedcellen.
+In een SEM zal men een elektronenbundel m.b.v. elektronenlenzen in een zeer smalle spot gaan focusseren ($\sim 3\mathrm{nm}$), welke dan over het sample gescand wordt. Deze elektronenbundel zal dan secundaire elektronen uit het oppervlak van het sample losslaan. De richting waarin deze secundaire elektronen loskomen, wordt beïnvloed door het oppervlak aan het punt waar ze loskomen en bevatten zo dus informatie over het oppervlak. Een elektronendetector die zich ergens boven het sample bevindt zal de secundaire elektronen dan verzamelen. Door de elektronenbundel met \textit{scanning coils} over het oppervlak te scannen, kunnen we voor elk punt op het oppervlak meten hoeveel elektronen er in de richting van de detector vrijkomen en op deze manier een beeld van het oppervlak vormen. De maximale versnelspanning van een SEM ligt typisch tussen $0-30$~keV \cite{PWHawkes} omdat een grotere energie te veel schade aan het sample kan opbrengen. Figuur \ref{fig:SEM_principle} toont een illustratie van het werkingsprincipe van een SEM en Figuur \ref{fig:SEM_image} toont een SEM beeld van rode bloedcellen.
 
 \begin{figure}[H]
     \centering
@@ -200,7 +213,7 @@ In een SEM zal men een elektronenbundel m.b.v. elektronenlenzen in een zeer smal
     \label{fig:TEM}
 \end{figure}
 
-In een TEM gaat men niet scannen over het oppervlak, maar belichten we een uiterst dun en elektronentransparant specimen met een brede bundel elektronen, welke in het indeale geval een perfecte vlakke golf voorstellen. De elektronen zullen dan interageren met het specimen, en op sommige plaatsen meer of minder geabsorbeerd of gescattered worden. De uitgaande elektronenbundel bevat dan opnieuw informatie over het specimen. Door gebruik te maken van een of meerdere elektronenlenzen kunnen we dan een uitvergroot beeld van het sample afbeelden op een elektronendetector die zich onder het sample bevindt. De detector is in dit geval bijvoorbeeld een fluorescerend scherm, waarop heel het beeld in een keer afgebeeld wordt (in tegenstelling tot een SEM). De versnelspanning in een TEM kan tot $300\mathrm{keV}$ bedragen, waardoor het oplossend vermogen beter is dan dat van een SEM. Figuur \ref{fig:TEM_principle} toont een illustratie van het werkingsprincipe van een TEM en Figuur \ref{fig:TEM_image} toont een TEM beeld van celorganellen.
+In een TEM gaat men niet scannen over het oppervlak, maar belichten we een uiterst dun en elektronentransparant specimen met een brede bundel elektronen, welke in het indeale geval een perfecte vlakke golf voorstellen. De elektronen zullen dan interageren met het specimen, en op sommige plaatsen meer of minder geabsorbeerd of gescattered worden. De uitgaande elektronenbundel bevat dan opnieuw informatie over het specimen. Door gebruik te maken van een of meerdere elektronenlenzen kunnen we dan een uitvergroot beeld van het sample afbeelden op een elektronendetector die zich onder het sample bevindt. De detector is in dit geval bijvoorbeeld een fluorescerend scherm, waarop heel het beeld in een keer afgebeeld wordt (in tegenstelling tot een SEM). De versnelspanning in een TEM kan tot $300$~keV bedragen, waardoor het oplossend vermogen beter is dan dat van een SEM. Figuur \ref{fig:TEM_principle} toont een illustratie van het werkingsprincipe van een TEM en Figuur \ref{fig:TEM_image} toont een TEM beeld van celorganellen.
 
 \section{Magnetische elektronenlenzen}
 Om met elektronen beelden te kunnen vormen zijn elektronenlenzen een cruciale component van de optishe opstelling. Er zijn twee manieren om een elektronenbundel te doen afbuigen: met de elektrisch veld via de Coulombkracht, en met een magnetisch veld via de Lorentzkracht. Er bestaan zowel elektrostatische als magnetische lenzen. Het gebruik van magnetische elektronenlenzen is echter veel prominenter dan elektrostatische elektronenlenzen, aangezien de grootte van de elektrische velden bij TEM versnelspanningen praktisch niet haalbaar zijn en te grote veiligheidsgevaren veroorzaken. Bovendien zal een elektrostatische lens de energieën van de elektronen in de elektronenbundel beïnvloeden. Dit kan een spreiding van de energieën veroorzaken, wat aanleiding geeft tot chromatische aberratie (zie verder). \cite{ElektronenLenzenGuzzinati}\\
@@ -212,7 +225,7 @@ Om met elektronen beelden te kunnen vormen zijn elektronenlenzen een cruciale co
     \label{fig:Magnetic_Electron_Lens_illustration}
 \end{figure}
 
-Met een magnetische elektronenlens maakt men typisch een axissymetrisch magnetisch veld rond de optische as, waarvan de sterkte langs de optische as variëert. Vanwege de symmetrie is azimutale component van het magnetisch veld gelijk aan nul. Dit soort veld worden opgewekt met een solenoïde waar een stroom doorheen gestuurd wordt, wat men een solenoïdelens noemt. Door een elektronenbundel door de solenoïde te sturen zullen de elektronen die zich niet op de optische as bevinden een Lorentzkracht ondergaan en afbuigen. De elektronen ondergaan zowel een radiale kracht, waarmee de bundel gefocusseerd kan worden, als een azimutale kracht, die voor een precessie van de elektronenbundel rond de optische as zorgt. In hoofdstuk \ref{ch:theorie} gaan we dieper in op de bewegingsvergelijkingen die het afbuigen van de elektronen beschrijft. Figuur \ref{fig:Magnetic_Electron_Lens_illustration} toont een illustratie van de manier waarop elektronen door een solenoïdelens zullen bewegen.
+Met een magnetische elektronenlens maakt men typisch een axissymetrisch magnetisch veld rond de optische as, waarvan de sterkte langs de optische as variëert. Vanwege de symmetrie is azimutale component van het magnetisch veld gelijk aan nul. Dit soort veld worden opgewekt met een solenoïde waar een stroom doorheen gestuurd wordt, wat men een solenoïdelens noemt. Door een elektronenbundel door de solenoïde te sturen zullen de elektronen die zich niet op de optische as bevinden een Lorentzkracht ondergaan en afbuigen. De elektronen ondergaan zowel een radiale kracht, waarmee de bundel gefocusseerd kan worden, als een azimutale kracht, die voor een precessie van de elektronenbundel rond de optische as zorgt. In hoofdstuk \ref{ch:theorie} gaan we dieper in op de bewegingsvergelijking die het afbuigen van de elektronen beschrijft. Figuur \ref{fig:Magnetic_Electron_Lens_illustration} toont een illustratie van de manier waarop elektronen door een solenoïdelens zullen bewegen.
 
 
 
@@ -242,7 +255,7 @@ Met een magnetische elektronenlens maakt men typisch een axissymetrisch magnetis
 \section{Permanente magneet elektronenlenzen}
 
 \color{red} Naar de appendices? \color{black}
-\section{Paraxiale vergelijkingen}
+\section{Paraxiale beweginsvergelijking}
 In deze sectie geven we een verkorte afleiding van de paraxiale vergelijking die de baan van een elektronenbundel in een axissymetrisch magnetisch veld beschrijft. De afleiding is gebaseerd op \cite{PWHawkes}. De meest algemene bewegingsvergelijking van een elektron in een elektromagnetisch veld wordt gegeven door de tweede wet van Newton waarbij de Lorentzkracht op het elektron inwerkt:
 \begin{equation}\label{eq:2nd_law_newton}
     m\frac{d^2\mathbf{r}}{dt^2}=-e(\mathbf{E}+\mathbf{v}\times\mathbf{B})
@@ -300,7 +313,7 @@ De relativistisch correcte versie van deze vergelijking is:
 \begin{equation}\label{eq:paraxialevgl_rel}
     \frac{d^2r}{dz^2}+\frac{\eta^2B(z)^2}{4V}r=0
 \end{equation}
-Met $V=\Phi\left(1+\frac{e}{2mc^2}\Phi\right)$. Deze vergelijking zullen we later numeriek oplossen voor het geschatte magnetisch veld om de lenseigenschappen van lenzen te simuleren. \\
+Met $V=\Phi\left(1+\frac{e}{2mc^2}\Phi\right)$. Voor een versnelspanning van $30$~keV is dit een correctie van $2.93\%$. Deze vergelijking moet numeriek opgelost worden voor het geschatte magnetisch veld om de lenseigenschappen van lens te simuleren. \\
 
 Merk op dat de paraxiale bewegingsvergelijking lineair is. Dit betekent dat twee lineair onafhankelijke oplossingen voldoende is om de algemene oplossing van deze vergelijking op te stellen. Conventioneel noemt men $z_0$ de positie van het vlak van het voorwerp dat we met een magnetische lens willen uitvergroten, en kiest met twee basisoplossingen $g(z)$ en $h(z)$ zodanig dat:
 \begin{align}\label{eq:gh}
@@ -330,52 +343,64 @@ Extra sectie met uitleg waarom we best meer dan 1 lens nodig hebben om een diffr
 Meer uitleg over wat een hoofdvlak is? 
 \color{black}
 
-\chapter{Opbouw en principe permanente magneetlens}
-Voor we in de details van het ontwerpsproces van de lens duiken, is het verstandig om het concept van het ontwerp helder uit te leggen. Het doel is om een magnetisch veld te ontwerpen dat de elektronen op zo'n manier afbuigt zodanig dat een paralelle bundel geconcentreerd zal worden in een punt op de optische as. Hierbij willen we dat de lens aan enkele gewenste eigenschappen voldoet.\\
-
-Ten eerste willen we een geschikte focale lengte zodat de lens bruikbaar is in een elektronenmicroscoop. Concreet zal deze lens getest worden in een Tescan MIRA SEM, waarin we een maximale totale afstand van $228.4\mathrm{mm}$ van elektronenbron tot detector ter beschikking hebben. Om een bruikbare lens te maken is het daarom gewenst dat de focale lengte niet veel langer dan $10\mathrm{mm}$ is. Verder zullen we werken we met een versnelspanning van $30\mathrm{keV}$, wat een voorwaarde legt op de minimale sterkte van het magnetisch veld. \\
-
-Ten tweede is het gewenst dat de lens die we maken, een dunne lens is. Meer concreet willen we dat de hoofdvlakken samenvallen in het midden van de lens. Op deze manier is het gemakkelijker om berekeningen te doen als we opstellingen met meerdere lenzen willen bouwen, aangezien de dunne lensformule dan toepasbaar is. Dit betekent dat we een sterk ruimtelijk geconcentreerd magnetisch veld in het midden van de lens willen; de elektronen interageren dan maar heel kort met het magnetisch veld, wat een dunne lenswerking geeft. Hoe geconcentreerder we het veld maken, hoe sterker het maximale veld moet zijn om dezelfde afbuiging te veroorzaken. Om een bruikbare lens te maken willen we op de optische as een magnetisch veld met een sterkte van $\sim0.1-1\mathrm{T}$ dat geconcentreerd is over een afstand van $<5\mathrm{mm}$. \\
-
-Het ontwerp dat we in deze thesis onderzoeken en aan beide voorwaarden voldoet, wordt getoont op Figuur \ref{fig:lens_circuit_diagram}.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{Images/lens_circuit_diagram.png}
-    \caption{Cross-sectie van het ontwerp van onze permanente magneetlens. Een homogeen gemagnetiseerde Nd-ringmagneet maakt een sterk magnetisch veld dat door twee zacht magnetische poleschoenen wordt geconcentreerd in het  het gat van de lens.}
-    \label{fig:lens_circuit_diagram}
-\end{figure}
-
-Om een axissymetrisch veld te veroorzaken, maken we gebruik van een kleine ringvormige NdFeB magneet met een remanent magneetveld van $\sim1.2\mathrm{T}$. We kunnen in principe enkel de magneet als lens gebruiken, maar dit is niet optimaal; het magnetisch veld zou dan te homogeen in de ruimte zijn, terwijl we een zo sterk mogelijk veld op de symmetrieas van de lens willen. We kunnen het veld naar het midden van de lens 'begeleiden' d.m.v. poleschoenen gemaakt uit een zacht ferromagnetisch materiaal met een hoge permeabiliteit $\mu$. Als de permabiliteit voldoende hoog is, dan zullen de grote meerderheid van de veldlijnen in de poleschoenen blijven en in het midden van de lens de opening of \textit{gap} oversteken. Bij het oversteken van de opening tussen de poleschoenen lopen de velden niet perfect loodrecht van het ene oppervlak naar het andere, maar door randeffecten zullen ze naast de oppervlakken naar buiten buigen. Op deze manier krijgen we in het gat een lokaal sterk veld, zoals gewenst.\\
-
-Voor de ringmagneet kiezen we een NdFeB van graad N35. Er bestaan magneten met betere graden, maar voor een relatief kleine versnelspanning van $30\mathrm{keV}$ is dit materiaal voldoende sterk. Voor de poleschoenen gebruiken ASI1018, een zacht ferromagnetisch staal dat geschikt is om gebruikt te worden in een CNC-machine. Deze materialen zullen meer in detail besproken worden in sectie \ref{ch:lensontwerp}.\\
-
 \chapter{Methodologie afschatting lensparameters}\label{ch:methodologie}
-Om een het ontwerp voor een werkende elektronenlens te realiseren moeten de geometrische dimensies van de lens zorgvuldig worden vastgelegd. Deze afmetingen zijn cruciaal, aangezien ze de vorm en het profiel van het magnetisch veld op de optische as bepalen, welke de lenswerking en lenseigenschappen vastleggen. De invloed van de \textit{lensparameters} op de lenswerking moet daarom vooraf gesimuleerd kunnen worden. Deze parameters omvatten de binnen en buitenstralen van de poleschoenen en de magneet, de dikte van de magneet, de dikte van de luchtspleet tussen de poleschoenen, en het remanent magnetisch veld van de lens. Dit vereist zowel een analytisch model van het magnetisch veld als een numerieke methode om de baanvergelijkingen van de elektronen op te lossen. De volgende objectieven worden opgesteld:
+Om een het ontwerp voor een werkende elektronenlens te realiseren moeten de geometrische dimensies van de lens zorgvuldig worden vastgelegd. Deze afmetingen zijn cruciaal, aangezien ze de vorm en het profiel van het magnetisch veld op de optische as bepalen, welke de lenswerking en lenseigenschappen vastleggen. De invloed van de \textit{lensparameters} op de lenswerking moet daarom vooraf gesimuleerd kunnen worden. Deze parameters omvatten de binnen en buitenstralen van de poolschoenen en de magneet, de dikte van de magneet, de dikte van de luchtspleet tussen de poolschoenen, en het remanent magnetisch veld van de lens. Dit vereist zowel een analytisch model van het magnetisch veld als een numerieke methode om de baanvergelijkingen van de elektronen op te lossen. De volgende objectieven worden opgesteld:
 \begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 1]
-    Stel een analytische uitdrukking $B(z)$ op voor de grootte van het magnetisch veld volgens de $z$-as op de optische as van de lens in functie van de lensparameters. Deze uitdrukking mag benaderend zijn, maar moet de lenseigenschappen zo accuraat mogelijk kunnen voorspellen.
+    Het ontwerpen van een lensgeometrie met een permanente magneet en ferromagnetische poolschoenen die een voldoende sterk gelokaliseerd magnetisch veld in het midden van de lens veroorzaakt om de elektronen af te buigen.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 2]
-    Kwantificeer de invloed van het demagnetiserend veld, veroorzaakt door de oppervlakken van de poleschoenen, op de effectieve veldsterkte in de magneet. Onderzoek hoe dit effect afhangt van de lensparameters, rekening houdend met de $\mathrm{BH}$-curve van de magneet.
+    Het opstellen van een analytische uitdrukking $B(z)$ op voor de grootte van het magnetisch veld volgens de $z$-as op de optische as van de lens in functie van de lensparameters. Deze uitdrukking mag benaderend zijn, maar moet de lenseigenschappen zo accuraat mogelijk kunnen voorspellen.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 3]
-    Ontwikkel een Python-toolbox om de werking van de lens te simuleren. Deze toolbox moet het volgende functionaliteiten combineren:
+    Het kwantificeren van de invloed van het demagnetiserend veld, veroorzaakt door de oppervlakken van de poolschoenen, op de effectieve veldsterkte in de magneet. Dit effect hangt af van de lensparameters, rekening houdend met de $\mathrm{BH}$-curve van de magneet.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 4]
+    Het ontwikkelen van een Python-toolbox om de werking van de lens te simuleren. Deze toolbox moet het volgende functionaliteiten combineren:
     \begin{enumerate}
         \item Het magnetisch veld $B(z)$ voor een bepaalde geometrie van de lens berekenen op basis van de gevonden analytische uitdrukking.
         \item De paraxiale bewegingsvergelijking voor een willekeurig magnetisch veld $B(z)$ numeriek oplossen om de lenseigenschappen te bepalen.
-        \item Analytische uitdrukkingen voor de distortie en chromatische aberratiecoëfficiënten numeriek evalueren door integralen over de analytische uitdrukking voor $B(z)$ en haar afgeleiden numeriek uit te rekenen.
+        \item Analytische uitdrukkingen voor de distortie en chromatische aberratiecoëfficiënten numeriek evalueren door integralen met de analytische uitdrukking voor $B(z)$ en haar afgeleiden numeriek uit te rekenen.
     \end{enumerate}
+\end{tcolorbox}
+
+\section{Opbouw en principe permanente magneetlens}
+Voor we in de details van het ontwerpsproces van de lens duiken, is het verstandig om het concept van het ontwerp helder uit te leggen. Het doel is om een magnetisch veld te ontwerpen dat de elektronen op zo'n manier afbuigt zodanig dat een paralelle bundel geconcentreerd zal worden in een punt op de optische as. Hierbij willen we dat de lens aan enkele gewenste eigenschappen voldoet.\\
+
+\begin{enumerate}
+    \item Ten eerste willen we een geschikte focale lengte zodat de lens bruikbaar is in een elektronenmicroscoop. Concreet zal deze lens getest worden in een Tescan MIRA SEM, waarin we een maximale totale afstand van $228.4\mathrm{mm}$ van elektronenbron tot detector ter beschikking hebben. Om een bruikbare lens te maken is het daarom gewenst dat de focale lengte niet veel langer dan $10\mathrm{mm}$ is. Verder zullen we werken we met een versnelspanning van $30$~keV, wat een voorwaarde legt op de minimale sterkte van het magnetisch veld. \\
+
+    \item Ten tweede is het gewenst dat de lens die we maken, een dunne lens is. Meer concreet willen we dat de hoofdvlakken samenvallen in het midden van de lens. Op deze manier is het gemakkelijker om berekeningen te doen als we opstellingen met meerdere lenzen willen bouwen, aangezien de dunne lensformule dan toepasbaar is. Dit betekent dat we een sterk ruimtelijk geconcentreerd magnetisch veld in het midden van de lens willen; de elektronen interageren dan maar heel kort met het magnetisch veld, wat een dunne lenswerking geeft. Hoe geconcentreerder we het veld maken, hoe sterker het maximale veld moet zijn om dezelfde afbuiging te veroorzaken. Om een bruikbare lens te maken willen we op de optische as een magnetisch veld met een sterkte van $\sim0.1-1\mathrm{T}$ dat geconcentreerd is over een afstand van $<5\mathrm{mm}$. \\
+\end{enumerate}
+
+Het ontwerp dat in deze thesis onderzocht wordt en aan beide voorwaarden voldoet, wordt getoond op Figuur \ref{fig:lens_circuit_diagram}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/lens_circuit_diagram.png}
+    \caption{Doorsnede van het ontwerp van onze permanente magneetlens. Een homogeen gemagnetiseerde Nd-ringmagneet maakt een sterk magnetisch veld dat door twee zacht magnetische poolschoenen wordt geconcentreerd in het  het gat van de lens.}
+    \label{fig:lens_circuit_diagram}
+\end{figure}
+
+Om een axissymetrisch veld te veroorzaken, maken we gebruik van een kleine ringvormige NdFeB magneet met een remanent magneetveld van $\sim1.2\mathrm{T}$. We kunnen in principe enkel de magneet als lens gebruiken, maar dit is niet optimaal; het magnetisch veld zou dan te homogeen in de ruimte zijn, terwijl we een zo sterk mogelijk veld op de symmetrieas van de lens willen. We kunnen het veld naar het midden van de lens 'begeleiden' d.m.v. poolschoenen gemaakt uit een zacht ferromagnetisch materiaal met een hoge permeabiliteit $\mu$. Als de permabiliteit voldoende hoog is, dan zullen de grote meerderheid van de veldlijnen in de poolschoenen blijven en in het midden van de lens de opening of \textit{luchtspleet} oversteken. Bij het oversteken van de opening tussen de poolschoenen lopen de velden niet perfect loodrecht van het ene oppervlak naar het andere, maar door randeffecten zullen ze naast de oppervlakken naar buiten buigen. Op deze manier krijgen we in het gat een lokaal sterk veld, zoals gewenst.\\
+
+% Voor de ringmagneet kiezen we een NdFeB van graad N35. Er bestaan magneten met betere graden, maar voor een relatief kleine versnelspanning van $30$~keV is dit materiaal voldoende sterk. Voor de poolschoenen gebruiken ASI1018, een zacht ferromagnetisch staal dat geschikt is om gebruikt te worden in een CNC-machine. Deze materialen zullen meer in detail besproken worden in sectie \ref{ch:lensontwerp}.\\
+
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 1]
+    Een permanente magneet lens kan gerealiseerd worden met een ontwerp waarbij een NdFeB ringmagneet gecombineerd wordt met axissymetrische poolschoenen. Dit vormt een magnetisch veld dat geconcentreerd wordt in de luchtspleet tussen de poolschoenen, waardoor de elektronen zeer kort interageren met dit magnetisch veld.
 \end{tcolorbox}
 
 \section{Analytische afschatting magnetisch veld}
 Vooraleer we de lenseigenschappen van de lens kunnen simuleren, willen we een analytische schatting maken van het magnetisch veld $B(z)$ op de symmetrieas van de lens. Hiervoor maken enkele belangrijke benaderingen om de berekeningen te vereenvoudigen.\\
 
-Ten eerste veronderstellen we dat de magnetische veldlijnen volledig in de poleschoenen zullen blijven tot ze de gap tussen de poleschoenen bereiken, zonder dat er magnetisch veld op andere plaatsen naar buiten lekt. We zorgen ervoor dat dit een goede benadering blijft door de geometrie van de poleschoenen zo te ontwerpen dat het magnetisch veld nergens anders kan kortsluiten. We willen met andere woorden dat er geen andere paden $C$ van de bovenkant naar de onderkant van de ringmagneet mogelijk zijn die een een kleinere/gelijkaardige reluctantie $\mathcal{R}=\int_C\frac{dl}{\mu(l)A(l)}$ hebben. Daarnaast zorgen we ervoor dat de poleschoenen gladde en afgeronde oppervlakken hebben om randeffecten te voorkomen, aangezien magnetische veldlijnen de neiging hebben om zich te concentreren rond oppervlakken met een kleine kromtestraal, zoals randen en hoeken.\\
+\begin{enumerate}
+    \item Ten eerste veronderstellen we dat de magnetische veldlijnen volledig in de poolschoenen zullen blijven tot ze de luchtspleet tussen de poolschoenen bereiken, zonder dat er magnetisch veld op andere plaatsen naar buiten lekt. We zorgen ervoor dat dit een goede benadering blijft door de geometrie van de poolschoenen zo te ontwerpen dat het magnetisch veld nergens anders kan kortsluiten. We willen met andere woorden dat er geen andere paden $C$ van de bovenkant naar de onderkant van de ringmagneet mogelijk zijn die een een kleinere/gelijkaardige reluctantie $\mathcal{R}=\int_C\frac{dl}{\mu(l)A(l)}$ hebben. Daarnaast zorgen we ervoor dat de poolschoenen gladde en afgeronde oppervlakken hebben om randeffecten te voorkomen, aangezien magnetische veldlijnen de neiging hebben om zich te concentreren rond oppervlakken met een kleine kromtestraal, zoals randen en hoeken.\\
 
-Om wiskundig te beschrijven waar de magnetische velden de poleschoenen verlaten of weglekken, is het gemakkelijk om gebruik te maken van magnetische poolladingen. De magnetische lading aan het oppervlak van een gemagnetiseerd volume wordt gegeven door $\sigma_M=\mathbf{M}\cdot\mathbf{n}$ met $\mathbf{M}$ de magnetisatie van het materiaal en $\mathbf{n}$ een normaalvector op het oppervlak. In het ideale geval zijn de poleschoenen zo gemagnetiseerd dat de magnetisatie altijd parallel ligtaan de zijoppervlakken ligt zodat $\sigma_M=0$. Alleen bij de oppervlakken die aan de gap grenzen staat de magnetisatie loodracht op het oppervlak, waardoor we daar wel een poollading krijgen. In deze benadering hebben de poleschoenen dus enkel oppervlakteladigen aan de gap tussen de poleschoenen.\\
+    Om wiskundig te beschrijven waar de magnetische velden de poolschoenen verlaten of weglekken, is het gemakkelijk om gebruik te maken van magnetische poolladingen. De magnetische lading aan het oppervlak van een gemagnetiseerd volume wordt gegeven door $\sigma_M=\mathbf{M}\cdot\mathbf{n}$ met $\mathbf{M}$ de magnetisatie van het materiaal en $\mathbf{n}$ een normaalvector op het oppervlak. In het ideale geval zijn de poolschoenen zo gemagnetiseerd dat de magnetisatie altijd parallel ligtaan de zijoppervlakken ligt zodat $\sigma_M=0$. Alleen bij de oppervlakken die aan de luchtspleet grenzen staat de magnetisatie loodracht op het oppervlak, waardoor we daar wel een poollading krijgen. In deze benadering hebben de poolschoenen dus enkel oppervlakteladigen aan de luchtspleet tussen de poolschoenen.\\
 
-Een tweede belangrijke veronderstelling is dat de poolladingen aan de oppervlakken in de gap homogeen verdeeld zijn. Dit is een goede benadering als we een homogeen ferromagnetisch materiaal en een homogeen gemagnetiseerde ringmagneet gebruiken. De oppervlakken van de ringmagneet kunnen we immers ook als homogeen geladen oppervlakken beschouwen. De magnetische veldlijnen afkomstig van het magneetoppervlak zullen zich min of meer uniform doorheen de poleschoenen voortplanten zodat ook de gap-oppervlakken homogeen geladen zijn. Op deze manier wordt het magnetisch veld gereduceerd tot het veld veroorzaakt door twee homogeen geladen \textit{annula}\footnote{Een annulus is een oppervlak opgespannen tussen twee concentrische cirkels.} met een tegengestelde, maar even grote magnetische poollading $\pm\sigma_M$.\\
+    \item Een tweede belangrijke veronderstelling is dat de poolladingen aan de oppervlakken in de luchtspleet homogeen verdeeld zijn. Dit is een goede benadering als we een homogeen ferromagnetisch materiaal en een homogeen gemagnetiseerde ringmagneet gebruiken. De oppervlakken van de ringmagneet kunnen we immers ook als homogeen geladen oppervlakken beschouwen. De magnetische veldlijnen afkomstig van het magneetoppervlak zullen zich min of meer uniform doorheen de poolschoenen voortplanten zodat ook de luchtspleet-oppervlakken homogeen geladen zijn. Op deze manier wordt het magnetisch veld gereduceerd tot het veld veroorzaakt door twee homogeen geladen \textit{annula}\footnote{Een annulus is een oppervlak opgespannen tussen twee concentrische cirkels.} met een tegengestelde, maar even grote magnetische poollading $\pm\sigma_M$.\\
+\end{enumerate}
 
 Aan de hand van dit vereenvoudigd model kunnen we een analytische uitdrukking voor het magnetisch veld op de symmetrie-as terugvinden. We beginnen met 1 homogeen geladen annulus met een oppervlaktelading\footnote{Voorlopig kiezen we een arbitraire oppervlaktelading, in een latere sectie zullen we bespreken hoe we de juiste waarde voor $\sigma_M$ kiezen.} $+\sigma_M$ die zich rond de $z$-as op een hoogte $z=0$ bevindt. De annulus heeft een binnenstraal van $R_1$ en een buitenstraal $R_2$. Natuurlijk is het niet mogelijk om een magnetische monopool zoals in dit systeem te maken, maar dit is slechts een tussenstap: later zullen we een tweede annulus met tegengestelde lading toevoegen. Dit systeem wordt getoond op Figuur \ref{fig:analytic_expression_1_ring}.
 
@@ -409,7 +434,7 @@ Door te werken met poolladingsdichtheden kunnen we nu eenvoudig het veld met twe
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.45\linewidth]{Images/analytic_expression_2_rings.png}
-    \caption{Systeem met 2 annula met een gapbreedte van $d$ rond een symmetrie-as. De annula hebben homogene oppervlaktepoolladingen gelijk aan $\pm\sigma_M$, wat aanleiding geeft tot een magnetisch veld. Dit is het systeem dat we beschouwen bij het afschatten van het magnetisch veld in onze lens.}
+    \caption{Systeem met 2 annula met een luchtspleetbreedte van $d$ rond een symmetrie-as. De annula hebben homogene oppervlaktepoolladingen gelijk aan $\pm\sigma_M$, wat aanleiding geeft tot een magnetisch veld. Dit is het systeem dat we beschouwen bij het afschatten van het magnetisch veld in onze lens.}
     \label{fig:analytic_expression_2_rings}
 \end{figure}
 
@@ -439,7 +464,7 @@ Figuur \ref{fig:B_field_2_annula} toont een plot van onze analytische afschattin
 \end{figure}
 We verkrijgen op deze manier een sterk gepiekt magnetisch veld in het midden van de lens. Dit is exact wat we willen om een dunne lens met een bruikbare focale lengte te maken. Later zullen we onderzoeken hoe de geometrie van de ringoppervlakken het magnetisch veld verandert, en hoe dit de lenseigenschappen beïnvloedt.\\
 
-Een belangrijke opmerking bij deze afschatting is dat deze in principe enkel geldt in het gebied $-\frac{d}{2}<z<\frac{d}{2}$. De ringvormige ladingsoppervlakken zijn aan de buitenkanten immers begrensd door de poleschoenen, die een veel grotere permeabiliteit dan vacuüm hebben. In het ideale geval is het magnetisch veld geconcentreerd in de poleschoenen zonder dat het weglekt, en geldt er voor $z>\left|\frac{d}{2}\right|$ dat $B(z)=0$. Op bovenstaande figuur is echter te zien dat de velden buiten de lens heel wat kleiner zijn dan de velden in het centrum van de lens, en aangezien we in de paraxiale bewegingsvergelijkingen werken met $B^2$ zullen deze randvelden zeer weinig invloed hebben wanneer we de vergelijking numeriek zullen oplossen.\\
+Een belangrijke opmerking bij deze afschatting is dat deze in principe enkel geldt in het gebied $-\frac{d}{2}<z<\frac{d}{2}$. De ringvormige ladingsoppervlakken zijn aan de buitenkanten immers begrensd door de poolschoenen, die een veel grotere permeabiliteit dan vacuüm hebben. In het ideale geval is het magnetisch veld geconcentreerd in de poolschoenen zonder dat het weglekt, en geldt er voor $z>\left|\frac{d}{2}\right|$ dat $B(z)=0$. Op bovenstaande figuur is echter te zien dat de velden buiten de lens heel wat kleiner zijn dan de velden in het centrum van de lens, en aangezien we in de paraxiale bewegingsvergelijking werken met $B^2$ zullen deze randvelden zeer weinig invloed hebben wanneer we de vergelijking numeriek zullen oplossen.\\
 
 Om later de aberratiecoëfficienten te berekenen is het ook nuttig om de analytische afgeleiden van het veld te berekenen. Deze werden geëvalueerd met Wolfram Mathematica en worden hieronder gegeven:
 \begin{equation}
@@ -506,16 +531,16 @@ Onze analytische afschatting kunnen we numeriek controleren met het ionen- en el
     \label{fig:B_field_SIMION}
 \end{figure}
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Conclusie Objectief 1]
-    Het magnetisch veld op de symmetrie-as werd met een analytische uitdrukking benaderd door de oppervlakken van de poleschoenen te modelleren als twee oppervlakken met een homogene, tegengestelde polladingsdichtheid. Het gebruiken van een analytische uitdrukking laat toe om ook de analytische afgeleiden te berekenen welke gebruikt kunnen worden om aberratiecoëfficienten te schatten. Een vergelijking van de analytische uitdrukking met een numerieke oplossing m.b.v. SIMION van de Laplace-vergelijking geeft een vrijwel perfecte overeenkomst.
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 2]
+    Het magnetisch veld op de symmetrie-as werd met een analytische uitdrukking benaderd door de oppervlakken van de poolschoenen te modelleren als twee oppervlakken met een homogene, tegengestelde polladingsdichtheid. Het gebruiken van een analytische uitdrukking laat toe om ook de analytische afgeleiden te berekenen welke gebruikt kunnen worden om aberratiecoëfficienten te schatten. Een vergelijking van de analytische uitdrukking met een numerieke oplossing m.b.v. SIMION van de Laplace-vergelijking geeft een vrijwel perfecte overeenkomst.
 \end{tcolorbox}
 
 \section{Magnetische reluctantie van het circuit}
 Nu we een benaderende analytische uitdrukking hebben gevonden voor het magnetisch veld voor ons lensontwerp, moeten we nadenken over welke waarde we moeten gebruiken voor de oppervlaktepoolladingsdichtheden $\sigma_M$. \\
 
-De eerste factor waar we rekening mee moeten houden is de reluctantie van het circuit. De Nd-magneet heeft een remanent magneetveld $B_r$, dit is het magnetisch veld dat in de magneet overblijft wanneer we geen uitwendige magnetische velden aanleggen. Wanneer we de magneet in een magnetisch circuit met een gap gebruiken, zorgen de oppervlakteladingen aan de gap voor een demagnetiserend veld in de poleschoenen en de magneet dat het remanent veld tegenwerkt. Hierdoor is het werkelijke veld in de magneet $B_m$ kleiner dan het remanent veld $B_r$.\\
+De eerste factor waar we rekening mee moeten houden is de reluctantie van het circuit. De Nd-magneet heeft een remanent magneetveld $B_r$, dit is het magnetisch veld dat in de magneet overblijft wanneer we geen uitwendige magnetische velden aanleggen. Wanneer we de magneet in een magnetisch circuit met een luchtspleet gebruiken, zorgen de oppervlakteladingen aan de luchtspleet voor een demagnetiserend veld in de poolschoenen en de magneet dat het remanent veld tegenwerkt. Hierdoor is het werkelijke veld in de magneet $B_m$ kleiner dan het remanent veld $B_r$.\\
 
-Een elegante manier om dit effect wiskundig te beschrijven, is om de analogie te maken met elektrische weerstand en een magnetisch circuit te tekenen dat equivalent is met de geometrie van de lens. We maken eerst een magnetisch circuit equivalent\footnote{De figuur toont dus geen doorsnede van de lens, maar equivalent circuit dat niet meer axissymetrisch is.} aan de cilindrisch symmetrische lens, zoals wordt getoond op Figuur \ref{fig:magnetic_circuit_a}. We krijgen door de oppervlakteladingen een demagnetiserend veld, getoond op Figuur \ref{fig:fields_comparison_b}. Vervolgens tekenen we een symbolisch schema van dit circuit, getoond op Figuur \ref{fig:magnetic_circuit_c}. De magneet is dan een bron van magnetomotorische kracht $\mathcal{F}$. Zowel de magneet, de twee poleschoenen als de gap zorgen voor een reluctantie $\mathcal{R}$ in het circuit. De magnetische flux doorheen het circuit wordt dan gegeven door:
+Een elegante manier om dit effect wiskundig te beschrijven, is om de analogie te maken met elektrische weerstand en een magnetisch circuit te tekenen dat equivalent is met de geometrie van de lens. We maken eerst een magnetisch circuit equivalent\footnote{De figuur toont dus geen doorsnede van de lens, maar equivalent circuit dat niet meer axissymetrisch is.} aan de cilindrisch symmetrische lens, zoals wordt getoond op Figuur \ref{fig:magnetic_circuit_a}. We krijgen door de oppervlakteladingen een demagnetiserend veld, getoond op Figuur \ref{fig:fields_comparison_b}. Vervolgens tekenen we een symbolisch schema van dit circuit, getoond op Figuur \ref{fig:magnetic_circuit_c}. De magneet is dan een bron van magnetomotorische kracht $\mathcal{F}$. Zowel de magneet, de twee poolschoenen als de luchtspleet zorgen voor een reluctantie $\mathcal{R}$ in het circuit. De magnetische flux doorheen het circuit wordt dan gegeven door:
 \begin{equation}\label{eq:flux_mmf_reluctance}
     \Phi = \frac{\mathcal{F}}{\mathcal{R}_{tot}}
 \end{equation}
@@ -542,7 +567,7 @@ Een elegante manier om dit effect wiskundig te beschrijven, is om de analogie te
         \caption{}
         \label{fig:magnetic_circuit_c}
     \end{subfigure}
-    \caption{Illustratie van het magnetisch circuit equivalent aan dat van de lens. De gap veroorzaakt demagnetiserend veld dat ervoor zorgt dat het oppervlakteveld $B_m$ van de magneet kleiner wordt dan haar remanent veld $B_r$. Dit kunnen we wiskundig beschrijven door de analogie te maken met elektrische circuits, waarbij de magneet een bron van magnetomotorische kracht, en de gap een reluctantie voorstellen.}
+    \caption{Illustratie van het magnetisch circuit equivalent aan dat van de lens. De luchtspleet veroorzaakt demagnetiserend veld dat ervoor zorgt dat het oppervlakteveld $B_m$ van de magneet kleiner wordt dan haar remanent veld $B_r$. Dit kunnen we wiskundig beschrijven door de analogie te maken met elektrische circuits, waarbij de magneet een bron van magnetomotorische kracht, en de luchtspleet een reluctantie voorstellen.}
     \label{fig:magnetic_circuit}
 \end{figure}
 
@@ -551,17 +576,17 @@ Een elegante manier om dit effect wiskundig te beschrijven, is om de analogie te
 % De totale reluctantie van het circuit kan berekend worden uit\footnote{Hierbij benaderen we de permeabiliteit van lucht $\mu_{lucht}\approx\mu_0$.}:
 % \begin{align}
 %     & \mathcal{R}_{tot}= \int_\Gamma \frac{dl}{\mu(l)A(l)} = \mathcal{R}_{m} + 2\mathcal{R}_{p} + \mathcal{R}_{g}\\
-%     &= \int_{magneet}\frac{dl}{\mu_{m}A(l)} + 2\int_{poleschoen}\frac{dl}{\mu_{p}A(l)} + \int_{gap}\frac{dl}{\mu_{0}A(l)}
+%     &= \int_{magneet}\frac{dl}{\mu_{m}A(l)} + 2\int_{poolschoen}\frac{dl}{\mu_{p}A(l)} + \int_{luchtspleet}\frac{dl}{\mu_{0}A(l)}
 % \end{align}
-% De permeabiliteit van de poleschoenen $\mu_p$ is heel groot, dus is $\mathcal{R}_{p}\approx 0$ en verwaarloosbaar. We kunnen de reluctantie van de magneet en de gap nu expliciet uitschrijven in functie van de lensparameters, met $A_m = \pi\left(R_{2, m}^2-R_{1, m}^2\right)$ de oppervlakte van de ringmagneet en $A_g = \pi\left(R_{2}^2-R_{1}^2\right)$ de oppervlakte van de poleschoenen aan de gap. Hierbij verwaarlozen we het naar buiten buigen van de veldlijnen, wat $A_g$ iets groter zou maken. Dit effect is echter klein in verhouding met de oppervlakte van de poleschoenen. De totale reluctantie wordt dan:
+% De permeabiliteit van de poolschoenen $\mu_p$ is heel groot, dus is $\mathcal{R}_{p}\approx 0$ en verwaarloosbaar. We kunnen de reluctantie van de magneet en de luchtspleet nu expliciet uitschrijven in functie van de lensparameters, met $A_m = \pi\left(R_{2, m}^2-R_{1, m}^2\right)$ de oppervlakte van de ringmagneet en $A_g = \pi\left(R_{2}^2-R_{1}^2\right)$ de oppervlakte van de poolschoenen aan de luchtspleet. Hierbij verwaarlozen we het naar buiten buigen van de veldlijnen, wat $A_g$ iets groter zou maken. Dit effect is echter klein in verhouding met de oppervlakte van de poolschoenen. De totale reluctantie wordt dan:
 % \begin{equation}
 %     \mathcal{R}_{tot}=\frac{d_m}{\mu_m A_m}+\frac{d_g}{\mu_0 A_g}
 % \end{equation}
-% Waarbij $d_m$ en $d_g$ respecievelijk de dikte van de magneet en van de gap voorstellen. De magnetomotorische kracht van de magneet wordt gegeven door:
+% Waarbij $d_m$ en $d_g$ respecievelijk de dikte van de magneet en van de luchtspleet voorstellen. De magnetomotorische kracht van de magneet wordt gegeven door:
 % \begin{equation}
 %     \mathcal{F}_m = H_c d_m = \frac{B_r d_m}{\mu_m }
 % \end{equation}
-% Hierbij geldt er dat $B_r = \mu_m H_c$ zolang de poleschoenen niet gesatureerd raken en de $B-H$ curve lineair blijft. Nu kunnen we de totale flux doorheen het circuit berekenen:
+% Hierbij geldt er dat $B_r = \mu_m H_c$ zolang de poolschoenen niet gesatureerd raken en de $B-H$ curve lineair blijft. Nu kunnen we de totale flux doorheen het circuit berekenen:
 % \begin{equation}
 %     \Phi = B_r\frac{d_m}{\mu_m  \left(\frac{d_m}{\mu_m A_m}+\frac{d_g}{\mu_0 A_g}\right)}=B_r\frac{A_m}{\left(1+\frac{\mu_m d_g A_m}{\mu_0 d_m A_g}\right)}
 % \end{equation}
@@ -575,15 +600,15 @@ Een elegante manier om dit effect wiskundig te beschrijven, is om de analogie te
 % \end{equation}
 % \color{black}
 
-Ten eerste weten we dat dezelfde flux doorheen het oppervlak van de magneet en het oppervlak van de gap stroomt, aangezien $\nabla \cdot \mathbf{B}=0$. Er geldt dus:
+Ten eerste weten we dat dezelfde flux doorheen het oppervlak van de magneet en het oppervlak van de luchtspleet stroomt, aangezien $\nabla \cdot \mathbf{B}=0$. Er geldt dus:
 \begin{equation}\label{eq:B_m_B_g}
     B_m A_m = B_g A_g
 \end{equation}
-De totale reluctantie van het circuit kan berekend worden door de reluctanties in serie op te tellen $\mathcal{R}_{tot}=\mathcal{R}_{m}+2\mathcal{R}_{p}+\mathcal{R}_{g}$. Door de grote permeabiliteit van de poleschoenen $\mu_p$ is $\mathcal{R}_{p}$ verwaarloosbaar, dus $\mathcal{R}_{tot}=\mathcal{R}_{m}+\mathcal{R}_{g}$. We houden dus enkel rekening met de reluctanties van de magneet en de gap. Uit de wet van Ampère in integraalvorm vinden we:
+De totale reluctantie van het circuit kan berekend worden door de reluctanties in serie op te tellen $\mathcal{R}_{tot}=\mathcal{R}_{m}+2\mathcal{R}_{p}+\mathcal{R}_{g}$. Door de grote permeabiliteit van de poolschoenen $\mu_p$ is $\mathcal{R}_{p}$ verwaarloosbaar, dus $\mathcal{R}_{tot}=\mathcal{R}_{m}+\mathcal{R}_{g}$. We houden dus enkel rekening met de reluctanties van de magneet en de luchtspleet. Uit de wet van Ampère in integraalvorm vinden we:
 \begin{equation}\label{eq:H_m_H_g}
     \int_\Gamma \mathbf{H}\cdot d\mathbf{l} \approx H_g d_g - H_m d_m = I_{int}=0 \Leftrightarrow H_m = \frac{d_g}{d_m}H_g
 \end{equation}
-Waarbij $d_m$ en $d_g$ respecievelijk de dikte van de magneet en van de gap voorstellen. Nu weten we dat er in de gap geldt dat $H_g = \frac{B_g}{\mu_0}$, wat we kunnen invullen in \ref{eq:B_m_B_g}:
+Waarbij $d_m$ en $d_g$ respecievelijk de dikte van de magneet en van de luchtspleet voorstellen. Nu weten we dat er in de luchtspleet geldt dat $H_g = \frac{B_g}{\mu_0}$, wat we kunnen invullen in \ref{eq:B_m_B_g}:
 \begin{equation}
     H_g = \frac{B_m A_g}{\mu_0 A_g}
 \end{equation}
@@ -612,7 +637,7 @@ Het demagnetiserend veld zal enerzijds het remanent veld van de magneet tegenwer
     \label{fig:operating_point}
 \end{figure}
 
-Een we het veld gegenereerd door de magneet $B_m=B_r-\mu_0 H_d$ hebben gevongen, kunnen we het magnetisch veld aan het oppervlak grenzend aan de gap kunnen berekenen door rekening te houden met de oppervlaktes van de poleschoenen $A_g$:
+Een we het veld gegenereerd door de magneet $B_m=B_r-\mu_0 H_d$ hebben gevongen, kunnen we het magnetisch veld aan het oppervlak grenzend aan de luchtspleet kunnen berekenen door rekening te houden met de oppervlaktes van de poolschoenen $A_g$:
 \begin{equation}\label{eq:Br_yoke}
     B_g = \frac{B_m A_m}{A_g}
 \end{equation}
@@ -635,12 +660,12 @@ De volledige analytische uitdrukking van het magnetisch veld op de optische as v
 %     B(z) & = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}\sum_{\pm}\pm\frac{\zeta_{\pm}}{2}\left(\frac{1}{\sqrt{\zeta_{\pm}^2+R_1^2}}-\frac{1}{\sqrt{\zeta_{\pm}^2+R_2^2}}\right)\\
 %     \zeta_{\pm} & = z \pm \frac{d_g}{2}
 % \end{align}
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Conclusie Objectief 2]
-    Er wordt rekening gehouden met het demagnetiserend veld, dat de poolladingsdichtheden op de oppervlakken van de poleschoenen doet verkleinen. Een analogie met elektrische circuits laat toe om de permeantiecoëfficiënt van het magnetisch circuit van de lens te berekenen, waarna het werkingspunt op de $\mathrm{BH}$-curve gevonden kan worden. De oppervlaktepoolladingsdichtheid wordt berekend door de benadering te maken dat alle flux in de magneet wordt verdeeld over de oppervlakkes van de poleschoenen.
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 3]
+    Er wordt rekening gehouden met het demagnetiserend veld, dat de poolladingsdichtheden op de oppervlakken van de poolschoenen doet verkleinen. Een analogie met elektrische circuits laat toe om de permeantiecoëfficiënt van het magnetisch circuit van de lens te berekenen, waarna het werkingspunt op de $\mathrm{BH}$-curve gevonden kan worden. De oppervlaktepoolladingsdichtheid wordt berekend door de benadering te maken dat alle flux in de magneet wordt verdeeld over de oppervlakkes van de poolschoenen.
 \end{tcolorbox}
 
 \section{Implementatie in Python}
-Om de afhankelijkheid van de lenseigenschappen ($f, z_{Fi}, z_{Pi}$, etc.) van de lensparameters ($R_1, R_2, d_g, B_r$, etc.) te analyseren, hebben we een klasse in Python geschreven. Hiermee kunnen we snel de het magnetisch veld berekenen en plotten voor een bepaalde geometrie van de magneet en de poleschoenen, en vervolgens de paraxiale bewegingsvergelijkingen voor dit veld oplossen om zo de lenseigenschappen te berekenen. 
+Om de afhankelijkheid van de lenseigenschappen ($f, z_{Fi}, z_{Pi}$, etc.) van de lensparameters ($R_1, R_2, d_g, B_r$, etc.) te analyseren, hebben we een klasse in Python geschreven. Hiermee kunnen we snel de het magnetisch veld berekenen en plotten voor een bepaalde geometrie van de magneet en de poolschoenen, en vervolgens de paraxiale bewegingsvergelijking voor dit veld oplossen om zo de lenseigenschappen te berekenen. 
 
 \subsection{Paraxiaal magnetisch veld}
 Om de afhankelijkheid van het magnetisch veld van de lensparameters te onderzoeken, maken we een functie die ons toelaat om de lensparameters met sliders aan te passen, terwijl het magnetisch veld continu wordt geupdated. In deze functie is ook het remanent veld $B_r$ instelbaar, wat beter gedefiniëerd moet worden aangezien de magneet niet 1 waarde voor $B_r$ heeft (maar een $\mathrm{BH}$-curve). Deze instelling herschaalt de $\mathrm{BH}$-curve zodanig dat het remanent veld voor $H_d=0\frac{\mathrm{A}}{\mathrm{m}}$ gelijk is aan de ingestelde waarde voor $B_r$. Een voorbeeld van een plot wordt getoond op Figuur \ref{fig:Interactive_B_field} voor de parameters $R_1=0.8\mathrm{mm}$, $R_2=3.25\mathrm{mm}$, en $d_g=0.8\mathrm{mm}$.
@@ -651,7 +676,7 @@ Om de afhankelijkheid van het magnetisch veld van de lensparameters te onderzoek
     \label{fig:Interactive_B_field}
 \end{figure}
 
-\subsection{Paraxiale bewegingsvergelijkingen}
+\subsection{Paraxiale bewegingsvergelijking}
 Met de analytische uitdrukking voor het magnetisch veld kunnen we de paraxiale bewegingsvergelijking oplossen om uiteindelijk de lenseigenschappen van de lens te gaan voorspellen. Ter herinnering, de paraxiale bewegingsvergelijking wordt gegeven door:
 \begin{equation}\label{eq:paraxialevgl_rel_H54}
     \frac{d^2r}{dz^2}+\frac{\eta^2B(z)^2}{4V}r=0
@@ -703,7 +728,7 @@ Eens we de twee lineair onafhankelijke oplossingen hebben berekend, is het mogel
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Images/setup_1.png}
-    \caption{Plot van numerieke oplossing van de paraxiale bewegingsvergelijking. De object en beeld asymptotische bundels snijden elkaar in het beeld hoofdvlak, en de beeld asymtotische straal snijdt de symmetrie-as in het achterste focaalvlak van de lens. Deze opstelling heeft de volgende parameters: $R_1=1.5\mathrm{mm},R_2=5\mathrm{mm},d=5\mathrm{mm}, B_g=0.447\mathrm{T},\Phi=30\mathrm{keV}$.}
+    \caption{Plot van numerieke oplossing van de paraxiale bewegingsvergelijking. De object en beeld asymptotische bundels snijden elkaar in het beeld hoofdvlak, en de beeld asymtotische straal snijdt de symmetrie-as in het achterste focaalvlak van de lens. Deze opstelling heeft de volgende parameters: $R_1=1.5\mathrm{mm},R_2=5\mathrm{mm},d=5\mathrm{mm}, B_g=0.447\mathrm{T},\Phi=30$~keV.}
     \label{fig:setup_1}
 \end{figure}
 
@@ -722,23 +747,23 @@ Met de analystische afschatting van het veld en de analytische afgeleiden zijn w
 Merk op dat de oplossinge $g$ en $h$ van vergelijking \ref{eq:gh} optreden. Deze opolssingen worden als dimensieloos beschouwd. Bovendien zijn deze oplossingen afhankelijk van de objectpositie $z_0$, dus zijn ook de aberratiecoëfficienten afhankelijk van de afstand tussen de lens en het object. Deze integralen zijn zeer zelden analytisch oplosbaar, en ook aangezien we geen anaylitische uitdrukkingen voor $g$ en $h$ hebben moeten we deze numeriek oplossen door de Riemann-som met een kleine $\Delta z$ te nemen. 
 \color{red} Sferische aberratie ook nog te berekenen \color{black}
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Conclusie Objectief 3]
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 4]
     Er werd een Python-toolbox geïmplementeerd om de werking van de lens te simuleren waarmee op numerieke wijze de lenseigenschappen voor een bepaalde geometrie bepaald kunnen worden. De paraxiale bewegingsvergelijking wordt opgelost met een $8$ste orde Runge-Kuta methode om  thee linear onafhankelijk oplossingen $g(z)$ en $h(z)$ te vinden, waarna beeldvorming gesimuleerd kan worden door lineaire combinaties van de twee oplossingen te maken. De distortie en chromatische aberratiecoëfficiënten worden geëvalueerd door de integralen van het analytische veld $B(z)$ en haar afgeleiden te benaderen als Riemann-som.
 \end{tcolorbox}
 
-\chapter{Optimalisatie en validatie van de lensparameters}\label{ch:optimalisaite}
-Eens een simulatietoolbox in Python geïmplmenteerd is, kan deze toegepast worden om de lensparameters te optimaliseren en de lens effectief te realiseren. Hiervoor moeten eerst criteria worden opgesteld waaraan de lens moet voldon om gebruikt te kunnen woden in een elektronenmicroscoop met een versnelspanning van $30\mathrm{keV}$. Vervolgens kunnen de parameters worden afgestemd op deze criteria, waarna de poleschoenen door een CNC-service kunnen worden vervaardigd. Ten slotte kunnen de lenseigenschappen experimenteel worden gekarakteriseerd. De volgende objectieven worden daartoe opgesteld:
-
-\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 4]
-    Formuleer concrete criteria waaraan de lensparameters en lenseigenschappen moeten voldoen voor een bruikbare lenswerking.
-\end{tcolorbox}
+\chapter{Optimalisatie en validatie van de lensparameters}\label{ch:optimalisatie}
+Eens een simulatietoolbox in Python geïmplmenteerd is, kan deze toegepast worden om de lensparameters te optimaliseren en de lens effectief te realiseren. Hiervoor moeten eerst criteria worden opgesteld waaraan de lens moet voldon om gebruikt te kunnen woden in een elektronenmicroscoop met een versnelspanning van $30$~keV. Vervolgens kunnen de parameters worden afgestemd op deze criteria, waarna de poolschoenen door een CNC-service kunnen worden vervaardigd. Ten slotte kunnen de lenseigenschappen experimenteel worden gekarakteriseerd. De volgende objectieven worden daartoe opgesteld:
 
 \begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 5]
-    Breng met de Python-toolbox de invloed van elke lensparameter afzonderlijk in kaart door variatieplots voor de lenseigenschappen en aberratiecoëfficiënten op te stellen. Selecteer op basis van deze analyse een optimale set lensparameters die maximaal aan de opgestelde criteria voldoet en realiseer een 3D-model van de lens met optimale lensparameters in FreeCAD.
+    Het formuleren concrete criteria waaraan de lensparameters en lenseigenschappen moeten voldoen voor een bruikbare lenswerking.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 6]
-    Karakteriseer de lens in de elektonenmicroscoop met een versnelspanning van $30\mathrm{keV}$ door de focale lengte kwalitatief te berekenen en de aberraties kwantitatief te beschrijven. Vergelijk de experimentele en gesimuleerde resultaten en analyseer mogelijke oorzaken van verschillen.
+    Het gebruiken van de Python-toolbox om de invloed van elke lensparameter afzonderlijk in kaart door variatieplots voor de lenseigenschappen en aberratiecoëfficiënten op te stellen. Op basis van deze analyse kan een optimale set lensparameters geselecteerd worden die maximaal aan de opgestelde criteria voldoet waarmee een 3D-model van de lens met optimale lensparameters in FreeCAD gerealiseerd kan worden.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 7]
+    Het karakteriseren van de lens in de elektonenmicroscoop met een versnelspanning van $30$~keV door de focale lengte kwalitatief te berekenen en de aberraties kwantitatief te beschrijven. Dit maakt een vergelijking van de experimentele en gesimuleerde resultaten mogelijk waarmee verschillen kunnen worden geanalyseerd.
 \end{tcolorbox}
 
 
@@ -756,9 +781,9 @@ Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een 
 
     Echter, het is nog steeds gewenst dat het demagnetiserend veld zo klein mogelijk blijft; een groot demagnetiserend veld zorgt nog steeds voor een instabieler circuit. Een exterm demagnetiserend veld of een hogere temperatuur kunnen de magneet in dat geval makkelijker irreversiebel doen demagnetiseren. In onze berekening van $H_d$ hebben we bovendien een versimpeld en geïdealiseerd systeem beschouwd; dit is slechts een schatting van de exacte waarde. De werkelijke waarde van $H_d$ kan zelfs tot $\sim1.5$ keer groter zijn dan de analytisch geschatte waarde \cite{MagnetFAQ}. Dit betekent dat we de interne permeantiecoëccifient $P_{ci}=\frac{B_r}{\mu_0 H_d}$ liefst zo groot mogelijk houden. Om ongewenste effecten te voorkomen, stellen we voor onszelf een (arbitrair gekozen) ondergrens van $P_{ci}>2.5$ in. Figuur \ref{fig:operating_point_25} toont het werkingspunt bij deze ondergrens.
 
-    \item Een andere belangrijke factor waarmee we rekening moeten houden is de $\mathrm{BH}$-curve van de poleschoenen. We gaan er in vergelijking \ref{eq:Br_yoke} van uit dat alle veldlijnen vanuit de magneet worden uitgespreid over de oppervlaktes van de poleschoenen. In het algemeen is de oppervlakte van de poleschoenen kleiner dan die van de magneet, waardoor de veldlijnen zullen concentreren en de fluxdichtheid toeneemt. Dit betekent dat we moeten oppassen dat de poleschoenen niet gesatureerd raken, want dan zou er magnetisch veld weglekken wat allerlei ongewenste effecten met zich meebrengt. Om een bovengrens voor $B_g$ vast te leggen, moeten we naar de $\mathrm{BH}$-curve van ASI1018 kijken. Deze wordt getoond op Figuur \ref{fig:BH_curve_ASI1018}. Er treedt saturatie op wanneer deze curve afvlakt, dus we willen in het lineair deel van de curve blijven werken. De curve vlakt af bij $\sim1.5\mathrm{T}$, dus willen we dat de maximale fluxdichtheid in onze poleschoenen hieronder blijft. Bij het ontwerp proberen we de parameters zo te kiezen dat $B_g<1.25\mathrm{T}$.
+    \item Een andere belangrijke factor waarmee we rekening moeten houden is de $\mathrm{BH}$-curve van de poolschoenen. We gaan er in vergelijking \ref{eq:Br_yoke} van uit dat alle veldlijnen vanuit de magneet worden uitgespreid over de oppervlaktes van de poolschoenen. In het algemeen is de oppervlakte van de poolschoenen kleiner dan die van de magneet, waardoor de veldlijnen zullen concentreren en de fluxdichtheid toeneemt. Dit betekent dat we moeten oppassen dat de poolschoenen niet gesatureerd raken, want dan zou er magnetisch veld weglekken wat allerlei ongewenste effecten met zich meebrengt. Om een bovengrens voor $B_g$ vast te leggen, moeten we naar de $\mathrm{BH}$-curve van ASI1018 kijken. Deze wordt getoond op Figuur \ref{fig:BH_curve_ASI1018}. Er treedt saturatie op wanneer deze curve afvlakt, dus we willen in het lineair deel van de curve blijven werken. De curve vlakt af bij $\sim1.5\mathrm{T}$, dus willen we dat de maximale fluxdichtheid in onze poolschoenen hieronder blijft. Bij het ontwerp proberen we de parameters zo te kiezen dat $B_g<1.25\mathrm{T}$.
 
-    \item Ten slotte moeten we rekening houden met geometrische beperkingen. De binnenstraal $R_1$ moet groter dan $\sim 0.5\mathrm{mm}$ zijn om te voorkomen dat de elektronen door de gaten van beide poleschoenen kunnen en niet op een oppervlak botsen. De buitenstraal $R_2$ moet uiteraard kleiner zijn dan de binnenstraal van de magneet $R_{1, m}$, maar kiezen we best nog kleiner ($R_2<R_{1, m}-1\mathrm{mm}$) om te voorkomen dat het magnetisch circuit kan kortsluiten doordat de veldlijnen van de magneet naar de oppervlakken van de poleschoenen kunnen overslaan. Bovendien mogen de toleranties van het ontwerp niet te klein worden voor de CNC machines waarmee de poleschoenen gemaakt worden. Bij voorkeur zijn de gekozen afmetingen ook afgeronde getallen, zodat er bv. standaard boorgaten kunnen worden gebruikt bij het produceren van de poleschoenen. Ten slotte kunnen we de afmetingen van de magneet niet vrij kiezen; deze worden niet op maat gemaakt, dus we hebben keuze tussen een beperkt aantal dimensies.
+    \item Ten slotte moeten we rekening houden met geometrische beperkingen. De binnenstraal $R_1$ moet groter dan $\sim 0.5\mathrm{mm}$ zijn om te voorkomen dat de elektronen door de gaten van beide poolschoenen kunnen en niet op een oppervlak botsen. De buitenstraal $R_2$ moet uiteraard kleiner zijn dan de binnenstraal van de magneet $R_{1, m}$, maar kiezen we best nog kleiner ($R_2<R_{1, m}-1\mathrm{mm}$) om te voorkomen dat het magnetisch circuit kan kortsluiten doordat de veldlijnen van de magneet naar de oppervlakken van de poolschoenen kunnen overslaan. Bovendien mogen de toleranties van het ontwerp niet te klein worden voor de CNC machines waarmee de poolschoenen gemaakt worden. Bij voorkeur zijn de gekozen afmetingen ook afgeronde getallen, zodat er bv. standaard boorgaten kunnen worden gebruikt bij het produceren van de poolschoenen. Ten slotte kunnen we de afmetingen van de magneet niet vrij kiezen; deze worden niet op maat gemaakt, dus we hebben keuze tussen een beperkt aantal dimensies.
     
 \end{enumerate}
 
@@ -776,16 +801,22 @@ Nu we in staat zijn om de banen van elektronen door het magnetisch veld van een 
     \label{fig:operating_point_25}
 \end{figure}
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Conclusie Objectief 4]
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 5]
     De permanente magneet lens moet aan de volgende criteria voldoen:
-    \begin{itemize}
-        \item De lens moet bij benadering een dunne lens zijn: $\left|z_{Pi}\right|<0.1\mathrm{mm}$
-        \item De focale lengte moet klein genoeg zijn voor de MIRA SEM: $f\sim10\mathrm{mm}$
-        \item De aberratiecoëfficiënten mogen niet veel groter zijn dan literatuurwaarden: $D\sim0.5\mathrm{mm}^{-2}$ en $C_M\sim3$
-        \item De interne permeantiecoëfficiënt mag niet te klein zijn om demagnetisatie te voorkomen: $P_{ci}>2.5$
-        \item De maximale fluxdichtheid in de poleschoenen moet onder de saturatiegrens van ASI1018 blijven: $B_g<1.25\mathrm{T}$
-        \item De geometrie moet voldoen aan beperkingen opgelegd door de CNC-toleranties en beschikbare magneetdimensies.
-    \end{itemize}
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{@{}cl@{}}
+    \toprule
+    Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
+    \multicolumn{1}{|c|}{$f$}        & \multicolumn{1}{c|}{$\sim10\mathrm{mm}$}  \\ \midrule
+    \multicolumn{1}{|c|}{$\left|z_{Pi}\right|$}        & \multicolumn{1}{c|}{$<0.1\mathrm{mm}$} \\ \midrule
+    \multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{c|}{$>2.5$}  \\ \midrule
+    \multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{c|}{$<1.25\mathrm{T}$}    \\ \midrule
+    \multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{c|}{$\leq0.5\mathrm{mm}^{-2}$}    \\ \midrule
+    \multicolumn{1}{|c|}{$C_M$}        & \multicolumn{1}{c|}{$\leq3$} \\ \midrule
+    \end{tabular}
+    \end{table}
+    Daarnaast moet de geometrie voldoen aan beperkingen opgelegd door de CNC-toleranties en beschikbare magneetdimensies.
 \end{tcolorbox}
 
 \subsection{Simulatie van lenseigenschappen}
@@ -824,7 +855,7 @@ Zoals beschreven in hoofdstuk \ref{ch:implementatie}, hebben we in Python een kl
         \label{fig:variable_B_r}
     \end{subfigure}
 
-    \caption{Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen naar wens te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de poleschoenen, welke niet te hoog mag zijn om saturatie-effecten te voorkomen.}
+    \caption{Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen naar wens te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de poolschoenen, welke niet te hoog mag zijn om saturatie-effecten te voorkomen.}
     \label{fig:prop_grid_2x2}
 \end{figure}
 
@@ -879,11 +910,11 @@ Met deze hulpmiddelen kunnen we een geschikte set lensparameters kiezen die een 
 Lensparameter                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
 \multicolumn{1}{|c|}{$R_1$}        & \multicolumn{1}{c|}{$0.8\mathrm{mm}$}  \\ \midrule
 \multicolumn{1}{|c|}{$R_2$}        & \multicolumn{1}{c|}{$3.25\mathrm{mm}$} \\ \midrule
-\multicolumn{1}{|c|}{$d_g$}        & \multicolumn{1}{l|}{$0.8\mathrm{mm}$}  \\ \midrule
-\multicolumn{1}{|c|}{$R_{1, m}$} & \multicolumn{1}{l|}{$4.5\mathrm{mm}$}  \\ \midrule
-\multicolumn{1}{|c|}{$R_{2, m}$} & \multicolumn{1}{l|}{$6\mathrm{mm}$}    \\ \midrule
-\multicolumn{1}{|c|}{$d_m$}        & \multicolumn{1}{l|}{$2\mathrm{mm}$}    \\ \midrule
-\multicolumn{1}{|c|}{$B_r$}        & \multicolumn{1}{l|}{$1.17\mathrm{T}$} \\ \midrule
+\multicolumn{1}{|c|}{$d_g$}        & \multicolumn{1}{c|}{$0.8\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$R_{1, m}$} & \multicolumn{1}{c|}{$4.5\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$R_{2, m}$} & \multicolumn{1}{c|}{$6\mathrm{mm}$}    \\ \midrule
+\multicolumn{1}{|c|}{$d_m$}        & \multicolumn{1}{c|}{$2\mathrm{mm}$}    \\ \midrule
+\multicolumn{1}{|c|}{$B_r$}        & \multicolumn{1}{c|}{$1.17\mathrm{T}$} \\ \midrule
 \end{tabular}
 \caption{Gekozen lensparameters die een optimale lenswerking geven. We gebruiken een N35 graad NdfeB magneet, die een remanent veld van ongeveer $1.17\mathrm{T}$ heeft.}\label{tab:lens_parameters}
 \end{table}
@@ -895,18 +926,18 @@ In de tabel staat er een enkele waarde voor het remanent veld, maar zoals eerder
 Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
 \multicolumn{1}{|c|}{$f$}        & \multicolumn{1}{c|}{$11.437\mathrm{mm}$}  \\ \midrule
 \multicolumn{1}{|c|}{$z_{Pi}$}        & \multicolumn{1}{c|}{$-0.060\mathrm{mm}$} \\ \midrule
-\multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{l|}{$11.377\mathrm{mm}$}  \\ \midrule
-\multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{l|}{$2.575$}  \\ \midrule
-\multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{l|}{$1.120\mathrm{T}$}    \\ \midrule
-\multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{l|}{$0.994\mathrm{mm}^{-2}$}    \\ \midrule
-\multicolumn{1}{|c|}{$C_M$}        & \multicolumn{1}{l|}{$0.840$} \\ \midrule
+\multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{c|}{$11.377\mathrm{mm}$}  \\ \midrule
+\multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{c|}{$2.575$}  \\ \midrule
+\multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{c|}{$1.120\mathrm{T}$}    \\ \midrule
+\multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{c|}{$0.994\mathrm{mm}^{-2}$}    \\ \midrule
+\multicolumn{1}{|c|}{$C_M$}        & \multicolumn{1}{c|}{$0.840$} \\ \midrule
 \end{tabular}
 \caption{Lenseigenschappen voor de gekozen lensparameters.}\label{tab:lens_properties}
 \end{table}
 
-Deze lenseigenschappen voldoen aan onze eisen. De lens is bij benadering een dunne lens met een focale lengte die voldoende kort is voor de MIRA SEM. Het demagnetiserend veld is niet te groot en de maximale fluxdichtheid in de poleschoenen is voldoende klein zodat we ons nog steeds in het lineair gebied van de $\mathrm{BH}$-curve op Figuur \ref{fig:BH_curve_ASI1018} bevinden. De aberratiecoëfficiënten $C_M$ is ook vergelijkbaar met typische waarden voor bruikbare elektronenlenzen. De coëfficiënt $D$ is echter redelijk groot vergeleken met literatuurwaarden. Het is echter zeer moeilijk om deze aberratiecoëfficienten nog kleiner te maken. Als we kijken naar Figuren \ref{fig:ab_grid_2x2} en \ref{fig:prop_grid_2x2}, dan zien we dat het veranderen van een van de lensparameters om $D$ te verkleinen steeds ongewenste neveneffecten heeft. Het vergroten van $R_1$ zorgt voor een kleinere focale lengte en een grotere fluxdichtheid in de poleschoenen. Ook het vergtoten van $R_2$ zal $f$ doen toenemen, en verkleint de afstand tussen de buitenkant van de poleschoenen en de binnenkant van de magneet waardoor de kans op een kortsluiting in het circuit groter is. Het vergroten van $d_g$ tot voorbij het maxima van $D$ geeft dan weer een te kleine $P_{ci}$ en een zwakkere magneet gebruiken zodat $B_r$ verkleint geeft ook een te lange focale lengte. Om deze redenen beargumenteren we dat dit de ideale set parameters is ook als is $D$ groot t.o.v. typische waarden uit de literatuur. Bovendien kunnen we de distorie op andere manieren experimenteel minimaliseren, hierover meer in hoofdstuk \ref{ch:karakterisatie}.\\
+Deze lenseigenschappen voldoen aan onze eisen. De lens is bij benadering een dunne lens met een focale lengte die voldoende kort is voor de MIRA SEM. Het demagnetiserend veld is niet te groot en de maximale fluxdichtheid in de poolschoenen is voldoende klein zodat we ons nog steeds in het lineair gebied van de $\mathrm{BH}$-curve op Figuur \ref{fig:BH_curve_ASI1018} bevinden. De aberratiecoëfficiënten $C_M$ is ook vergelijkbaar met typische waarden voor bruikbare elektronenlenzen. De coëfficiënt $D$ is echter redelijk groot vergeleken met literatuurwaarden. Het is echter zeer moeilijk om deze aberratiecoëfficienten nog kleiner te maken. Als we kijken naar Figuren \ref{fig:ab_grid_2x2} en \ref{fig:prop_grid_2x2}, dan zien we dat het veranderen van een van de lensparameters om $D$ te verkleinen steeds ongewenste neveneffecten heeft. Het vergroten van $R_1$ zorgt voor een kleinere focale lengte en een grotere fluxdichtheid in de poolschoenen. Ook het vergtoten van $R_2$ zal $f$ doen toenemen, en verkleint de afstand tussen de buitenkant van de poolschoenen en de binnenkant van de magneet waardoor de kans op een kortsluiting in het circuit groter is. Het vergroten van $d_g$ tot voorbij het maxima van $D$ geeft dan weer een te kleine $P_{ci}$ en een zwakkere magneet gebruiken zodat $B_r$ verkleint geeft ook een te lange focale lengte. Om deze redenen beargumenteren we dat dit de ideale set parameters is ook als is $D$ groot t.o.v. typische waarden uit de literatuur. Bovendien kunnen we de distorie op andere manieren experimenteel minimaliseren, hierover meer in hoofdstuk \ref{ch:karakterisatie}.\\
 
-Eens we deze parameters hebben vastgelegd, moeten we een driedimensionaal model van de lens maken zodat de onderdelen door een CNC-service geproduceerd kunnen worden. We kiezen ervoor om het ontwerp in FreeCAD te maken. Dit kunnen we eenvoudig doen door een 2D sketch van een doorsnede van de lens met de gekozen afmetingen te maken, en vervolgens met de \textit{Revolution} functie van het programma een cilindrisch symmetrisch onderdeel op basis van de sketch te maken. Figuur \ref{fig:FreeCAD_2D} toont de 2D sketch met de afmetingen en enkele screenshots van het driedimensionaal model van de poleschoenen. We zorgen ervoor dat de poleschoen zo min mogelijk scherpe hoeken heeft, zodat het magnetisch veld nergens aan de buitenkant concentreert of weglekt. 
+Eens we deze parameters hebben vastgelegd, moeten we een driedimensionaal model van de lens maken zodat de onderdelen door een CNC-service geproduceerd kunnen worden. We kiezen ervoor om het ontwerp in FreeCAD te maken. Dit kunnen we eenvoudig doen door een 2D sketch van een doorsnede van de lens met de gekozen afmetingen te maken, en vervolgens met de \textit{Revolution} functie van het programma een cilindrisch symmetrisch onderdeel op basis van de sketch te maken. Figuur \ref{fig:FreeCAD_2D} toont de 2D sketch met de afmetingen en enkele screenshots van het driedimensionaal model van de poolschoenen. We zorgen ervoor dat de poolschoen zo min mogelijk scherpe hoeken heeft, zodat het magnetisch veld nergens aan de buitenkant concentreert of weglekt. 
 \color{red} Vervangen door technische tekeningen? \color{black}
 \begin{figure}[H]
     \centering
@@ -940,13 +971,13 @@ Eens we deze parameters hebben vastgelegd, moeten we een driedimensionaal model 
         \label{fig:FreeCAD_3D_4}
     \end{subfigure}
 
-    \caption{Verschillende aanzichten en een 2D sketch van het ontwerp van de poleschoenen in FreeCAD.}
+    \caption{Verschillende aanzichten en een 2D sketch van het ontwerp van de poolschoenen in FreeCAD.}
     \label{fig:FreeCAD_grid_2x2}
 \end{figure}
 
-Deze stepfile hebben we opgestuurd naar de CNC-service \textit{Protolabs Network} \cite{Hubs}. We hebben de poleschoenen laten maken in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden.
+Deze stepfile hebben we opgestuurd naar de CNC-service \textit{Protolabs Network} \cite{Hubs}. We hebben de poolschoenen laten maken in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden.
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Conclusie Objectief 5]
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 6]
     De optimale lensparameters worden bepaald door een trial-and-errorproces ondersteund door variatie-plots waarbij telkens 1 parameter wordt aangepast. Hiervoor hebben we in de Python klasse functies geïmplementeerd die de lenseigenschappen, aberratiecoëfficiënten en permeantiecoëfficiënt voor een variabele lensparameter berekenen en plotten. We vonden met deze methodologie een set lensparameters die aan de gewenste eigenschappen voor de lens voldoet, en ontwierpen de driedimensionale geometrie voor de lens in FreeCAD. 
 \end{tcolorbox}
 
