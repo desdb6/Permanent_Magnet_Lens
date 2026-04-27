@@ -1,9 +1,10 @@
 TODO
 
-- Verduidelijk en literatuurstudie
+- Verduidelijk literatuurstudie
 - Beslis wat te doen met sferische aberratie
 - Pas figuren aan (reele/asymptotische aberraties, schets lensontwerp enz.)
 - Vervang engelse termen
 - Vergang 'we'
 - Verbeter spelfouten + suggesties
 - voetnoten weghalen
+- Eenheden fiksen

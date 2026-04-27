@@ -152,24 +152,24 @@ Hoofdstuk \ref{ch:besluit} geeft nog enkele laatste opmerkingen en een conclusie
 
 \chapter{Literatuurstudie}\label{ch:literatuur}
 \section{Elektronenoptica}
-In elektronenoptica maakt men gebruik van elektronen in plaats van fotonen om beelden te vormen. Dit laat ons toe om een grotere resolutie te krijgen dan met optische microscopen, aangezien het oplossend vermogen van een microscoop gelimiteerd wordt door de golflengte van de golven die de beelden vormen. De afmetingen van de kleinste details $d_{min}$ die kunnen worden waargenomen met een golflengte $\lambda$ is \cite{PWHawkes}:
+Het oplossend vermogen van een lichtmicroscoop wordt gelimiteerd door de golflengte van het licht waarmee de beeldvorming gebeurt. De afmetingen van de kleinste details $d_{min}$ die met een optische lens kunnen worden waargenomen met een golflengte $\lambda$ is \cite{PWHawkes}:
 \begin{equation}\label{eq:d_min}
     d_{min}=\frac{k\lambda}{A}
 \end{equation}
-Hierbij is $k$ een constante tussen $0.6-0.8$ en $A$ is de numerieke apertuur van de lens. Door dit verband is de golflengte de beperkende factor voor de magnificatie van een optische microscoop. Met een optische microscoop is het daardoor niet mogelijk om voorwerpen kleiner dan $\sim125\mathrm{nm}$ in beeld te brengen. Voor elektronen wordt de golflengte echter gegeven door:
+Hierbij is $k$ een constante tussen $0.6-0.8$ die afhangt van de specifieke definitie van wat men als \textit{onderscheidbare} details beschouwt. $A$ is de numerieke apertuur van de lens en is gelijk aan $n_0\sin\theta_0$ met $n_0$ de brekingsindex van het meduim waaruit de lens bestaat, en $\theta_0$ de halve openingshoek van de kegel die de volledige lens belicht. Aangezien $d_{min}$ schaalt met $\lambda$ is de golflengte de beperkende factor voor de vergroting van een optische opstellingenp. Met een optische microscoop is het daardoor niet mogelijk om voorwerpen kleiner dan $\sim250\mathrm{nm}$ in beeld te brengen \cite{davidson_resolution_microscopyu}. In elektronenoptica maakt men gebruik van elektronen in plaats van fotonen om beelden te vormen. Dit laat toe om een grotere resolutie te krijgen dan met optische microscopen, aangezien voor elektronen de golflengte gegeven wordt door:
 \begin{equation}
     \lambda=\frac{h}{p}=\frac{h}{\sqrt{2m_e E}}
 \end{equation}
-Als we de elektronen vanuit rust versnellen met een versnelspanning $\Phi$, dan krijgen we:
+Als de elektronen vanuit rust versneld worden met een versnelspanning $\Phi$, dan krijgen ze een golflengte:
 \begin{equation}
     \lambda=\frac{h}{\sqrt{2m_e e\Phi}}
 \end{equation}
-Op deze manier kunnen we dus de golflengte verkleinen door een grotere versnelspanning te gebruiken. Bij HRTEM gebruikt men typisch versnelspanningen tot $300$~keV, waarmee picometer resoluties bereikt kunnen worden. Het huidige record voor beste resolutie staat op $0.5\mathring{A}$, wat bereikt werd m.b.v. elektronen pytografie \cite{Jiang2018Ptychography}. Elektronenoptica is op deze manier een enorm grote verbetering op 'gewone' optica. De instrumenten die nodig zijn om aan elektronenoptica te doen (zoals elektronenlenzen), zijn echter veel complexer dan hun tegenhangers die met lichtgolven beelden vormen. Een elektronenmicroscoop bestaat minstens uit een elektronengun, een of meerdere elektromagnetische lenzen met aberratiecorrectoren, eventueel een of meerdere aperturen, en een elektronendetector. Op deze manier kunnen we op dezelfde manier als met licht een voorwerp bestralen met elektronen, zodanig dat de lenzen een uitvergroot beeld van dat voorwerp op de detector zullen afbeelden.
+Door een grotere versnelspanning te gebruiken kan op deze manier kan de golflengte verder worden verkleind, wat een betere spatiale resolutie dan optische microscopen geeft. Bij HRTEM gebruikt men typisch versnelspanningen tot $300$~keV, waarmee picometer resoluties voor stabiele samples bereikt kunnen worden. Het huidige record voor de beste resolutie staat op $0.5\mathring{A}$, wat een enorme verbetering is vergeleken met de limiet voor optische microscopen \cite{Jiang2018Ptychography}. De instrumenten die nodig zijn om aan elektronenoptica te doen (zoals elektronenlenzen), zijn echter veel complexer dan hun tegenhangers die met lichtgolven beelden vormen. Een elektronenmicroscoop bestaat minstens uit een elektronenbron, een of meerdere elektromagnetische lenzen met aberratiecorrectoren, eventueel een of meerdere aperturen, en een elektronendetector. Op dezelfde manier als met licht kan een voorwerp bestraald worden met elektronen, zodanig dat de lenzen een uitvergroot beeld van dat voorwerp op de detector zullen afbeelden. Dit kan zowel in reëele ruimte, waarbij een direct beeld van eht sample verkregen wordt, als in reciproke ruimte, wat diffractiepatronen oplevert waaruit bijv. kristalstructuur en roosterparameters kunnen worden afgeleid.
 
-\subsection{Scanning/Transmissie Elektronenmicroscopie}
-De twee belangrijkste vormen van elektronenmicroscopie zijn \textit{Scanning Elektronenmicroscopie} (SEM) en \textit{Transmissie Elektronenmicroscopie} (TEM). De beeldvorming gebeurt bij beide technieken op een andere manier, en de opstellingen in de microscoop zijn daardoor ook anders. In deze sectie geven we een korte beschrijving van deze twee technieken.\\
+\subsection{Raster/Transmissie Elektronenmicroscopie}
+De twee belangrijkste vormen van elektronenmicroscopie zijn \textit{Raster Elektronenmicroscopie} (\textit{Scanning Electron Microscopy}, SEM) en \textit{Transmissie-elektronenmicroscopie} (TEM). De beeldvorming gebeurt bij beide technieken op een andere manier, en de opstellingen van de componenten in de microscoop zijn daardoor anders. In deze sectie geven we een korte beschrijving van deze twee technieken.\\
 
-In een SEM zal men een elektronenbundel m.b.v. elektronenlenzen in een zeer smalle spot gaan focusseren ($\sim 3\mathrm{nm}$), welke dan over het sample gescand wordt. Deze elektronenbundel zal dan secundaire elektronen uit het oppervlak van het sample losslaan. De richting waarin deze secundaire elektronen loskomen, wordt beïnvloed door het oppervlak aan het punt waar ze loskomen en bevatten zo dus informatie over het oppervlak. Een elektronendetector die zich ergens boven het sample bevindt zal de secundaire elektronen dan verzamelen. Door de elektronenbundel met \textit{scanning coils} over het oppervlak te scannen, kunnen we voor elk punt op het oppervlak meten hoeveel elektronen er in de richting van de detector vrijkomen en op deze manier een beeld van het oppervlak vormen. De maximale versnelspanning van een SEM ligt typisch tussen $0-30$~keV \cite{PWHawkes} omdat een grotere energie te veel schade aan het sample kan opbrengen. Figuur \ref{fig:SEM_principle} toont een illustratie van het werkingsprincipe van een SEM en Figuur \ref{fig:SEM_image} toont een SEM beeld van rode bloedcellen.
+Figuur \ref{fig:SEM_principle} toont een illustratie van het werkingsprincipe van een SEM en Figuur \ref{fig:SEM_image} toont een SEM beeld van rode bloedcellen. In een SEM wordt een elektronenbundel m.b.v. elektronenlenzen in een zeer smalle spot gefocusseerd ($\sim 3\mathrm{nm}$), welke dan over het sample gescand wordt. Er wordt gebruik gemaakt van verschillende beeldvormingstechnieken afhankelijk van welke deeltjes/stralen er gemeten worden. Afhankelijk van de gedetecteerde deeltjes of straling zijn verschillende beeldvormingstechnieken mogelijk, zoals beeldvorming met \textit{terugverstrooide} elektronen (\textit{Backscattered Electrons}, BSE) of X-stralen. De meest toegepaste techniek maakt echter gebruik van secundaire elektronen (SE). De elektronenbundel zal energie uitwisselen met het sample en secundaire elektronen uit het oppervlak losslaan. Omdat de emissierichting van deze secundaire elektronen sterk afhangt van de lokale oppervlakteoriëntatie, dragen zij informatie over de driedimensionale topografie van het sample. Een elektronendetector boven het sample zal de secundaire elektronen dan verzamelen. Door de elektronenbundel met \textit{rasterspoelen} over het oppervlak te scannen, kunnen we voor elk punt op het oppervlak meten hoeveel elektronen er in de richting van de detector vrijkomen en op deze manier een beeld van het oppervlak vormen. De maximale versnelspanning van een SEM ligt typisch tussen $0.1-30$~keV \cite{PWHawkes} omdat een grotere energie te veel schade aan het sample kan opbrengen.
 
 \begin{figure}[H]
     \centering
@@ -735,7 +735,7 @@ Eens we de twee lineair onafhankelijke oplossingen hebben berekend, is het mogel
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Images/setup_2.png}
-    \caption{Voorbeeld van beeldvorming met een permanente magneetlens. We beschouwen hier de drie hoofdstralen: de straal die door het achterste brandpunt gaat, de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. In dit geval krijgen we een magnificatie $M=5$.}
+    \caption{Voorbeeld van beeldvorming met een permanente magneetlens. We beschouwen hier de drie hoofdstralen: de straal die door het achterste brandpunt gaat, de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. In dit geval krijgen we een vergroting $M=5$.}
     \label{fig:setup_2}
 \end{figure}
 \subsection{Aberratiecoëfficienten}
@@ -978,7 +978,7 @@ Eens we deze parameters hebben vastgelegd, moeten we een driedimensionaal model 
 Deze stepfile hebben we opgestuurd naar de CNC-service \textit{Protolabs Network} \cite{Hubs}. We hebben de poolschoenen laten maken in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden.
 
 \begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 6]
-    De optimale lensparameters worden bepaald door een trial-and-errorproces ondersteund door variatie-plots waarbij telkens 1 parameter wordt aangepast. Hiervoor hebben we in de Python klasse functies geïmplementeerd die de lenseigenschappen, aberratiecoëfficiënten en permeantiecoëfficiënt voor een variabele lensparameter berekenen en plotten. We vonden met deze methodologie een set lensparameters die aan de gewenste eigenschappen voor de lens voldoet, en ontwierpen de driedimensionale geometrie voor de lens in FreeCAD. 
+    De optimale lensparameters worden bepaald door een trial-and-errorproces ondersteund door variatie-plots waarbij telkens 1 parameter wordt aangepast. De Python toolbox werd hiervoor uitgebreid met functies die de lenseigenschappen, aberratiecoëfficiënten en permeantiecoëfficiënt voor een variabele lensparameter berekenen en plotten. Gebruik makend van deze functieswerd er een set lensparameters vastgelegd die maximaal voldoet aan de opgestelde criteria voor de lenswerking.  Enkel de distortieaberratiecoëfficiënt overschrijdt de gewenste waarde met een factor~$2$; een alternatieve configuratie die dit verbetert zonder de overige lenseigenschappen te benadelen, werd niet gevonden. Op basis van de meest optimale lensparameters werd een driedimensionale geometrie voor de lens in FreeCAD ontworpen. 
 \end{tcolorbox}
 
 \section{Karakterisatie in de microscoop}\label{ch:karakterisatie}
@@ -986,7 +986,7 @@ Deze stepfile hebben we opgestuurd naar de CNC-service \textit{Protolabs Network
 \section{Experimentele validatie focale lengte}
 
 \subsection{Mesh shadowgraph methode}
-Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen gebruiken we een aangepaste versie van de \textit{rear mesh shadowgraph methode} beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een divergerende elektronenbundel te maken. De focale lengte kan dan worden afgeleid door te meten hoe divergent deze elektronenbundel juist is. Concreet kunnen we dit meten door een fijnmazig rooster (mesh grid) achter de lens in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De magnificatie van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel. Hieronder werken we enkele gevallen wiskundig uit.\\
+Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen gebruiken we een aangepaste versie van de \textit{rear mesh shadowgraph methode} beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een divergerende elektronenbundel te maken. De focale lengte kan dan worden afgeleid door te meten hoe divergent deze elektronenbundel juist is. Concreet kunnen we dit meten door een fijnmazig rooster (mesh grid) achter de lens in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De vergroting van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel. Hieronder werken we enkele gevallen wiskundig uit.\\
 
 Een van de methodes beschreven in \cite{meshshadowgraphs} maakt gebruik van een puntbron op de optische as die we een afstand $z>f$ van de lens plaatsen. We veronderstellen dat we een dunne lens gebruiken, waardoor we de dunne lensformule kunnen gebruiken:
 \begin{equation}\label{eq:thin_lens_formula}
@@ -996,10 +996,10 @@ De puntbron wordt dan achter de lens afgebeeld op een afstand $z'>f$ van de lens
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Images/rear_mesh_shadowgraph.png}
-    \caption{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de magnificatie $M=\frac{E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen.}
+    \caption{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de vergroting $M=\frac{E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen.}
     \label{fig:rear_mesh_shadowgraph}
 \end{figure}
-Op het detectorbeeld meten we de grootte van 1 of meerdere afgebeeldde roosteropeningen, welke we aanduiden met $E$. De werkelijke afmeting van de roosteropeningen duiden we aan met $e=ne_1$ met $n$ het aantal roosteropeningen dat we beschouwen. De magnificatie van het schaduwbeeld is gelijk aan $M\frac{E}{e}$. Uit gelijkvormigheid van driehoeken volgt dan:
+Op het detectorbeeld meten we de grootte van 1 of meerdere afgebeeldde roosteropeningen, welke we aanduiden met $E$. De werkelijke afmeting van de roosteropeningen duiden we aan met $e=ne_1$ met $n$ het aantal roosteropeningen dat we beschouwen. De vergroting van het schaduwbeeld is gelijk aan $M\frac{E}{e}$. Uit gelijkvormigheid van driehoeken volgt dan:
 \begin{equation}
     \frac{c}{e}=\frac{c+d}{E}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{c}
 \end{equation}
@@ -1017,7 +1017,7 @@ Het is mogelijk dat de werkelijke focale lengte van de lens groter is dan de voo
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Images/rear_mesh_shadowgraph_virtual_image.png}
-    \caption{Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een magnificatie $M>1$ geeft. }
+    \caption{Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een vergroting $M>1$ geeft. }
     \label{fig:rear_mesh_shadowgraph_virtual}
 \end{figure}
 Het is met deze opstelling nog steeds mogelijk om op deze manier de focale lengte te berekenen. Opnieuw vinden we uit gelijkvormigheid dat:

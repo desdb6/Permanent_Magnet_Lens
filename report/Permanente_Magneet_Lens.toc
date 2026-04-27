@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {1.2}Open-source elektronenmicroscopen}{3}{section.1.2}%
 \contentsline {chapter}{\numberline {2}Literatuurstudie}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Elektronenoptica}{7}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Scanning/Transmissie Elektronenmicroscopie}{7}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.1}Raster/Transmissie Elektronenmicroscopie}{7}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Magnetische elektronenlenzen}{9}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Condenser/objectief/projector lenzen}{10}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Aberraties}{10}{subsection.2.2.2}%
@@ -12,8 +12,8 @@
 \contentsline {subsubsection}{\numberline {2.2.2.2}Chromatische aberratie}{10}{subsubsection.2.2.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.2.3}Sferische aberratie}{10}{subsubsection.2.2.2.3}%
 \contentsline {section}{\numberline {2.3}Permanente magneet elektronenlenzen}{10}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Paraxiale beweginsvergelijking}{10}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Reële/Asymtotische lenseigenschappen}{12}{section.2.5}%
+\contentsline {section}{\numberline {2.4}Paraxiale beweginsvergelijking}{11}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Reële/Asymtotische lenseigenschappen}{13}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Methodologie afschatting lensparameters}{15}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Opbouw en principe permanente magneetlens}{16}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Analytische afschatting magnetisch veld}{17}{section.3.2}%

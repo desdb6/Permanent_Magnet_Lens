@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Permanente_Magneet_Lens"] 1777232568.96422 "Permanente_Magneet_Lens.aux" "Permanente_Magneet_Lens.bbl" "Permanente_Magneet_Lens" 1777232653.52348 0
-  "./bibliography.bib" 1777221943 18660 a464ac701c58373afa6e3fc13c65b67f ""
+["bibtex Permanente_Magneet_Lens"] 1777316897.62684 "Permanente_Magneet_Lens.aux" "Permanente_Magneet_Lens.bbl" "Permanente_Magneet_Lens" 1777316907.34513 0
+  "./bibliography.bib" 1777316877 19051 318445a3376848271818de65f1e3d242 ""
   "C:/Users/desde/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/abbrv.bst" 1291864736 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "Permanente_Magneet_Lens.aux" 1777232652 50436 fbaf3d2bdc222dad6701aba5733c444a "pdflatex"
+  "Permanente_Magneet_Lens.aux" 1777316906 50581 24641854a0876ce8c2eb9fadcb71a849 "pdflatex"
   (generated)
   "Permanente_Magneet_Lens.bbl"
   "Permanente_Magneet_Lens.blg"
   (rewritten before read)
-["pdflatex"] 1777232644.40336 "c:/Users/desde/Documents/GitHub/Permanent_Magnet_Lens/report/Permanente_Magneet_Lens.tex" "Permanente_Magneet_Lens.pdf" "Permanente_Magneet_Lens" 1777232653.52425 0
+["pdflatex"] 1777316897.93835 "c:/Users/desde/Documents/GitHub/Permanent_Magnet_Lens/report/Permanente_Magneet_Lens.tex" "Permanente_Magneet_Lens.pdf" "Permanente_Magneet_Lens" 1777316907.34585 0
   "C:/Users/desde/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777223429 279792 b1841da5a4425d49af54f8f4bfefbf9f ""
   "C:/Users/desde/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1776010630 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/desde/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1776011511 24141949 1a3afdfe45fc79c3b8008dfebd83dea9 ""
@@ -280,13 +280,13 @@
   "Images/variable_d_ab.png" 1777045294 37573 ce52635492a0a22c8e8ac7dc5f1059e6 ""
   "Logos/logo-uantwerpen-we-en-rgb-pos.pdf" 1775997905 8462 da1ad7b8d9445e1bc658d46022dd4afa ""
   "Logos/logo-uantwerpen-we-nl-rgb-pos.pdf" 1775997905 9551 18d75edb0e42308466208df32b9ba7bf ""
-  "Permanente_Magneet_Lens.aux" 1777232652 50436 fbaf3d2bdc222dad6701aba5733c444a "pdflatex"
-  "Permanente_Magneet_Lens.bbl" 1777232569 5683 d821a3c97f30da489eb2bc3f4b15b194 "bibtex Permanente_Magneet_Lens"
-  "Permanente_Magneet_Lens.brf" 1777232652 1833 c773d5668eb1e0086e177f6620e8e519 "pdflatex"
-  "Permanente_Magneet_Lens.out" 1777232647 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Permanente_Magneet_Lens.tex" 1777232643 104259 ae543c974eed0cffd76c490967cf2c44 ""
-  "Permanente_Magneet_Lens.toc" 1777232652 3027 cac66fd94555942ee56c0fc8b74b6bfc "pdflatex"
-  "c:/Users/desde/Documents/GitHub/Permanent_Magnet_Lens/report/Permanente_Magneet_Lens.tex" 1777232643 104259 ae543c974eed0cffd76c490967cf2c44 ""
+  "Permanente_Magneet_Lens.aux" 1777316906 50581 24641854a0876ce8c2eb9fadcb71a849 "pdflatex"
+  "Permanente_Magneet_Lens.bbl" 1777316897 5903 d35a5837b7fa3d52c7d5023dfa0e71a9 "bibtex Permanente_Magneet_Lens"
+  "Permanente_Magneet_Lens.brf" 1777316906 1904 f4e41de466475bfb4946a55cab5ba549 "pdflatex"
+  "Permanente_Magneet_Lens.out" 1777316900 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Permanente_Magneet_Lens.tex" 1777316877 105655 b3a220d1fa7d99c434d68808470df82c ""
+  "Permanente_Magneet_Lens.toc" 1777316906 3025 17d3f7e822d9f68daf7f2cba8439edc3 "pdflatex"
+  "c:/Users/desde/Documents/GitHub/Permanent_Magnet_Lens/report/Permanente_Magneet_Lens.tex" 1777316877 105655 b3a220d1fa7d99c434d68808470df82c ""
   "uantwerpenbamathesis.cls" 1775997905 17807 543b78871425bd418f17b8c69ea55a4d ""
   "uantwerpencolorlogoscheme.sty" 1775997905 4109 60fa40da65f1cc76f44a56ad0903d87d ""
   "uantwerpencommonoptions.clo" 1775997905 4479 d337bd93e0dd3d7f4efe9370b7db1688 ""
