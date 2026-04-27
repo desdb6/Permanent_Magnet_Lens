@@ -169,69 +169,56 @@ Door een grotere versnelspanning te gebruiken kan op deze manier kan de golfleng
 \subsection{Raster/Transmissie Elektronenmicroscopie}
 De twee belangrijkste vormen van elektronenmicroscopie zijn \textit{Raster Elektronenmicroscopie} (\textit{Scanning Electron Microscopy}, SEM) en \textit{Transmissie-elektronenmicroscopie} (TEM). De beeldvorming gebeurt bij beide technieken op een andere manier, en de opstellingen van de componenten in de microscoop zijn daardoor anders. In deze sectie geven we een korte beschrijving van deze twee technieken.\\
 
-Figuur \ref{fig:SEM_principle} toont een illustratie van het werkingsprincipe van een SEM en Figuur \ref{fig:SEM_image} toont een SEM beeld van rode bloedcellen. In een SEM wordt een elektronenbundel m.b.v. elektronenlenzen in een zeer smalle spot gefocusseerd ($\sim 3\mathrm{nm}$), welke dan over het sample gescand wordt. Er wordt gebruik gemaakt van verschillende beeldvormingstechnieken afhankelijk van welke deeltjes/stralen er gemeten worden. Afhankelijk van de gedetecteerde deeltjes of straling zijn verschillende beeldvormingstechnieken mogelijk, zoals beeldvorming met \textit{terugverstrooide} elektronen (\textit{Backscattered Electrons}, BSE) of X-stralen. De meest toegepaste techniek maakt echter gebruik van secundaire elektronen (SE). De elektronenbundel zal energie uitwisselen met het sample en secundaire elektronen uit het oppervlak losslaan. Omdat de emissierichting van deze secundaire elektronen sterk afhangt van de lokale oppervlakteoriëntatie, dragen zij informatie over de driedimensionale topografie van het sample. Een elektronendetector boven het sample zal de secundaire elektronen dan verzamelen. Door de elektronenbundel met \textit{rasterspoelen} over het oppervlak te scannen, kunnen we voor elk punt op het oppervlak meten hoeveel elektronen er in de richting van de detector vrijkomen en op deze manier een beeld van het oppervlak vormen. De maximale versnelspanning van een SEM ligt typisch tussen $0.1-30$~keV \cite{PWHawkes} omdat een grotere energie te veel schade aan het sample kan opbrengen.
+Figuur \ref{fig:SEM_principle} toont een illustratie van het werkingsprincipe van een SEM en Figuur \ref{fig:SEM_image} toont een SEM beeld van asbestos. In een SEM wordt een elektronenbundel m.b.v. elektronenlenzen in een zeer smalle spot gefocusseerd ($\sim 3\mathrm{nm}$), welke dan over het sample gescand wordt. Er wordt gebruik gemaakt van verschillende beeldvormingstechnieken afhankelijk van welke deeltjes/stralen er gemeten worden. Afhankelijk van de gedetecteerde deeltjes of straling zijn verschillende beeldvormingstechnieken mogelijk, zoals beeldvorming met \textit{terugverstrooide} elektronen (\textit{Backscattered Electrons}, BSE) of X-stralen. De meest toegepaste techniek maakt echter gebruik van secundaire elektronen (SE). De elektronenbundel zal energie uitwisselen met het sample en secundaire elektronen uit het oppervlak losslaan. Omdat de emissierichting van deze secundaire elektronen sterk afhangt van de lokale oppervlakteoriëntatie, dragen zij informatie over de driedimensionale topografie van het sample. Een elektronendetector boven het sample zal de secundaire elektronen dan verzamelen. Door de elektronenbundel met \textit{rasterspoelen} over het oppervlak te scannen, kunnen we voor elk punt op het oppervlak meten hoeveel elektronen er in de richting van de detector vrijkomen en op deze manier een beeld van het oppervlak vormen. De maximale versnelspanning van een SEM ligt typisch tussen $0.1-30$~keV \cite{PWHawkes} omdat een grotere energie te veel schade aan het sample kan opbrengen.\\
+
+Figuur \ref{fig:TEM_principle} toont een illustratie van het werkingsprincipe van een TEM en Figuur \ref{fig:TEM_image} toont een TEM beeld van celorganellen. In een TEM zal men niet scannen over het oppervlak, maar belichten men een uiterst dun en elektronentransparant specimen (dikte van $\sim70$~nm) met een brede bundel elektronen (typisch enkele $\mu$m), welke in het ideale geval een perfecte vlakke golf voorstellen \cite{MyscopeCourse}. De elektronen zullen dan interageren met het specimen, en op sommige plaatsen meer of minder geabsorbeerd of verstrooid worden. De uitgaande elektronenbundel bevat dan opnieuw informatie over het specimen. Door gebruik te maken van een of meerdere elektronenlenzen kunnen we dan een uitvergroot beeld van het sample afbeelden op een elektronendetector die zich onder het sample bevindt. De detector is een fluorescerend scherm of een CCD camera waarop heel het beeld in 1 keer afgebeeld wordt, in tegenstelling tot het principe van een SEM. De versnelspanning in een TEM kan tot $300$~keV bedragen, waardoor de de-Brogliegolflengte van de elektronen en het oplossend vermogen aanzienlijk kleiner dan bij een SEM.
 
 \begin{figure}[H]
     \centering
-    
-    \begin{subfigure}[b]{0.48\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Images/SEM_principle.png}
-        \caption{Werkingsprincipe van een SEM waarbij de elektronenbundel over het sample wordt gescand en er secundaire elektronen los worden geslagen. \cite{MyscopeCourse}}
-        \label{fig:SEM_principle}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Images/SEM_image.png}
-        \caption{Beeld van rode bloedcellen opgenomen met een SEM. \cite{Geekiyanage2019RBC}}
-        \label{fig:SEM_image}
-    \end{subfigure}
-    
-    \caption{}
-    \label{fig:SEM}
+    \includegraphics[width=0.7\linewidth]{Images/SEM_principle.png}
+    \caption{Werkingsprincipe van een SEM waarbij de elektronenbundel over het sample wordt gescand en er secundaire elektronen los worden geslagen. \cite{MyscopeCourse}}
+    \label{fig:SEM_principle}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    
-    \begin{subfigure}[b]{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Images/TEM_principle.JPG}
-        \caption{Werkingsprincipe van een TEM waarbij een brede elektronenbundel heel het sample belicht en heel het beeld in 1 keer wordt opgenomen met een detector onder het sample. \cite{MyscopeCourse}}
-        \label{fig:TEM_principle}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Images/TEM_image.png}
-        \caption{Beeld van celorganellen opgenomen met een TEM. \cite{Winey2014TEM}}
-        \label{fig:TEM_image}
-    \end{subfigure}
-    
-    \caption{}
-    \label{fig:TEM}
+    \includegraphics[width=0.8\linewidth]{Images/TEM_principle.JPG}
+    \caption{Werkingsprincipe van een TEM waarbij een brede elektronenbundel heel het sample in 1 keer belicht het beeld wordt opgenomen met een detector onder het sample. \cite{MyscopeCourse}}
+    \label{fig:TEM_principle}
 \end{figure}
 
-In een TEM gaat men niet scannen over het oppervlak, maar belichten we een uiterst dun en elektronentransparant specimen met een brede bundel elektronen, welke in het indeale geval een perfecte vlakke golf voorstellen. De elektronen zullen dan interageren met het specimen, en op sommige plaatsen meer of minder geabsorbeerd of gescattered worden. De uitgaande elektronenbundel bevat dan opnieuw informatie over het specimen. Door gebruik te maken van een of meerdere elektronenlenzen kunnen we dan een uitvergroot beeld van het sample afbeelden op een elektronendetector die zich onder het sample bevindt. De detector is in dit geval bijvoorbeeld een fluorescerend scherm, waarop heel het beeld in een keer afgebeeld wordt (in tegenstelling tot een SEM). De versnelspanning in een TEM kan tot $300$~keV bedragen, waardoor het oplossend vermogen beter is dan dat van een SEM. Figuur \ref{fig:TEM_principle} toont een illustratie van het werkingsprincipe van een TEM en Figuur \ref{fig:TEM_image} toont een TEM beeld van celorganellen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/SEM_image.jpg}
+    \caption{Beeld van asbestos opgenomen met een SEM. \cite{ravaka2011asbestos_sem}}
+    \label{fig:SEM_image}
+\end{figure}
 
-\section{Magnetische elektronenlenzen}
-Om met elektronen beelden te kunnen vormen zijn elektronenlenzen een cruciale component van de optishe opstelling. Er zijn twee manieren om een elektronenbundel te doen afbuigen: met de elektrisch veld via de Coulombkracht, en met een magnetisch veld via de Lorentzkracht. Er bestaan zowel elektrostatische als magnetische lenzen. Het gebruik van magnetische elektronenlenzen is echter veel prominenter dan elektrostatische elektronenlenzen, aangezien de grootte van de elektrische velden bij TEM versnelspanningen praktisch niet haalbaar zijn en te grote veiligheidsgevaren veroorzaken. Bovendien zal een elektrostatische lens de energieën van de elektronen in de elektronenbundel beïnvloeden. Dit kan een spreiding van de energieën veroorzaken, wat aanleiding geeft tot chromatische aberratie (zie verder). \cite{ElektronenLenzenGuzzinati}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/TEM_image.png}
+    \caption{Beeld van hematiet langs de $[001]$ as opgenomen met een TEM. \cite{klementova2021hematite_hrtem}}
+    \label{fig:TEM_image}
+\end{figure}
+
+
+
+\section{Magnetische elektronenlenzen voor elektronenmicroscopie}
+Om met elektronen beelden te kunnen vormen zijn elektronenlenzen een cruciale component van de opstelling. Er zijn twee manieren om een elektronenbundel te doen afbuigen: met de elektrisch veld via de Coulombkracht, en met een magnetisch veld via de Lorentzkracht. Er bestaan zowel elektrostatische als magnetische lenzen. Het gebruik van magnetische elektronenlenzen is echter veel prominenter dan elektrostatische elektronenlenzen, aangezien er zeer groote elektrische velden nodig zijn ($\sim200$~MV/m) om bij TEM versnelspanningen genoeg afbuiging van de snel bewegende elektronen te veroorzaken. Deze velden zijn praktisch niet haalbaar en veroorzaken grote veiligheidsgevaren. Bovendien zal een elektrostatische lens de energieën van de elektronen in de elektronenbundel beïnvloeden. Dit kan een spreiding van de energieën veroorzaken, wat aanleiding geeft tot chromatische aberratie (zie sectie \ref{ch:aberraties}). \cite{ElektronenLenzenGuzzinati}\\
+
+
+Figuur \ref{fig:Magnetic_Electron_Lens_illustration} toont een illustratie van de manier waarop elektronen door een solenoïdelens zullen bewegen. Met een magnetische elektronenlens maakt men typisch een axissymetrisch magnetisch veld rond de optische as, waarvan de sterkte langs de optische as variëert. Vanwege de symmetrie is azimutale component van het magnetisch veld gelijk aan nul. Dit soort veld wordt opgewekt door een solenoïde waar een stroom doorheen gestuurd wordt, wat men een solenoïdelens noemt. Door een elektronenbundel door de solenoïde te sturen zullen de elektronen die zich niet op de optische as bevinden een Lorentzkracht ondergaan en afbuigen. De elektronen ondergaan zowel een radiale kracht, waarmee de bundel gefocusseerd kan worden, als een azimutale kracht, die voor een precessie van de elektronenbundel rond de optische as zorgt. In hoofdstuk \ref{ch:theorie} gaan we dieper in op de bewegingsvergelijking die het afbuigen van de elektronen beschrijft. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{Images/Magnetic_Electron_Lens_illustration.jpg}
-    \caption{Illustratie van een magnetische solenoïdelens. Dit soort lens maakt een magnetisch veld dat symmetrisch is rond de optisceh as van het systeem. Door een bundel elektronen door de lens te sturen ondervinden deze zowel een azimutale als een radiale Lorentzkracht. Deze laatste kan gebruikt worden om de elektronen te focusseren. \cite{MyscopeCourse}}
+    \caption{Illustratie van een magnetische solenoïdelens die typisch wordt gebruikt in een elektronenmicroscoop. Dit soort lens maakt een magnetisch veld dat symmetrisch is rond de optische as van het systeem. Door een bundel elektronen door de lens te sturen ondervinden deze zowel een azimutale als een radiale Lorentzkracht. De radiale component kan gebruikt worden om de elektronen te focusseren. \cite{MyscopeCourse}}
     \label{fig:Magnetic_Electron_Lens_illustration}
 \end{figure}
 
-Met een magnetische elektronenlens maakt men typisch een axissymetrisch magnetisch veld rond de optische as, waarvan de sterkte langs de optische as variëert. Vanwege de symmetrie is azimutale component van het magnetisch veld gelijk aan nul. Dit soort veld worden opgewekt met een solenoïde waar een stroom doorheen gestuurd wordt, wat men een solenoïdelens noemt. Door een elektronenbundel door de solenoïde te sturen zullen de elektronen die zich niet op de optische as bevinden een Lorentzkracht ondergaan en afbuigen. De elektronen ondergaan zowel een radiale kracht, waarmee de bundel gefocusseerd kan worden, als een azimutale kracht, die voor een precessie van de elektronenbundel rond de optische as zorgt. In hoofdstuk \ref{ch:theorie} gaan we dieper in op de bewegingsvergelijking die het afbuigen van de elektronen beschrijft. Figuur \ref{fig:Magnetic_Electron_Lens_illustration} toont een illustratie van de manier waarop elektronen door een solenoïdelens zullen bewegen.
-
-
-
 \subsection{Condenser/objectief/projector lenzen}
 
-\subsection{Aberraties}
+\subsection{Aberraties}\label{ch:aberraties}
 
 \subsubsection{Distortie}
 \cite{PWHawkes}
@@ -252,9 +239,8 @@ Met een magnetische elektronenlens maakt men typisch een axissymetrisch magnetis
 
 \subsubsection{Sferische aberratie}
 
-\section{Permanente magneet elektronenlenzen}
+\section{Permanente magneet elektronenlenzen voor elektronenmicroscopie}
 
-\color{red} Naar de appendices? \color{black}
 \section{Paraxiale beweginsvergelijking}
 In deze sectie geven we een verkorte afleiding van de paraxiale vergelijking die de baan van een elektronenbundel in een axissymetrisch magnetisch veld beschrijft. De afleiding is gebaseerd op \cite{PWHawkes}. De meest algemene bewegingsvergelijking van een elektron in een elektromagnetisch veld wordt gegeven door de tweede wet van Newton waarbij de Lorentzkracht op het elektron inwerkt:
 \begin{equation}\label{eq:2nd_law_newton}
