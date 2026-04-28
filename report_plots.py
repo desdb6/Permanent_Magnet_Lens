@@ -380,7 +380,7 @@ def plot_operating_point_25_report():
     plt.close()
     
 def real_asymptotic_properties():
-    lens = Lens(R_1=0.8, R_2=15, R_1_magnet=4.5, R_2_magnet=10, d=4.2, d_magnet=2, B_r_magnet=2, B_r_magnet_theoretical=2, T=30000, setup_length=50, lens_position=25)
+    lens = Lens(R_1=0.8, R_2=15, R_1_magnet=4.5, R_2_magnet=10, d=4.2, d_magnet=2, B_r_magnet=2.8, B_r_magnet_theoretical=3, T=30000, setup_length=50, lens_position=25)
     lens.update_B_r_yoke()
     lens.update_T()
     lens.calculate_B_field()
@@ -428,10 +428,55 @@ def real_asymptotic_properties():
     # Now hide the tick labels and tick marks
     ax.tick_params(labelbottom=False, labelleft=False, length=0)
     ax.set_xlim(15, 35)
-    ax.set_ylim(-2, 4)
+    ax.set_ylim(-2, 5)
+    ax.set_xlabel("$z$", fontsize=18)
+    ax.set_ylabel("$r(z)$", fontsize=18)
     ax.legend()
     plt.savefig('report/Images/reeel_asymptotisch.png', dpi=DPI)
     print("Saved real/asymptotic plot")
+    plt.close()
+
+def immersion_abmiguity_plot():
+    lens = Lens(R_1=0.8, R_2=15, R_1_magnet=4.5, R_2_magnet=10, d=4.2, d_magnet=2, B_r_magnet=3, B_r_magnet_theoretical=3, T=30000, setup_length=15, lens_position=7.5)
+    lens.update_B_r_yoke()
+    lens.update_T()
+    lens.calculate_B_field()
+    lens.calculate_lens_properties()
+    lens.calculate_aberration_coeff()
+    lens.calculate_GH(0)
+
+    fig, ax = plt.subplots(1, 2, figsize=(18,6))
+    def plot_ax(ax, object_plane, lens_position):
+        ax.plot(lens.z_eval_full, lens.B_field*10, alpha=0.5, label="$B(z)$", color="#379DF1")
+        lens.setup_parameters(object_plane, 1, lens_position)
+        lens.calculate_GH(object_plane)
+        focal_z = lens.z_eval[np.argmin(np.abs(lens.G))]
+        ax.plot(lens.z_eval, lens.G, label="$g(z)$", color="#000000")
+        ax.annotate(
+            "Object",
+            xy=(object_plane, 1),
+            xytext=(object_plane, 0),
+            fontsize=13,
+            ha='center',
+            arrowprops=dict(arrowstyle='->', color="#000000", lw=1.5),
+            color="#000000",
+        )
+        
+        ax.plot(lens.z_eval_full, np.zeros(len(lens.z_eval_full)), label=None, color="#379DF1", linestyle='dashed')
+        ax.plot(focal_z, 0, 'o', color="#FF0000", zorder=5, label="Brandpunt")
+        ax.grid(True, alpha=0.4)
+        ax.set_ylim(-1, 5)
+        ax.tick_params(labelbottom=False, labelleft=False, length=0)
+        ax.set_xlabel("$z$", fontsize=18)
+        ax.set_ylabel("$r(z)$", fontsize=18)
+        
+
+
+    plot_ax(ax[0], 0, 7.5)
+    plot_ax(ax[1], 7.5, 7.5)
+    ax[1].legend()
+    plt.savefig('report/Images/f_ambiguity.png', dpi=DPI)
+    print("Saved ambiguity focal length plot")
     plt.close()
 
 def main():
@@ -451,6 +496,7 @@ def main():
     plot_operating_point_25_report()
     variable_plots()
     real_asymptotic_properties()
+    immersion_abmiguity_plot()
 
 
 if __name__ == "__main__":

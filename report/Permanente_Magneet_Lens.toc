@@ -13,15 +13,16 @@
 \contentsline {subsubsection}{\numberline {2.2.2.3}Sferische aberratie}{11}{subsubsection.2.2.2.3}%
 \contentsline {section}{\numberline {2.3}Permanente magneet elektronenlenzen voor elektronenmicroscopie}{11}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Paraxiale beweginsvergelijking}{11}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Reële/Asymtotische lenseigenschappen}{14}{section.2.5}%
+\contentsline {section}{\numberline {2.5}Reële/Asymptotische lenseigenschappen}{14}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Methodologie afschatting lensparameters}{17}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Opbouw en principe permanente magneetlens}{18}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Analytische afschatting magnetisch veld}{19}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Magnetische reluctantie van het circuit}{24}{section.3.3}%
+\contentsline {subsection}{\numberline {3.2.1}Numerieke validatie met SIMION}{24}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Magnetische reluctantie van het circuit}{25}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Implementatie in Python}{28}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Paraxiaal magnetisch veld}{28}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Paraxiale bewegingsvergelijking}{28}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Aberratiecoëfficienten}{30}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.2}Paraxiale bewegingsvergelijking}{29}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Aberratiecoëfficienten}{31}{subsection.3.4.3}%
 \contentsline {chapter}{\numberline {4}Optimalisatie en validatie van de lensparameters}{33}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Lensontwerp}{33}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Simulatie van lenseigenschappen}{35}{subsection.4.1.1}%
