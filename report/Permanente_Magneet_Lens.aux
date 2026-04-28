@@ -4,6 +4,17 @@
 \@nameuse{bbl@beforestart}
 \catcode `"\active 
 \providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \providecommand\BKM@entry[2]{}
@@ -107,6 +118,7 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2.3}Sferische aberratie}{11}{subsubsection.2.2.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Permanente magneet elektronenlenzen voor elektronenmicroscopie}{11}{section.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Paraxiale beweginsvergelijking}{11}{section.2.4}\protected@file@percent }
+\newlabel{ch:paraxialevgl}{{2.4}{11}{Paraxiale beweginsvergelijking}{section.2.4}{}}
 \@writefile{brf}{\backcite{PWHawkes}{{12}{2.4}{section.2.4}}}
 \newlabel{eq:2nd_law_newton}{{2.6}{12}{Paraxiale beweginsvergelijking}{equation.2.4.6}{}}
 \newlabel{eq:2nd_law_newton_r}{{2.7}{12}{Paraxiale beweginsvergelijking}{equation.2.4.7}{}}
@@ -122,7 +134,7 @@
 \newlabel{eq:paraxialevgl_dt}{{2.15}{13}{Paraxiale beweginsvergelijking}{equation.2.4.15}{}}
 \newlabel{eq:paraxialevgl}{{2.18}{13}{Paraxiale beweginsvergelijking}{equation.2.4.18}{}}
 \newlabel{eq:paraxialevgl_rel}{{2.19}{13}{Paraxiale beweginsvergelijking}{equation.2.4.19}{}}
-\newlabel{eq:gh}{{2.20}{13}{Paraxiale beweginsvergelijking}{equation.2.4.20}{}}
+\newlabel{eq:BVW}{{2.20}{13}{Paraxiale beweginsvergelijking}{equation.2.4.20}{}}
 \BKM@entry{id=12,dest={73656374696F6E2E322E35},srcline={313}}{5C3337365C3337375C303030525C303030655C3030305C3335335C3030306C5C303030655C3030302F5C303030415C303030735C303030795C3030306D5C303030705C303030745C3030306F5C303030745C303030695C303030735C303030635C303030685C303030655C3030305C3034305C3030306C5C303030655C3030306E5C303030735C303030655C303030695C303030675C303030655C3030306E5C303030735C303030635C303030685C303030615C303030705C303030705C303030655C3030306E}
 \citation{PWHawkes}
 \@writefile{brf}{\backcite{scherzer1936}{{14}{2.4}{equation.2.4.21}}}
@@ -138,7 +150,7 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{ch:methodologie}{{3}{17}{Methodologie afschatting lensparameters}{chapter.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Opbouw en principe permanente magneetlens}{18}{section.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Opbouw en principe permanente magneetlens}{17}{section.3.1}\protected@file@percent }
 \BKM@entry{id=15,dest={73656374696F6E2E332E32},srcline={394}}{5C3337365C3337375C303030415C3030306E5C303030615C3030306C5C303030795C303030745C303030695C303030735C303030635C303030685C303030655C3030305C3034305C303030615C303030665C303030735C303030635C303030685C303030615C303030745C303030745C303030695C3030306E5C303030675C3030305C3034305C3030306D5C303030615C303030675C3030306E5C303030655C303030745C303030695C303030735C303030635C303030685C3030305C3034305C303030765C303030655C3030306C5C30303064}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Doorsnede van het ontwerp van een permanente magneetlens met een ringvormige magneet. Een homogeen gemagnetiseerde NdFeB ringmagneet maakt een sterk magnetisch veld dat door twee zacht magnetische poolschoenen wordt geconcentreerd in het het gat van de lens.}}{19}{figure.caption.12}\protected@file@percent }
 \newlabel{fig:lens_circuit_diagram}{{3.1}{19}{Doorsnede van het ontwerp van een permanente magneetlens met een ringvormige magneet. Een homogeen gemagnetiseerde NdFeB ringmagneet maakt een sterk magnetisch veld dat door twee zacht magnetische poolschoenen wordt geconcentreerd in het het gat van de lens}{figure.caption.12}{}}
@@ -190,42 +202,44 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces $\mathrm  {BH}$-curve van graad N35 NdFeB voor verschillende temperaturen. Het aanleggen van een demagnetiserend veld doet de intrinsieke sterkte van de magneet licht verkleinen. Bij een zeer groot (extern) demagnetiserend veld passeren we de elleboog van de $\mathrm  {BH}$-curve en demagnetiseert de magneet, of wordt deze zelfs omgepoold. \cite  {arnold_ndfeb_2019}}}{27}{figure.caption.20}\protected@file@percent }
 \@writefile{brf}{\backcite{arnold_ndfeb_2019}{{27}{3.9}{figure.caption.20}}}
 \newlabel{fig:BH_curve_NdFeB}{{3.9}{27}{$\mathrm {BH}$-curve van graad N35 NdFeB voor verschillende temperaturen. Het aanleggen van een demagnetiserend veld doet de intrinsieke sterkte van de magneet licht verkleinen. Bij een zeer groot (extern) demagnetiserend veld passeren we de elleboog van de $\mathrm {BH}$-curve en demagnetiseert de magneet, of wordt deze zelfs omgepoold. \cite {arnold_ndfeb_2019}}{figure.caption.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Het werkingspunt van de magneet kunnen we vinden door het snijpunt te bepalen van de $\mathrm  {BH}$-curve en de load line, waarvan de richtingscoëfficiënt afhant van de intrinsieke permeantiecoëccifient $P_c$. Als het werkingspunt niet voorbij de elleboog van de curve ligt, dan zal de magneet niet demagnetiseren.}}{27}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:operating_point}{{3.10}{27}{Het werkingspunt van de magneet kunnen we vinden door het snijpunt te bepalen van de $\mathrm {BH}$-curve en de load line, waarvan de richtingscoëfficiënt afhant van de intrinsieke permeantiecoëccifient $P_c$. Als het werkingspunt niet voorbij de elleboog van de curve ligt, dan zal de magneet niet demagnetiseren}{figure.caption.21}{}}
-\BKM@entry{id=18,dest={73656374696F6E2E332E34},srcline={669}}{5C3337365C3337375C303030495C3030306D5C303030705C3030306C5C303030655C3030306D5C303030655C3030306E5C303030745C303030615C303030745C303030695C303030655C3030305C3034305C303030695C3030306E5C3030305C3034305C303030505C303030795C303030745C303030685C3030306F5C3030306E}
-\BKM@entry{id=19,dest={73756273656374696F6E2E332E342E31},srcline={672}}{5C3337365C3337375C303030505C303030615C303030725C303030615C303030785C303030695C303030615C303030615C3030306C5C3030305C3034305C3030306D5C303030615C303030675C3030306E5C303030655C303030745C303030695C303030735C303030635C303030685C3030305C3034305C303030765C303030655C3030306C5C30303064}
+\BKM@entry{id=18,dest={73656374696F6E2E332E34},srcline={671}}{5C3337365C3337375C303030495C3030306D5C303030705C3030306C5C303030655C3030306D5C303030655C3030306E5C303030745C303030615C303030745C303030695C303030655C3030305C3034305C303030695C3030306E5C3030305C3034305C303030505C303030795C303030745C303030685C3030306F5C3030306E}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Het werkingspunt van de magneet kan gevonden worden door het snijpunt te bepalen van de $\mathrm  {BH}$-curve en de belastingslijn, waarvan de richtingscoëfficiënt afhangt van de intrinsieke permeantiecoëccifient $P_c$. Als het werkingspunt niet voorbij de elleboog van de curve ligt, dan zal de magneet niet demagnetiseren.}}{28}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:operating_point}{{3.10}{28}{Het werkingspunt van de magneet kan gevonden worden door het snijpunt te bepalen van de $\mathrm {BH}$-curve en de belastingslijn, waarvan de richtingscoëfficiënt afhangt van de intrinsieke permeantiecoëccifient $P_c$. Als het werkingspunt niet voorbij de elleboog van de curve ligt, dan zal de magneet niet demagnetiseren}{figure.caption.21}{}}
 \newlabel{eq:Br_yoke}{{3.13}{28}{Magnetische reluctantie van het circuit}{equation.3.3.13}{}}
 \newlabel{eq:charge_density}{{3.14}{28}{Magnetische reluctantie van het circuit}{equation.3.3.14}{}}
 \newlabel{eq:analytical_B_field_final}{{3.15}{28}{Magnetische reluctantie van het circuit}{equation.3.3.15}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Implementatie in Python}{28}{section.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Paraxiaal magnetisch veld}{28}{subsection.3.4.1}\protected@file@percent }
-\BKM@entry{id=20,dest={73756273656374696F6E2E332E342E32},srcline={681}}{5C3337365C3337375C303030505C303030615C303030725C303030615C303030785C303030695C303030615C3030306C5C303030655C3030305C3034305C303030625C303030655C303030775C303030655C303030675C303030695C3030306E5C303030675C303030735C303030765C303030655C303030725C303030675C303030655C3030306C5C303030695C3030306A5C3030306B5C303030695C3030306E5C30303067}
-\citation{PWHawkes}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces Interactieve plot van $B(z)$ in functie van de lensparameters. Deze functie kunnen we gebruiken om de afhankelijkheid van de verschillende parameters te bestuderen, en de lensparameters te optimaliseren om een gewenst magnetisch veld te krijgen. In dit geval gebruiken we de parameters $R_1=0.8\mathrm  {mm}$, $R_2=3.25\mathrm  {mm}$, en $d_g=0.8\mathrm  {mm}$. De $B_r$ instelling zorgt voor een herschaling van de $\mathrm  {BH}$-curve.}}{29}{figure.caption.22}\protected@file@percent }
-\newlabel{fig:Interactive_B_field}{{3.11}{29}{Interactieve plot van $B(z)$ in functie van de lensparameters. Deze functie kunnen we gebruiken om de afhankelijkheid van de verschillende parameters te bestuderen, en de lensparameters te optimaliseren om een gewenst magnetisch veld te krijgen. In dit geval gebruiken we de parameters $R_1=0.8\mathrm {mm}$, $R_2=3.25\mathrm {mm}$, en $d_g=0.8\mathrm {mm}$. De $B_r$ instelling zorgt voor een herschaling van de $\mathrm {BH}$-curve}{figure.caption.22}{}}
+\BKM@entry{id=19,dest={73756273656374696F6E2E332E342E31},srcline={674}}{5C3337365C3337375C303030505C303030615C303030725C303030615C303030785C303030695C303030615C303030615C3030306C5C3030305C3034305C3030306D5C303030615C303030675C3030306E5C303030655C303030745C303030695C303030735C303030635C303030685C3030305C3034305C303030765C303030655C3030306C5C30303064}
+\BKM@entry{id=20,dest={73756273656374696F6E2E332E342E32},srcline={683}}{5C3337365C3337375C303030505C303030615C303030725C303030615C303030785C303030695C303030615C3030306C5C303030655C3030305C3034305C303030625C303030655C303030775C303030655C303030675C303030695C3030306E5C303030675C303030735C303030765C303030655C303030725C303030675C303030655C3030306C5C303030695C3030306A5C3030306B5C303030695C3030306E5C30303067}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Implementatie in Python}{29}{section.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Paraxiaal magnetisch veld}{29}{subsection.3.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces Interactieve plot van $B(z)$ in functie van de lensparameters. Deze functie kan worden gebruikt om de afhankelijkheid van de verschillende parameters te bestuderen, en de lensparameters te optimaliseren om een gewenst magnetisch veld te krijgen. In dit geval werden de parameters $R_1=0.8\mathrm  {mm}$, $R_2=3.25\mathrm  {mm}$, en $d_g=0.8\mathrm  {mm}$ gekozen. De $B_r$ instelling zorgt voor een herschaling van de $\mathrm  {BH}$-curve.}}{29}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:Interactive_B_field}{{3.11}{29}{Interactieve plot van $B(z)$ in functie van de lensparameters. Deze functie kan worden gebruikt om de afhankelijkheid van de verschillende parameters te bestuderen, en de lensparameters te optimaliseren om een gewenst magnetisch veld te krijgen. In dit geval werden de parameters $R_1=0.8\mathrm {mm}$, $R_2=3.25\mathrm {mm}$, en $d_g=0.8\mathrm {mm}$ gekozen. De $B_r$ instelling zorgt voor een herschaling van de $\mathrm {BH}$-curve}{figure.caption.22}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Paraxiale bewegingsvergelijking}{29}{subsection.3.4.2}\protected@file@percent }
-\newlabel{eq:paraxialevgl_rel_H54}{{3.16}{29}{Paraxiale bewegingsvergelijking}{equation.3.4.16}{}}
-\newlabel{eq:Glasers_field}{{3.17}{29}{Paraxiale bewegingsvergelijking}{equation.3.4.17}{}}
-\@writefile{brf}{\backcite{PWHawkes}{{29}{3.4.2}{equation.3.4.17}}}
-\newlabel{eq:constant_field}{{3.18}{29}{Paraxiale bewegingsvergelijking}{equation.3.4.18}{}}
-\newlabel{fig:fields_comparison_a}{{3.12a}{29}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:fields_comparison_a}{{a}{29}{\relax }{figure.caption.23}{}}
-\newlabel{fig:fields_comparison_b}{{3.12b}{29}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:fields_comparison_b}{{b}{29}{\relax }{figure.caption.23}{}}
-\newlabel{fig:fields_comparison_c}{{3.12c}{29}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:fields_comparison_c}{{c}{29}{\relax }{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces Vergelijking tussen twee velden (Glaser's field en constant veld) waarvoor de paraxiale bewegingsvergelijking analytisch oplosbaar is en ons analytisch afgeschat veld. Het Glaser's field is gelijkaardig, maar heeft een bredere piek en valt trager af dan ons afgeschatte veld. Dit geeft een dikkere lens, wat ongewenst is.}}{29}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:fields_comparison}{{3.12}{29}{Vergelijking tussen twee velden (Glaser's field en constant veld) waarvoor de paraxiale bewegingsvergelijking analytisch oplosbaar is en ons analytisch afgeschat veld. Het Glaser's field is gelijkaardig, maar heeft een bredere piek en valt trager af dan ons afgeschatte veld. Dit geeft een dikkere lens, wat ongewenst is}{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Plot van numerieke oplossing van de paraxiale bewegingsvergelijking. De object en beeld asymptotische bundels snijden elkaar in het beeld hoofdvlak, en de beeld asymptotische straal snijdt de symmetrie-as in het achterste focaalvlak van de lens. Deze opstelling heeft de volgende parameters: $R_1=1.5\mathrm  {mm},R_2=5\mathrm  {mm},d=5\mathrm  {mm}, B_g=0.447\mathrm  {T},\Phi =30$~keV.}}{30}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:setup_1}{{3.13}{30}{Plot van numerieke oplossing van de paraxiale bewegingsvergelijking. De object en beeld asymptotische bundels snijden elkaar in het beeld hoofdvlak, en de beeld asymptotische straal snijdt de symmetrie-as in het achterste focaalvlak van de lens. Deze opstelling heeft de volgende parameters: $R_1=1.5\mathrm {mm},R_2=5\mathrm {mm},d=5\mathrm {mm}, B_g=0.447\mathrm {T},\Phi =30$~keV}{figure.caption.24}{}}
-\BKM@entry{id=21,dest={73756273656374696F6E2E332E342E33},srcline={743}}{5C3337365C3337375C303030415C303030625C303030655C303030725C303030725C303030615C303030745C303030695C303030655C303030635C3030306F5C3030305C3335335C303030665C303030665C303030695C303030635C303030695C303030655C3030306E5C303030745C303030655C3030306E}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2.1}Analytische oplossingsmethoden}{29}{subsubsection.3.4.2.1}\protected@file@percent }
+\newlabel{eq:paraxialevgl_rel_H54}{{3.16}{29}{Analytische oplossingsmethoden}{equation.3.4.16}{}}
 \citation{PWHawkes}
+\newlabel{eq:Glasers_field}{{3.17}{30}{Analytische oplossingsmethoden}{equation.3.4.17}{}}
+\@writefile{brf}{\backcite{PWHawkes}{{30}{3.4.2.1}{equation.3.4.17}}}
+\newlabel{eq:constant_field}{{3.18}{30}{Analytische oplossingsmethoden}{equation.3.4.18}{}}
+\newlabel{fig:fields_comparison_a}{{3.12a}{30}{\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:fields_comparison_a}{{a}{30}{\relax }{figure.caption.23}{}}
+\newlabel{fig:fields_comparison_b}{{3.12b}{30}{\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:fields_comparison_b}{{b}{30}{\relax }{figure.caption.23}{}}
+\newlabel{fig:fields_comparison_c}{{3.12c}{30}{\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:fields_comparison_c}{{c}{30}{\relax }{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces Vergelijking tussen twee velden (Glaser's field en constant veld) waarvoor de paraxiale bewegingsvergelijking analytisch oplosbaar is en ons analytisch afgeschat veld. Het Glaser's field is gelijkaardig, maar heeft een bredere piek en valt trager af dan ons afgeschatte veld. Dit geeft een dikkere lens, wat ongewenst is.}}{30}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:fields_comparison}{{3.12}{30}{Vergelijking tussen twee velden (Glaser's field en constant veld) waarvoor de paraxiale bewegingsvergelijking analytisch oplosbaar is en ons analytisch afgeschat veld. Het Glaser's field is gelijkaardig, maar heeft een bredere piek en valt trager af dan ons afgeschatte veld. Dit geeft een dikkere lens, wat ongewenst is}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2.2}Numerieke oplossing}{30}{subsubsection.3.4.2.2}\protected@file@percent }
+\BKM@entry{id=21,dest={73756273656374696F6E2E332E342E33},srcline={754}}{5C3337365C3337375C303030415C303030625C303030655C303030725C303030725C303030615C303030745C303030695C303030655C303030635C3030306F5C3030305C3335335C303030665C303030665C303030695C303030635C303030695C303030655C3030306E5C303030745C303030655C3030306E}
+\citation{PWHawkes}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Plot van numerieke oplossing van de paraxiale bewegingsvergelijking. De object en beeld asymptotische bundels snijden elkaar in het beeld hoofdvlak, en de beeld asymptotische straal snijdt de symmetrie-as in het achterste focaalvlak van de lens. Deze opstelling heeft de volgende parameters: $R_1=1.5\mathrm  {mm},R_2=5\mathrm  {mm},d=5\mathrm  {mm}, B_g=0.447\mathrm  {T},\Phi =30$~keV.}}{31}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:setup_1}{{3.13}{31}{Plot van numerieke oplossing van de paraxiale bewegingsvergelijking. De object en beeld asymptotische bundels snijden elkaar in het beeld hoofdvlak, en de beeld asymptotische straal snijdt de symmetrie-as in het achterste focaalvlak van de lens. Deze opstelling heeft de volgende parameters: $R_1=1.5\mathrm {mm},R_2=5\mathrm {mm},d=5\mathrm {mm}, B_g=0.447\mathrm {T},\Phi =30$~keV}{figure.caption.24}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces Voorbeeld van beeldvorming met een permanente magneetlens. We beschouwen hier de drie hoofdstralen: de straal die door het achterste brandpunt gaat, de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. In dit geval krijgen we een vergroting $M=5$.}}{31}{figure.caption.25}\protected@file@percent }
 \newlabel{fig:setup_2}{{3.14}{31}{Voorbeeld van beeldvorming met een permanente magneetlens. We beschouwen hier de drie hoofdstralen: de straal die door het achterste brandpunt gaat, de straal die door het midden van de lens gaat, en de straal die door het voorste brandpunt gaat. In dit geval krijgen we een vergroting $M=5$}{figure.caption.25}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Aberratiecoëfficienten}{31}{subsection.3.4.3}\protected@file@percent }
-\@writefile{brf}{\backcite{PWHawkes}{{31}{3.4.3}{subsection.3.4.3}}}
-\BKM@entry{id=22,dest={636861707465722E34},srcline={756}}{5C3337365C3337375C3030304F5C303030705C303030745C303030695C3030306D5C303030615C3030306C5C303030695C303030735C303030615C303030745C303030695C303030655C3030305C3034305C303030655C3030306E5C3030305C3034305C303030765C303030615C3030306C5C303030695C303030645C303030615C303030745C303030695C303030655C3030305C3034305C303030765C303030615C3030306E5C3030305C3034305C303030645C303030655C3030305C3034305C3030306C5C303030655C3030306E5C303030735C303030705C303030615C303030725C303030615C3030306D5C303030655C303030745C303030655C303030725C30303073}
-\BKM@entry{id=23,dest={73656374696F6E2E342E31},srcline={773}}{5C3337365C3337375C3030304C5C303030655C3030306E5C303030735C3030306F5C3030306E5C303030745C303030775C303030655C303030725C30303070}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Aberratiecoëfficienten}{32}{subsection.3.4.3}\protected@file@percent }
+\@writefile{brf}{\backcite{PWHawkes}{{32}{3.4.3}{subsection.3.4.3}}}
+\BKM@entry{id=22,dest={636861707465722E34},srcline={768}}{5C3337365C3337375C3030304F5C303030705C303030745C303030695C3030306D5C303030615C3030306C5C303030695C303030735C303030615C303030745C303030695C303030655C3030305C3034305C303030655C3030306E5C3030305C3034305C303030765C303030615C3030306C5C303030695C303030645C303030615C303030745C303030695C303030655C3030305C3034305C303030765C303030615C3030306E5C3030305C3034305C303030645C303030655C3030305C3034305C3030306C5C303030655C3030306E5C303030735C303030705C303030615C303030725C303030615C3030306D5C303030655C303030745C303030655C303030725C30303073}
+\BKM@entry{id=23,dest={73656374696F6E2E342E31},srcline={785}}{5C3337365C3337375C3030304C5C303030655C3030306E5C303030735C3030306F5C3030306E5C303030745C303030775C303030655C303030725C30303070}
 \citation{Abbas_2016}
 \citation{JEOL_Aberrations}
 \citation{MagnetFAQ}
@@ -235,17 +249,16 @@
 \newlabel{ch:optimalisatie}{{4}{33}{Optimalisatie en validatie van de lensparameters}{chapter.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Lensontwerp}{33}{section.4.1}\protected@file@percent }
 \newlabel{ch:lensontwerp}{{4.1}{33}{Lensontwerp}{section.4.1}{}}
-\@writefile{brf}{\backcite{Abbas_2016}{{33}{3}{Item.10}}}
-\@writefile{brf}{\backcite{JEOL_Aberrations}{{33}{3}{Item.10}}}
+\@writefile{brf}{\backcite{Abbas_2016, JEOL_Aberrations}{{33}{3}{Item.14}}}
 \citation{Buchenau_2014}
 \citation{Buchenau_2014}
-\@writefile{brf}{\backcite{MagnetFAQ}{{34}{4}{Item.11}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces $\mathrm  {BH}$-curve van ASI1018. Het is belangrijk dat de curve bij onze waarde voor $B_g$ lineair is, zodat er geen saturatie optreedt en er geen magnetisch veld weglekt. \cite  {Buchenau_2014}}}{34}{figure.caption.26}\protected@file@percent }
+\@writefile{brf}{\backcite{MagnetFAQ}{{34}{4}{Item.15}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces $\mathrm  {BH}$-curve van ASI1018. Het is belangrijk dat de curve bij de waarde voor $B_g$ in de lens lineair is, zodat er geen saturatie optreedt en er geen magnetisch veld weglekt. \cite  {Buchenau_2014}}}{34}{figure.caption.26}\protected@file@percent }
 \@writefile{brf}{\backcite{Buchenau_2014}{{34}{4.1}{figure.caption.26}}}
-\newlabel{fig:BH_curve_ASI1018}{{4.1}{34}{$\mathrm {BH}$-curve van ASI1018. Het is belangrijk dat de curve bij onze waarde voor $B_g$ lineair is, zodat er geen saturatie optreedt en er geen magnetisch veld weglekt. \cite {Buchenau_2014}}{figure.caption.26}{}}
-\BKM@entry{id=24,dest={73756273656374696F6E2E342E312E31},srcline={824}}{5C3337365C3337375C303030535C303030695C3030306D5C303030755C3030306C5C303030615C303030745C303030695C303030655C3030305C3034305C303030765C303030615C3030306E5C3030305C3034305C3030306C5C303030655C3030306E5C303030735C303030655C303030695C303030675C303030655C3030306E5C303030735C303030635C303030685C303030615C303030705C303030705C303030655C3030306E}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Het werkingspunt van de magneet bij $P_{ci}=2.5$. Dit is de ondergrens die we voor voor ons ontwerp kiezen om te voorkomen dat er demagnetisatie van de magneet zou optreden. Het werkingspunt kan door een groot aantal onvoorziene factoren dichter dan verwacht bij de elleboog van de curve liggen, dus moeten we ervoor zorgen dat $P_{ci}$ groot genoeg blijft.}}{35}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:operating_point_25}{{4.2}{35}{Het werkingspunt van de magneet bij $P_{ci}=2.5$. Dit is de ondergrens die we voor voor ons ontwerp kiezen om te voorkomen dat er demagnetisatie van de magneet zou optreden. Het werkingspunt kan door een groot aantal onvoorziene factoren dichter dan verwacht bij de elleboog van de curve liggen, dus moeten we ervoor zorgen dat $P_{ci}$ groot genoeg blijft}{figure.caption.27}{}}
+\newlabel{fig:BH_curve_ASI1018}{{4.1}{34}{$\mathrm {BH}$-curve van ASI1018. Het is belangrijk dat de curve bij de waarde voor $B_g$ in de lens lineair is, zodat er geen saturatie optreedt en er geen magnetisch veld weglekt. \cite {Buchenau_2014}}{figure.caption.26}{}}
+\BKM@entry{id=24,dest={73756273656374696F6E2E342E312E31},srcline={836}}{5C3337365C3337375C303030535C303030695C3030306D5C303030755C3030306C5C303030615C303030745C303030695C303030655C3030305C3034305C303030765C303030615C3030306E5C3030305C3034305C3030306C5C303030655C3030306E5C303030735C303030655C303030695C303030675C303030655C3030306E5C303030735C303030635C303030685C303030615C303030705C303030705C303030655C3030306E}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Het werkingspunt van de magneet bij $P_{ci}=2.5$. Dit is de ondergrens die voor ons ontwerp wordt gekozen om te voorkomen dat er demagnetisatie van de magneet zou optreden. Het werkingspunt kan door een groot aantal onvoorziene factoren dichter dan verwacht bij de elleboog van de curve liggen, dus is het belangrijk dat $P_{ci}$ groot genoeg is om deze risico's op te vangen.}}{35}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:operating_point_25}{{4.2}{35}{Het werkingspunt van de magneet bij $P_{ci}=2.5$. Dit is de ondergrens die voor ons ontwerp wordt gekozen om te voorkomen dat er demagnetisatie van de magneet zou optreden. Het werkingspunt kan door een groot aantal onvoorziene factoren dichter dan verwacht bij de elleboog van de curve liggen, dus is het belangrijk dat $P_{ci}$ groot genoeg is om deze risico's op te vangen}{figure.caption.27}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Simulatie van lenseigenschappen}{35}{subsection.4.1.1}\protected@file@percent }
 \newlabel{fig:variable_R_1}{{4.3a}{36}{\relax }{figure.caption.29}{}}
 \newlabel{sub@fig:variable_R_1}{{a}{36}{\relax }{figure.caption.29}{}}
@@ -255,8 +268,8 @@
 \newlabel{sub@fig:variable_d}{{c}{36}{\relax }{figure.caption.29}{}}
 \newlabel{fig:variable_B_r}{{4.3d}{36}{\relax }{figure.caption.29}{}}
 \newlabel{sub@fig:variable_B_r}{{d}{36}{\relax }{figure.caption.29}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen naar wens te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de poolschoenen, welke niet te hoog mag zijn om saturatie-effecten te voorkomen.}}{36}{figure.caption.29}\protected@file@percent }
-\newlabel{fig:prop_grid_2x2}{{4.3}{36}{Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen naar wens te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de poolschoenen, welke niet te hoog mag zijn om saturatie-effecten te voorkomen}{figure.caption.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de poolschoenen, welke niet te hoog mag zijn om saturatie-effecten te voorkomen.}}{36}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:prop_grid_2x2}{{4.3}{36}{Plots van lenseigenschappen en reluctantieterm in functie van de geometrie van de lens. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de lenseigenschappen te optimaliseren. Naast de reluctantieterm moet er ook rekening gehouden worden met de maximale fluxdichtheid in de poolschoenen, welke niet te hoog mag zijn om saturatie-effecten te voorkomen}{figure.caption.29}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Plot van de lenseigenschappen in functie van de versnelspanning $\Phi $. De afgeleiden van de lenseigenschappen naar de versnelspanning geven een maat voor de chromatische aberratie.}}{37}{figure.caption.30}\protected@file@percent }
 \newlabel{fig:variable_T}{{4.4}{37}{Plot van de lenseigenschappen in functie van de versnelspanning $\Phi $. De afgeleiden van de lenseigenschappen naar de versnelspanning geven een maat voor de chromatische aberratie}{figure.caption.30}{}}
 \newlabel{fig:variable_R_1_ab}{{4.5a}{37}{\relax }{figure.caption.31}{}}
@@ -267,14 +280,16 @@
 \newlabel{sub@fig:variable_d_ab}{{c}{37}{\relax }{figure.caption.31}{}}
 \newlabel{fig:variable_B_r_ab}{{4.5d}{37}{\relax }{figure.caption.31}{}}
 \newlabel{sub@fig:variable_B_r_ab}{{d}{37}{\relax }{figure.caption.31}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Plots van aberratiecoëfficiënten $D$ en $C_M$ in functie van de geometrie van de lens bij $z_0=25\mathrm  {mm}$. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de aberratiecoëfficiënten te minimaliseren.}}{37}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:ab_grid_2x2}{{4.5}{37}{Plots van aberratiecoëfficiënten $D$ en $C_M$ in functie van de geometrie van de lens bij $z_0=25\mathrm {mm}$. Deze plots geven een goed beeld van hoe de parameters aangepast kunnen worden om de aberratiecoëfficiënten te minimaliseren}{figure.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Plots van aberratiecoëfficiënten $D$ en $C_M$ in functie van de geometrie van de lens bij $z_0=25\mathrm  {mm}$. Deze plots geven weer hoe de parameters aangepast kunnen worden om de aberratiecoëfficiënten te minimaliseren.}}{37}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:ab_grid_2x2}{{4.5}{37}{Plots van aberratiecoëfficiënten $D$ en $C_M$ in functie van de geometrie van de lens bij $z_0=25\mathrm {mm}$. Deze plots geven weer hoe de parameters aangepast kunnen worden om de aberratiecoëfficiënten te minimaliseren}{figure.caption.31}{}}
 \citation{Magnet_Outlet}
 \citation{Magnet_Grade}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Gekozen lensparameters die een optimale lenswerking geven. We gebruiken een N35 graad NdfeB magneet, die een remanent veld van ongeveer $1.17\mathrm  {T}$ heeft.}}{38}{table.caption.32}\protected@file@percent }
-\newlabel{tab:lens_parameters}{{4.1}{38}{Gekozen lensparameters die een optimale lenswerking geven. We gebruiken een N35 graad NdfeB magneet, die een remanent veld van ongeveer $1.17\mathrm {T}$ heeft}{table.caption.32}{}}
+\citation{arnold_ndfeb_2019}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Gekozen lensparameters die een optimale lenswerking geven. De lens gebruikt een N35 graad NdfeB magneet, die een remanent veld van ongeveer $1.17\mathrm  {T}$ heeft.}}{38}{table.caption.32}\protected@file@percent }
+\newlabel{tab:lens_parameters}{{4.1}{38}{Gekozen lensparameters die een optimale lenswerking geven. De lens gebruikt een N35 graad NdfeB magneet, die een remanent veld van ongeveer $1.17\mathrm {T}$ heeft}{table.caption.32}{}}
 \@writefile{brf}{\backcite{Magnet_Outlet}{{38}{4.1.1}{table.caption.32}}}
 \@writefile{brf}{\backcite{Magnet_Grade}{{38}{4.1.1}{table.caption.32}}}
+\@writefile{brf}{\backcite{arnold_ndfeb_2019}{{38}{4.1.1}{table.caption.32}}}
 \@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Lenseigenschappen voor de gekozen lensparameters.}}{38}{table.caption.33}\protected@file@percent }
 \newlabel{tab:lens_properties}{{4.2}{38}{Lenseigenschappen voor de gekozen lensparameters}{table.caption.33}{}}
 \citation{Hubs}
@@ -291,9 +306,9 @@
 \newlabel{fig:FreeCAD_grid_2x2}{{4.6}{39}{Verschillende aanzichten en een 2D sketch van het ontwerp van de poolschoenen in FreeCAD}{figure.caption.34}{}}
 \@writefile{brf}{\backcite{Hubs}{{39}{4.1.1}{figure.caption.34}}}
 \@writefile{brf}{\backcite{MALLER199828}{{39}{4.1.1}{figure.caption.34}}}
-\BKM@entry{id=25,dest={73656374696F6E2E342E32},srcline={986}}{5C3337365C3337375C3030304B5C303030615C303030725C303030615C3030306B5C303030745C303030655C303030725C303030695C303030735C303030615C303030745C303030695C303030655C3030305C3034305C303030695C3030306E5C3030305C3034305C303030645C303030655C3030305C3034305C3030306D5C303030695C303030635C303030725C3030306F5C303030735C303030635C3030306F5C3030306F5C30303070}
-\BKM@entry{id=26,dest={73656374696F6E2E342E33},srcline={988}}{5C3337365C3337375C303030455C303030785C303030705C303030655C303030725C303030695C3030306D5C303030655C3030306E5C303030745C303030655C3030306C5C303030655C3030305C3034305C303030765C303030615C3030306C5C303030695C303030645C303030615C303030745C303030695C303030655C3030305C3034305C303030665C3030306F5C303030635C303030615C3030306C5C303030655C3030305C3034305C3030306C5C303030655C3030306E5C303030675C303030745C30303065}
-\BKM@entry{id=27,dest={73756273656374696F6E2E342E332E31},srcline={990}}{5C3337365C3337375C3030304D5C303030655C303030735C303030685C3030305C3034305C303030735C303030685C303030615C303030645C3030306F5C303030775C303030675C303030725C303030615C303030705C303030685C3030305C3034305C3030306D5C303030655C303030745C303030685C3030306F5C303030645C30303065}
+\BKM@entry{id=25,dest={73656374696F6E2E342E32},srcline={1005}}{5C3337365C3337375C3030304B5C303030615C303030725C303030615C3030306B5C303030745C303030655C303030725C303030695C303030735C303030615C303030745C303030695C303030655C3030305C3034305C303030695C3030306E5C3030305C3034305C303030645C303030655C3030305C3034305C3030306D5C303030695C303030635C303030725C3030306F5C303030735C303030635C3030306F5C3030306F5C30303070}
+\BKM@entry{id=26,dest={73656374696F6E2E342E33},srcline={1007}}{5C3337365C3337375C303030455C303030785C303030705C303030655C303030725C303030695C3030306D5C303030655C3030306E5C303030745C303030655C3030306C5C303030655C3030305C3034305C303030765C303030615C3030306C5C303030695C303030645C303030615C303030745C303030695C303030655C3030305C3034305C303030665C3030306F5C303030635C303030615C3030306C5C303030655C3030305C3034305C3030306C5C303030655C3030306E5C303030675C303030745C30303065}
+\BKM@entry{id=27,dest={73756273656374696F6E2E342E332E31},srcline={1009}}{5C3337365C3337375C3030304D5C303030655C303030735C303030685C3030305C3034305C303030735C303030685C303030615C303030645C3030306F5C303030775C303030675C303030725C303030615C303030705C303030685C3030305C3034305C3030306D5C303030655C303030745C303030685C3030306F5C303030645C30303065}
 \citation{meshshadowgraphs}
 \citation{meshshadowgraphs}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Karakterisatie in de microscoop}{40}{section.4.2}\protected@file@percent }
@@ -301,29 +316,32 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Experimentele validatie focale lengte}{40}{section.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Mesh shadowgraph methode}{40}{subsection.4.3.1}\protected@file@percent }
 \@writefile{brf}{\backcite{meshshadowgraphs}{{40}{4.3.1}{subsection.4.3.1}}}
-\@writefile{brf}{\backcite{meshshadowgraphs}{{40}{4.3.1}{subsection.4.3.1}}}
-\newlabel{eq:thin_lens_formula}{{4.1}{40}{Mesh shadowgraph methode}{equation.4.3.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de vergroting $M=\frac  {E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen.}}{40}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:rear_mesh_shadowgraph}{{4.7}{40}{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de vergroting $M=\frac {E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen}{figure.caption.35}{}}
-\newlabel{eq:image_dist_real}{{4.4}{41}{Mesh shadowgraph methode}{equation.4.3.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een vergroting $M>1$ geeft. }}{41}{figure.caption.36}\protected@file@percent }
-\newlabel{fig:rear_mesh_shadowgraph_virtual}{{4.8}{41}{Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een vergroting $M>1$ geeft}{figure.caption.36}{}}
-\BKM@entry{id=28,dest={73756273656374696F6E2E342E332E32},srcline={1045}}{5C3337365C3337375C3030304D5C3030306F5C3030306E5C303030745C303030655C3030305C3034305C303030435C303030615C303030725C3030306C5C3030306F5C3030305C3034305C303030735C303030695C3030306D5C303030755C3030306C5C303030615C303030745C303030695C303030655C3030305C3034305C303030765C303030615C3030306E5C3030305C3034305C303030685C303030655C303030745C3030305C3034305C303030655C303030785C303030705C303030655C303030725C303030695C3030306D5C303030655C3030306E5C30303074}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt.}}{42}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:rear_mesh_shadowgraph_parallel}{{4.9}{42}{Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt}{figure.caption.37}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Monte Carlo simulatie van het experiment}{42}{subsection.4.3.2}\protected@file@percent }
-\BKM@entry{id=29,dest={636861707465722E35},srcline={1048}}{5C3337365C3337375C303030565C3030306F5C3030306F5C303030725C303030755C303030695C303030745C3030307A5C303030695C303030635C303030685C30303074}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Vooruitzicht}{43}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1.1}Reëel beeld}{40}{subsubsection.4.3.1.1}\protected@file@percent }
+\@writefile{brf}{\backcite{meshshadowgraphs}{{40}{4.3.1.1}{subsubsection.4.3.1.1}}}
+\newlabel{eq:thin_lens_formula}{{4.1}{40}{Reëel beeld}{equation.4.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de vergroting $M=\frac  {E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen.}}{41}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:rear_mesh_shadowgraph}{{4.7}{41}{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de vergroting $M=\frac {E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen}{figure.caption.35}{}}
+\newlabel{eq:image_dist_real}{{4.4}{41}{Reëel beeld}{equation.4.3.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1.2}Virtueel beeld}{41}{subsubsection.4.3.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een vergroting $M>1$ geeft. }}{42}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:rear_mesh_shadowgraph_virtual}{{4.8}{42}{Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een vergroting $M>1$ geeft}{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1.3}Parallelle bundel}{42}{subsubsection.4.3.1.3}\protected@file@percent }
+\BKM@entry{id=28,dest={73756273656374696F6E2E342E332E32},srcline={1067}}{5C3337365C3337375C3030304D5C3030306F5C3030306E5C303030745C303030655C3030305C3034305C303030435C303030615C303030725C3030306C5C3030306F5C3030305C3034305C303030735C303030695C3030306D5C303030755C3030306C5C303030615C303030745C303030695C303030655C3030305C3034305C303030765C303030615C3030306E5C3030305C3034305C303030685C303030655C303030745C3030305C3034305C303030655C303030785C303030705C303030655C303030725C303030695C3030306D5C303030655C3030306E5C30303074}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt.}}{43}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:rear_mesh_shadowgraph_parallel}{{4.9}{43}{Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt}{figure.caption.37}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Monte Carlo simulatie van het experiment}{43}{subsection.4.3.2}\protected@file@percent }
+\BKM@entry{id=29,dest={636861707465722E35},srcline={1070}}{5C3337365C3337375C303030565C3030306F5C3030306F5C303030725C303030755C303030695C303030745C3030307A5C303030695C303030635C303030685C30303074}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Vooruitzicht}{45}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:vooruitzicht}{{5}{43}{Vooruitzicht}{chapter.5}{}}
-\BKM@entry{id=30,dest={636861707465722E36},srcline={1050}}{5C3337365C3337375C303030425C303030655C303030735C3030306C5C303030755C303030695C30303074}
+\newlabel{ch:vooruitzicht}{{5}{45}{Vooruitzicht}{chapter.5}{}}
+\BKM@entry{id=30,dest={636861707465722E36},srcline={1072}}{5C3337365C3337375C303030425C303030655C303030735C3030306C5C303030755C303030695C30303074}
 \bibstyle{abbrv}
 \bibdata{bibliography}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Besluit}{45}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Besluit}{47}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:besluit}{{6}{45}{Besluit}{chapter.6}{}}
+\newlabel{ch:besluit}{{6}{47}{Besluit}{chapter.6}{}}
 \bibcite{Abbas_2016}{1}
 \bibcite{meshshadowgraphs}{2}
 \bibcite{arnold_ndfeb_2019}{3}
@@ -355,4 +373,4 @@
 \global\@namedef{scr@dte@section@lastmaxnumwidth}{18.0674pt}
 \global\@namedef{scr@dte@subsection@lastmaxnumwidth}{26.27988pt}
 \@writefile{toc}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
-\gdef \@abspage@last{52}
+\gdef \@abspage@last{54}
