@@ -23,18 +23,18 @@
 \contentsline {subsection}{\numberline {3.4.1}Paraxiaal magnetisch veld}{29}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Paraxiale bewegingsvergelijking}{29}{subsection.3.4.2}%
 \contentsline {subsubsection}{\numberline {3.4.2.1}Analytische oplossingsmethoden}{29}{subsubsection.3.4.2.1}%
-\contentsline {subsubsection}{\numberline {3.4.2.2}Numerieke oplossing}{30}{subsubsection.3.4.2.2}%
-\contentsline {subsection}{\numberline {3.4.3}Aberratiecoëfficienten}{32}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.2.2}Numerieke oplossing}{31}{subsubsection.3.4.2.2}%
+\contentsline {subsection}{\numberline {3.4.3}Distortiecoëfficiënt}{32}{subsection.3.4.3}%
 \contentsline {chapter}{\numberline {4}Optimalisatie en validatie van de lensparameters}{33}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Lensontwerp}{33}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Simulatie van lenseigenschappen}{35}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Karakterisatie in de microscoop}{40}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Experimentele validatie focale lengte}{40}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Mesh shadowgraph methode}{40}{subsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.1.1}Reëel beeld}{40}{subsubsection.4.3.1.1}%
-\contentsline {subsubsection}{\numberline {4.3.1.2}Virtueel beeld}{41}{subsubsection.4.3.1.2}%
-\contentsline {subsubsection}{\numberline {4.3.1.3}Parallelle bundel}{42}{subsubsection.4.3.1.3}%
-\contentsline {subsection}{\numberline {4.3.2}Monte Carlo simulatie van het experiment}{43}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.2}Karakterisering in de microscoop}{42}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Experimentele validatie focale lengte}{42}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Mesh shadowgraph methode}{42}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}Reëel beeld}{42}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.2}Virtueel beeld}{43}{subsubsection.4.3.1.2}%
+\contentsline {subsubsection}{\numberline {4.3.1.3}Parallelle bundel}{43}{subsubsection.4.3.1.3}%
+\contentsline {subsection}{\numberline {4.3.2}Monte Carlo simulatie van het experiment}{44}{subsection.4.3.2}%
 \contentsline {chapter}{\numberline {5}Vooruitzicht}{45}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Besluit}{47}{chapter.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

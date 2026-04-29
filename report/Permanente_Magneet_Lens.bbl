@@ -57,6 +57,11 @@ L.~de~Broglie.
 \newblock Published in \textit{Annales de Physique} 10e s{\'e}rie, t. III,
   22-128 (1925).
 
+\bibitem{el_kareh_1970}
+A.~B. El-Kareh and J.~C.~J. El-Kareh.
+\newblock {\em Electron Beams, Lenses, and Optics, Volume 1}.
+\newblock Academic Press, New York, 1970.
+
 \bibitem{gonzalez2023}
 A.~Gonzalez.
 \newblock Nice sections of an old {Transmission Electron Microscope} done by
@@ -75,18 +80,18 @@ P.~W. Hawkes.
 \newblock {\em Electron Optics and Electron Microscopy}.
 \newblock Taylor \& Francis LTD, 10-14 Macklin Street, London, 1972.
 
-\bibitem{JEOL_Aberrations}
-{JEOL Ltd.}
-\newblock Aberration.
-\newblock Glossary of {TEM} Terms, \textit{jeol.com}, Dec. 2023.
-\newblock Geraadpleegd: 2026-04-26.
-
 \bibitem{Jiang2018Ptychography}
 Y.~Jiang, Z.~Chen, Y.~Han, P.~Deb, H.~Gao, S.~Xie, P.~Purohit, M.~W. Tate,
   J.~Park, S.~M. Gruner, V.~Elser, and D.~A. Muller.
 \newblock Electron ptychography of 2d materials to deep sub-{\aa}ngstr{\"o}m
   resolution.
 \newblock {\em Nature}, 559(7714):343--349, 2018.
+
+\bibitem{hawkes_kasper_1989}
+E.~Kasper and P.~W. Hawkes.
+\newblock {\em Principles of Electron Optics, Volume 1: Basic Geometrical
+  Optics}.
+\newblock Academic Press, London, 1989.
 
 \bibitem{klementova2021hematite_hrtem}
 M.~Klementov{\'{a}} and Klingm01.

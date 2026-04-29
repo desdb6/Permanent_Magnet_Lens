@@ -7,45 +7,45 @@ Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliography.bib
 Warning--there's a number but no volume in meshshadowgraphs
 Warning--empty year in meshshadowgraphs
-You've used 27 entries,
+You've used 28 entries,
             2118 wiz_defined-function locations,
-            680 strings with 8551 characters,
-and the built_in function-call counts, 7448 in all, are:
-= -- 710
-> -- 375
+            686 strings with 8694 characters,
+and the built_in function-call counts, 7739 in all, are:
+= -- 734
+> -- 394
 < -- 0
-+ -- 153
-- -- 126
-* -- 461
-:= -- 1318
-add.period$ -- 92
-call.type$ -- 27
-change.case$ -- 139
++ -- 160
+- -- 132
+* -- 479
+:= -- 1371
+add.period$ -- 94
+call.type$ -- 28
+change.case$ -- 143
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 241
-empty$ -- 593
-format.name$ -- 126
-if$ -- 1520
+cite$ -- 30
+duplicate$ -- 258
+empty$ -- 615
+format.name$ -- 132
+if$ -- 1580
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 12
-newline$ -- 149
-num.names$ -- 54
-pop$ -- 181
+int.to.str$ -- 28
+missing$ -- 16
+newline$ -- 153
+num.names$ -- 56
+pop$ -- 189
 preamble$ -- 1
-purify$ -- 117
+purify$ -- 122
 quote$ -- 0
-skip$ -- 166
+skip$ -- 174
 stack$ -- 0
-substring$ -- 296
-swap$ -- 29
+substring$ -- 301
+swap$ -- 30
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 106
 warning$ -- 2
-while$ -- 64
-width$ -- 29
-write$ -- 305
+while$ -- 66
+width$ -- 30
+write$ -- 315
 (There were 2 warnings)

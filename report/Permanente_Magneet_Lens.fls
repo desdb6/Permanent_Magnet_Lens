@@ -720,6 +720,13 @@ INPUT .\Images\Constant_B_field.png
 INPUT .\Images\Constant_B_field.png
 INPUT .\Images\Constant_B_field.png
 INPUT .\Images\Constant_B_field.png
+INPUT .\Images\Sech_field.png
+INPUT .\Images\Sech_field.png
+INPUT .\Images\Sech_field.png
+INPUT .\Images\Sech_field.png
+INPUT .\Images\Sech_field.png
+INPUT .\Images\Sech_field.png
+INPUT .\Images\Sech_field.png
 INPUT .\Images\Actual_B_field.png
 INPUT .\Images\Actual_B_field.png
 INPUT .\Images\Actual_B_field.png
@@ -727,8 +734,6 @@ INPUT .\Images\Actual_B_field.png
 INPUT .\Images\Actual_B_field.png
 INPUT .\Images\Actual_B_field.png
 INPUT .\Images\Actual_B_field.png
-INPUT C:\Users\desde\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
-INPUT C:\Users\desde\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT .\Images\setup_1.png
 INPUT .\Images\setup_1.png
 INPUT .\Images\setup_1.png
@@ -851,6 +856,8 @@ INPUT .\Images\FreeCAD_3D_4.JPG
 INPUT .\Images\FreeCAD_3D_4.JPG
 INPUT .\Images\FreeCAD_3D_4.JPG
 INPUT .\Images\FreeCAD_3D_4.JPG
+INPUT C:\Users\desde\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
+INPUT C:\Users\desde\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT .\Images\rear_mesh_shadowgraph.png
 INPUT .\Images\rear_mesh_shadowgraph.png
 INPUT .\Images\rear_mesh_shadowgraph.png
