@@ -1044,11 +1044,11 @@ if __name__ == "__main__":
     # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    # permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=25)
-    # mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
-    # permanent_magnet_lens.add_mesh(mesh1)
-    # permanent_magnet_lens.calculate_aberration_coeff()
-    # permanent_magnet_lens.display_properties()
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=25)
+    mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
+    permanent_magnet_lens.add_mesh(mesh1)
+    permanent_magnet_lens.calculate_aberration_coeff()
+    permanent_magnet_lens.display_properties()
 
     # plot_operating_point(BH_curve_magnet(), 0.4)
 
@@ -1061,6 +1061,3 @@ if __name__ == "__main__":
     # permanent_magnet_lens.variable_T(28, 32, 100)
 
     make_lens_interactive()
-
-    permanent_magnet_lens.update_T()
-    print((permanent_magnet_lens.T_rel-permanent_magnet_lens.T)/permanent_magnet_lens.T*100)

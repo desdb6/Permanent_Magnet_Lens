@@ -164,7 +164,7 @@ Als de elektronen vanuit rust versneld worden met een versnelspanning $\Phi$, da
 \begin{equation}
     \lambda=\frac{h}{\sqrt{2m_e e\Phi}}
 \end{equation}
-Door een grotere versnelspanning te gebruiken kan op deze manier kan de golflengte verder worden verkleind, wat een betere spatiale resolutie dan optische microscopen geeft. Bij HRTEM gebruikt men typisch versnelspanningen tot $300$~keV, waarmee picometer resoluties voor stabiele samples bereikt kunnen worden. Het huidige record voor de beste resolutie staat op $0.5\mathring{A}$, wat een enorme verbetering is vergeleken met de limiet voor optische microscopen \cite{Jiang2018Ptychography}. De instrumenten die nodig zijn om aan elektronenoptica te doen (zoals elektronenlenzen), zijn echter veel complexer dan hun tegenhangers die met lichtgolven beelden vormen. Een elektronenmicroscoop bestaat minstens uit een elektronenbron, een of meerdere elektromagnetische lenzen met aberratiecorrectoren, eventueel een of meerdere aperturen, en een elektronendetector. Op dezelfde manier als met licht kan een voorwerp bestraald worden met elektronen, zodanig dat de lenzen een uitvergroot beeld van dat voorwerp op de detector zullen afbeelden. Dit kan zowel in reële ruimte, waarbij een direct beeld van eht sample verkregen wordt, als in reciproke ruimte, wat diffractiepatronen oplevert waaruit bijv. kristalstructuur en roosterparameters kunnen worden afgeleid.
+Door een grotere versnelspanning te gebruiken kan op deze manier kan de golflengte verder worden verkleind, wat een betere spatiale resolutie dan optische microscopen geeft. Bij HRTEM gebruikt men typisch versnelspanningen tot $300$~keV, waarmee picometer resoluties voor stabiele samples bereikt kunnen worden. Het huidige record voor de beste resolutie staat op $0.5\mathring{A}$, wat een enorme verbetering is vergeleken met de limiet voor optische microscopen \cite{Jiang2018Ptychography}. De instrumenten die nodig zijn om aan elektronenoptica te doen (zoals elektronenlenzen), zijn echter veel complexer dan hun tegenhangers die met lichtgolven beelden vormen. Een elektronenmicroscoop bestaat minstens uit een elektronenbron, een of meerdere elektromagnetische lenzen met aberratiecorrectoren, eventueel een of meerdere aperturen, en een elektronendetector. Op dezelfde manier als met licht kan een voorwerp bestraald worden met elektronen, zodanig dat de lenzen een uitvergroot beeld van dat voorwerp op de detector zullen afbeelden. Dit kan zowel in reële ruimte, waarbij een direct beeld van eht sample verkregen wordt, als in reciproke ruimte, wat diffractiepatronen oplevert waaruit bijv. kristalstructuur en rasterparameters kunnen worden afgeleid.
 
 \subsection{Raster/Transmissie Elektronenmicroscopie}
 De twee belangrijkste vormen van elektronenmicroscopie zijn \textit{Raster Elektronenmicroscopie} (\textit{Scanning Electron Microscopy}, SEM) en \textit{Transmissie-elektronenmicroscopie} (TEM). De beeldvorming gebeurt bij beide technieken op een andere manier, en de opstellingen van de componenten in de microscoop zijn daardoor anders. In deze sectie wordt een korte beschrijving van deze twee technieken gegeven.\\
@@ -952,7 +952,7 @@ Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
 \multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{c|}{$11.377$~mm}  \\ \midrule
 \multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{c|}{$2.575$}  \\ \midrule
 \multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{c|}{$1.120$~T}    \\ \midrule
-\multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{c|}{$0.994\mathrm{mm}^{-2}$}    \\ \midrule
+\multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{c|}{$1.22\mathrm{mm}^{-2}$}    \\ \midrule
 \end{tabular}
 \caption{Lenseigenschappen voor de gekozen lensparameters.}\label{tab:lens_properties}
 \end{table}
@@ -999,20 +999,182 @@ Eens de parameters zijn vastgelegd, moeten er een driedimensionaal model van de 
     \label{fig:FreeCAD_grid_2x2}
 \end{figure}
 
-Deze stepfile werd door de CNC-service \textit{Protolabs Network} \cite{Hubs} omgezet in poolschoenen die werden vervaardigd in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden.
+Deze stepfile werd door de CNC-service \textit{Protolabs Network} \cite{Hubs} omgezet in poolschoenen die werden vervaardigd in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden. Er werden drie paar poolschoenen geproduceerd. Figuur \ref{fig:Polepieces_separated} toont de afzonderlijke componenten en Figuur \ref{fig:assembled_lens} geeft de geassembleerde lens weer.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/Polepieces_separated.jpg}
+    \caption{Drie paar poolschoenen voor de assemblage tot lenzen.}
+    \label{fig:Polepieces_separated}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \vspace{4cm}
+    \caption{Geassembleerde lens.}
+    \label{fig:assembled_lens}
+\end{figure}
+
 
 \begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 6]
     De optimale lensparameters worden bepaald door een optimalisatieproces ondersteund door variatie-plots waarbij telkens 1 parameter wordt aangepast. De Python toolbox werd hiervoor uitgebreid met functies die de lenseigenschappen, aberratiecoëfficiënten en permeantiecoëfficiënt voor een variabele lensparameter berekenen en plotten. Gebruik makend van deze functieswerd er een set lensparameters vastgelegd die maximaal voldoet aan de opgestelde criteria voor de lenswerking.  Enkel de distortieaberratiecoëfficiënt overschrijdt de gewenste waarde met een factor~$2$; een alternatieve configuratie die dit verbetert zonder de overige lenseigenschappen te benadelen, werd niet gevonden. Op basis van de meest optimale lensparameters werd een driedimensionale geometrie voor de lens in FreeCAD ontworpen. 
 \end{tcolorbox}
 
 \section{Karakterisering in de microscoop}\label{ch:karakterisering}
+Het laatste deel van deze thesis betreft de experimentele karakterisatie van de lens in de MIRA-microscoop. De twee voornaamste doelstellingen zijn een kwalitatieve bespreking van de verkregen beelden en de bijbehorende aberraties, en een kwantitatieve bepaling van de focale lengte via een experimentele opstelling. De vacuumkamer van de gebruikte microscoop wordt getoond op Figuur \ref{fig:MIRA_inside_1}. Bovenaan de kamer bevindt zich de elektronenbron, waaronder de opstelling van het experiment wordt opgebouwd. Binnen de microscoop is een platform aanwezig waarop de lens kan worden geplaatst, alsook een rail langs de z-as waaraan een houder bevestigd is om een object boven de lens te positioneren, zoals getoond op Figuur \ref{fig:grid_holder_rail}. Onderaan de kamer, recht onder de elektronenbron, bevindt zich de elektronendetector waarvan de hoogte kan worden ingesteld. Er werden twee elektronendetectoren gebruikt: een AdvaPIX en een MiniPIX camera. Beide detectoren hebben een pixelgrootte van $55\mu\mathrm{m}\times55\mu\mathrm{m}$ \cite{advacam_minipix_2024, advacam_advapix_2023}.\\
 
-\section{Experimentele validatie focale lengte}
+Figuur \ref{fig:Lens_in_MIRA} toont een SEM beeld van de permanente magneet elektronenlens in de MIRA microscoop. Opmerkelijk aan dit beeld is de azimuthale distortie waardoor het beeld rondom een wervelend karakter vertoont. Dit is een gevolg van het effect van de magnetische zwerfvelden van de lens op de elektronenbundel. Dit effect lijkt cilindrisch  symmetrisch te zijn, wat een indicatie vormt dat de magneet en de poolschoenen een cilindrisch symmetrisch veld genereren.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/MIRA_inside.png}
+    \caption{Vacuumkamer van de MIRA SEM die gebruikt zal worden om de lens te karakteriseren.}
+    \label{fig:MIRA_inside_1}
+\end{figure}
 
-\subsection{Mesh shadowgraph methode}
-Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen gebruik ik een aangepaste versie van de \textit{rear mesh shadowgraph methode} beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een divergerende elektronenbundel te maken. De focale lengte kan dan worden afgeleid door te meten hoe divergent deze elektronenbundel juist is. Concreet kan dit gemeten worden door een fijnmazig rooster (een \textit{mesh grid}) achter de lens in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De vergroting van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel. Hieronder worden enkele gevallen wiskundig uitgewerkt.\\
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/grid_holder_rail.jpg}
+        \caption{Houder gemonteerd op een z-rail in de MIRA SEM om een object vast te houden.}
+        \label{fig:grid_holder_rail}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/Lens_in_MIRA.jpg}
+        \caption{SEM beeld van de permanente magneetlens in de MIRA elektronenmicroscoop. De azimuthale distortie van het beeld is te verklaren door het magnetisch veld dat de elektronenbundel m.b.v. de Lorentzkracht doet afbuigen.}
+        \label{fig:Lens_in_MIRA}
+    \end{subfigure}
+    \caption{}
+    \label{fig:MIRA_setup}
+\end{figure}
 
-\subsubsection{Reëel beeld}
+\subsection{Kwalitatieve bespreking beeldvorming}
+De focale lengte van de lens werd enkel m.b.v. de toolbox voorspeld en is in principe niet gekend. In het ideale geval stemt de werkelijke focale lengte hier nauwkeurig mee overeen, maar afwijkingen zijn in de praktijk niet uit te sluiten en zelfs verwacht, aangezien we in de toolbow een perfecte lenswerking wordt verondersteld. Bovendien is het belangrijk om eerst te onderzoeken of de lens überhaupt een bruikbare werking heeft, alvorens over te gaan naar een gedetailleerde experimentele bepaling van de focale lengte. Om deze reden heeft het voor de eerste experimenten dan ook weinig zin om een opstelling te maken waarin de object- en beeldafstand nauwkeurig worden gekozen om een vooraf bepaalde magnificatie te krijgen; de lenswerking wordt eerst getest door arbitraire afstanden te kiezen en het resulterend beeld kwalitaties te beoordelen.\\
+
+\subsubsection{Eerste experiment: EMAT logo}
+Het eerste uitgevoerde experiment trachtte een uitvergroot beeld te vormen van een TEM-raster waarbij het EMAT-logo wordt gevormd door de rasterlijnen. Figuren \ref{fig:Emat_Feature_SEM} en \ref{fig:Emat_Feature_STEM} tonen SEM beelden van het beschouwde raster. In dit experiment werd de volledige kolom van de microscoop gebruikt. Het raster werd op houder op de z-rail vastgemaakt en zo hoog mogelijk ingesteld. De lens werd vastgemaakt met koper-tape op een PCB-plaat, welke op het platform in de microscoop werd gelegd, met het centrum op $\sim20$~mm van het raster. De detector werd ingesteld op de laagst mogelijke positie, op $\sim200$~mm van de lens.
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/18.02.26_Emat_Feature_SEM.png}
+        \caption{}
+        \label{fig:Emat_Feature_SEM}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/18.02.26_Emat_Feature_STEM.png}
+        \caption{}
+        \label{fig:Emat_Feature_STEM}
+    \end{subfigure}
+    \caption{SEM beelden van een raster waarbij het EMAT logo wordt gevormd door rasterbalken.}
+    \label{fig:Emat_Feature_SEM_full}
+\end{figure}
+
+Experimenteel bleek het uiterst moeilijk te zijn om een beeld op de detector weer te geven. De afstand tussen de lens en de detector vereiste een uiterst precieze verticale aflijning van de opstelling, wat een grote uitdaging vormt aangezien de MIRA SEM geen gemotoriseerde beweging van de lens in het $x-y$-vlak toelaat. Om de opstelling af te lijnen moet de vacuumkamer daarom onder atmosferische druk gebracht worden, waarna de opstelling met de hand wordt bijgesteld.\\
+
+Figuur \ref{fig:MIRA_inside_1} toont een AdvaPIX-beeld genomen tijdens dit experiment. Op de weinige beelden waarbij de bundel op de detector terecht kwam, waren nauwelijks kenmerken van het rooster zichtbaar, enkel de centrale spot van de bundel is te herkennen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{Images/18.02.26_Emat_Feature_1mmunderfocus.png}
+    \caption{AdvaPIX-beeld van de centrale spot van de elektronenbundel. De afstand van de lens tot de detector blijkt te groot te zijn om een beeld te vormen waarop kenmerken herkenbaar zijn.}
+    \label{fig:MIRA_inside_1}
+\end{figure}
+
+Uit dit experiment concluderen we dat de afstand tussen de lens en de detector te groot is om een goed beeld met behulp van de lens te verkrijgen. Om deze reden werd er in de volgende experimenten voor minder ambitieuze opstellingen met kleinere afstanden tussen de componenten in de opstelling.
+
+\subsubsection{Tweede experiment: hexagonaal raster}
+Figuren \ref{fig:02.03.26_Hexagons_Setup} en \ref{fig:02.03.26_Hexagons_Setup_2} tonen de opstelling voor het tweede experiment, waarbij rekening werd gehouden met de bevindingen van het vorige experiment. Het sample is in dit geval een raster met hexagonale openingen met een rasterafstand van ${\sim}140~\mu$m, zoals getoond op Figuren \ref{fig:02.03.26_Hexagons_SEM} en \ref{fig:02.03.26_Hexagons_Measurements}. Om te garanderen dat de elektronenbundel niet van de detector weg zou deflecteren koos men er voor om de lens veel dichter bij de detector te plaatsen, op een afstand van $\sim40$~mm. Dit wordt relealiseerd door de PCB met de lens op een stapel van aluminium tussenringen te leggen. De z-rail geraakt echter niet laag genoeg om het raster dicht genoeg bij de lens te leggen. Om deze reden werd er een verlengstuk uit koperdraad gebruikt waarop de lens met behulp van kopertape en aluminiumfolie wordt vastgemaakt. Met dit verlengstuk kan de lens op $\sim20$~mm van de lens gelegd worden.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.55\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/02.03.26_Hexagons_Setup.png}
+        \caption{}
+        \label{fig:02.03.26_Hexagons_Setup}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.43\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/02.03.26_Hexagons_Setup_2.png}
+        \caption{}
+        \label{fig:02.03.26_Hexagons_Setup_2}
+    \end{subfigure}
+    \caption{Foto's van de opstelling waarmee een uitvergroot beeld van een hexagonaal grid worden gevormd. De lens bevindt zich dichter bij de detector en er wordt gebruik gemaakt van een verlengstuk uit koperdraad om het raster dicht genoeg bij de lens te krijgen.}
+    \label{fig:Emat_Feature}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/02.03.26_Hexagons_SEM.png}
+        \caption{}
+        \label{fig:02.03.26_Hexagons_SEM}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/02.03.26_Hexagons_Measurements.png}
+        \caption{}
+        \label{fig:02.03.26_Hexagons_Measurements}
+    \end{subfigure}
+    \caption{SEM beelden van een hexagonaal raster.}
+    \label{fig:Hexagons}
+\end{figure}
+
+Deze opstelling levert een duidelijker beeld op de AdvaPIX op, zoals getoond in figuur~\ref{fig:02.03.26_Hexagons_10mmunderfocus}; de kenmerken van het rooster zijn nu wel zichtbaar. Bovendien zijn de rasteropeningen uitvergroot: 1 opening is $\sim 100~\mu$m groot, terwijl dezelfde openingen op het beeld meerdere pixels van $55~\mu$m bestrijken. Het beeld vertoont echter een uitgesproken anisotrope distortie waarbij de openingen worden uitgerekt. Een mogelijk effect dat hiertoe leidt is dat het verlengstuk het raster niet horizontaal positioneert, wat de houder op de z-rail wel met een grote precisie kan. Hierdoor ligt het rooster niet parallel aan het beeldvlak, waardoor verschillende delen van het rooster met een verschillende vergroting worden afgebeeld.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Images/02.03.26_Hexagons_10mmunderfocus.png}
+    \caption{AdvaPIX-beeld van de hexagonale rasteropeningen. De rasterlijnen zijn duidelijk zichtbaar en uitvergroot, maar er doet zich een grote anisotrope distortie voor.}
+    \label{fig:02.03.26_Hexagons_10mmunderfocus}
+\end{figure}
+
+\subsubsection{Derde experiment: vierkant raster}
+Voor het laatste experiment voor de kwantitatieve beschrijving houden we rekening met de twee voorgaande resultaten. Het doel is om een beeld te maken waarbij:
+\begin{enumerate}
+    \item De afstanden tussen de componenten niet te groot zijn, zodat de verticale aflijning geen obstakel vormt.
+    \item Het raster wordt bevestigd op de houder op de z-rail zodanig dat het raster zo parallel mogelijk gehouden wordt.
+\end{enumerate}
+Om dit te bereiken wordt de z-rail op zijn laagste positie gezet, en wordt de lens op een hogere stapel tussenringen geplaatst.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{Images/18.03.26_Grid_Measurements.png}
+    \caption{SEM beeld van vierkant raster.}
+    \label{fig:18.03.26_Grid_Measurements}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Images/18.03.26_Grid.png}
+    \caption{MiniPIX-beeld van de vierkante rasteropeningen. Dit geeft een veel beter beeld dan de voorgaande experimente, maar de distortie van het beeld is nog steeds groot. }
+    \label{fig:18.03.26_Grid}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Images/18.03.26_Grid_Rescaled.png}
+    \caption{Herschaalde versie van Figuur \ref{fig:18.03.26_Grid} waarop meer rasteropeningen zichtbaar zijn. Er treedt een subtiel overlappend effect op waarbij er twee beelden over elkaar gevormd worden.}
+    \label{fig:18.03.26_Grid_Rescaled}
+\end{figure}
+
+\subsection{Experimentele validatie focale lengte}
+
+\subsubsection{Mesh shadowgraph methode}
+Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen gebruik ik een aangepaste versie van de \textit{rear mesh shadowgraph methode} beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een divergerende elektronenbundel te maken. De focale lengte kan dan worden afgeleid door te meten hoe divergent deze elektronenbundel juist is. Concreet kan dit gemeten worden door een fijnmazig raster (een \textit{mesh grid}) achter de lens in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De vergroting van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel. Hieronder worden enkele gevallen wiskundig uitgewerkt.\\
+
+\paragraph{Reëel beeld}
+
 Een van de methodes beschreven in \cite{meshshadowgraphs} maakt gebruik van een puntbron op de optische as die zich op een afstand $z>f$ van de lens gevindt. Als men de lens als dun veronderstelt, dan kan de dunne lensformule toegepast worden:
 \begin{equation}\label{eq:thin_lens_formula}
     \frac{1}{f}=\frac{1}{z}+\frac{1}{z'}
@@ -1024,7 +1186,7 @@ De opstelling die men toepast wordt getoond op Figuur \ref{fig:rear_mesh_shadowg
     \caption{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de vergroting $M=\frac{E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen.}
     \label{fig:rear_mesh_shadowgraph}
 \end{figure}
-Op het detectorbeeld meet men de grootte van 1 of meerdere afgebeeldde roosteropeningen, welke aangeduid worden met $E$. De werkelijke afmeting van de roosteropeningen worden aangeduid met $e=ne_1$, waarbij $n$ voor het aantal roosteropeningen staat. De vergroting van het schaduwbeeld is gelijk aan $M\frac{E}{e}$. Uit gelijkvormigheid van driehoeken volgt dan:
+Op het detectorbeeld meet men de grootte van 1 of meerdere afgebeeldde rasteropeningen, welke aangeduid worden met $E$. De werkelijke afmeting van de rasteropeningen worden aangeduid met $e=ne_1$, waarbij $n$ voor het aantal rasteropeningen staat. De vergroting van het schaduwbeeld is gelijk aan $M=\frac{E}{e}$. Uit gelijkvormigheid van driehoeken volgt dan:
 \begin{equation}
     \frac{c}{e}=\frac{c+d}{E}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{c}
 \end{equation}
@@ -1038,7 +1200,8 @@ Hiermee kan eenvoudig de beeldafstand $z'$ bepaald worden:
 \end{equation}
 Met de beeldafstand kan de focaalafstand worden berekend door vergelijking \ref{eq:thin_lens_formula} om te vormen. In het experiment dat ik zal uitvoeren passen ik de voorgaande methode op twee manieren aan, welke hieronder in meer detail worden uitgelegd.\\
 
-\subsubsection{Virtueel beeld}
+\paragraph{Virtueel beeld}
+
 Het is mogelijk dat de werkelijke focale lengte van de lens groter is dan de voorspelde focale lengte, waardoor de initiële puntbron achter het voorste focaalvlak van de lens ligt. In dat geval wordt er geen reëel beeld achter de lens, maar een virtueel beeld voor de lens gevormd. Dit wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph_virtual}.
 \begin{figure}[H]
     \centering
@@ -1057,7 +1220,8 @@ Dit omvormen naar $z'$ geeft:
 
 Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:image_dist_real}). Opnieuw wordt \ref{eq:thin_lens_formula} gebruikt om $f$ te berekenen.\\
 
-\subsubsection{Parallelle bundel}
+\paragraph{Parallelle bundel}
+
 Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een parallelle i.p.v. een conische elektronenbundel op de lens in te sturen. In dat geval is $z=\infty$, waardoor uit \ref{eq:thin_lens_formula} volgt dat $z'=f$. Dezelfde procedure als in de originele methode kan nu worden gebruikt om $c$ te bepalen, maar nu kan de focale lengte rechtstreeks worden bepaald uit $f=b-c$. Figuur \ref{fig:rear_mesh_shadowgraph_parallel} toont de opstelling in dit geval.
 \begin{figure}[H]
     \centering
@@ -1065,9 +1229,14 @@ Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een 
     \caption{Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt.}
     \label{fig:rear_mesh_shadowgraph_parallel}
 \end{figure}
-% In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele roosteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de roosteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z' = -C_s \alpha^2$, dus door $z'$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kan worden berekend door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
+% In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele rasteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de rasteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z' = -C_s \alpha^2$, dus door $z'$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kan worden berekend door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
 
-\subsection{Monte Carlo simulatie van het experiment}
+\subsubsection{Monte Carlo simulatie van het experiment}
+
+\subsubsection{3D-geprinte opstellingsonderdelen}
+
+\subsubsection{Resultaten}
+
 \chapter{Vooruitzicht}\label{ch:vooruitzicht}
 
 \chapter{Besluit}\label{ch:besluit}
