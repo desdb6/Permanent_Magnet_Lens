@@ -215,13 +215,13 @@ def variable_plots():
     print("Saved variable Br plot")
     permanent_magnet_lens.variable_T(25, 35, 50, 'report/Images/variable_T.png', dpi=DPI)
     print("Saved variable T plot")
-    permanent_magnet_lens.variable_R_1_ab(0.6, 1.2, 50, 'report/Images/variable_R_1_ab.png', dpi=DPI)
+    permanent_magnet_lens.variable_R_1_ab(0.6, 1.2, 100, 'report/Images/variable_R_1_ab.png', dpi=DPI)
     print("Saved variable R1 aberration plot")
-    permanent_magnet_lens.variable_R_2_ab(2.5, 4, 50, 'report/Images/variable_R_2_ab.png', dpi=DPI)
+    permanent_magnet_lens.variable_R_2_ab(2.5, 4, 100, 'report/Images/variable_R_2_ab.png', dpi=DPI)
     print("Saved variable R2 aberration plot")
-    permanent_magnet_lens.variable_d_ab(0.6, 4, 50, 'report/Images/variable_d_ab.png', dpi=DPI)
+    permanent_magnet_lens.variable_d_ab(0.6, 4, 100, 'report/Images/variable_d_ab.png', dpi=DPI)
     print("Saved variable d aberration plot")
-    permanent_magnet_lens.variable_B_r_ab(0.7, 1.3, 50, 'report/Images/variable_B_r_ab.png', dpi=DPI)
+    permanent_magnet_lens.variable_B_r_ab(0.7, 1.3, 100, 'report/Images/variable_B_r_ab.png', dpi=DPI)
     print("Saved variable Br aberration plot")
     plt.close()
 
@@ -256,6 +256,22 @@ def plot_constant_field():
     plt.tight_layout()
     plt.savefig('report/Images/Constant_B_field.png', dpi=DPI)
     print(f'Saved Constant B field lens plot')
+    plt.close()
+
+def plot_sech_field():
+    z_eval = np.linspace(-5, 5, 1000)
+    B_eval = 1/np.cosh(z_eval)
+
+    _, ax = plt.subplots()
+    ax.plot([-5, 5], [0, 0], color='red', linestyle='dashed')
+    ax.plot(z_eval, B_eval)
+    ax.grid('on')
+    ax.set_xlabel('$z$', fontsize=14)
+    ax.set_ylabel('$B(z)$', fontsize=14)
+    ax.set_title('Sech veld', fontsize=16)
+    plt.tight_layout()
+    plt.savefig('report/Images/Sech_field.png', dpi=DPI)
+    print(f'Saved Sech field lens plot')
     plt.close()
 
 def plot_actual_field():
@@ -489,6 +505,7 @@ def main():
     plot_B_field_SIMION_comparison()
     plot_glasers_field()
     plot_constant_field()
+    plot_sech_field()
     plot_actual_field()
     plot_setup_1_report()
     plot_setup_2_report()

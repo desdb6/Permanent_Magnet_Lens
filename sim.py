@@ -16,42 +16,38 @@ ETA=296548.4789
 EPSILON=9.78475592*10**-7
 
 def B_field_ring(z, R_1, R_2):
-    return (z/1000)/2*(1/np.sqrt((z/1000)**2+(R_1/1000)**2)-1/np.sqrt((z/1000)**2+(R_2/1000)**2))
+    # all in mm
+    return z/2 * (1/np.sqrt(z**2 + R_1**2) - 1/np.sqrt(z**2 + R_2**2))
 
 def B_field_z(z, R_1, R_2, d):
-    return B_field_ring(z+d/2, R_1, R_2)-B_field_ring(z-d/2, R_1, R_2)
+    return B_field_ring(z+d/2, R_1, R_2) - B_field_ring(z-d/2, R_1, R_2)
+# output in mm * mm⁻¹ = dimensionless? Check your physical definition
 
 def B_field_ring_d1(z, R_1, R_2):
-    r1_sq = R_1 ** 2
-    r2_sq = R_2 ** 2
+    r1_sq = R_1**2  # mm²
+    r2_sq = R_2**2
 
-    term1 = 1 / np.sqrt(z ** 2 + r1_sq)
-    term2 = -1 / np.sqrt(z ** 2 + r2_sq)
+    term1 =  1/np.sqrt(z**2 + r1_sq)
+    term2 = -1/np.sqrt(z**2 + r2_sq)
+    term3 = z**2 * (-(z**2 + r1_sq)**(-3/2) + (z**2 + r2_sq)**(-3/2))
 
-    inner1 = -(1 / (z ** 2 + r1_sq)) ** (3 / 2)
-    inner2 = (1 / (z ** 2 + r2_sq)) ** (3 / 2)
-    term3 = z**2 * (inner1 + inner2)
+    return 0.5 * (term1 + term2 + term3)  # mm⁻¹
 
-    return (1/2000)*(term1 + term2 + term3)
+def B_field_ring_d2(z, R_1, R_2):
+    r1_sq = R_1**2
+    r2_sq = R_2**2
+
+    A = (3*z**2) / (z**2 + r1_sq)**(5/2)
+    B = 1        / (z**2 + r1_sq)**(3/2)
+    C = (3*z**2) / (z**2 + r2_sq)**(5/2)
+    D = 1        / (z**2 + r2_sq)**(3/2)
+    E = z / (z**2 + r1_sq)**(3/2)
+    F = z / (z**2 + r2_sq)**(3/2)
+
+    return z/2 * (A - B - C + D) + 2*(-E + F)  # mm⁻²
 
 def B_field_z_d1(z, R_1, R_2, d):
     return B_field_ring_d1(z+d/2, R_1, R_2)-B_field_ring_d1(z-d/2, R_1, R_2)
-
-def B_field_ring_d2(z, R_1, R_2):
-    r1_sq = R_1 ** 2
-    r2_sq = R_2 ** 2
-
-    # First part: z * (A - B - C + D)
-    A = (3 * z ** 2) / (z ** 2 + r1_sq) ** (5 / 2)
-    B = 1 / (z ** 2 + r1_sq) ** (3 / 2)
-    C = (3 * z ** 2) / (z ** 2 + r2_sq) ** (5 / 2)
-    D = 1 / (z ** 2 + r2_sq) ** (3 / 2)
-
-    # Second part: 2 * (-E + F)
-    E = z / (z ** 2 + r1_sq) ** (3 / 2)
-    F = z / (z ** 2 + r2_sq) ** (3 / 2)
-
-    return z/2000 * (A - B - C + D) + 2 * (-E + F)
 
 def B_field_z_d2(z, R_1, R_2, d):
     return B_field_ring_d2(z+d/2, R_1, R_2)-B_field_ring_d2(z-d/2, R_1, R_2)
@@ -449,12 +445,12 @@ class Lens:
         mask = np.abs(self.B_field) > 0.01
 
         first_term = 3/(8*self.f**2)
-        integral1 = 4*ETA**2/self.T_rel*self.B_field**4/10**6
-        integral2 = 5*self.B_field_d1**2
-        integral3 = -self.B_field*self.B_field_d2
-        self.D=first_term + ETA**2/(48*self.T_rel)*np.sum((integral1 + integral2 + integral3)[mask]*self.G[mask]**3 * self.H[mask])*self.dx/10**6
-        self.C_M=-ETA**2/(4*self.T_rel)*np.sum(self.B_field[mask]**2 * self.G[mask] * self.H[mask])*self.dx/10**6
-        self.C_theta=ETA/(4*np.sqrt(self.T_rel))*np.sum(self.B_field[mask])*self.dx/10**3
+        integral1 = 4/48 * ETA**4/self.T_rel**2 * self.B_field**4 / 10**12
+        integral2 = 5/48 * ETA**2/self.T_rel * (self.B_field_d1 * 1000)**2 / 10**12
+        integral3 =-1/48 * ETA**2/self.T_rel * (self.B_field * self.B_field_d2 * 1e6) / 10**12
+        self.D=first_term + self.f*np.sum((integral1 + integral2 + integral3)[mask]*self.G[mask]**4)*self.dx
+        # self.C_M=None
+        # self.C_s=np.sum((integral1 + integral2 + integral3)[mask]*self.H[mask]**4)*self.dx
 
     def calculate_lens_properties(self):
         self.G, _=self.ray_trace(1, 0)
@@ -485,7 +481,6 @@ class Lens:
         print(f"Z_Pi = {self.Z_Pi:.6f} mm")
         print(f"f = {self.f:.6f} mm")
         print(f"D = {self.D:.6f} mm^-2")
-        print(f"C_M = {self.C_M:.6f}")
 
         fig, ax=plt.subplots()
 
@@ -672,14 +667,13 @@ class Lens:
             self.R_1 = R_1
             self.update_B_r_yoke()
             self.calculate_lens_properties()
-            return self.Z_Fi, self.Z_Pi, self.f, self.Pci
+            return self.Z_Fi, self.Z_Pi, self.f, self.Pci, self.B_r_yoke
 
-        R_1_eval=np.linspace(R_1_min, R_1_max, R_1_n)
+        R_1_eval = np.linspace(R_1_min, R_1_max, R_1_n)
         results = np.array([return_properties(R_1) for R_1 in R_1_eval])
-        Z_Fi_values, Z_Pi_values, f_values, Pci_values = results.T
-        _, ax=plt.subplots()
+        Z_Fi_values, Z_Pi_values, f_values, Pci_values, B_r_yoke_values = results.T
 
-        _, ax1 = plt.subplots()
+        fig, ax1 = plt.subplots()
 
         ax1.plot(R_1_eval, f_values, color='red', label='$f$')
         ax1.plot(R_1_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
@@ -689,53 +683,20 @@ class Lens:
         ax1.grid()
 
         ax2 = ax1.twinx()
-        ax2.plot(R_1_eval, Pci_values, color='orange', linestyle='--', label='$P_{ci}$')
-        ax2.set_ylabel('$P_{ci}$', fontsize=14)
+        ax2.plot(R_1_eval, B_r_yoke_values, color='orange', linestyle='--', label='$B_{max}$')
+        ax2.set_ylabel('$B_{max}$ (T)', fontsize=14)
+
+        ax3 = ax1.twinx()
+        ax3.spines['right'].set_position(('outward', 60))
+        ax3.plot(R_1_eval, Pci_values, color='purple', linestyle=':', label='$P_{ci}$')
+        ax3.set_ylabel('$P_{ci}$', fontsize=14)
 
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
-        ax1.legend(lines1 + lines2, labels1 + labels2)
+        lines3, labels3 = ax3.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2 + lines3, labels1 + labels2 + labels3)
 
-        ax1.set_title(f"Lenseigenschappen voor variable $R_1$", fontsize=16)
-
-        plt.tight_layout()
-        if output_path is not None:
-            plt.savefig(output_path, dpi=dpi)
-        else:
-            plt.show()
-
-        return_properties(original_R_1)
-
-    def variable_R_1_ab(self, R_1_min, R_1_max, R_1_n, output_path=None, dpi=100):
-        plt.rcParams['text.usetex'] = True
-        original_R_1 = self.R_1
-        def return_properties(R_1):
-            self.R_1 = R_1
-            self.update_B_r_yoke()
-            self.calculate_lens_properties()
-            self.calculate_aberration_coeff()
-            return self.D, self.C_M, self.C_theta
-
-        R_1_eval=np.linspace(R_1_min, R_1_max, R_1_n)
-        results = np.array([return_properties(R_1) for R_1 in R_1_eval])
-        D_values, C_M_values, _ = results.T
-        _, ax1 = plt.subplots()
-
-        ax1.plot(R_1_eval, C_M_values, color='blue', label='$C_M$')
-        ax1.set_xlabel("$R_1$ (mm)", fontsize=14)
-        ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
-        ax1.grid()
-        ax1.legend()
-
-        ax2 = ax1.twinx()
-        ax2.plot(R_1_eval, D_values, color='red', label='$D$')
-        ax2.set_ylabel("$D$ ($mm^{-2}$)", fontsize=14)
-
-        lines1, labels1 = ax1.get_legend_handles_labels()
-        lines2, labels2 = ax2.get_legend_handles_labels()
-        ax1.legend(lines1 + lines2, labels1 + labels2)
-
-        ax1.set_title(f"Aberratiecoëfficienten voor variable $R_1$", fontsize=16)
+        ax1.set_title(f"Lenseigenschappen voor variabele $R_1$", fontsize=16)
 
         plt.tight_layout()
         if output_path is not None:
@@ -752,14 +713,13 @@ class Lens:
             self.R_2 = R_2
             self.update_B_r_yoke()
             self.calculate_lens_properties()
-            return self.Z_Fi, self.Z_Pi, self.f, self.Pci
+            return self.Z_Fi, self.Z_Pi, self.f, self.Pci, self.B_r_yoke
 
-        R_2_eval=np.linspace(R_2_min, R_2_max, R_2_n)
+        R_2_eval = np.linspace(R_2_min, R_2_max, R_2_n)
         results = np.array([return_properties(R_2) for R_2 in R_2_eval])
-        Z_Fi_values, Z_Pi_values, f_values, Pci_values = results.T
-        _, ax=plt.subplots()
+        Z_Fi_values, Z_Pi_values, f_values, Pci_values, B_r_yoke_values = results.T
 
-        _, ax1 = plt.subplots()
+        fig, ax1 = plt.subplots()
 
         ax1.plot(R_2_eval, f_values, color='red', label='$f$')
         ax1.plot(R_2_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
@@ -769,53 +729,20 @@ class Lens:
         ax1.grid()
 
         ax2 = ax1.twinx()
-        ax2.plot(R_2_eval, Pci_values, color='orange', linestyle='--', label='$P_{ci}$')
-        ax2.set_ylabel('$P_{ci}$', fontsize=14)
+        ax2.plot(R_2_eval, B_r_yoke_values, color='orange', linestyle='--', label='$B_{max}$')
+        ax2.set_ylabel('$B_{max}$ (T)', fontsize=14)
+
+        ax3 = ax1.twinx()
+        ax3.spines['right'].set_position(('outward', 60))
+        ax3.plot(R_2_eval, Pci_values, color='purple', linestyle=':', label='$P_{ci}$')
+        ax3.set_ylabel('$P_{ci}$', fontsize=14)
 
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
-        ax1.legend(lines1 + lines2, labels1 + labels2)
+        lines3, labels3 = ax3.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2 + lines3, labels1 + labels2 + labels3)
 
-        ax1.set_title(f"Lenseigenschappen voor variable $R_2$", fontsize=16)
-
-        plt.tight_layout()
-        if output_path is not None:
-            plt.savefig(output_path, dpi=dpi)
-        else:
-            plt.show()
-
-        return_properties(original_R_2)
-
-    def variable_R_2_ab(self, R_2_min, R_2_max, R_2_n, output_path=None, dpi=100):
-        plt.rcParams['text.usetex'] = True
-        original_R_2 = self.R_2
-        def return_properties(R_2):
-            self.R_2 = R_2
-            self.update_B_r_yoke()
-            self.calculate_lens_properties()
-            self.calculate_aberration_coeff()
-            return self.D, self.C_M, self.C_theta
-
-        R_2_eval=np.linspace(R_2_min, R_2_max, R_2_n)
-        results = np.array([return_properties(R_2) for R_2 in R_2_eval])
-        D_values, C_M_values, _ = results.T
-        _, ax1 = plt.subplots()
-
-        ax1.plot(R_2_eval, C_M_values, color='blue', label='$C_M$')
-        ax1.set_xlabel("$R_2$ (mm)", fontsize=14)
-        ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
-        ax1.grid()
-        ax1.legend()
-
-        ax2 = ax1.twinx()
-        ax2.plot(R_2_eval, D_values, color='red', label='$D$')
-        ax2.set_ylabel("$D$ ($mm^{-2}$)", fontsize=14)
-
-        lines1, labels1 = ax1.get_legend_handles_labels()
-        lines2, labels2 = ax2.get_legend_handles_labels()
-        ax1.legend(lines1 + lines2, labels1 + labels2)
-
-        ax1.set_title(f"Aberratiecoëfficienten voor variable $R_2$", fontsize=16)
+        ax1.set_title(f"Lenseigenschappen voor variabele $R_2$", fontsize=16)
 
         plt.tight_layout()
         if output_path is not None:
@@ -831,13 +758,13 @@ class Lens:
             self.d = d
             self.update_B_r_yoke()
             self.calculate_lens_properties()
-            return self.Z_Fi, self.Z_Pi, self.f, self.Pci
+            return self.Z_Fi, self.Z_Pi, self.f, self.Pci, self.B_r_yoke
 
         d_eval = np.linspace(d_min, d_max, d_n)
         results = np.array([return_properties(d) for d in d_eval])
-        Z_Fi_values, Z_Pi_values, f_values, Pci_values = results.T
+        Z_Fi_values, Z_Pi_values, f_values, Pci_values, B_r_yoke_values = results.T
 
-        _, ax1 = plt.subplots()
+        fig, ax1 = plt.subplots()
 
         ax1.plot(d_eval, f_values, color='red', label='$f$')
         ax1.plot(d_eval, Z_Pi_values, color='blue', label='$z_{Pi}$')
@@ -847,53 +774,20 @@ class Lens:
         ax1.grid()
 
         ax2 = ax1.twinx()
-        ax2.plot(d_eval, Pci_values, color='orange', linestyle='--', label='$P_{ci}$')
-        ax2.set_ylabel('$P_{ci}$', fontsize=14)
+        ax2.plot(d_eval, B_r_yoke_values, color='orange', linestyle='--', label='$B_{max}$')
+        ax2.set_ylabel('$B_{max}$ (T)', fontsize=14)
+
+        ax3 = ax1.twinx()
+        ax3.spines['right'].set_position(('outward', 60))
+        ax3.plot(d_eval, Pci_values, color='purple', linestyle=':', label='$P_{ci}$')
+        ax3.set_ylabel('$P_{ci}$', fontsize=14)
 
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
-        ax1.legend(lines1 + lines2, labels1 + labels2)
+        lines3, labels3 = ax3.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2 + lines3, labels1 + labels2 + labels3)
 
         ax1.set_title(f"Lenseigenschappen voor variable $d$", fontsize=16)
-
-        plt.tight_layout()
-        if output_path is not None:
-            plt.savefig(output_path, dpi=dpi)
-        else:
-            plt.show()
-
-        return_properties(original_d)
-    
-    def variable_d_ab(self, d_min, d_max, d_n, output_path=None, dpi=100):
-        plt.rcParams['text.usetex'] = True
-        original_d = self.d
-        def return_properties(d):
-            self.d = d
-            self.update_B_r_yoke()
-            self.calculate_lens_properties()
-            self.calculate_aberration_coeff()
-            return self.D, self.C_M, self.C_theta
-
-        d_eval=np.linspace(d_min, d_max, d_n)
-        results = np.array([return_properties(d) for d in d_eval])
-        D_values, C_M_values, _ = results.T
-        _, ax1 = plt.subplots()
-
-        ax1.plot(d_eval, C_M_values, color='blue', label='$C_M$')
-        ax1.set_xlabel("$d$ (mm)", fontsize=14)
-        ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
-        ax1.grid()
-        ax1.legend()
-
-        ax2 = ax1.twinx()
-        ax2.plot(d_eval, D_values, color='red', label='$D$')
-        ax2.set_ylabel("$D$ ($mm^{-2}$)", fontsize=14)
-
-        lines1, labels1 = ax1.get_legend_handles_labels()
-        lines2, labels2 = ax2.get_legend_handles_labels()
-        ax1.legend(lines1 + lines2, labels1 + labels2)
-
-        ax1.set_title(f"Aberratiecoëfficienten voor variable $d$", fontsize=16)
 
         plt.tight_layout()
         if output_path is not None:
@@ -909,11 +803,11 @@ class Lens:
             self.B_r_magnet = B_r
             self.update_B_r_yoke()
             self.calculate_lens_properties()
-            return self.Z_Fi, self.Z_Pi, self.f, self.reluctance_correction
+            return self.Z_Fi, self.Z_Pi, self.f, self.B_r_yoke
 
         B_r_eval=np.linspace(B_r_min, B_r_max, B_r_n)
         results = np.array([return_properties(B_r) for B_r in B_r_eval])
-        Z_Fi_values, Z_Pi_values, f_values, reluctance_correction_values = results.T
+        Z_Fi_values, Z_Pi_values, f_values, B_r_yoke_values = results.T
         _, ax=plt.subplots()
 
         _, ax1 = plt.subplots()
@@ -927,46 +821,7 @@ class Lens:
 
         ax1.legend()
 
-        ax1.set_title(f"Lenseigenschappen voor variable $B_r$", fontsize=16)
-
-        plt.tight_layout()
-        if output_path is not None:
-            plt.savefig(output_path, dpi=dpi)
-        else:
-            plt.show()
-
-        return_properties(original_B_r)
-
-    def variable_B_r_ab(self, B_r_min, B_r_max, B_r_n, output_path=None, dpi=100):
-        plt.rcParams['text.usetex'] = True
-        original_B_r = self.B_r_magnet
-        def return_properties(B_r):
-            self.B_r_magnet = B_r
-            self.update_B_r_yoke()
-            self.calculate_lens_properties()
-            self.calculate_aberration_coeff()
-            return self.D, self.C_M, self.C_theta
-
-        B_r_eval=np.linspace(B_r_min, B_r_max, B_r_n)
-        results = np.array([return_properties(B_r) for B_r in B_r_eval])
-        D_values, C_M_values, _ = results.T
-        _, ax1 = plt.subplots()
-
-        ax1.plot(B_r_eval, C_M_values, color='blue', label='$C_M$')
-        ax1.set_xlabel("$B_r$ (T)", fontsize=14)
-        ax1.set_ylabel("$C_M$ (dimensieloos)", fontsize=14)
-        ax1.grid()
-        ax1.legend()
-
-        ax2 = ax1.twinx()
-        ax2.plot(B_r_eval, D_values, color='red', label='$D$')
-        ax2.set_ylabel("$D$ ($mm^{-2}$)", fontsize=14)
-
-        lines1, labels1 = ax1.get_legend_handles_labels()
-        lines2, labels2 = ax2.get_legend_handles_labels()
-        ax1.legend(lines1 + lines2, labels1 + labels2)
-
-        ax1.set_title(f"Aberratiecoëfficienten voor variable $B_r$", fontsize=16)
+        ax1.set_title(f"Lenseigenschappen voor variabele $B_r$", fontsize=16)
 
         plt.tight_layout()
         if output_path is not None:
@@ -1009,6 +864,134 @@ class Lens:
             plt.show()
 
         return_properties(original_T)
+
+    def variable_R_1_ab(self, R_1_min, R_1_max, R_1_n, output_path=None, dpi=100):
+        plt.rcParams['text.usetex'] = True
+        original_R_1 = self.R_1
+        def return_properties(R_1):
+            self.R_1 = R_1
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            self.calculate_aberration_coeff()
+            return self.D
+
+        R_1_eval=np.linspace(R_1_min, R_1_max, R_1_n)
+        D_values = np.array([return_properties(R_1) for R_1 in R_1_eval]).T
+        _, ax1 = plt.subplots()
+
+        ax1.plot(R_1_eval, D_values, color='blue', label='$C_M$')
+        ax1.set_xlabel("$R_1$ (mm)", fontsize=14)
+        ax1.set_ylabel("$D$ ($\mathrm{mm}^{-2}$", fontsize=14)
+        ax1.grid()
+        ax1.legend()
+        ax1.set_title(f"Distortiecoëfficiënt voor variable $R_1$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_R_1)
+
+    def variable_R_2_ab(self, R_2_min, R_2_max, R_2_n, output_path=None, dpi=100):
+        plt.rcParams['text.usetex'] = True
+        original_R_2 = self.R_2
+
+        def return_properties(R_2):
+            self.R_2 = R_2
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            self.calculate_aberration_coeff()
+            return self.D
+
+        R_2_eval = np.linspace(R_2_min, R_2_max, R_2_n)
+        D_values = np.array([return_properties(R_2) for R_2 in R_2_eval]).T
+
+        _, ax1 = plt.subplots()
+
+        ax1.plot(R_2_eval, D_values, color='blue', label='$D$')
+        ax1.set_xlabel("$R_2$ (mm)", fontsize=14)
+        ax1.set_ylabel("$D$ ($\\mathrm{mm}^{-2}$)", fontsize=14)
+        ax1.grid()
+        ax1.legend()
+
+        ax1.set_title(f"Distortiecoëfficienten voor variabele $R_2$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_R_2)
+
+
+    def variable_d_ab(self, d_min, d_max, d_n, output_path=None, dpi=100):
+        plt.rcParams['text.usetex'] = True
+        original_d = self.d
+
+        def return_properties(d):
+            self.d = d
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            self.calculate_aberration_coeff()
+            return self.D
+
+        d_eval = np.linspace(d_min, d_max, d_n)
+        D_values = np.array([return_properties(d) for d in d_eval]).T
+
+        _, ax1 = plt.subplots()
+
+        ax1.plot(d_eval, D_values, color='blue', label='$D$')
+        ax1.set_xlabel("$d$ (mm)", fontsize=14)
+        ax1.set_ylabel("$D$ ($\\mathrm{mm}^{-2}$)", fontsize=14)
+        ax1.grid()
+        ax1.legend()
+
+        ax1.set_title(f"Distortiecoëfficienten voor variabele $d$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_d)
+
+
+    def variable_B_r_ab(self, B_r_min, B_r_max, B_r_n, output_path=None, dpi=100):
+        plt.rcParams['text.usetex'] = True
+        original_B_r = self.B_r_magnet
+
+        def return_properties(B_r):
+            self.B_r_magnet = B_r
+            self.update_B_r_yoke()
+            self.calculate_lens_properties()
+            self.calculate_aberration_coeff()
+            return self.D
+
+        B_r_eval = np.linspace(B_r_min, B_r_max, B_r_n)
+        D_values = np.array([return_properties(B_r) for B_r in B_r_eval]).T
+
+        _, ax1 = plt.subplots()
+
+        ax1.plot(B_r_eval, D_values, color='blue', label='$D$')
+        ax1.set_xlabel("$B_r$ (T)", fontsize=14)
+        ax1.set_ylabel("$D$ ($\\mathrm{mm}^{-2}$)", fontsize=14)
+        ax1.grid()
+        ax1.legend()
+        ax1.set_ylim(np.mean(D_values)-0.5, np.mean(D_values)+0.5)
+
+        ax1.set_title(f"Distortiecoëfficienten voor variabele $B_r$", fontsize=16)
+
+        plt.tight_layout()
+        if output_path is not None:
+            plt.savefig(output_path, dpi=dpi)
+        else:
+            plt.show()
+
+        return_properties(original_B_r)
 
     def add_mesh(self, mesh):
         self.mesh_list.append(mesh)

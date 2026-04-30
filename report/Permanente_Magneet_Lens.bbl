@@ -7,23 +7,28 @@ T.~M. Abbas.
 
 \bibitem{meshshadowgraphs}
 L.~T. Almaraz.
-\newblock Measurement of the focal properties of a magnetic electron lens using the shadowgraph method.
+\newblock Measurement of the focal properties of a magnetic electron lens using
+  the shadowgraph method.
 \newblock {\em Dissertations and Theses}, (Paper 6279).
 
 \bibitem{arnold_ndfeb_2019}
 {Arnold Magnetic Technologies Corp.}
-\newblock {\em Neodymium-Iron-Boron Magnet Grades Summary Product List \& Reference Guide}.
-\newblock Arnold Magnetic Technologies Corporation, 770 Linden Ave., Rochester, NY 14625-2764 USA, 2019.
+\newblock {\em Neodymium-Iron-Boron Magnet Grades Summary Product List \&
+  Reference Guide}.
+\newblock Arnold Magnetic Technologies Corporation, 770 Linden Ave., Rochester,
+  NY 14625-2764 USA, 2019.
 \newblock Rev. 181031 / 151021a.
 
 \bibitem{Buchenau_2014}
 D.~Buchenau, G.~Schmidt, and S.~Eckert.
-\newblock Contact-less magneto-elastic torsional sensor based on phase-shift measurements.
+\newblock Contact-less magneto-elastic torsional sensor based on phase-shift
+  measurements.
 \newblock {\em Measurement Science and Technology}, 25(7):075901, may 2014.
 
 \bibitem{Busch1926}
 H.~Busch.
-\newblock Berechnung der bahn von kathodenstrahlen im axialsymmetrischen elektromagnetischen felde.
+\newblock Berechnung der bahn von kathodenstrahlen im axialsymmetrischen
+  elektromagnetischen felde.
 \newblock {\em Annalen der Physik}, 386(25):974--993, 1926.
 
 \bibitem{MagnetFAQ}
@@ -35,29 +40,39 @@ S.~Constantinides.
 \bibitem{SIMIONuserguide}
 D.~A. Dahl and D.~J. Manura.
 \newblock {\em SIMION 8.1 User Manual}.
-\newblock Scientific Instrument Services, Inc. (Adaptas Solutions), Palmer, MA, 2008.
+\newblock Scientific Instrument Services, Inc. (Adaptas Solutions), Palmer, MA,
+  2008.
 
 \bibitem{davidson_resolution_microscopyu}
 M.~W. Davidson.
 \newblock Resolution.
 \newblock Nikon's MicroscopyU.
-\newblock National High Magnetic Field Laboratory, Florida State University. Accessed: 2026-04-27.
+\newblock National High Magnetic Field Laboratory, Florida State University.
+  Accessed: 2026-04-27.
 
 \bibitem{deBroglie1924}
 L.~de~Broglie.
 \newblock {\em Recherches sur la th{\'e}orie des quanta}.
 \newblock PhD thesis, University of Paris, Paris, 1924.
-\newblock Published in \textit{Annales de Physique} 10e s{\'e}rie, t. III, 22-128 (1925).
+\newblock Published in \textit{Annales de Physique} 10e s{\'e}rie, t. III,
+  22-128 (1925).
+
+\bibitem{el_kareh_1970}
+A.~B. El-Kareh and J.~C.~J. El-Kareh.
+\newblock {\em Electron Beams, Lenses, and Optics, Volume 1}.
+\newblock Academic Press, New York, 1970.
 
 \bibitem{gonzalez2023}
 A.~Gonzalez.
-\newblock Nice sections of an old {Transmission Electron Microscope} done by one of our customers.
+\newblock Nice sections of an old {Transmission Electron Microscope} done by
+  one of our customers.
 \newblock LinkedIn, 2023.
 \newblock Geraadpleegd: 2026-04-26.
 
 \bibitem{ElektronenLenzenGuzzinati}
 G.~Guzzinati.
-\newblock Exploreren van elektron golffunctie manipulatie in transmissie–elektronenmicroscopie.
+\newblock Exploreren van elektron golffunctie manipulatie in
+  transmissie–elektronenmicroscopie.
 \newblock Master's thesis, Universiteit Antwerpen, 2015.
 
 \bibitem{PWHawkes}
@@ -65,20 +80,23 @@ P.~W. Hawkes.
 \newblock {\em Electron Optics and Electron Microscopy}.
 \newblock Taylor \& Francis LTD, 10-14 Macklin Street, London, 1972.
 
-\bibitem{JEOL_Aberrations}
-{JEOL Ltd.}
-\newblock Aberration.
-\newblock Glossary of {TEM} Terms, \textit{jeol.com}, Dec. 2023.
-\newblock Geraadpleegd: 2026-04-26.
-
 \bibitem{Jiang2018Ptychography}
-Y.~Jiang, Z.~Chen, Y.~Han, P.~Deb, H.~Gao, S.~Xie, P.~Purohit, M.~W. Tate, J.~Park, S.~M. Gruner, V.~Elser, and D.~A. Muller.
-\newblock Electron ptychography of 2d materials to deep sub-{\aa}ngstr{\"o}m resolution.
+Y.~Jiang, Z.~Chen, Y.~Han, P.~Deb, H.~Gao, S.~Xie, P.~Purohit, M.~W. Tate,
+  J.~Park, S.~M. Gruner, V.~Elser, and D.~A. Muller.
+\newblock Electron ptychography of 2d materials to deep sub-{\aa}ngstr{\"o}m
+  resolution.
 \newblock {\em Nature}, 559(7714):343--349, 2018.
+
+\bibitem{hawkes_kasper_1989}
+E.~Kasper and P.~W. Hawkes.
+\newblock {\em Principles of Electron Optics, Volume 1: Basic Geometrical
+  Optics}.
+\newblock Academic Press, London, 1989.
 
 \bibitem{klementova2021hematite_hrtem}
 M.~Klementov{\'{a}} and Klingm01.
-\newblock {HRTEM} images of hematite along [001] with corresponding simulations, 2021.
+\newblock {HRTEM} images of hematite along [001] with corresponding
+  simulations, 2021.
 \newblock Licensed under CC BY-SA 4.0. Accessed: 2026-04-27.
 
 \bibitem{Magnet_Outlet}
@@ -90,11 +108,15 @@ M.~Klementov{\'{a}} and Klingm01.
 \bibitem{mmpa_permanent_magnet_guidelines}
 {Magnetic Materials Producers Association}.
 \newblock {\em Permanent Magnet Guidelines}.
-\newblock Magnetic Materials Producers Association, 8 South Michigan Avenue, Suite 1000, Chicago, Illinois 60603.
+\newblock Magnetic Materials Producers Association, 8 South Michigan Avenue,
+  Suite 1000, Chicago, Illinois 60603.
 
 \bibitem{MALAC2022103362}
-M.~Malac, J.~A.~M. Calzada, M.~Salomons, D.~Homeniuk, P.~Price, M.~Cloutier, M.~Hayashida, D.~Vick, S.~Chen, S.~Yakubu, Z.~D. Wen, M.~Leeson, M.~Kamal, J.~Pitters, J.~Kim, X.~Wang, O.~Adkin-Kaya, and R.~Egerton.
-\newblock Nanomi: An open source electron microscope hardware and software platform.
+M.~Malac, J.~A.~M. Calzada, M.~Salomons, D.~Homeniuk, P.~Price, M.~Cloutier,
+  M.~Hayashida, D.~Vick, S.~Chen, S.~Yakubu, Z.~D. Wen, M.~Leeson, M.~Kamal,
+  J.~Pitters, J.~Kim, X.~Wang, O.~Adkin-Kaya, and R.~Egerton.
+\newblock Nanomi: An open source electron microscope hardware and software
+  platform.
 \newblock {\em Micron}, 163:103362, 2022.
 
 \bibitem{MALLER199828}
@@ -110,19 +132,24 @@ R.~Maller.
 
 \bibitem{ModusEngineering2025}
 {Modus Engineering Team}.
-\newblock Cnc machine tolerance capabilities: Understanding what your shop can deliver.
-\newblock \url{https://www.modusadvanced.com/resources/blog/cnc-machine-tolerance-capabilities-understanding-what-your-shop-can-deliver}, sep 2025.
+\newblock Cnc machine tolerance capabilities: Understanding what your shop can
+  deliver.
+\newblock
+  \url{https://www.modusadvanced.com/resources/blog/cnc-machine-tolerance-capabilities-understanding-what-your-shop-can-deliver},
+  sep 2025.
 \newblock Accessed: 2026-04-26.
 
 \bibitem{Hubs}
 {Protolabs Network}.
-\newblock Protolabs network (formerly {Hubs}): On-demand manufacturing for custom parts.
+\newblock Protolabs network (formerly {Hubs}): On-demand manufacturing for
+  custom parts.
 \newblock Website.
 \newblock Geraadpleegd: 2026-04-26.
 
 \bibitem{ravaka2011asbestos_sem}
 Ravaka.
-\newblock Scanning electron microscope image of asbestos fibres (grunerite var. amosite), 2011.
+\newblock Scanning electron microscope image of asbestos fibres (grunerite var.
+  amosite), 2011.
 \newblock Own work. Accessed: 2026-04-27.
 
 \bibitem{scherzer1936}
