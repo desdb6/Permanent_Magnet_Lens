@@ -917,4 +917,652 @@ LaTeX Font Info:    ... okay on input line 65.
 File: Logos/logo-uantwerpen-we-en-rgb-pos.pdf Graphic file (type pdf)
 <use Logos/logo-uantwerpen-we-en-rgb-pos.pdf>
 Package pdftex.def Info: Logos/logo-uantwerpen-we-en-rgb-pos.pdf  used on input line 65.
-(pdftex.def)             Requested size: 71.13188p
+(pdftex.def)             Requested size: 71.13188pt x 18.7854pt.
+Package hyperref Info: Option `breaklinks' set `true' on input line 65.
+Package hyperref Info: Option `colorlinks' set `true' on input line 65.
+Package hyperref Info: Option `pageanchor' set `true' on input line 65.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(99.58464pt, 452.39865pt, 45.52458pt)
+* v-part:(T,H,B)=(73.97733pt, 699.93764pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=452.39865pt
+* \textheight=699.93764pt
+* \oddsidemargin=27.31465pt
+* \evensidemargin=-26.7454pt
+* \topmargin=-35.69267pt
+* \headheight=13.7pt
+* \headsep=20.40001pt
+* \topskip=11.0pt
+* \footskip=47.6pt
+* \marginparwidth=89.62619pt
+* \marginparsep=12.8401pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count343
+\scratchdimen=\dimen328
+\scratchbox=\box126
+\nofMPsegments=\count344
+\nofMParguments=\count345
+\everyMPshowfont=\toks50
+\MPscratchCnt=\count346
+\MPscratchDim=\dimen329
+\MPnumerator=\count347
+\makeMPintoPDFobject=\count348
+\everyMPtoPDFconversion=\toks51
+) (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 65.
+ (Permanente_Magneet_Lens.out) (Permanente_Magneet_Lens.out)
+\@outlinefile=\write4
+\openout4 = `Permanente_Magneet_Lens.out'.
+
+Class scrbook Info: loading recommended package `bookmark'.
+(scrbook)           Using `bookmark' together with `hyperref' is recommended,
+(scrbook)           because of handling of possible bookmark level gaps.
+(scrbook)           You can avoid loading `bookmark' with KOMA-Script option
+(scrbook)           `bookmarkpackage=false' before \begin{document} and
+(scrbook)           you can avoid this message adding:
+(scrbook)             \usepackage{bookmark}
+(scrbook)           before \begin{document} on input line 65.
+ (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
+Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
+ (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
+File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
+\BKM@id=\count349
+))
+Underfull \hbox (badness 1803) has occurred while \output is active
+[][][][] [] [] [] 
+ []
+
+<Logos/logo-uantwerpen-we-nl-rgb-pos.pdf, id=7, 408.52625pt x 103.38625pt>
+File: Logos/logo-uantwerpen-we-nl-rgb-pos.pdf Graphic file (type pdf)
+<use Logos/logo-uantwerpen-we-nl-rgb-pos.pdf>
+Package pdftex.def Info: Logos/logo-uantwerpen-we-nl-rgb-pos.pdf  used on input line 68.
+(pdftex.def)             Requested size: 176.407pt x 44.64452pt.
+[1{C:/Users/desde/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
+
+
+
+ <./Logos/logo-uantwerpen-we-nl-rgb-pos.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+
+ []
+
+[2
+
+] (Permanente_Magneet_Lens.toc
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 3.
+ (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ztmcm.fd
+File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 3.
+ (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlztmcm.fd
+File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 3.
+ (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsztmcm.fd
+File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 3.
+ (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxztmcm.fd
+File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
+)
+\tf@toc=\write5
+\openout5 = `Permanente_Magneet_Lens.toc'.
+
+ [1
+
+
+
+
+
+ <./Logos/logo-uantwerpen-we-en-rgb-pos.pdf>] [2
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.105 \chapter
+              {Inleiding}\label{ch:inleiding} [1]
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.105 \chapter
+              {Inleiding}\label{ch:inleiding} [2
+
+
+]
+chapter 1.
+
+Class scrbook Warning: \float@addtolists detected!
+(scrbook)              Implementation of \float@addtolist became
+(scrbook)              deprecated in KOMA-Script v3.01 2008/11/14 and
+(scrbook)              has been replaced by several more flexible
+(scrbook)              features of package `tocbasic`.
+(scrbook)              Since Version 3.12 support for deprecated
+(scrbook)              \float@addtolist interface has been
+(scrbook)              restricted to only some of the KOMA-Script
+(scrbook)              features and been removed from others.
+(scrbook)              Loading of package `scrhack' may help to
+(scrbook)              avoid this warning, if you are using a
+(scrbook)              a package that still implements the
+(scrbook)              deprecated \float@addtolist interface.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+
+ []
+
+<Images/Phillips_CrossSection.jpg, id=111, 1284.8pt x 1712.3975pt>
+File: Images/Phillips_CrossSection.jpg Graphic file (type jpg)
+<use Images/Phillips_CrossSection.jpg>
+Package pdftex.def Info: Images/Phillips_CrossSection.jpg  used on input line 120.
+(pdftex.def)             Requested size: 226.19933pt x 301.47696pt.
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
+
+ []
+
+<Images/NanoMI.jpg, id=128, 828.09375pt x 692.5875pt>
+File: Images/NanoMI.jpg Graphic file (type jpg)
+<use Images/NanoMI.jpg>
+Package pdftex.def Info: Images/NanoMI.jpg  used on input line 131.
+(pdftex.def)             Requested size: 226.19933pt x 189.17813pt.
+
+Underfull \hbox (badness 1558) in paragraph at lines 132--132
+[][][]|\OT1/ptm/m/n/10.95 Na-noMI is een open-source pro-ject waar-bij men tracht een mo-du-laire transmissie-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./Images/Phillips_CrossSection.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
+
+ []
+
+[5 <./Images/NanoMI.jpg>] [6
+
+
+]
+chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
+
+[7]
+<Images/SEM_principle.png, id=174, 467.94826pt x 368.577pt>
+File: Images/SEM_principle.png Graphic file (type png)
+<use Images/SEM_principle.png>
+Package pdftex.def Info: Images/SEM_principle.png  used on input line 178.
+(pdftex.def)             Requested size: 316.67767pt x 249.4311pt.
+<Images/TEM_principle.JPG, id=178, 1906.12125pt x 1962.33125pt>
+File: Images/TEM_principle.JPG Graphic file (type jpg)
+<use Images/TEM_principle.JPG>
+Package pdftex.def Info: Images/TEM_principle.JPG  used on input line 185.
+(pdftex.def)             Requested size: 361.92029pt x 372.57733pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./Images/SEM_principle.png>]
+<Images/SEM_image.jpg, id=190, 1284.8pt x 1071.00125pt>
+File: Images/SEM_image.jpg Graphic file (type jpg)
+<use Images/SEM_image.jpg>
+Package pdftex.def Info: Images/SEM_image.jpg  used on input line 192.
+(pdftex.def)             Requested size: 271.44194pt x 226.2733pt.
+<Images/TEM_image.png, id=193, 296.10625pt x 297.11pt>
+File: Images/TEM_image.png Graphic file (type png)
+<use Images/TEM_image.png>
+Package pdftex.def Info: Images/TEM_image.png  used on input line 199.
+(pdftex.def)             Requested size: 271.44194pt x 272.3698pt.
+
+Underfull \vbox (badness 5578) has occurred while \output is active []
+
+ [9 <./Images/TEM_principle.JPG> <./Images/SEM_image.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
+
+ []
+
+
+LaTeX Warning: Reference `ch:theorie' on page 10 undefined on input line 210.
+
+<Images/Magnetic_Electron_Lens_illustration.jpg, id=205, 1244.65pt x 781.92125pt>
+File: Images/Magnetic_Electron_Lens_illustration.jpg Graphic file (type jpg)
+<use Images/Magnetic_Electron_Lens_illustration.jpg>
+Package pdftex.def Info: Images/Magnetic_Electron_Lens_illustration.jpg  used on input line 214.
+(pdftex.def)             Requested size: 316.67767pt x 198.93987pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10 <./Images/TEM_image.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 245--246
+
+ []
+
+[11 <./Images/Magnetic_Electron_Lens_illustration.jpg>]
+<Images/maxwell_2_cilinder.png, id=231, 510.927pt x 185.055pt>
+File: Images/maxwell_2_cilinder.png Graphic file (type png)
+<use Images/maxwell_2_cilinder.png>
+Package pdftex.def Info: Images/maxwell_2_cilinder.png  used on input line 268.
+(pdftex.def)             Requested size: 226.19933pt x 81.92706pt.
+ [12 <./Images/maxwell_2_cilinder.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 303--305
+
+ []
+
+[13]
+<Images/f_ambiguity.png, id=267, 1300.86pt x 433.62pt>
+File: Images/f_ambiguity.png Graphic file (type png)
+<use Images/f_ambiguity.png>
+Package pdftex.def Info: Images/f_ambiguity.png  used on input line 318.
+(pdftex.def)             Requested size: 452.39865pt x 150.79665pt.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 325.
+ (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [14 <./Images/f_ambiguity.png>]
+<Images/reeel_asymptotisch.png, id=277, 462.528pt x 346.896pt>
+File: Images/reeel_asymptotisch.png Graphic file (type png)
+<use Images/reeel_asymptotisch.png>
+Package pdftex.def Info: Images/reeel_asymptotisch.png  used on input line 332.
+(pdftex.def)             Requested size: 339.29898pt x 254.48645pt.
+ [15 <./Images/reeel_asymptotisch.png>] [16
+
+
+]
+chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 375--376
+
+ []
+
+<Images/lens_circuit_diagram.png, id=296, 658.971pt x 478.734pt>
+File: Images/lens_circuit_diagram.png Graphic file (type png)
+<use Images/lens_circuit_diagram.png>
+Package pdftex.def Info: Images/lens_circuit_diagram.png  used on input line 381.
+(pdftex.def)             Requested size: 361.92029pt x 262.92465pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 401--402
+
+ []
+
+[19 <./Images/lens_circuit_diagram.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 403--404
+
+ []
+
+<Images/analytic_expression_1_ring.png, id=313, 428.145pt x 378.651pt>
+File: Images/analytic_expression_1_ring.png Graphic file (type png)
+<use Images/analytic_expression_1_ring.png>
+Package pdftex.def Info: Images/analytic_expression_1_ring.png  used on input line 410.
+(pdftex.def)             Requested size: 226.19933pt x 200.04852pt.
+[20 <./Images/analytic_expression_1_ring.png>]
+<Images/B_field_1_annulus.png, id=322, 462.528pt x 346.896pt>
+File: Images/B_field_1_annulus.png Graphic file (type png)
+<use Images/B_field_1_annulus.png>
+Package pdftex.def Info: Images/B_field_1_annulus.png  used on input line 429.
+(pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
+<Images/analytic_expression_2_rings.png, id=326, 472.821pt x 398.142pt>
+File: Images/analytic_expression_2_rings.png Graphic file (type png)
+<use Images/analytic_expression_2_rings.png>
+Package pdftex.def Info: Images/analytic_expression_2_rings.png  used on input line 437.
+(pdftex.def)             Requested size: 203.578pt x 171.4225pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21 <./Images/B_field_1_annulus.png>]
+<Images/B_field_2_annula.png, id=337, 462.528pt x 346.896pt>
+File: Images/B_field_2_annula.png Graphic file (type png)
+<use Images/B_field_2_annula.png>
+Package pdftex.def Info: Images/B_field_2_annula.png  used on input line 462.
+(pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 466--467
+
+ []
+
+[22 <./Images/analytic_expression_2_rings.png> <./Images/B_field_2_annula.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 468--469
+
+ []
+
+<Images/B_field_1_annulus_d1.png, id=350, 462.528pt x 346.896pt>
+File: Images/B_field_1_annulus_d1.png Graphic file (type png)
+<use Images/B_field_1_annulus_d1.png>
+Package pdftex.def Info: Images/B_field_1_annulus_d1.png  used on input line 496.
+(pdftex.def)             Requested size: 203.578pt x 152.68234pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 497.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 497.
+<Images/B_field_1_annulus_d2.png, id=351, 462.528pt x 346.896pt>
+File: Images/B_field_1_annulus_d2.png Graphic file (type png)
+<use Images/B_field_1_annulus_d2.png>
+Package pdftex.def Info: Images/B_field_1_annulus_d2.png  used on input line 503.
+(pdftex.def)             Requested size: 203.578pt x 152.68234pt.
+<Images/B_field_2_annula_d1.png, id=352, 462.528pt x 346.896pt>
+File: Images/B_field_2_annula_d1.png Graphic file (type png)
+<use Images/B_field_2_annula_d1.png>
+Package pdftex.def Info: Images/B_field_2_annula_d1.png  used on input line 511.
+(pdftex.def)             Requested size: 203.578pt x 152.68234pt.
+<Images/B_field_2_annula_d2.png, id=353, 462.528pt x 346.896pt>
+File: Images/B_field_2_annula_d2.png Graphic file (type png)
+<use Images/B_field_2_annula_d2.png>
+Package pdftex.def Info: Images/B_field_2_annula_d2.png  used on input line 518.
+(pdftex.def)             Requested size: 203.578pt x 152.68234pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23]
+<Images/B_field_SIMION.png, id=365, 462.528pt x 346.896pt>
+File: Images/B_field_SIMION.png Graphic file (type png)
+<use Images/B_field_SIMION.png>
+Package pdftex.def Info: Images/B_field_SIMION.png  used on input line 531.
+(pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
+
+Overfull \hbox (3.3027pt too wide) in paragraph at lines 528--534
+\OT1/ptm/m/n/10.95 voor een la-dings-dicht-heid-ver-de-ling op te los-sen. Het pro-gramma kan dit door mid-del van finite-difference
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [24 <./Images/B_field_1_annulus_d1.png> <./Images/B_field_1_annulus_d2.png> <./Images/B_field_2_annula_d1.png> <./Images/B_field_2_annula_d2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 541--542
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
+
+ []
+
+[25 <./Images/B_field_SIMION.png>]
+<Images/magnetic_circuit.png, id=386, 462.966pt x 357.408pt>
+File: Images/magnetic_circuit.png Graphic file (type png)
+<use Images/magnetic_circuit.png>
+Package pdftex.def Info: Images/magnetic_circuit.png  used on input line 554.
+(pdftex.def)             Requested size: 158.34229pt x 122.24243pt.
+<Images/magnetic_circuit_Hd.png, id=387, 287.109pt x 302.439pt>
+File: Images/magnetic_circuit_Hd.png Graphic file (type png)
+<use Images/magnetic_circuit_Hd.png>
+Package pdftex.def Info: Images/magnetic_circuit_Hd.png  used on input line 561.
+(pdftex.def)             Requested size: 113.09966pt x 119.13673pt.
+<Images/magnetic_circuit_symbolic.png, id=388, 381.936pt x 328.062pt>
+File: Images/magnetic_circuit_symbolic.png Graphic file (type png)
+<use Images/magnetic_circuit_symbolic.png>
+Package pdftex.def Info: Images/magnetic_circuit_symbolic.png  used on input line 568.
+(pdftex.def)             Requested size: 135.72096pt x 116.58046pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 626--627
+
+ []
+
+[26 <./Images/magnetic_circuit.png> <./Images/magnetic_circuit_Hd.png> <./Images/magnetic_circuit_symbolic.png>]
+<Images/BH_curve_NdFeB.JPG, id=409, 797.98125pt x 519.44063pt>
+File: Images/BH_curve_NdFeB.JPG Graphic file (type jpg)
+<use Images/BH_curve_NdFeB.JPG>
+Package pdftex.def Info: Images/BH_curve_NdFeB.JPG  used on input line 632.
+(pdftex.def)             Requested size: 271.44194pt x 176.69466pt.
+<Images/operating_point_15.png, id=412, 462.528pt x 346.896pt>
+File: Images/operating_point_15.png Graphic file (type png)
+<use Images/operating_point_15.png>
+Package pdftex.def Info: Images/operating_point_15.png  used on input line 639.
+(pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27 <./Images/BH_curve_NdFeB.JPG>] [28 <./Images/operating_point_15.png>]
+<Images/Interactive_B_field.JPG, id=433, 1098.35344pt x 613.54219pt>
+File: Images/Interactive_B_field.JPG Graphic file (type jpg)
+<use Images/Interactive_B_field.JPG>
+Package pdftex.def Info: Images/Interactive_B_field.JPG  used on input line 678.
+(pdftex.def)             Requested size: 407.15602pt x 227.4377pt.
+ [29 <./Images/Interactive_B_field.JPG>]
+<Images/Glasers_B_field.png, id=451, 462.528pt x 346.896pt>
+File: Images/Glasers_B_field.png Graphic file (type png)
+<use Images/Glasers_B_field.png>
+Package pdftex.def Info: Images/Glasers_B_field.png  used on input line 711.
+(pdftex.def)             Requested size: 203.578pt x 152.68234pt.
+<Images/Constant_B_field.png, id=452, 462.528pt x 346.896pt>
+File: Images/Constant_B_field.png Graphic file (type png)
+<use Images/Constant_B_field.png>
+Package pdftex.def Info: Images/Constant_B_field.png  used on input line 718.
+(pdftex.def)             Requested size: 203.578pt x 152.68234pt.
+<Images/Sech_field.png, id=453, 462.528pt x 346.896pt>
+File: Images/Sech_field.png Graphic file (type png)
+<use Images/Sech_field.png>
+Package pdftex.def Info: Images/Sech_field.png  used on input line 727.
+(pdftex.def)             Requested size: 203.578pt x 152.68234pt.
+<Images/Actual_B_field.png, id=454, 462.528pt x 346.896pt>
+File: Images/Actual_B_field.png Graphic file (type png)
+<use Images/Actual_B_field.png>
+Package pdftex.def Info: Images/Actual_B_field.png  used on input line 734.
+(pdftex.def)             Requested size: 203.578pt x 152.68234pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 742--743
+
+ []
+
+[30 <./Images/Glasers_B_field.png> <./Images/Constant_B_field.png> <./Images/Sech_field.png> <./Images/Actual_B_field.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 752--753
+
+ []
+
+<Images/setup_1.png, id=472, 462.528pt x 346.896pt>
+File: Images/setup_1.png Graphic file (type png)
+<use Images/setup_1.png>
+Package pdftex.def Info: Images/setup_1.png  used on input line 758.
+(pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
+<Images/setup_2.png, id=473, 462.528pt x 346.896pt>
+File: Images/setup_2.png Graphic file (type png)
+<use Images/setup_2.png>
+Package pdftex.def Info: Images/setup_2.png  used on input line 765.
+(pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
+[31 <./Images/setup_1.png>] [32 <./Images/setup_2.png>]
+chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 807--808
+
+ []
+
+[33
+
+
+]
+<Images/BH_curve_ASI1018.png, id=513, 853.1875pt x 476.78125pt>
+File: Images/BH_curve_ASI1018.png Graphic file (type png)
+<use Images/BH_curve_ASI1018.png>
+Package pdftex.def Info: Images/BH_curve_ASI1018.png  used on input line 819.
+(pdftex.def)             Requested size: 339.29898pt x 189.61058pt.
+<Images/operating_point_25.png, id=516, 462.528pt x 346.896pt>
+File: Images/operating_point_25.png Graphic file (type png)
+<use Images/operating_point_25.png>
+Package pdftex.def Info: Images/operating_point_25.png  used on input line 826.
+(pdftex.def)             Requested size: 339.29898pt x 254.48645pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [34 <./Images/BH_curve_ASI1018.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 849--850
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 851--852
+
+ []
+
+[35 <./Images/operating_point_25.png>]
+<Images/variable_R_1.png, id=539, 462.528pt x 346.896pt>
+File: Images/variable_R_1.png Graphic file (type png)
+<use Images/variable_R_1.png>
+Package pdftex.def Info: Images/variable_R_1.png  used on input line 858.
+(pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
+<Images/variable_R_2.png, id=540, 462.528pt x 346.896pt>
+File: Images/variable_R_2.png Graphic file (type png)
+<use Images/variable_R_2.png>
+Package pdftex.def Info: Images/variable_R_2.png  used on input line 865.
+(pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36 <./Images/variable_R_1.png>]
+<Images/variable_d.png, id=546, 462.528pt x 346.896pt>
+File: Images/variable_d.png Graphic file (type png)
+<use Images/variable_d.png>
+Package pdftex.def Info: Images/variable_d.png  used on input line 872.
+(pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
+<Images/variable_B_r.png, id=547, 462.528pt x 346.896pt>
+File: Images/variable_B_r.png Graphic file (type png)
+<use Images/variable_B_r.png>
+Package pdftex.def Info: Images/variable_B_r.png  used on input line 879.
+(pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
+
+Underfull \vbox (badness 7631) has occurred while \output is active []
+
+ [37 <./Images/variable_R_2.png> <./Images/variable_d.png>]
+<Images/variable_T.png, id=556, 462.528pt x 346.896pt>
+File: Images/variable_T.png Graphic file (type png)
+<use Images/variable_T.png>
+Package pdftex.def Info: Images/variable_T.png  used on input line 886.
+(pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
+<Images/variable_R_1_ab.png, id=558, 462.528pt x 346.896pt>
+File: Images/variable_R_1_ab.png Graphic file (type png)
+<use Images/variable_R_1_ab.png>
+Package pdftex.def Info: Images/variable_R_1_ab.png  used on input line 898.
+(pdftex.de
