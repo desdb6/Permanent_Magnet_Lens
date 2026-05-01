@@ -340,7 +340,7 @@ Extra sectie met uitleg waarom we best meer dan 1 lens nodig hebben om een diffr
 Meer uitleg over wat een hoofdvlak is? 
 \color{black}
 
-\chapter{Methodologie afschatting lensparameters}\label{ch:methodologie}
+\chapter{Methodologie simulatie lensparameters}\label{ch:methodologie}
 Om een het ontwerp voor een werkende elektronenlens te realiseren moeten de geometrische dimensies van de lens zorgvuldig worden vastgelegd. Deze afmetingen zijn cruciaal, aangezien ze de vorm en het profiel van het magnetisch veld op de optische as bepalen, welke de lenswerking en lenseigenschappen vastleggen. De invloed van de \textit{lensparameters} op de lenswerking moet daarom vooraf gesimuleerd kunnen worden. Dit vereist zowel een analytisch model van het magnetisch veld als een numerieke methode om de bewegingsvergelijking van de elektronen op te lossen. De volgende objectieven worden opgesteld:
 \begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 1]
     Het ontwerpen van een lensgeometrie met een permanente magneet en ferromagnetische poolschoenen die een voldoende sterk gelokaliseerd magnetisch veld in het midden van de lens veroorzaakt om de elektronen af te buigen.
@@ -999,7 +999,7 @@ Eens de parameters zijn vastgelegd, moeten er een driedimensionaal model van de 
     \label{fig:FreeCAD_grid_2x2}
 \end{figure}
 
-Deze stepfile werd door de CNC-service \textit{Protolabs Network} \cite{Hubs} omgezet in poolschoenen die werden vervaardigd in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden. Er werden drie paar poolschoenen geproduceerd. Figuur \ref{fig:Polepieces_separated} toont de afzonderlijke componenten en Figuur \ref{fig:assembled_lens} geeft de geassembleerde lens weer.\\
+Deze stepfile werd door de CNC-service \textit{Protolabs Network} \cite{Hubs} omgezet in poolschoenen die werden vervaardigd in ASI1018 waarbij het oppervlak gepassiveerd wordt. Dit is een behandeling met $HNO_3$ waarbij er een dunne laag metaaloxide aan de buitenkant van het ASI1018 gevormd wordt \cite{MALLER199828}. Op deze manier wordt er voorkomen dat het materiaal begint te roesten, wat de permeabiliteit kan veranderen of oppervlakte-effecten veroorzaakt welke het magnetisch veld zullen beïnvloeden. Er werden drie paar poolschoenen geproduceerd. Figuur \ref{fig:Polepieces_separated} toont de afzonderlijke componenten, Figuur \ref{fig:lens_assembled} geeft de geassembleerde lens weer, en Figuur \ref{fig:lens_magnet_measurements} laat de afmetingen van de gebruikte ringmagneet en geassembleerde lens zien.\\
 
 \begin{figure}[H]
     \centering
@@ -1010,9 +1010,16 @@ Deze stepfile werd door de CNC-service \textit{Protolabs Network} \cite{Hubs} om
 
 \begin{figure}[H]
     \centering
-    \vspace{4cm}
+    \includegraphics[width=0.65\textwidth]{Images/lens_assembled.jpeg}
     \caption{Geassembleerde lens.}
-    \label{fig:assembled_lens}
+    \label{fig:lens_assembled}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{Images/lens_magnet_measurements.jpeg}
+    \caption{Afmetingen van de ringmagneet en geassembleerde lens.}
+    \label{fig:lens_magnet_measurements}
 \end{figure}
 
 
@@ -1109,7 +1116,7 @@ Figuren \ref{fig:02.03.26_Hexagons_Setup} en \ref{fig:02.03.26_Hexagons_Setup_2}
         \caption{}
         \label{fig:02.03.26_Hexagons_Setup_2}
     \end{subfigure}
-    \caption{Foto's van de opstelling waarmee een uitvergroot beeld van een hexagonaal grid worden gevormd. De lens bevindt zich dichter bij de detector en er wordt gebruik gemaakt van een verlengstuk uit koperdraad om het raster dicht genoeg bij de lens te krijgen.}
+    \caption{Foto's van de opstelling waarmee een uitvergroot beeld van een hexagonaal raster worden gevormd. De lens bevindt zich dichter bij de detector en er wordt gebruik gemaakt van een verlengstuk uit koperdraad om het raster dicht genoeg bij de lens te krijgen.}
 \end{figure}
 
 \begin{figure}[H]
@@ -1148,47 +1155,69 @@ Voor het laatste experiment voor de kwantitatieve beschrijving houden we rekenin
     \item De afstanden tussen de componenten niet te groot zijn, zodat de verticale aflijning geen obstakel vormt.
     \item Het raster wordt bevestigd op de houder op de z-rail zodanig dat het raster zo parallel mogelijk gehouden wordt.
 \end{enumerate}
-Om dit te bereiken wordt de z-rail op zijn laagste positie gezet, en wordt de lens op een hogere stapel tussenringen geplaatst. Door de grotere afstanden tussen de componenten wordt er een hogere vergroting verwacht, dus wordt er gekozen voor een fijnmaziger raster met vierkante openingen van $\sim 55~\mu\mathrm{m}\times\sim 55~\mu\mathrm{m}$. Figuur \ref{fig:18.03.26_Grid_Measurements} toont een SEM beeld van een opening in dit raster. In dit experiment werd gebruik gemaakt van de MiniPIX detector vanwege een probleem met de werking van de AdvaPIX detector.\\
+Om dit te bereiken wordt de z-rail op zijn laagste positie gezet, en wordt de lens op een hogere stapel tussenringen geplaatst. Door de grotere afstanden tussen de componenten wordt er een hogere vergroting verwacht, dus wordt er gekozen voor een fijnmaziger raster met vierkante openingen van $\sim 55~\mu\mathrm{m}\times\sim 55~\mu\mathrm{m}$. Figuur \ref{fig:18.03.26_raster_Measurements} toont een SEM beeld van een opening in dit raster. In dit experiment werd gebruik gemaakt van de MiniPIX detector vanwege een probleem met de werking van de AdvaPIX detector.\\
 
-Deze opstelling bleek een grote verbetering op de vorige experimenten te zijn. Figuur \ref{fig:18.03.26_Grid} toont een MiniPIX-beeld van het raster waarbij er een groot aantal rasteropeningen te herkennen zijn. Door de grijswaarden te herschalen zodat lagere pixelwaarden ook zichtbaar worden werd Figuur \ref{fig:18.03.26_Grid_Rescaled} verkregen, waardoor nog meer rasteropeningen zichtbaar worden. Éen rasteropening komt in werkelijkheid overeen met $\sim 55~\mu\mathrm{m}$, wat even groot is als 1 pixel op de detector. Voor de paraxiale elektronen zien we een uitvergroting van $\sim \times6$ aangezien deze rasteropeningen zoveel pixels op de detector bestrijken. De distortie blijft echter groot.
+Deze opstelling bleek een grote verbetering op de vorige experimenten te zijn. Figuur \ref{fig:18.03.26_raster} toont een MiniPIX-beeld van het raster waarbij er een groot aantal rasteropeningen te herkennen zijn. Door de grijswaarden te herschalen zodat lagere pixelwaarden ook zichtbaar worden werd Figuur \ref{fig:18.03.26_raster_Rescaled} verkregen, waardoor nog meer rasteropeningen zichtbaar worden. Éen rasteropening komt in werkelijkheid overeen met $\sim 55~\mu\mathrm{m}$, wat even groot is als 1 pixel op de detector. Voor de paraxiale elektronen zien we een uitvergroting van $\sim \times6$ aangezien deze rasteropeningen zoveel pixels op de detector bestrijken. De distortie blijft echter groot.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Images/18.03.26_Grid_Measurements.png}
+    \includegraphics[width=0.6\textwidth]{Images/18.03.26_grid_Measurements.png}
     \caption{SEM beeld van vierkant raster.}
-    \label{fig:18.03.26_Grid_Measurements}
+    \label{fig:18.03.26_grid__Measurements}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/18.03.26_Grid.png}
+    \includegraphics[width=0.8\textwidth]{Images/18.03.26_grid.png}
     \caption{MiniPIX-beeld van de vierkante rasteropeningen. Dit geeft een veel beter beeld dan de voorgaande experimenten, maar de distortie van het beeld is nog steeds groot. }
-    \label{fig:18.03.26_Grid}
+    \label{fig:18.03.26_grid}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/18.03.26_Grid_Rescaled.png}
-    \caption{Herschaalde versie van Figuur \ref{fig:18.03.26_Grid} waarop meer rasteropeningen zichtbaar zijn. Er treedt een subtiel overlappend effect op waarbij er twee beelden over elkaar gevormd worden.}
-    \label{fig:18.03.26_Grid_Rescaled}
+    \includegraphics[width=0.8\textwidth]{Images/18.03.26_grid_Rescaled.png}
+    \caption{Herschaalde versie van Figuur \ref{fig:18.03.26_grid} waarop meer rasteropeningen zichtbaar zijn.}
+    \label{fig:18.03.26_grid_Rescaled}
 \end{figure}
+
+Het feit dat de distortie groot blijkt te zijn, bevestigt dat de distortiecoëfficiënt groot is vergeleken met typische waarden voor magnetische elektronenlenzen uit de literatuur. Dit betekent echter niet dat de lens altijd een beeld grote distortie zal opleveren. Om dit te verduidelijken wordt vergelijking \ref{eq:distortion} herhaald:
+\begin{equation*}
+    \begin{split}
+        x_i & = M\left(x_0+Dx_0\left(x_0^2+y_0^2\right)\right)\\
+        y_i & = M\left(y_0+Dy_0\left(x_0^2+y_0^2\right)\right)\\
+    \end{split}
+\end{equation*}
+waarbij $x_0$ en $y_0$ de coördinaten van het objectpunt t.o.v. tot de optische as voorstellen. Uit deze vergelijking volgt dat de distortie toeneemt met de derde macht van de afstand $r_0=\sqrt{x_0^2+y_0^2}$ t.o.v. de optische as, en dus een derde orde aberratie is. Dit betekent dat de distortie verkleind kan worden door een kleiner voorwerp met een hogere vergroting $M$ af te beelden. Een mogelijkheid is het gebruik van meerdere lenzen in serie, waarmee de vergroting veel groter gemaakt kan worden door steeds tussenbeelden uit te vergroten. Dit vereist echter een uiterst nauwkeurig afgelijnde opstelling, aangezien de elektronenbundel door alle lenzen moet passeren zonder te deflecteren. \\
+
+De distortie van de beelden is daarnaast licht anisotroop; de rasteropeningen zijn in de ene richting (rechtsboven naar linksonder) meer uitgerokken dan in de andere richting (linksboven naar rechtsonder). Dit betekent dat het veld niet perfect cilindrischsymmetrisch is. Een waarschijnlijke oorzaak is de handmatige uitlijning van de poolschoenen. De poolschoenen en de magneet worden namelijk enkel door de magnetische aantrekkingskracht samengehouden en kunnen met de hand worden verschoven. Een kleine fout in de uitlijning tussen poolschoenen en magneet volstaat om de cilindersymmetrie te verbreken, wat de waargenomen anisotrope distortie zou verklaren. \\
+
+Op Figuur \ref{fig:18.03.26_raster} is de kruisvormige bundel, karakteristiek aan de MIRA SEM, erg duidelijk zichtbaar. We zien echter op Figuur \ref{fig:18.03.26_raster_Rescaled} dat er ook elektronen aan de beeldvorming deelnemen die zich niet in de primaire, kruisvormige bundel bevinden. Dit is een indicatie van de aanwezigheid van een secundaire elektronenbundel, wat een een gekend en bestudeerd effect van de MIRA SEM is. In dit specifiek geval is de secundaire elektronenbundel niet echt een probleem, en zorgt ze zelfs voor een beter beeld door een bredere belichting van het raster. De energieën van de primaire en secundaire elektronenbundels kunnen echter verschillen, wat een \textit{dubbel} beeld kan vormen doordat de focale lengte van de lens voor de primaire en secundaire elektronenbundels anders is. Figuur \ref{fig:Twin_Images} toont een duidelijk voorbeeld van dit effect. Dit beeld werd in een later experiment opgenomen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/Twin_Images.png}
+    \caption{De primaire en secundaire elektronenbundels in de MIRA SEM vormen twee beelden die overlappen.}
+    \label{fig:Twin_Images}
+\end{figure}
+
 
 \subsection{Kwantitatieve validatie focale lengte}
+Om de accuraatheid van de resultaten verkregen m.b.v. de simulatietoolbox te valideren, moet de focale lengte van de lens ook experimenteel bepaald worden. Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen wordt er een aangepaste versie gebruikt van de \textit{rear mesh shadowgraph methode}, welke wordt beschreven in \cite{meshshadowgraphs}. Hieronder wordt deze werkwijze uitgelegd.
 
 \subsubsection{Mesh shadowgraph methode}
-Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen gebruik ik een aangepaste versie van de \textit{rear mesh shadowgraph methode} beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een divergerende elektronenbundel te maken. De focale lengte kan dan worden afgeleid door te meten hoe divergent deze elektronenbundel juist is. Concreet kan dit gemeten worden door een fijnmazig raster (een \textit{mesh grid}) achter de lens in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De vergroting van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel. Hieronder worden enkele gevallen wiskundig uitgewerkt.\\
+Het algemene principe van deze methode bestaat er in om met behulp van de lens een bundel te convergeren in een punt, zodat er verder in de kolom een divergerende elektronenbundel ontstaat. De focale lengte kan dan worden afgeleid door te meten 'hoe divergent' deze elektronenbundel is. Concreet kan dit gemeten worden door een fijnmazig raster achter de afgebeeldde puntbron in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De vergroting van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel, waaruit de focale lengte afgeleid kan worden. Hieronder wordt dit verduidelijkt met behulp van illustraties.\\
 
 \paragraph{Reëel beeld}
 
-Een van de methodes beschreven in \cite{meshshadowgraphs} maakt gebruik van een puntbron op de optische as die zich op een afstand $z>f$ van de lens gevindt. Als men de lens als dun veronderstelt, dan kan de dunne lensformule toegepast worden:
+De opstelling die men toepast wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph}. In de methode beschreven in \cite{meshshadowgraphs} wordt er een puntbron op de optische as gevormd die zich op een afstand $z_0>f$ van de lens gevindt. Dit wordt de \textit{object-puntbron} genoemd. Als men de lens als dun veronderstelt, dan kan de dunne lensformule toegepast worden:
 \begin{equation}\label{eq:thin_lens_formula}
-    \frac{1}{f}=\frac{1}{z}+\frac{1}{z'}
+    \frac{1}{f}=\frac{1}{z_0}+\frac{1}{z_i}
 \end{equation}
-De opstelling die men toepast wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph}. De puntbron wordt dan achter de lens afgebeeld op een afstand $z'>f$ van de lens. Men plaatst nu een grid met een nauwkeurig gekende periode van $e_1$ op een afstand $b$ van de lens, waarbij $b>z'$ zodat de elektronenbundel wordt gefocusseerd voor het grid. Op een afstand $d$ van het grid bevindt zich een elektronendetector. Het beeld van de puntbron op $z'$ veroorzaakt nu een divergerende elektronenbundel die een uitvergroot schaduwbeeld van het grid op de detector werpt. 
+De puntbron wordt dan achter de lens afgebeeld op een afstand $z_i>f$ van de lens. Dit noemt men de \textit{beeld-puntbron}. Men plaatst nu een raster met een nauwkeurig gekende periode van $e_1$ op een afstand $b$ van de lens, waarbij $b>z_i$ zodat de elektronenbundel wordt gefocusseerd voor het raster. Op een afstand $d$ van het raster bevindt zich een elektronendetector. Het beeld van de puntbron op $z_i$ veroorzaakt nu een divergerende elektronenbundel die een uitvergroot schaduwbeeld van het raster op de detector werpt. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{Images/rear_mesh_shadowgraph.png}
-    \caption{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de vergroting $M=\frac{E}{e}$ te meten is het mogelijk om het beeldpunt $z'$ en de focale lengte $f$ te bepalen.}
+    \caption{Rear mesh shadowgraph methode voor een puntbron voor het focaalvlak van de lens. Door de vergroting $M=\frac{E}{e}$ te meten is het mogelijk om het beeldpunt $z_i$ en de focale lengte $f$ te bepalen.}
     \label{fig:rear_mesh_shadowgraph}
 \end{figure}
 Op het detectorbeeld meet men de grootte van 1 of meerdere afgebeeldde rasteropeningen, welke aangeduid worden met $E$. De werkelijke afmeting van de rasteropeningen worden aangeduid met $e=ne_1$, waarbij $n$ voor het aantal rasteropeningen staat. De vergroting van het schaduwbeeld is gelijk aan $M=\frac{E}{e}$. Uit gelijkvormigheid van driehoeken volgt dan:
@@ -1199,46 +1228,80 @@ Dit kan worden omgevormd om $c$ te vinden:
 \begin{equation}
     c=\frac{d}{M-1}
 \end{equation}
-Hiermee kan eenvoudig de beeldafstand $z'$ bepaald worden:
+Hiermee kan eenvoudig de beeldafstand $z_i$ bepaald worden:
 \begin{equation}\label{eq:image_dist_real}
-    z'=b-c=b-\frac{d}{M-1}
+    z_i=b-c=b-\frac{d}{M-1}
 \end{equation}
-Met de beeldafstand kan de focaalafstand worden berekend door vergelijking \ref{eq:thin_lens_formula} om te vormen. In het experiment dat ik zal uitvoeren passen ik de voorgaande methode op twee manieren aan, welke hieronder in meer detail worden uitgelegd.\\
+Met de beeldafstand kan de focaalafstand worden berekend door vergelijking \ref{eq:thin_lens_formula} om te vormen. \\
 
 \paragraph{Virtueel beeld}
 
-Het is mogelijk dat de werkelijke focale lengte van de lens groter is dan de voorspelde focale lengte, waardoor de initiële puntbron achter het voorste focaalvlak van de lens ligt. In dat geval wordt er geen reëel beeld achter de lens, maar een virtueel beeld voor de lens gevormd. Dit wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph_virtual}.
+Het is mogelijk dat de werkelijke focale lengte van de lens onderschat wordt bij het opstellen van het experiment, waardoor de object-puntbron achter het voorste focaalvlak van de lens komt te liggen. In dat geval wordt er geen reëel beeld-puntbron achter de lens, maar een virtueel beeld-puntbron voor de lens gevormd. Dit wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph_virtual}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{Images/rear_mesh_shadowgraph_virtual_image.png}
-    \caption{Rear mesh shadowgraph methode voor een puntbron achter het focaalvlak van de lens. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een vergroting $M>1$ geeft. }
+    \caption{Rear mesh shadowgraph methode waarbij de object-puntbron achter het focaalvlak van de lens ligt. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een vergroting $M>1$ geeft. }
     \label{fig:rear_mesh_shadowgraph_virtual}
 \end{figure}
 Het is met deze opstelling nog steeds mogelijk om op deze manier de focale lengte te berekenen. Opnieuw volgt uit gelijkvormigheid dat:
 \begin{equation}
-    \frac{e}{z'+b}=\frac{E}{z'+c+d}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{z'+b}
+    \frac{e}{z_i+b}=\frac{E}{z_i+c+d}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{z_i+b}
 \end{equation}
-Dit omvormen naar $z'$ geeft:
+Dit omvormen naar $z_i$ geeft:
 \begin{equation}
-    z'=b-\frac{d}{M-1}
+    z_i=b-\frac{d}{M-1}
 \end{equation}
 
 Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:image_dist_real}). Opnieuw wordt \ref{eq:thin_lens_formula} gebruikt om $f$ te berekenen.\\
 
-\paragraph{Parallelle bundel}
+In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks metingen van $z_i$ voor verschillende waarden van $z_0$. Op elk beeld worden er zo veel mogelijk afstanden van de rasteropeningen opgemeten via een interactief Python-script waarbij de gebruiker de hoeken van een rasteropening kan aanklikken. Dit wordt getoond op Figuur \ref{fig:measure_pitch_distances}. Deze waarden worden uitgemiddeld. Met de berekende reeks waarden voor $z_i$ kan dan voor elke $z_0$ waarde de focale lengte berekend, waarna een uitmiddeling de finale waarde voor $f$ levert. 
 
-Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een parallelle i.p.v. een conische elektronenbundel op de lens in te sturen. In dat geval is $z=\infty$, waardoor uit \ref{eq:thin_lens_formula} volgt dat $z'=f$. Dezelfde procedure als in de originele methode kan nu worden gebruikt om $c$ te bepalen, maar nu kan de focale lengte rechtstreeks worden bepaald uit $f=b-c$. Figuur \ref{fig:rear_mesh_shadowgraph_parallel} toont de opstelling in dit geval.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{Images/rear_mesh_shadowgraph_parallel_beam.png}
-    \caption{Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt.}
-    \label{fig:rear_mesh_shadowgraph_parallel}
+    \includegraphics[width=0.9\linewidth]{Images/measure_pitch_distances.png}
+    \caption{Er wordt gebruik gemaakt van een Python-script waarmee de hoekpunten van de rasteropeningen kunnen worden aangeklikt, waarmee de magnificatie van het beeld berekend kan worden om uiteindelijk de focale lengte te vinden.}
+    \label{fig:measure_pitch_distances}
 \end{figure}
-% In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele rasteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de rasteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z' = -C_s \alpha^2$, dus door $z'$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kan worden berekend door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
+
+% \paragraph{Parallelle bundel}
+
+% Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een parallelle i.p.v. een conische elektronenbundel op de lens in te sturen. In dat geval is $z=\infty$, waardoor uit \ref{eq:thin_lens_formula} volgt dat $z_i=f$. Dezelfde procedure als in de originele methode kan nu worden gebruikt om $c$ te bepalen, maar nu kan de focale lengte rechtstreeks worden bepaald uit $f=b-c$. Figuur \ref{fig:rear_mesh_shadowgraph_parallel} toont de opstelling in dit geval.
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9\linewidth]{Images/rear_mesh_shadowgraph_parallel_beam.png}
+%     \caption{Rear mesh shadowgraph methode voor een parallelle bundel. Door het gebruik van een parallelle bundel worden de inkomende elektronenbundels door de lens gefocusseerd in het focaalvlak achter de lens, wat de bepaling van de focale lengte iets vereenvoudigt.}
+%     \label{fig:rear_mesh_shadowgraph_parallel}
+% \end{figure}
+% In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele rasteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de rasteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z_i = -C_s \alpha^2$, dus door $z_i$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kan worden berekend door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
 
 \subsubsection{Monte Carlo simulatie van het experiment}
+Om op een doelgerichte manier zinvolle afstanden tussen de lens, raster en detector vast te leggen, werd de Python-toolbox uitgebreid om simulaties van het experiment uit te voeren. Figuren \ref{fig:Monte_Carlo_1} en \ref{fig:Monte_Carlo_2} tonen voorbeelden van deze simulaties. Om dit te realiseren werd een \textit{Grid}-object dat een raster modelleert in de toolbox geïmplementeerd. De gebruiker stelt hierbij de periode (de afstand tussen opeenvolgende rasterlijnen) en de dikte van de rasterlijnen in, alsook de posities van de lens, het raster en de detector langs de optische as. Er wordt dan gebruik gemaakt van een Monte Carlo aanpak waarbij voor een groot aantal elektronen (met willekeurige beginposities) de baan wordt gesimuleerd, en er wordt nagekeken of dit elektron botst met een rasterlijn. Elektronen die een rasterlijn raken, worden geblokkeerd en dragen niet bij aan het beeld. Elektronen die door een opening in het raster passeren, bewegen verder tot de detector waar hun positie wordt opgeslagen.\\
+
+Al deze simulaties gebeuren in 2D, waarbij zowel de detector als het raster door eendimensionale lijnobjecten gesimuleerd worden. Bijgevolg is ook het gesimuleerde detectorbeeld inherent eendimensionaal. Om de resultaten beter te kunnen visualiseren wordt dit 1D-beeld omgevormd in een 2D-beeld door het \textit{uitproduct} te nemen. De 1D vector $\mathbf{v}$, die het D-gesimuleerde beeld voorstelt, wordt vermeligvuldigd met zijn eigen getransponeerde zodat we een tweedimensionale matrix $A=\mathbf{vv}^T$ krijgen waarvan de rijen en kolommen het oorspronkelijke lijnprofiel weerspiegelen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/Monte_Carlo_1.png}
+    \caption{Voorbeeld van een Monte Carlo simulatie van de rear mesh shadowgraph methode met een virtuele beeld-puntbron.}
+    \label{fig:Monte_Carlo_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/Monte_Carlo_2.png}
+    \caption{Voorbeeld van een Monte Carlo simulatie van de rear mesh shadowgraph methode met een reëele beeld-puntbron.}
+    \label{fig:Monte_Carlo_2}
+\end{figure}
+
 
 \subsubsection{3D-geprinte opstellingsonderdelen}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images/3D_prints_measurements.jpeg}
+    \caption{3D-geprinte opstellingsonderdelen gemaakt uit een geleidend PLA. Van links naar rechts: lenshouder, gridhouder, apertuur. Deze onderdelen zijn compatibel met ThorLabs $30$~mm cage plates.}
+    \label{fig:Monte_Carlo_2}
+\end{figure}
 
 \subsubsection{Resultaten}
 

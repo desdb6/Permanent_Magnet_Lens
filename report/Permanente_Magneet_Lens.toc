@@ -14,7 +14,7 @@
 \contentsline {section}{\numberline {2.3}Permanente magneet elektronenlenzen voor elektronenmicroscopie}{11}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Paraxiale beweginsvergelijking}{11}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Reële/Asymptotische lenseigenschappen}{14}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Methodologie afschatting lensparameters}{17}{chapter.3}%
+\contentsline {chapter}{\numberline {3}Methodologie simulatie lensparameters}{17}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Opbouw en principe permanente magneetlens}{17}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Analytische afschatting magnetisch veld}{19}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Numerieke validatie met SIMION}{24}{subsection.3.2.1}%
@@ -28,19 +28,18 @@
 \contentsline {chapter}{\numberline {4}Optimalisatie en validatie van de lensparameters}{33}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Lensontwerp}{33}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Simulatie van lenseigenschappen}{35}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Karakterisering in de microscoop}{43}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Kwalitatieve bespreking beeldvorming}{44}{subsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.1.1}Eerste experiment: EMAT logo}{44}{subsubsection.4.2.1.1}%
-\contentsline {subsubsection}{\numberline {4.2.1.2}Tweede experiment: hexagonaal raster}{46}{subsubsection.4.2.1.2}%
-\contentsline {subsubsection}{\numberline {4.2.1.3}Derde experiment: vierkant raster}{47}{subsubsection.4.2.1.3}%
-\contentsline {subsection}{\numberline {4.2.2}Kwantitatieve validatie focale lengte}{49}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}Mesh shadowgraph methode}{49}{subsubsection.4.2.2.1}%
-\contentsline {paragraph}{\nonumberline Reëel beeld}{49}{paragraph*.51}%
-\contentsline {paragraph}{\nonumberline Virtueel beeld}{50}{paragraph*.54}%
-\contentsline {paragraph}{\nonumberline Parallelle bundel}{51}{paragraph*.57}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}Monte Carlo simulatie van het experiment}{52}{subsubsection.4.2.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.3}3D-geprinte opstellingsonderdelen}{52}{subsubsection.4.2.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.2.4}Resultaten}{52}{subsubsection.4.2.2.4}%
-\contentsline {chapter}{\numberline {5}Vooruitzicht}{53}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Besluit}{55}{chapter.6}%
+\contentsline {section}{\numberline {4.2}Karakterisering in de microscoop}{44}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Kwalitatieve bespreking beeldvorming}{45}{subsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}Eerste experiment: EMAT logo}{45}{subsubsection.4.2.1.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}Tweede experiment: hexagonaal raster}{47}{subsubsection.4.2.1.2}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}Derde experiment: vierkant raster}{48}{subsubsection.4.2.1.3}%
+\contentsline {subsection}{\numberline {4.2.2}Kwantitatieve validatie focale lengte}{51}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Mesh shadowgraph methode}{51}{subsubsection.4.2.2.1}%
+\contentsline {paragraph}{\nonumberline Reëel beeld}{51}{paragraph*.53}%
+\contentsline {paragraph}{\nonumberline Virtueel beeld}{52}{paragraph*.56}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Monte Carlo simulatie van het experiment}{54}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}3D-geprinte opstellingsonderdelen}{55}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}Resultaten}{56}{subsubsection.4.2.2.4}%
+\contentsline {chapter}{\numberline {5}Vooruitzicht}{57}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Besluit}{59}{chapter.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -601,15 +601,15 @@ class Lens:
 
         for i, mesh in enumerate(self.mesh_list):
             ax_hist.axvline(x=mesh.pos, color='red', linestyle='--',
-                            linewidth=1.5, label=f'Mesh {i+1} (period={mesh.line_dist}mm)')
+                            linewidth=1.5, label=f'Raster {i+1} (periode={mesh.line_dist}mm)')
 
         # Draw camera position on histogram
         ax_hist.axvline(x=camera_pos, color='yellow', linestyle='-',
                         linewidth=1.5, label=f'Camera (z={camera_pos}mm)')
 
-        ax_hist.set_xlabel('z (mm)')
-        ax_hist.set_ylabel('r (mm)')
-        ax_hist.set_title('Ray Monte Carlo Simulation')
+        ax_hist.set_xlabel('$z$ (mm)')
+        ax_hist.set_ylabel('$r$ (mm)')
+        ax_hist.set_title('Monte Carlo Simulatie')
         ax_hist.legend(loc='upper right', fontsize=8)
 
         # --- Camera image plot ---
@@ -617,9 +617,9 @@ class Lens:
         camera_plot = ax_cam.imshow(
             camera_image, origin='lower', aspect='equal', cmap='gist_gray'
         )
-        ax_cam.set_xlabel('x (pixels)')
-        ax_cam.set_ylabel('y (pixels)')
-        ax_cam.set_title(f'Camera image at z = {camera_pos} mm')
+        ax_cam.set_xlabel('$x$ (px)')
+        ax_cam.set_ylabel('$y$ (px)')
+        ax_cam.set_title(f'Camerabeeld bij $z = {camera_pos}$ mm')
 
         plt.tight_layout()
 
@@ -1044,20 +1044,20 @@ if __name__ == "__main__":
     # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=25)
-    mesh1 = Mesh(pos=10, line_dist=254e-3, line_thickness=50e-3)
+    permanent_magnet_lens.setup_parameters(object_pos=82, object_height=1.5, lens_pos=101.08)
+    mesh1 = Mesh(pos=144.22, line_dist=254e-3, line_thickness=50e-3)
     permanent_magnet_lens.add_mesh(mesh1)
-    permanent_magnet_lens.calculate_aberration_coeff()
-    permanent_magnet_lens.display_properties()
+    # permanent_magnet_lens.calculate_aberration_coeff()
+    # permanent_magnet_lens.display_properties()
 
     # plot_operating_point(BH_curve_magnet(), 0.4)
 
-    # opening_angle=100e-3
-    # initial_values = np.linspace(-1, 1, 3)
-    # initial_angles = np.linspace(-opening_angle, opening_angle, 5)
-    # combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
-    # permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=132.42, pixel_count=256, voxel_length=0.05)
+    opening_angle=100e-3
+    initial_values = np.linspace(-1, 1, 3)
+    initial_angles = np.linspace(-opening_angle, opening_angle, 5)
+    combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
+    permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=228, pixel_count=256, voxel_length=0.05)
 
     # permanent_magnet_lens.variable_T(28, 32, 100)
 
-    make_lens_interactive()
+    # make_lens_interactive()
