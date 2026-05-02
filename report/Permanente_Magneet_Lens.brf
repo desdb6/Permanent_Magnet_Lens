@@ -7,8 +7,8 @@
 \backcite {ModusEngineering2025}{{4}{1.2}{figure.caption.2}}
 \backcite {MALAC2022103362}{{5}{1.2}{figure.caption.3}}
 \backcite {PWHawkes}{{7}{2.1}{section.2.1}}
-\backcite {davidson_resolution_microscopyu}{{7}{2.1}{equation.2.1.1}}
-\backcite {Jiang2018Ptychography}{{7}{2.1}{equation.2.1.3}}
+\backcite {davidson_resolution_microscopyu}{{7}{2.1}{equation.2.1}}
+\backcite {Jiang2018Ptychography}{{7}{2.1}{equation.2.3}}
 \backcite {PWHawkes}{{8}{2.1.1}{subsection.2.1.1}}
 \backcite {MyscopeCourse}{{8}{2.1.1}{subsection.2.1.1}}
 \backcite {MyscopeCourse}{{8}{2.1}{figure.caption.4}}
@@ -19,13 +19,13 @@
 \backcite {MyscopeCourse}{{11}{2.5}{figure.caption.8}}
 \backcite {PWHawkes}{{11}{2.2.2.1}{subsubsection.2.2.2.1}}
 \backcite {PWHawkes}{{12}{2.4}{section.2.4}}
-\backcite {scherzer1936}{{14}{2.4}{equation.2.4.21}}
+\backcite {scherzer1936}{{14}{2.4}{equation.2.21}}
 \backcite {PWHawkes}{{14}{2.5}{section.2.5}}
 \backcite {SIMIONuserguide}{{24}{3.2.1}{subsection.3.2.1}}
-\backcite {mmpa_permanent_magnet_guidelines}{{26}{3.3}{equation.3.3.11}}
+\backcite {mmpa_permanent_magnet_guidelines}{{26}{3.3}{equation.3.11}}
 \backcite {arnold_ndfeb_2019}{{27}{3.9}{figure.caption.20}}
-\backcite {PWHawkes}{{30}{3.4.2.1}{equation.3.4.17}}
-\backcite {el_kareh_1970}{{30}{3.4.2.1}{equation.3.4.18}}
+\backcite {PWHawkes}{{30}{3.4.2.1}{equation.3.17}}
+\backcite {el_kareh_1970}{{30}{3.4.2.1}{equation.3.18}}
 \backcite {hawkes_kasper_1989}{{32}{3.4.3}{subsection.3.4.3}}
 \backcite {Abbas_2016}{{33}{3}{Item.14}}
 \backcite {MagnetFAQ}{{33}{4}{Item.15}}
@@ -36,9 +36,9 @@
 \backcite {Hubs}{{41}{4.2}{figure.caption.37}}
 \backcite {MALLER199828}{{41}{4.2}{figure.caption.37}}
 \backcite {advacam_minipix_2024, advacam_advapix_2023}{{45}{5}{chapter.5}}
-\backcite {meshshadowgraphs}{{52}{5.2}{section.5.2}}
-\backcite {meshshadowgraphs}{{52}{5.2.1}{paragraph*.53}}
+\backcite {meshshadowgraphs}{{52}{5.2.1}{subsection.5.2.1}}
+\backcite {meshshadowgraphs}{{53}{5.2.1}{paragraph*.52}}
 \backcite {TedPella2018}{{55}{5.2.2}{subsection.5.2.2}}
-\backcite {Thorlabs}{{57}{5.17}{figure.caption.61}}
-\backcite {Meloni2017}{{57}{5.2.3}{Item.21}}
-\backcite {hyuduo_conductive_pla}{{57}{5.2.3}{Item.21}}
+\backcite {Thorlabs}{{56}{5.16}{figure.caption.58}}
+\backcite {Meloni2017}{{56}{5.2.3}{Item.25}}
+\backcite {hyuduo_conductive_pla}{{56}{5.2.3}{Item.25}}

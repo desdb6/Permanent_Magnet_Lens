@@ -12,13 +12,16 @@ ADVACAM s.r.o., Prague, Czech Republic.
 
 \bibitem{meshshadowgraphs}
 L.~T. Almaraz.
-\newblock Measurement of the focal properties of a magnetic electron lens using the shadowgraph method.
+\newblock Measurement of the focal properties of a magnetic electron lens using
+  the shadowgraph method.
 \newblock {\em Dissertations and Theses}, (Paper 6279).
 
 \bibitem{arnold_ndfeb_2019}
 {Arnold Magnetic Technologies Corp.}
-\newblock {\em Neodymium-Iron-Boron Magnet Grades Summary Product List \& Reference Guide}.
-\newblock Arnold Magnetic Technologies Corporation, 770 Linden Ave., Rochester, NY 14625-2764 USA, 2019.
+\newblock {\em Neodymium-Iron-Boron Magnet Grades Summary Product List \&
+  Reference Guide}.
+\newblock Arnold Magnetic Technologies Corporation, 770 Linden Ave., Rochester,
+  NY 14625-2764 USA, 2019.
 \newblock Rev. 181031 / 151021a.
 
 \bibitem{advacam_minipix_2024}
@@ -29,12 +32,14 @@ J.~Baborák and P.~Bloudek.
 
 \bibitem{Buchenau_2014}
 D.~Buchenau, G.~Schmidt, and S.~Eckert.
-\newblock Contact-less magneto-elastic torsional sensor based on phase-shift measurements.
+\newblock Contact-less magneto-elastic torsional sensor based on phase-shift
+  measurements.
 \newblock {\em Measurement Science and Technology}, 25(7):075901, may 2014.
 
 \bibitem{Busch1926}
 H.~Busch.
-\newblock Berechnung der bahn von kathodenstrahlen im axialsymmetrischen elektromagnetischen felde.
+\newblock Berechnung der bahn von kathodenstrahlen im axialsymmetrischen
+  elektromagnetischen felde.
 \newblock {\em Annalen der Physik}, 386(25):974--993, 1926.
 
 \bibitem{MagnetFAQ}
@@ -46,19 +51,22 @@ S.~Constantinides.
 \bibitem{SIMIONuserguide}
 D.~A. Dahl and D.~J. Manura.
 \newblock {\em SIMION 8.1 User Manual}.
-\newblock Scientific Instrument Services, Inc. (Adaptas Solutions), Palmer, MA, 2008.
+\newblock Scientific Instrument Services, Inc. (Adaptas Solutions), Palmer, MA,
+  2008.
 
 \bibitem{davidson_resolution_microscopyu}
 M.~W. Davidson.
 \newblock Resolution.
 \newblock Nikon's MicroscopyU.
-\newblock National High Magnetic Field Laboratory, Florida State University. Accessed: 2026-04-27.
+\newblock National High Magnetic Field Laboratory, Florida State University.
+  Accessed: 2026-04-27.
 
 \bibitem{deBroglie1924}
 L.~de~Broglie.
 \newblock {\em Recherches sur la th{\'e}orie des quanta}.
 \newblock PhD thesis, University of Paris, Paris, 1924.
-\newblock Published in \textit{Annales de Physique} 10e s{\'e}rie, t. III, 22-128 (1925).
+\newblock Published in \textit{Annales de Physique} 10e s{\'e}rie, t. III,
+  22-128 (1925).
 
 \bibitem{el_kareh_1970}
 A.~B. El-Kareh and J.~C.~J. El-Kareh.
@@ -67,13 +75,15 @@ A.~B. El-Kareh and J.~C.~J. El-Kareh.
 
 \bibitem{gonzalez2023}
 A.~Gonzalez.
-\newblock Nice sections of an old {Transmission Electron Microscope} done by one of our customers.
+\newblock Nice sections of an old {Transmission Electron Microscope} done by
+  one of our customers.
 \newblock LinkedIn, 2023.
 \newblock Geraadpleegd: 2026-04-26.
 
 \bibitem{ElektronenLenzenGuzzinati}
 G.~Guzzinati.
-\newblock Exploreren van elektron golffunctie manipulatie in transmissie–elektronenmicroscopie.
+\newblock Exploreren van elektron golffunctie manipulatie in
+  transmissie–elektronenmicroscopie.
 \newblock Master's thesis, Universiteit Antwerpen, 2015.
 
 \bibitem{PWHawkes}
@@ -85,16 +95,20 @@ P.~W. Hawkes.
 {Hyuduo}.
 \newblock Conductive {PLA} filament, 1.75 mm, resistivity 1.42 $\omega\cdot$cm.
 \newblock Amazon, \url{https://www.amazon.com.be/-/nl/dp/B0CMY1VM2R}, 2024.
-\newblock Geraadpleegd op 2 mei 2025. Printtemperatuur: 220--250~°C, afdruksnelheid: 20--50~mm/s.
+\newblock Geraadpleegd op 2 mei 2025. Printtemperatuur: 220--250~°C,
+  afdruksnelheid: 20--50~mm/s.
 
 \bibitem{Jiang2018Ptychography}
-Y.~Jiang, Z.~Chen, Y.~Han, P.~Deb, H.~Gao, S.~Xie, P.~Purohit, M.~W. Tate, J.~Park, S.~M. Gruner, V.~Elser, and D.~A. Muller.
-\newblock Electron ptychography of 2d materials to deep sub-{\aa}ngstr{\"o}m resolution.
+Y.~Jiang, Z.~Chen, Y.~Han, P.~Deb, H.~Gao, S.~Xie, P.~Purohit, M.~W. Tate,
+  J.~Park, S.~M. Gruner, V.~Elser, and D.~A. Muller.
+\newblock Electron ptychography of 2d materials to deep sub-{\aa}ngstr{\"o}m
+  resolution.
 \newblock {\em Nature}, 559(7714):343--349, 2018.
 
 \bibitem{hawkes_kasper_1989}
 E.~Kasper and P.~W. Hawkes.
-\newblock {\em Principles of Electron Optics, Volume 1: Basic Geometrical Optics}.
+\newblock {\em Principles of Electron Optics, Volume 1: Basic Geometrical
+  Optics}.
 \newblock Academic Press, London, 1989.
 
 \bibitem{Magnet_Outlet}
@@ -106,11 +120,15 @@ E.~Kasper and P.~W. Hawkes.
 \bibitem{mmpa_permanent_magnet_guidelines}
 {Magnetic Materials Producers Association}.
 \newblock {\em Permanent Magnet Guidelines}.
-\newblock Magnetic Materials Producers Association, 8 South Michigan Avenue, Suite 1000, Chicago, Illinois 60603.
+\newblock Magnetic Materials Producers Association, 8 South Michigan Avenue,
+  Suite 1000, Chicago, Illinois 60603.
 
 \bibitem{MALAC2022103362}
-M.~Malac, J.~A.~M. Calzada, M.~Salomons, D.~Homeniuk, P.~Price, M.~Cloutier, M.~Hayashida, D.~Vick, S.~Chen, S.~Yakubu, Z.~D. Wen, M.~Leeson, M.~Kamal, J.~Pitters, J.~Kim, X.~Wang, O.~Adkin-Kaya, and R.~Egerton.
-\newblock Nanomi: An open source electron microscope hardware and software platform.
+M.~Malac, J.~A.~M. Calzada, M.~Salomons, D.~Homeniuk, P.~Price, M.~Cloutier,
+  M.~Hayashida, D.~Vick, S.~Chen, S.~Yakubu, Z.~D. Wen, M.~Leeson, M.~Kamal,
+  J.~Pitters, J.~Kim, X.~Wang, O.~Adkin-Kaya, and R.~Egerton.
+\newblock Nanomi: An open source electron microscope hardware and software
+  platform.
 \newblock {\em Micron}, 163:103362, 2022.
 
 \bibitem{MALLER199828}
@@ -120,7 +138,8 @@ R.~Maller.
 
 \bibitem{Meloni2017}
 G.~N. Meloni and M.~Bertotti.
-\newblock {3D} printing scanning electron microscopy sample holders: A quick and cost effective alternative for custom holder fabrication.
+\newblock {3D} printing scanning electron microscopy sample holders: A quick
+  and cost effective alternative for custom holder fabrication.
 \newblock {\em PLOS ONE}, 12(7):e0182000, jul 2017.
 
 \bibitem{MyscopeCourse}
@@ -131,19 +150,24 @@ G.~N. Meloni and M.~Bertotti.
 
 \bibitem{ModusEngineering2025}
 {Modus Engineering Team}.
-\newblock Cnc machine tolerance capabilities: Understanding what your shop can deliver.
-\newblock \url{https://www.modusadvanced.com/resources/blog/cnc-machine-tolerance-capabilities-understanding-what-your-shop-can-deliver}, sep 2025.
+\newblock Cnc machine tolerance capabilities: Understanding what your shop can
+  deliver.
+\newblock
+  \url{https://www.modusadvanced.com/resources/blog/cnc-machine-tolerance-capabilities-understanding-what-your-shop-can-deliver},
+  sep 2025.
 \newblock Accessed: 2026-04-26.
 
 \bibitem{Hubs}
 {Protolabs Network}.
-\newblock Protolabs network (formerly {Hubs}): On-demand manufacturing for custom parts.
+\newblock Protolabs network (formerly {Hubs}): On-demand manufacturing for
+  custom parts.
 \newblock Website.
 \newblock Geraadpleegd: 2026-04-26.
 
 \bibitem{ravaka2011asbestos_sem}
 Ravaka.
-\newblock Scanning electron microscope image of asbestos fibres (grunerite var. amosite), 2011.
+\newblock Scanning electron microscope image of asbestos fibres (grunerite var.
+  amosite), 2011.
 \newblock Own work. Accessed: 2026-04-27.
 
 \bibitem{scherzer1936}
@@ -165,8 +189,10 @@ V.~Soares.
 \bibitem{TedPella2018}
 {Ted Pella, Inc.}
 \newblock {\em {TEM} Grids \& {TEM} Support Films}.
-\newblock Ted Pella, Inc., 4595 Mountain Lakes Blvd., Redding, CA 96003-1448, USA, 2018.
-\newblock Product catalogue, revised 7 July 2018. \url{https://www.tedpella.com}.
+\newblock Ted Pella, Inc., 4595 Mountain Lakes Blvd., Redding, CA 96003-1448,
+  USA, 2018.
+\newblock Product catalogue, revised 7 July 2018.
+  \url{https://www.tedpella.com}.
 
 \bibitem{Thorlabs}
 {Thorlabs, Inc.}
@@ -175,7 +201,8 @@ V.~Soares.
 \newblock Geraadpleegd op 2 mei 2025.
 
 \bibitem{VanAert2013}
-S.~Van~Aert, A.~De~Backer, G.~T. Martinez, B.~Goris, S.~Bals, G.~Van~Tendeloo, and A.~Rosenauer.
+S.~Van~Aert, A.~De~Backer, G.~T. Martinez, B.~Goris, S.~Bals, G.~Van~Tendeloo,
+  and A.~Rosenauer.
 \newblock Procedure to count atoms with trustworthy single-atom sensitivity.
 \newblock {\em Physical Review B}, 87(6):064107, feb 2013.
 

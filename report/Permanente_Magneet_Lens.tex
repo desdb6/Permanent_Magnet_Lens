@@ -1210,10 +1210,17 @@ Op Figuur \ref{fig:18.03.26_raster} is de kruisvormige bundel, karakteristiek aa
 
 
 \section{Kwantitatieve validatie focale lengte}
-Om de accuraatheid van de resultaten verkregen m.b.v. de simulatietoolbox te valideren, moet de focale lengte van de lens ook experimenteel bepaald worden. Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen wordt er een aangepaste versie gebruikt van de \textit{rear mesh shadowgraph methode}, welke wordt beschreven in \cite{meshshadowgraphs}. Hieronder wordt deze werkwijze uitgelegd.
+Om de accuraatheid van de resultaten verkregen m.b.v. de simulatietoolbox te valideren, moet de focale lengte van de lens ook experimenteel bepaald worden. Dit proces vereist enkele stappen.
+\begin{enumerate}
+    \item Er moet een experimentele methode gekozen worden waarmee de focale lengte bepaald kan worden.
+    \item Om de resultaten van dit experiment te kunnen interpreteren, is het gewenst dat de Python toolbox wordt uitgebreid om de resultaten van het experiment met de gesimuleerde lenwerking te voorspellen.
+    \item Er moeten betere lens- en rasterhouders worden ontworpen waarmee de opstellingscomponenten op precieze onderlinge afstanden geplaatst kunnen worden, om een precies resultaat voor de focale lengte te bekomen.
+    \item Het experiment moet uitgevoerd worden en de resultaten moeten geïnterpreteerd worden.
+\end{enumerate}
+In deze sectie bespreken we elk van de stappen in dit proces.
 
 \subsection{Mesh shadowgraph methode}
-Het algemene principe van deze methode bestaat er in om met behulp van de lens een bundel te convergeren in een punt, zodat er verder in de kolom een divergerende elektronenbundel ontstaat. De focale lengte kan dan worden afgeleid door te meten 'hoe divergent' deze elektronenbundel is. Concreet kan dit gemeten worden door een fijnmazig raster achter de afgebeeldde puntbron in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De vergroting van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel, waaruit de focale lengte afgeleid kan worden. Hieronder wordt dit verduidelijkt met behulp van illustraties.\\
+Om de focale lengte en van de lens te bepalen wordt er een aangepaste versie gebruikt van de \textit{rear mesh shadowgraph methode}, welke wordt beschreven in \cite{meshshadowgraphs}. Het algemene principe van deze methode bestaat er in om met behulp van de lens een bundel te convergeren in een punt, zodat er verder in de kolom een divergerende elektronenbundel ontstaat. De focale lengte kan dan worden afgeleid door te meten 'hoe divergent' deze elektronenbundel is. Concreet kan dit gemeten worden door een fijnmazig raster achter de afgebeeldde puntbron in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De vergroting van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel, waaruit de focale lengte afgeleid kan worden. Hieronder wordt dit verduidelijkt met behulp van illustraties.\\
 
 \paragraph{Reëel beeld}
 
@@ -1264,15 +1271,6 @@ Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:i
 
 In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks metingen van $z_i$ voor verschillende waarden van $z_0$. In de microscoop kan dit gerelaiseerd worden door de \textit{werkingsafstand} aan te passen. Deze instelling geeft de verticale afstand van de elektronenbron tot het punt waar de elektronenbundel geconvergeerd wordt. De werkingsafstand komt met andere woorden overeen met $z_0$.\\
 
-Op elk beeld worden er zo veel mogelijk afstanden van de rasteropeningen opgemeten via een interactief Python-script waarbij de gebruiker de hoeken van een rasteropening kan aanklikken. Dit wordt getoond op Figuur \ref{fig:measure_pitch_distances}. Deze waarden worden uitgemiddeld. Met de berekende reeks waarden voor $z_i$ kan dan voor elke $z_0$ waarde de focale lengte berekend, waarna een uitmiddeling de finale waarde voor $f$ levert. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Images/measure_pitch_distances.png}
-    \caption{Er wordt gebruik gemaakt van een Python-script waarmee de hoekpunten van de rasteropeningen kunnen worden aangeklikt, waarmee de magnificatie van het beeld berekend kan worden om uiteindelijk de focale lengte te vinden.}
-    \label{fig:measure_pitch_distances}
-\end{figure}
-
 % \paragraph{Parallelle bundel}
 
 % Een mogelijke manier om de mesh shadowgraph methode te vereenvoudigen is om een parallelle i.p.v. een conische elektronenbundel op de lens in te sturen. In dat geval is $z=\infty$, waardoor uit \ref{eq:thin_lens_formula} volgt dat $z_i=f$. Dezelfde procedure als in de originele methode kan nu worden gebruikt om $c$ te bepalen, maar nu kan de focale lengte rechtstreeks worden bepaald uit $f=b-c$. Figuur \ref{fig:rear_mesh_shadowgraph_parallel} toont de opstelling in dit geval.
@@ -1305,8 +1303,10 @@ Met deze functionaliteit werd er besloten om het raster op $\sim 40$~mm, en de d
     \label{fig:Monte_Carlo_2}
 \end{figure}
 
+Met deze simulaties is het mogelijk om de nauwkeurigheid van de rear mesh shadowgraph methode te vallideren. Het is mogelijk om op basis van het gesimuleerde detectorbeeld de magnificatie van het schaduwbeeld in te schatten en in te vullen in \ref{eq:image_dist_real}. Als we hieruit de focale lengte berekenen, dan vinden we een waarde die binnen $\pm 0.1$~mm van de werkelijke gesimuleerde waarde ligt. Dit is een indicatie dat de methode voldoende nauwkeurig is om de focale lengte te berekenen.
+
 \subsection{3D-geprinte opstellingsonderdelen}
-Een bijkomende bevinding van deze thesis is de haalbaarheid van 3D-geprinte opstellingsonderdelen voor gebruik in een elektronenmicroscopieopstelling. Om de componenten op nauwkeurig instelbare posities te plaatsen, is een flexibeler opstellingssysteem vereist dan in eerdere experimenten werd gehanteerd, waar gebruik werd gemaakt van aluminium tussenringen en de z-rail van de microscoop. Er werd gekozen om het 30mm \textit{optical cage} systeem van ThorLabs te gebruiken, zoals afgebeeld op Figuur \ref{fig:ThorLabs_cage}. Hierbij wordt er gebruik gemaakt van vier parallelle aluminium staven waarop $30\mathrm{mm}\times30\mathrm{mm}$ kooiplaten bevestigd kunnen worden. Op deze manier is het mogelijk om in de microscoop een modulaire, verticale kolom van opstellingsonderdelen met nauwkeurig instelbare onderlinge afstanden op te bouwen.
+Om de componenten op nauwkeurig instelbare posities te plaatsen, is een flexibeler opstellingssysteem vereist dan in eerdere experimenten werd gehanteerd, waar gebruik werd gemaakt van aluminium tussenringen en de z-rail van de microscoop. Er werd gekozen om het 30mm \textit{optical cage} systeem van ThorLabs te gebruiken, zoals afgebeeld op Figuur \ref{fig:ThorLabs_cage}. Hierbij wordt er gebruik gemaakt van vier parallelle aluminium staven waarop $30\mathrm{mm}\times30\mathrm{mm}$ kooiplaten bevestigd kunnen worden. Op deze manier is het mogelijk om in de microscoop een modulaire, verticale kolom van opstellingsonderdelen met nauwkeurig instelbare onderlinge afstanden op te bouwen.
 
 \begin{figure}[H]
     \centering
@@ -1321,6 +1321,7 @@ Om de permanente magneetlens en het raster te kunnen positioneren, zijn op maat 
     \item 3D-geprinte onderdelen uit PLA (polymelkzuur, het meest gangbare 3D-printing materiaal) zijn isolatoren en kunnen een lading opbouwen die de elektronenbundel beïnvloedt.
     \item PLA kan uitgassen waardoor het vacuum in de microscoop slechter wordt.
 \end{enumerate}
+
 Het eerste probleem kan worden aangepakt door het gebruik van geleidende PLA materialen, waarbij het polymeer wordt gedopeerd met elektrisch geleidende koolstofdeeltjes. Recent werd aangetoond dat deze het opladingseffect voldoende kunnen onderdrukken om in een elektronenmicroscoop gebruikt te worden \cite{Meloni2017}. Daarnaast is de druk in de MIRA microscoop bij de uitgevoerde experimenten groot genoeg ($\sim 0.1$~Pa) zodat het outgassen in de context van dit specifiek experiment geen groot effect heeft.\\
 
 Op basis van deze overwegingen werden een lenshouder, een rasterhouder en een apertuur ontworpen in Blender en geprint in een commercieel beschikbaar geleidend PLA \cite{hyuduo_conductive_pla} met een BambuLab A1 printer. De bijhorende \texttt{.step}-bestanden zijn samen met de broncode beschikbaar op GitHub. Figuur \ref{fig:3D_prints_measurements} toont de vervaardigde opstellingsonderdelen.
@@ -1332,12 +1333,67 @@ Op basis van deze overwegingen werden een lenshouder, een rasterhouder en een ap
     \label{fig:3D_prints_measurements}
 \end{figure}
 
-\subsection{Resultaten}
+\subsection{Uitvoering experiment}
+In deze sectie bespreken we de uitvoering en de resultaten van het experiment. De foutenvlaggen die bij de waarden worden vermeld volgen uit een foutenpropagatie die wordt uitgewerkt in appendix \ref{ch:foutenpropagatie}. Figuur \ref{fig:tower} toont de kolom die in dit experiment gebruikt werd met de 3D-geprinte lens- en rasterhouders. De kolom wordt op de detector, recht onder de elektronenbron geplaatst. Figuur \ref{fig:tower_schematic} geeft een schematische illustratie de uitvoering van het experiment. 
 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.28\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/tower_4_crop.png}
+        \caption{}
+        \label{fig:tower_4_crop}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.28\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/tower_7_crop.png}
+        \caption{}
+        \label{fig:tower_7_crop}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/tower_schematic.png}
+        \caption{}
+        \label{fig:tower_schematic}
+    \end{subfigure}
+    \caption{ThorLabs kooi met 3D-geprinte lens- en rasterhouders in de MIRA elektronenmicroscoop.}
+    \label{fig:tower}
+\end{figure}
+
+De afstanden $z_{lens}$, $z_{raster}$ en $z_{detector}$ moeten nauwkeurig worden opgemeten om een nauwkeurige waarde voor de focale lengte te verkrijgen. De resultaten worden hieronder weergegeven:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}lccc@{}}
+    \toprule
+                        & $z$ (mm)   & $s_z$ (mm) \\ \midrule
+    \multicolumn{1}{|c|}{$z_\mathrm{lens}$}     & \multicolumn{1}{c|}{$101.08$}      & \multicolumn{1}{c|}{$0.14$}      \\ \midrule
+    \multicolumn{1}{|c|}{$z_\mathrm{raster}$}   & \multicolumn{1}{c|}{$144.22$}      & \multicolumn{1}{c|}{$0.14$}      \\ \midrule
+    \multicolumn{1}{|c|}{$z_\mathrm{detector}$} & \multicolumn{1}{c|}{$228.00$}      & \multicolumn{1}{c|}{$0.10$}      \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+Voor deze waarden werd er een reeks beelden opgenomen voor werkingsafstanden van 
+
+Op elk beeld worden er zo veel mogelijk afstanden van de rasteropeningen opgemeten via een interactief Python-script waarbij de gebruiker de hoeken van een rasteropening kan aanklikken. Dit wordt getoond op Figuur \ref{fig:measure_pitch_distances}. Deze waarden worden uitgemiddeld. Met de berekende reeks waarden voor $z_i$ kan dan voor elke $z_0$ waarde de focale lengte berekend, waarna een uitmiddeling de finale waarde voor $f$ levert. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/measure_pitch_distances.png}
+    \caption{Er wordt gebruik gemaakt van een Python-script waarmee de hoekpunten van de rasteropeningen kunnen worden aangeklikt, waarmee de magnificatie van het beeld berekend kan worden om uiteindelijk de focale lengte te vinden.}
+    \label{fig:measure_pitch_distances}
+\end{figure}
 
 \chapter{Vooruitzicht}\label{ch:vooruitzicht}
 
 \chapter{Besluit}\label{ch:besluit}
+
+\appendix
+
+\chapter{Foutenpropagatie rear mesh shadowgraph methode}\label{ch:foutenpropagatie}
 
 \bibliographystyle{abbrv}
 \bibliography{bibliography}   % your .bib filename without .bib extension
