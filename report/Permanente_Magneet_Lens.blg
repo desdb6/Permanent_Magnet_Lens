@@ -5,45 +5,45 @@ The style file: abbrv.bst
 Database file #1: bibliography.bib
 Warning--there's a number but no volume in meshshadowgraphs
 Warning--empty year in meshshadowgraphs
-You've used 30 entries,
+You've used 34 entries,
             2118 wiz_defined-function locations,
-            697 strings with 8942 characters,
-and the built_in function-call counts, 8152 in all, are:
-= -- 779
-> -- 408
+            729 strings with 9864 characters,
+and the built_in function-call counts, 9351 in all, are:
+= -- 895
+> -- 467
 < -- 0
-+ -- 166
-- -- 136
-* -- 504
-:= -- 1440
-add.period$ -- 101
-call.type$ -- 30
-change.case$ -- 150
++ -- 190
+- -- 156
+* -- 589
+:= -- 1650
+add.period$ -- 116
+call.type$ -- 34
+change.case$ -- 171
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 275
-empty$ -- 650
-format.name$ -- 136
-if$ -- 1668
+cite$ -- 36
+duplicate$ -- 313
+empty$ -- 744
+format.name$ -- 156
+if$ -- 1912
 int.to.chr$ -- 0
-int.to.str$ -- 30
-missing$ -- 16
-newline$ -- 164
-num.names$ -- 58
-pop$ -- 194
+int.to.str$ -- 34
+missing$ -- 18
+newline$ -- 187
+num.names$ -- 66
+pop$ -- 216
 preamble$ -- 1
-purify$ -- 129
+purify$ -- 147
 quote$ -- 0
-skip$ -- 185
+skip$ -- 208
 stack$ -- 0
-substring$ -- 312
-swap$ -- 33
+substring$ -- 374
+swap$ -- 38
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 114
+type$ -- 130
 warning$ -- 2
-while$ -- 68
-width$ -- 32
-write$ -- 339
+while$ -- 78
+width$ -- 36
+write$ -- 387
 (There were 2 warnings)

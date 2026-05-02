@@ -81,6 +81,12 @@ P.~W. Hawkes.
 \newblock {\em Electron Optics and Electron Microscopy}.
 \newblock Taylor \& Francis LTD, 10-14 Macklin Street, London, 1972.
 
+\bibitem{hyuduo_conductive_pla}
+{Hyuduo}.
+\newblock Conductive {PLA} filament, 1.75 mm, resistivity 1.42 $\omega\cdot$cm.
+\newblock Amazon, \url{https://www.amazon.com.be/-/nl/dp/B0CMY1VM2R}, 2024.
+\newblock Geraadpleegd op 2 mei 2025. Printtemperatuur: 220--250~°C, afdruksnelheid: 20--50~mm/s.
+
 \bibitem{Jiang2018Ptychography}
 Y.~Jiang, Z.~Chen, Y.~Han, P.~Deb, H.~Gao, S.~Xie, P.~Purohit, M.~W. Tate, J.~Park, S.~M. Gruner, V.~Elser, and D.~A. Muller.
 \newblock Electron ptychography of 2d materials to deep sub-{\aa}ngstr{\"o}m resolution.
@@ -90,11 +96,6 @@ Y.~Jiang, Z.~Chen, Y.~Han, P.~Deb, H.~Gao, S.~Xie, P.~Purohit, M.~W. Tate, J.~Pa
 E.~Kasper and P.~W. Hawkes.
 \newblock {\em Principles of Electron Optics, Volume 1: Basic Geometrical Optics}.
 \newblock Academic Press, London, 1989.
-
-\bibitem{klementova2021hematite_hrtem}
-M.~Klementov{\'{a}} and Klingm01.
-\newblock {HRTEM} images of hematite along [001] with corresponding simulations, 2021.
-\newblock Licensed under CC BY-SA 4.0. Accessed: 2026-04-27.
 
 \bibitem{Magnet_Outlet}
 {Magnet Outlet}.
@@ -116,6 +117,11 @@ M.~Malac, J.~A.~M. Calzada, M.~Salomons, D.~Homeniuk, P.~Price, M.~Cloutier, M.~
 R.~Maller.
 \newblock Passivation of stainless steel.
 \newblock {\em Trends in Food Science \& Technology}, 9(1), 1998.
+
+\bibitem{Meloni2017}
+G.~N. Meloni and M.~Bertotti.
+\newblock {3D} printing scanning electron microscopy sample holders: A quick and cost effective alternative for custom holder fabrication.
+\newblock {\em PLOS ONE}, 12(7):e0182000, jul 2017.
 
 \bibitem{MyscopeCourse}
 {Microscopy Australia}.
@@ -155,6 +161,23 @@ V.~Soares.
 \newblock {[Informatie over magneetklasse]}.
 \newblock Privécommunicatie, Dec. 2025.
 \newblock Magnet Outlet.
+
+\bibitem{TedPella2018}
+{Ted Pella, Inc.}
+\newblock {\em {TEM} Grids \& {TEM} Support Films}.
+\newblock Ted Pella, Inc., 4595 Mountain Lakes Blvd., Redding, CA 96003-1448, USA, 2018.
+\newblock Product catalogue, revised 7 July 2018. \url{https://www.tedpella.com}.
+
+\bibitem{Thorlabs}
+{Thorlabs, Inc.}
+\newblock Thorlabs --- photonics equipment \& optomechanical components.
+\newblock \url{https://www.thorlabs.com}.
+\newblock Geraadpleegd op 2 mei 2025.
+
+\bibitem{VanAert2013}
+S.~Van~Aert, A.~De~Backer, G.~T. Martinez, B.~Goris, S.~Bals, G.~Van~Tendeloo, and A.~Rosenauer.
+\newblock Procedure to count atoms with trustworthy single-atom sensitivity.
+\newblock {\em Physical Review B}, 87(6):064107, feb 2013.
 
 \bibitem{EM_Overview}
 G.~Van~Tendeloo, S.~Bals, S.~Van~Aert, J.~Verbeeck, and D.~Van~Dyck.

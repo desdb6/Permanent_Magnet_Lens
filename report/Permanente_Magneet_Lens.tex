@@ -135,7 +135,7 @@ Een permanente magneet lens biedt een veelbelovend alternatief. Door gebruik te 
 
 In deze thesis tracht ik een prototype van een permanente magneet lens gebaseerd op een \textit{ringvormige} NdFeB magneet te ontwerpen en realiseren m.b.v. een externe CNC-service. Deze lens zal gekarakteriseerd worden in een raster-elektronenmicroscoop met een versnelspanning van $30$~keV. Om dit ontwerp te optimaliseren, is de ontwikkeling van een Python-toolbox voor het simuleren van de lenswerking van de lens noodzakelijk. Daarnaast moeten het gesimuleerde en werkelijke lensgedrag met elkaar vergeleken worden om eventuele verschillen tussen de theoretische modellen en de fysieke realiteit te identificeren en te verklaren. De onderzoeksvraag luidt als volgt:
 \vspace{5mm}
-\begin{tcolorbox}[colback=gray!10!white,colframe=gray!75!black,title=Onderzoeksvraag]
+\begin{tcolorbox}[colback=gray!10!white,colframe=gray!75!black,sharp corners,title=Onderzoeksvraag]
     In hoeverre is het mogelijk om een miniatuur-elektronenlens bestaande op een ringvormige NdFeB en ferromagnetische poolschoenen te ontwerpen en gebruiken in een elektronenmicroscoop met een versnelspanning van $30$~keV?
 \end{tcolorbox}
 \vspace{5mm}
@@ -144,7 +144,9 @@ Hoofdstuk \ref{ch:literatuur} gaat dieper in op de werking van een elektronenmic
 
 Hoofdstuk \ref{ch:methodologie} betreft de ontwikkeling van een Python-toolbox voor het simuleren van de lenswerking en het numeriek bepalen van de lenseigenschappen.\\
 
-Hoofdstuk \ref{ch:optimalisatie} zal dieper ingaan op het toepassen van de Python-toolbox om de geometrie van de lens te optimaliseren, het vervaardigen van de lens door een CNC-service, en de experimentele karakterisering van de lens.\\
+Hoofdstuk \ref{ch:optimalisatie} zal dieper ingaan op het toepassen van de Python-toolbox om de geometrie van de lens te optimaliseren, en het vervaardigen van de lens door een CNC-service.\\
+
+Hoofdstuk \ref{ch:karakterisering} betreft de experimentele karakterisering van de permanente magneetlens in de MIRA elektronenmicroscoop waarbij de aberraties kwalitatief worden besproken en de focale lengte kwantitatief wordt bepaald.
 
 Hoofdstuk \ref{ch:vooruitzicht} bespreekt hoe het ontwerp van de lens verbeterd kan worden en hoe dit onderzoek kan bijdragen aan het ontwikkelen van een toegankelijkere open-source elektronenmicroscoop.\\
 
@@ -196,8 +198,8 @@ Figuur \ref{fig:TEM_principle} toont een illustratie van het werkingsprincipe va
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{Images/TEM_image.png}
-    \caption{Beeld van hematiet langs de $[001]$ as opgenomen met een TEM. \cite{klementova2021hematite_hrtem}}
+    \includegraphics[width=0.6\linewidth]{Images/TEM_image2.png}
+    \caption{Beeld van hematiet langs de $[001]$ as opgenomen met een TEM. \cite{VanAert2013}}
     \label{fig:TEM_image}
 \end{figure}
 
@@ -340,21 +342,21 @@ Extra sectie met uitleg waarom we best meer dan 1 lens nodig hebben om een diffr
 Meer uitleg over wat een hoofdvlak is? 
 \color{black}
 
-\chapter{Methodologie simulatie lensparameters}\label{ch:methodologie}
+\chapter{Simulatie van de lensparameters}\label{ch:methodologie}
 Om een het ontwerp voor een werkende elektronenlens te realiseren moeten de geometrische dimensies van de lens zorgvuldig worden vastgelegd. Deze afmetingen zijn cruciaal, aangezien ze de vorm en het profiel van het magnetisch veld op de optische as bepalen, welke de lenswerking en lenseigenschappen vastleggen. De invloed van de \textit{lensparameters} op de lenswerking moet daarom vooraf gesimuleerd kunnen worden. Dit vereist zowel een analytisch model van het magnetisch veld als een numerieke methode om de bewegingsvergelijking van de elektronen op te lossen. De volgende objectieven worden opgesteld:
-\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 1]
+\begin{tcolorbox}[colback=red!10!white, colframe=red!40!white, sharp corners, title=Objectief 1]
     Het ontwerpen van een lensgeometrie met een permanente magneet en ferromagnetische poolschoenen die een voldoende sterk gelokaliseerd magnetisch veld in het midden van de lens veroorzaakt om de elektronen af te buigen.
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 2]
+\begin{tcolorbox}[colback=red!10!white, colframe=red!40!white, sharp corners, title=Objectief 2]
     Het opstellen van een analytische uitdrukking $B(z)$ op voor de grootte van het magnetisch veld volgens de $z$-as op de optische as van de lens in functie van de lensparameters. Deze uitdrukking mag benaderend zijn, maar moet de lenseigenschappen zo accuraat mogelijk kunnen voorspellen.
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 3]
+\begin{tcolorbox}[colback=red!10!white, colframe=red!40!white, sharp corners, title=Objectief 3]
     Het kwantificeren van de invloed van het demagnetiserend veld, veroorzaakt door de oppervlakken van de poolschoenen, op de effectieve veldsterkte in de magneet. Dit effect hangt af van de lensparameters, rekening houdend met de $\mathrm{BH}$-curve van de magneet.
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 4]
+\begin{tcolorbox}[colback=red!10!white, colframe=red!40!white, sharp corners, title=Objectief 4]
     Het ontwikkelen van een Python-toolbox om de werking van de lens te simuleren. Deze toolbox moet het volgende functionaliteiten combineren:
     \begin{enumerate}
         \item Het magnetisch veld $B(z)$ voor een bepaalde geometrie van de lens berekenen op basis van de gevonden analytische uitdrukking.
@@ -387,7 +389,7 @@ Het ontwerp dat in deze thesis wordt beschouwd bestaat uit een homogeen gemagnet
 
 % Voor de ringmagneet kiezen we een NdFeB van graad N35. Er bestaan magneten met betere graden, maar voor een relatief kleine versnelspanning van $30$~keV is dit materiaal voldoende sterk. Voor de poolschoenen gebruiken ASI1018, een zacht ferromagnetisch staal dat geschikt is om gebruikt te worden in een CNC-machine. Deze materialen zullen meer in detail besproken worden in sectie \ref{ch:lensontwerp}.\\
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 1]
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 1]
     Een permanente magneet lens kan gerealiseerd worden met een ontwerp waarbij een NdFeB ringmagneet gecombineerd wordt met axissymetrische poolschoenen. Dit vormt een magnetisch veld dat geconcentreerd wordt in de luchtspleet tussen de poolschoenen, waardoor de elektronen zeer kort interageren met dit magnetisch veld.
 \end{tcolorbox}
 
@@ -533,7 +535,7 @@ De analytische afschatting kan numeriek gevalideerd met het ionen- en elektronen
     \label{fig:B_field_SIMION}
 \end{figure}
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 2]
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 2]
     Het magnetisch veld op de symmetrie-as werd met een analytische uitdrukking benaderd door de oppervlakken van de poolschoenen te modelleren als twee oppervlakken met een homogene, tegengestelde poolladingsdichtheid. Het gebruiken van een analytische uitdrukking laat toe om ook de analytische afgeleiden te berekenen welke gebruikt kunnen worden om aberratiecoëfficienten te schatten. Een vergelijking van de analytische uitdrukking met een numerieke oplossing m.b.v. SIMION van de Laplace-vergelijking geeft een vrijwel perfecte overeenkomst.
 \end{tcolorbox}
 
@@ -664,7 +666,7 @@ De volledige analytische uitdrukking van het magnetisch veld op de optische as v
 %     B(z) & = \frac{B_r}{\left(\frac{A_g}{A_m}+\frac{\mu_m d_g}{\mu_0 d_m}\right)}\sum_{\pm}\pm\frac{\zeta_{\pm}}{2}\left(\frac{1}{\sqrt{\zeta_{\pm}^2+R_1^2}}-\frac{1}{\sqrt{\zeta_{\pm}^2+R_2^2}}\right)\\
 %     \zeta_{\pm} & = z \pm \frac{d_g}{2}
 % \end{align}
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 3]
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 3]
     Er wordt rekening gehouden met het demagnetiserend veld, dat de poolladingsdichtheden op de oppervlakken van de poolschoenen doet verkleinen. Een analogie met elektrische circuits laat toe om de permeantiecoëfficiënt van het magnetisch circuit van de lens te berekenen, waarna het werkingspunt op de $\mathrm{BH}$-curve gevonden kan worden. De oppervlaktepoolladingsdichtheid wordt berekend door de benadering te maken dat alle flux in de magneet wordt verdeeld over de oppervlakkes van de poolschoenen.
 \end{tcolorbox}
 
@@ -774,28 +776,23 @@ Met de analystische afschatting van het veld en de analytische afgeleiden zijn i
 Merk op dat de oplossing $g(z)$ van vergelijking \ref{eq:BVW} optreedt. Deze oplossingen moeten hierbij als dimensieloos beschouwd worden. Deze integralen zijn zeer zelden analytisch oplosbaar, en ook aangezien er geen analytische uitdrukkingen voor $g(z)$ en $h(z)$ berschikbaar zijn moeten deze numeriek worden opgelost door de Riemann-som met een kleine $\Delta z$ te nemen. 
 %Bovendien zijn deze oplossingen afhankelijk van de objectpositie $z_0$, dus zijn ook de aberratiecoëfficienten afhankelijk van de afstand tussen de lens en het object.
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 4]
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 4]
     Er werd een Python-toolbox geïmplementeerd om de werking van de lens te simuleren waarmee op numerieke wijze de lenseigenschappen voor een bepaalde geometrie bepaald kunnen worden. De paraxiale bewegingsvergelijking wordt opgelost met een $8$ste orde Runge-Kuta methode om  thee linear onafhankelijk oplossingen $g(z)$ en $h(z)$ te vinden, waarna beeldvorming gesimuleerd kan worden door lineaire combinaties van de twee oplossingen te maken. De distortie en chromatische aberratiecoëfficiënten worden geëvalueerd door de integralen van het analytische veld $B(z)$ en haar afgeleiden te benaderen als Riemann-som.
 \end{tcolorbox}
 
-\chapter{Optimalisatie en validatie van de lensparameters}\label{ch:optimalisatie}
-Eens een simulatietoolbox in Python geïmplmenteerd is, kan deze toegepast worden om de lensparameters te optimaliseren en de lens effectief te realiseren. Hiervoor moeten eerst criteria worden opgesteld waaraan de lens moet voldon om gebruikt te kunnen woden in een elektronenmicroscoop met een versnelspanning van $30$~keV. Vervolgens kunnen de parameters worden afgestemd op deze criteria, waarna de poolschoenen door een CNC-service kunnen worden vervaardigd. Ten slotte kunnen de lenseigenschappen experimenteel worden gekarakteriseerd. De volgende objectieven worden daartoe opgesteld:
+\chapter{Optimalisatie van de lensparameters}\label{ch:optimalisatie}
+Eens een simulatietoolbox in Python geïmplmenteerd is, kan deze toegepast worden om de lensparameters te optimaliseren en de lens effectief te realiseren. Hiervoor moeten eerst criteria worden opgesteld waaraan de lens moet voldon om gebruikt te kunnen woden in een elektronenmicroscoop met een versnelspanning van $30$~keV. Vervolgens kunnen de parameters worden afgestemd op deze criteria, waarna de poolschoenen door een CNC-service kunnen worden vervaardigd. De volgende objectieven worden daartoe opgesteld:
 
-\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 5]
+\begin{tcolorbox}[colback=red!10!white, colframe=red!40!white, sharp corners,title=Objectief 5]
     Het formuleren concrete criteria waaraan de lensparameters en lenseigenschappen moeten voldoen voor een bruikbare lenswerking.
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 6]
+\begin{tcolorbox}[colback=red!10!white, colframe=red!40!white, sharp corners, title=Objectief 6]
     Het gebruiken van de Python-toolbox om de invloed van elke lensparameter afzonderlijk in kaart door variatieplots voor de lenseigenschappen en aberratiecoëfficiënten op te stellen. Op basis van deze analyse kan een optimale set lensparameters geselecteerd worden die maximaal aan de opgestelde criteria voldoet waarmee een 3D-model van de lens met optimale lensparameters in FreeCAD gerealiseerd kan worden.
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=red!10!white,colframe=red!75!white,title=Objectief 7]
-    Het karakteriseren van de lens in de elektonenmicroscoop met een versnelspanning van $30$~keV door de focale lengte kwalitatief te berekenen en de aberraties kwantitatief te beschrijven. Dit maakt een vergelijking van de experimentele en gesimuleerde resultaten mogelijk waarmee verschillen kunnen worden geanalyseerd.
-\end{tcolorbox}
 
-
-
-\section{Lensontwerp}\label{ch:lensontwerp}
+\section{Criteria voor het lensontwerp}\label{ch:lensontwerp}
 Bij het ontwerpen van de lens moeten er rekening worden gehouden met het volgende:
 \begin{enumerate}
     \item De lens moet een dunne lenswerking vertonen, dus moet de positie van het hoofdvlak $z_{Pi}$ zo dicht mogelijk bij het centrum van de lens liggen, m.a.w. $\left|z_{Pi}\right|<0.1$~mm. Dit betekent dat dat $B(z)$ een smalle piek moet vertonen.
@@ -828,7 +825,7 @@ Bij het ontwerpen van de lens moeten er rekening worden gehouden met het volgend
     \label{fig:operating_point_25}
 \end{figure}
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 5]
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 5]
     De permanente magneet lens moet aan de volgende criteria voldoen:
     \begin{table}[H]
     \centering
@@ -845,7 +842,7 @@ Bij het ontwerpen van de lens moeten er rekening worden gehouden met het volgend
     Daarnaast moet de geometrie voldoen aan beperkingen opgelegd door de CNC-toleranties en beschikbare magneetdimensies.
 \end{tcolorbox}
 
-\subsection{Simulatie van lenseigenschappen}
+\section{Simulatie van de lenseigenschappen}
 Zoals beschreven in hoofdstuk \ref{ch:methodologie}, werd en een Python-toolbox ontwikkeld waarmee efficiënt de lenseigenschappen van een bepaald lensontwerp kunnen worden berekend. Deze toolbox maakt het mogelijk om de optimale lensparameters te bepalen via trial-and-error, door steeds de lensparameters aan te passen en de lenseigenschappen te berekenen. Het is echter nuttig om de invloed van de verschillende parameters te onderscheiden om ze individueel te kunnen onderzoeken. De toolbox wordt daarom uitgebreid om dit in kaart te brengen. Voorbeelden van \textit{variatieplots} die hierbij helpen worden getoond op Figuren \ref{fig:variable_R_1} tot \ref{fig:variable_T}.\\
 
 Er wordt voor een bepaalde lensparameter een boven- en ondergrens gekozen waarvoor (voor vaste overige lensparameters) de lenseigenschappen voor een groot aantal punten tussen deze twee grenzen worden berekend. De resultaten kunnen op een grafiek worden weergegeven om zo nog efficiënter de lensparameters te optimaliseren. Voor vier verschillende lensparameters ($R_1$, $R_2$, $d_g$, en $B_r$) is deze methode relevant, en hiervoor werd een functie geïmplementeerd waarmee dit soort grafieken kunnen worden geplot. Naast de lensparameters wordt op deze grafieken ook de permeantiecoëfficiënt $P_{ci}$ en de maximale magnetische fluxdichtheid $B_{max}$ geplot. Dit is handig om te voorkomen dat de reluctantie van het magnetisch circuit te groot gemaakt wordt, en om saturatie van de poolschoenen te voorkomen. Voor de variatie $B_r$ worden deze bijkomende eigenschappen niet getoond, aangezien $P_{ci}$ onveranderd blijft onder een herschaling van de $\mathrm{BH}$-curve en $B_{max}$ lineair schaalt met $B_{r}$. Daarnaast heeft het variëren van de afmetingen van de magneet enkel een verandering van $B_m$ als gevolg, war ook kan worden gemodelleerd door het variëren van $B_r$.\\
@@ -959,7 +956,7 @@ Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
 
 Deze lenseigenschappen voldoen aan onze eisen. De lens is bij benadering een dunne lens met een focale lengte die voldoende kort is voor de MIRA SEM. Het demagnetiserend veld is niet te groot en de maximale fluxdichtheid in de poolschoenen is voldoende klein zodat de magneet zich nog steeds in het lineair gebied van de $\mathrm{BH}$-curve op Figuur \ref{fig:BH_curve_ASI1018} bevindt.\\
 
-De coëfficiënt $D$ is echter redelijk groot vergeleken met literatuurwaarden ($\sim 0.5\mathrm{mm}^{-2}$). Het blijkt moeilijk te zijn om deze aberratiecoëfficient kleiner te maken zonder een volledig ander lensontwerp te hanteren of een an de andere criteria te schenden. Figuren \ref{fig:fig:variable_R_1} tot \ref{fig:ab_grid_2x2} tonen aan dat het veranderen van een van de lensparameters om $D$ te verkleinen, steeds ongewenste neveneffecten heeft. Het vergroten van $R_1$ zorgt voor een kleinere focale lengte en een grotere fluxdichtheid in de poolschoenen. Ook het vergtoten van $R_2$ zal $f$ doen toenemen, en verkleint de afstand tussen de buitenkant van de poolschoenen en de binnenkant van de magneet waardoor de kans op een kortsluiting in het circuit groter is. Het vergroten van $d_g$ tot voorbij het maxima van $D$ geeft dan weer een te kleine $P_{ci}$ en een zwakkere magneet gebruiken zodat $B_r$ verkleint geeft ook een te lange focale lengte. Om Op basis van deze overwegingen concludeer ik dat de huidige parameterset de meest optimale is, ook al is $D$ groot t.o.v. typische waarden uit de literatuur. Bovendien kan de distorie op andere manieren experimenteel geminimaliseerd worden, waarover meer in \ref{ch:karakterisering}.\\
+De coëfficiënt $D$ is echter redelijk groot vergeleken met literatuurwaarden ($\sim 0.5\mathrm{mm}^{-2}$). Het blijkt moeilijk te zijn om deze aberratiecoëfficient kleiner te maken zonder een volledig ander lensontwerp te hanteren of een an de andere criteria te schenden. Figuren \ref{fig:variable_R_1} tot \ref{fig:ab_grid_2x2} tonen aan dat het veranderen van een van de lensparameters om $D$ te verkleinen, steeds ongewenste neveneffecten heeft. Het vergroten van $R_1$ zorgt voor een kleinere focale lengte en een grotere fluxdichtheid in de poolschoenen. Ook het vergtoten van $R_2$ zal $f$ doen toenemen, en verkleint de afstand tussen de buitenkant van de poolschoenen en de binnenkant van de magneet waardoor de kans op een kortsluiting in het circuit groter is. Het vergroten van $d_g$ tot voorbij het maxima van $D$ geeft dan weer een te kleine $P_{ci}$ en een zwakkere magneet gebruiken zodat $B_r$ verkleint geeft ook een te lange focale lengte. Om Op basis van deze overwegingen concludeer ik dat de huidige parameterset de meest optimale is, ook al is $D$ groot t.o.v. typische waarden uit de literatuur. Bovendien kan de distorie op andere manieren experimenteel geminimaliseerd worden, waarover meer in \ref{ch:kwalitatief}.\\
 
 Eens de parameters zijn vastgelegd, moeten er een driedimensionaal model van de lens worden ontworpen zodat de onderdelen door een CNC-service geproduceerd kunnen worden. Figuur \ref{fig:FreeCAD_2D} toont de 2D sketch met de afmetingen en enkele screenshots van het driedimensionaal model van de poolschoenen. Dit driedimensionaal model wordt in FreeCAD gemaakt. FreeCAD laat toe een 2D sketch van een doorsnede van de lens met de gekozen afmetingen te maken, en vervolgens met de \textit{Revolution} functie van het programma een cilindrisch symmetrisch onderdeel op basis van de sketch te maken.  Het ontwerp is zo gemaakt dat de poolschoen zo min mogelijk scherpe hoeken heeft, zodat het magnetisch veld nergens aan de buitenkant concentreert of weglekt. 
 \color{red} Vervangen door technische tekeningen? \color{black}
@@ -1023,22 +1020,33 @@ Deze stepfile werd door de CNC-service \textit{Protolabs Network} \cite{Hubs} om
 \end{figure}
 
 
-\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title=Realisatie objectief 6]
-    De optimale lensparameters worden bepaald door een optimalisatieproces ondersteund door variatie-plots waarbij telkens 1 parameter wordt aangepast. De Python toolbox werd hiervoor uitgebreid met functies die de lenseigenschappen, aberratiecoëfficiënten en permeantiecoëfficiënt voor een variabele lensparameter berekenen en plotten. Gebruik makend van deze functieswerd er een set lensparameters vastgelegd die maximaal voldoet aan de opgestelde criteria voor de lenswerking.  Enkel de distortieaberratiecoëfficiënt overschrijdt de gewenste waarde met een factor~$2$; een alternatieve configuratie die dit verbetert zonder de overige lenseigenschappen te benadelen, werd niet gevonden. Op basis van de meest optimale lensparameters werd een driedimensionale geometrie voor de lens in FreeCAD ontworpen. 
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 6]
+    De optimale lensparameters worden bepaald door een optimalisatieproces ondersteund door variatie-plots waarbij telkens 1 parameter wordt aangepast. De Python toolbox werd hiervoor uitgebreid met functies die de lenseigenschappen, aberratiecoëfficiënten en permeantiecoëfficiënt voor een variabele lensparameter berekenen en plotten. Gebruik makend van deze functieswerd er een set lensparameters vastgelegd die maximaal voldoet aan de opgestelde criteria voor de lenswerking.  Enkel de distortieaberratiecoëfficiënt overschrijdt de gewenste waarde met een factor~$2$; een alternatieve configuratie die dit verbetert zonder de overige lenseigenschappen te benadelen, werd niet gevonden. Op basis van de meest optimale lensparameters werd een driedimensionale geometrie voor de lens in FreeCAD ontworpen. De poolschoenen werden vervolgens uit ASI1018 vervaardigd door een externe CNC-service.
 \end{tcolorbox}
-\clearpage
-\section{Karakterisering in de microscoop}\label{ch:karakterisering}
-Het laatste deel van deze thesis betreft de experimentele karakterisatie van de lens in de MIRA-microscoop. De twee voornaamste doelstellingen zijn een kwalitatieve bespreking van de verkregen beelden en de bijbehorende aberraties, en een kwantitatieve bepaling van de focale lengte via een experimentele opstelling. De vacuumkamer van de gebruikte microscoop wordt getoond op Figuur \ref{fig:MIRA_inside_1}. Bovenaan de kamer bevindt zich de elektronenbron, waaronder de opstelling van het experiment wordt opgebouwd. Binnen de microscoop is een platform aanwezig waarop de lens kan worden geplaatst, alsook een rail langs de z-as waaraan een houder bevestigd is om een object boven de lens te positioneren, zoals getoond op Figuur \ref{fig:grid_holder_rail}. Onderaan de kamer, recht onder de elektronenbron, bevindt zich de elektronendetector waarvan de hoogte kan worden ingesteld. Er werden twee elektronendetectoren gebruikt: een AdvaPIX en een MiniPIX camera. Beide detectoren hebben een pixelgrootte van $55\mu\mathrm{m}\times55\mu\mathrm{m}$ \cite{advacam_minipix_2024, advacam_advapix_2023}.\\
 
-De MIRA SEM heeft ook een secundaire elektronendetector boven in de vacuumkamer. Op deze manier heeft men beschikking tot twee beeldvormingsmodi: SEM met de elektronendetector boven in de kamer, en TEM met de elektronendetector onder de elektronenbron. Dit laat toe om eerst een controlebeeld van het object op te nemen via SEM, aan de hand waarvan het verwachte TEM-beeld kan worden ingeschat. Vervolgens kan worden overgeschakeld naar de TEM-modus en kan men gemakkelijker de kwaliteit van het gevormde beeld beoordelen. Alle onderstaande figuren zijn opgenomen in een van deze twee modi in de MIRA microscoop.\\
+\chapter{Karakterisering en validatie in de microscoop}\label{ch:karakterisering}
+Het laatste deel van deze thesis betreft de experimentele karakterisering van de lens in de MIRA-microscoop. De twee voornaamste doelstellingen zijn een kwalitatieve bespreking van de verkregen beelden en een kwantitatieve bepaling van de focale lengte via een experimentele opstelling. De volgende objectieven werden opgesteld:
 
-Figuur \ref{fig:Lens_in_MIRA} toont een SEM beeld van de permanente magneet elektronenlens in de MIRA microscoop. Opmerkelijk aan dit beeld is de azimuthale distortie waardoor het beeld rondom een wervelend karakter vertoont. Dit is een gevolg van het effect van de magnetische zwerfvelden van de lens op de elektronenbundel. Dit effect lijkt cilindrisch  symmetrisch te zijn, wat een indicatie vormt dat de magneet en de poolschoenen een cilindrisch symmetrisch veld genereren.
+\begin{tcolorbox}[colback=red!10!white, colframe=red!40!white, sharp corners, title=Objectief 7]
+    Het verkrijgen van beelden met behulp van de MIRA elektronenmicroscoop met een versnelspanning van $30$~keV en het kwantitatief beschrijven van de beeldvorming en aberraties waarbij de geobserveerde distortie wordt vergeleken met de gesimuleerde waarde van de distortiecoëfficient.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!10!white, colframe=red!40!white, sharp corners, title=Objectief 8]
+    Het kwantitatief bepalen van de focale lengte van de permanente magneetlens via een experiment in de MIRA elektronenmicroscoop.Deze waarde moet worden vergeleken met de gesimuleerde waarde waarbij afwijkingen moeten worden verklaard.
+\end{tcolorbox}
+
+De vacuumkamer van de gebruikte microscoop wordt getoond op Figuur \ref{fig:MIRA_inside_1}. Bovenaan de kamer bevindt zich de elektronenbron, waaronder de opstelling van het experiment wordt opgebouwd. Binnen de microscoop is een platform aanwezig waarop de lens kan worden geplaatst, alsook een rail langs de z-as waaraan een houder bevestigd is om een object boven de lens te positioneren, zoals getoond op Figuur \ref{fig:grid_holder_rail}. Onderaan de kamer, recht onder de elektronenbron, bevindt zich de elektronendetector waarvan de hoogte kan worden ingesteld. Er werden twee elektronendetectoren gebruikt: een AdvaPIX en een MiniPIX camera. Beide detectoren hebben een pixelgrootte van $55\mu\mathrm{m}\times55\mu\mathrm{m}$ \cite{advacam_minipix_2024, advacam_advapix_2023}.\\
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Images/MIRA_inside.png}
     \caption{Vacuumkamer van de MIRA SEM die gebruikt zal worden om de lens te karakteriseren.}
     \label{fig:MIRA_inside_1}
 \end{figure}
+
+De MIRA SEM heeft ook een secundaire elektronendetector boven in de vacuumkamer. Op deze manier heeft men beschikking tot twee beeldvormingsmodi: SEM met de elektronendetector boven in de kamer, en TEM met de elektronendetector onder de elektronenbron. Dit laat toe om eerst een controlebeeld van het object op te nemen via SEM, aan de hand waarvan het verwachte TEM-beeld kan worden ingeschat. Vervolgens kan worden overgeschakeld naar de TEM-modus en kan men gemakkelijker de kwaliteit van het gevormde beeld beoordelen. Alle onderstaande figuren zijn opgenomen in een van deze twee modi in de MIRA microscoop.\\
+
+Figuur \ref{fig:Lens_in_MIRA} toont een SEM beeld van de permanente magneet elektronenlens in de MIRA microscoop. Opmerkelijk aan dit beeld is de azimuthale distortie waardoor het beeld rondom een wervelend karakter vertoont. Dit is een gevolg van het effect van de magnetische zwerfvelden van de lens op de elektronenbundel. Dit effect lijkt cilindrisch symmetrisch te zijn, wat een indicatie vormt dat de magneet en de poolschoenen een cilindrisch symmetrisch veld genereren.
 
 \begin{figure}[H]
     \centering
@@ -1059,10 +1067,10 @@ Figuur \ref{fig:Lens_in_MIRA} toont een SEM beeld van de permanente magneet elek
     \label{fig:MIRA_setup}
 \end{figure}
 
-\subsection{Kwalitatieve bespreking beeldvorming}
+\section{Kwalitatieve bespreking beeldvorming}\label{ch:kwalitatief}
 De focale lengte van de lens werd enkel m.b.v. de toolbox voorspeld en is in principe niet gekend. In het ideale geval stemt de werkelijke focale lengte hier nauwkeurig mee overeen, maar afwijkingen zijn in de praktijk niet uit te sluiten en zelfs verwacht, aangezien we in de toolbox een perfecte lenswerking wordt verondersteld. Bovendien is het belangrijk om eerst te onderzoeken of de lens überhaupt een bruikbare werking heeft, alvorens over te gaan naar een gedetailleerde experimentele bepaling van de focale lengte. Om deze reden heeft het voor de eerste experimenten dan ook weinig zin om een opstelling te maken waarin de object- en beeldafstand nauwkeurig worden gekozen om een vooraf bepaalde magnificatie te krijgen; de lenswerking wordt eerst getest door arbitraire afstanden te kiezen en het resulterend beeld kwalitatief te beoordelen.\\
 
-\subsubsection{Eerste experiment: EMAT logo}
+\subsection{Eerste experiment: EMAT logo}
 Het eerste uitgevoerde experiment trachtte een uitvergroot beeld te vormen van een TEM-raster waarbij het EMAT-logo wordt gevormd door de rasterlijnen. Figuren \ref{fig:Emat_Feature_SEM} en \ref{fig:Emat_Feature_STEM} tonen SEM beelden van het beschouwde raster. In dit experiment werd de volledige kolom van de microscoop gebruikt. Het raster werd op houder op de z-rail vastgemaakt en zo hoog mogelijk ingesteld. De lens werd vastgemaakt met kopertape op een PCB-plaat, welke op het platform in de microscoop werd gelegd, met het centrum op $\sim20$~mm van het raster. De detector werd ingesteld op de laagst mogelijke positie, op $\sim200$~mm van de lens.
 
 
@@ -1098,7 +1106,7 @@ Figuur \ref{fig:18.02.26_Emat_Feature_1mmunderfocus} toont een AdvaPIX-beeld gen
 
 Uit dit experiment concluderen we dat de afstand tussen de lens en de detector te groot is om een goed beeld met behulp van de lens te verkrijgen. Om deze reden werd er in de volgende experimenten voor minder ambitieuze opstellingen met kleinere afstanden tussen de componenten in de opstelling.
 
-\subsubsection{Tweede experiment: hexagonaal raster}
+\subsection{Tweede experiment: hexagonaal raster}
 Figuren \ref{fig:02.03.26_Hexagons_Setup} en \ref{fig:02.03.26_Hexagons_Setup_2} tonen de opstelling voor het tweede experiment, waarbij rekening werd gehouden met de bevindingen van het vorige experiment. Er wordt gekozen om beelden te vormen van \textit{rasters}, dunne en kleine koperen schijven met een groot aantal periodische openingen. Een rooster is bijzonder geschikt als testobject omdat afwijkingen in het beeld eenvoudig te identificeren zijn, aangezien de rasterbalken in het ideale geval parallel en gelijkmatig gespateerd zouden moeten zijn.\\
 
 \begin{figure}[H]
@@ -1149,15 +1157,15 @@ Deze opstelling levert een duidelijker beeld op de AdvaPIX op, zoals getoond in 
     \label{fig:02.03.26_Hexagons_10mmunderfocus}
 \end{figure}
 
-\subsubsection{Derde experiment: vierkant raster}
+\subsection{Derde experiment: vierkant raster}
 Voor het laatste experiment voor de kwantitatieve beschrijving houden we rekening met de twee voorgaande resultaten. Het doel is om een beeld te maken waarbij:
 \begin{enumerate}
     \item De afstanden tussen de componenten niet te groot zijn, zodat de verticale aflijning geen obstakel vormt.
     \item Het raster wordt bevestigd op de houder op de z-rail zodanig dat het raster zo parallel mogelijk gehouden wordt.
 \end{enumerate}
-Om dit te bereiken wordt de z-rail op zijn laagste positie gezet, en wordt de lens op een hogere stapel tussenringen geplaatst. Door de grotere afstanden tussen de componenten wordt er een hogere vergroting verwacht, dus wordt er gekozen voor een fijnmaziger raster met vierkante openingen van $\sim 55~\mu\mathrm{m}\times\sim 55~\mu\mathrm{m}$. Figuur \ref{fig:18.03.26_raster_Measurements} toont een SEM beeld van een opening in dit raster. In dit experiment werd gebruik gemaakt van de MiniPIX detector vanwege een probleem met de werking van de AdvaPIX detector.\\
+Om dit te bereiken wordt de z-rail op zijn laagste positie gezet, en wordt de lens op een hogere stapel tussenringen geplaatst. Door de grotere afstanden tussen de componenten wordt er een hogere vergroting verwacht, dus wordt er gekozen voor een fijnmaziger raster met vierkante openingen van $\sim 55~\mu\mathrm{m}\times\sim 55~\mu\mathrm{m}$. Figuur \ref{fig:18.03.26_grid__Measurements} toont een SEM beeld van een opening in dit raster. In dit experiment werd gebruik gemaakt van de MiniPIX detector vanwege een probleem met de werking van de AdvaPIX detector.\\
 
-Deze opstelling bleek een grote verbetering op de vorige experimenten te zijn. Figuur \ref{fig:18.03.26_raster} toont een MiniPIX-beeld van het raster waarbij er een groot aantal rasteropeningen te herkennen zijn. Door de grijswaarden te herschalen zodat lagere pixelwaarden ook zichtbaar worden werd Figuur \ref{fig:18.03.26_raster_Rescaled} verkregen, waardoor nog meer rasteropeningen zichtbaar worden. Éen rasteropening komt in werkelijkheid overeen met $\sim 55~\mu\mathrm{m}$, wat even groot is als 1 pixel op de detector. Voor de paraxiale elektronen zien we een uitvergroting van $\sim \times6$ aangezien deze rasteropeningen zoveel pixels op de detector bestrijken. De distortie blijft echter groot.
+Deze opstelling bleek een grote verbetering op de vorige experimenten te zijn. Figuur \ref{fig:18.03.26_grid} toont een MiniPIX-beeld van het raster waarbij er een groot aantal rasteropeningen te herkennen zijn. Door de grijswaarden te herschalen zodat lagere pixelwaarden ook zichtbaar worden werd Figuur \ref{fig:18.03.26_grid_Rescaled} verkregen, waardoor nog meer rasteropeningen zichtbaar worden. Éen rasteropening komt in werkelijkheid overeen met $\sim 55~\mu\mathrm{m}$, wat even groot is als 1 pixel op de detector. Voor de paraxiale elektronen zien we een uitvergroting van $\sim \times6$ aangezien deze rasteropeningen zoveel pixels op de detector bestrijken. De distortie blijft echter groot.
 
 \begin{figure}[H]
     \centering
@@ -1168,14 +1176,14 @@ Deze opstelling bleek een grote verbetering op de vorige experimenten te zijn. F
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/18.03.26_grid.png}
+    \includegraphics[width=0.7\textwidth]{Images/18.03.26_grid.png}
     \caption{MiniPIX-beeld van de vierkante rasteropeningen. Dit geeft een veel beter beeld dan de voorgaande experimenten, maar de distortie van het beeld is nog steeds groot. }
     \label{fig:18.03.26_grid}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/18.03.26_grid_Rescaled.png}
+    \includegraphics[width=0.7\textwidth]{Images/18.03.26_grid_Rescaled.png}
     \caption{Herschaalde versie van Figuur \ref{fig:18.03.26_grid} waarop meer rasteropeningen zichtbaar zijn.}
     \label{fig:18.03.26_grid_Rescaled}
 \end{figure}
@@ -1201,10 +1209,10 @@ Op Figuur \ref{fig:18.03.26_raster} is de kruisvormige bundel, karakteristiek aa
 \end{figure}
 
 
-\subsection{Kwantitatieve validatie focale lengte}
+\section{Kwantitatieve validatie focale lengte}
 Om de accuraatheid van de resultaten verkregen m.b.v. de simulatietoolbox te valideren, moet de focale lengte van de lens ook experimenteel bepaald worden. Om de focale lengte en eventueel andere lenseigenschappen van de lens te bepalen wordt er een aangepaste versie gebruikt van de \textit{rear mesh shadowgraph methode}, welke wordt beschreven in \cite{meshshadowgraphs}. Hieronder wordt deze werkwijze uitgelegd.
 
-\subsubsection{Mesh shadowgraph methode}
+\subsection{Mesh shadowgraph methode}
 Het algemene principe van deze methode bestaat er in om met behulp van de lens een bundel te convergeren in een punt, zodat er verder in de kolom een divergerende elektronenbundel ontstaat. De focale lengte kan dan worden afgeleid door te meten 'hoe divergent' deze elektronenbundel is. Concreet kan dit gemeten worden door een fijnmazig raster achter de afgebeeldde puntbron in de divergerende bundel te plaatsen, zodat er een uitvergroot schaduwbeeld op de detector wordt geworpen. De vergroting van het schaduwbeeld is dan een maat voor de divergentie van de elektronenbundel, waaruit de focale lengte afgeleid kan worden. Hieronder wordt dit verduidelijkt met behulp van illustraties.\\
 
 \paragraph{Reëel beeld}
@@ -1254,7 +1262,9 @@ Dit omvormen naar $z_i$ geeft:
 
 Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:image_dist_real}). Opnieuw wordt \ref{eq:thin_lens_formula} gebruikt om $f$ te berekenen.\\
 
-In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks metingen van $z_i$ voor verschillende waarden van $z_0$. Op elk beeld worden er zo veel mogelijk afstanden van de rasteropeningen opgemeten via een interactief Python-script waarbij de gebruiker de hoeken van een rasteropening kan aanklikken. Dit wordt getoond op Figuur \ref{fig:measure_pitch_distances}. Deze waarden worden uitgemiddeld. Met de berekende reeks waarden voor $z_i$ kan dan voor elke $z_0$ waarde de focale lengte berekend, waarna een uitmiddeling de finale waarde voor $f$ levert. 
+In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks metingen van $z_i$ voor verschillende waarden van $z_0$. In de microscoop kan dit gerelaiseerd worden door de \textit{werkingsafstand} aan te passen. Deze instelling geeft de verticale afstand van de elektronenbron tot het punt waar de elektronenbundel geconvergeerd wordt. De werkingsafstand komt met andere woorden overeen met $z_0$.\\
+
+Op elk beeld worden er zo veel mogelijk afstanden van de rasteropeningen opgemeten via een interactief Python-script waarbij de gebruiker de hoeken van een rasteropening kan aanklikken. Dit wordt getoond op Figuur \ref{fig:measure_pitch_distances}. Deze waarden worden uitgemiddeld. Met de berekende reeks waarden voor $z_i$ kan dan voor elke $z_0$ waarde de focale lengte berekend, waarna een uitmiddeling de finale waarde voor $f$ levert. 
 
 \begin{figure}[H]
     \centering
@@ -1274,36 +1284,56 @@ In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks m
 % \end{figure}
 % In principe kan deze methode ook uitgebreid worden om de chromatische en sferische aberratiecoëfficiënten van de lens te berekenen. De sferische aberratiecoëfficiënt kan worden afgeleid door de afgebeeldde grootte van de individuele rasteropeningen uit te zetten in functie van de afstand tot de optische as van het systeem. Immers, hoe verder de rasteropening zich van de optische as bevindt, hoe groter de hoek $\alpha$ tussen de elektronen en de optische as. Sferische aberratie kan worden uitgedrukt als $\Delta z_i = -C_s \alpha^2$, dus door $z_i$ voor verschillende waarden van $\alpha$ te berekenen kunnen we de sferische aberratiecoëfficiënt $C_s$ fitten. De chromatische aberratie kan worden berekend door de versnelspanning van de micrscoop aan te passen. De chromatische aberratiecoëfficiënt $C_f$ kunnen we dan berekenen uit $\frac{\Delta f}{f}=C_f\frac{\Delta V}{V}$.
 
-\subsubsection{Monte Carlo simulatie van het experiment}
+\subsection{Monte Carlo simulatie van het experiment}
 Om op een doelgerichte manier zinvolle afstanden tussen de lens, raster en detector vast te leggen, werd de Python-toolbox uitgebreid om simulaties van het experiment uit te voeren. Figuren \ref{fig:Monte_Carlo_1} en \ref{fig:Monte_Carlo_2} tonen voorbeelden van deze simulaties. Om dit te realiseren werd een \textit{Grid}-object dat een raster modelleert in de toolbox geïmplementeerd. De gebruiker stelt hierbij de periode (de afstand tussen opeenvolgende rasterlijnen) en de dikte van de rasterlijnen in, alsook de posities van de lens, het raster en de detector langs de optische as. Er wordt dan gebruik gemaakt van een Monte Carlo aanpak waarbij voor een groot aantal elektronen (met willekeurige beginposities) de baan wordt gesimuleerd, en er wordt nagekeken of dit elektron botst met een rasterlijn. Elektronen die een rasterlijn raken, worden geblokkeerd en dragen niet bij aan het beeld. Elektronen die door een opening in het raster passeren, bewegen verder tot de detector waar hun positie wordt opgeslagen.\\
 
-Al deze simulaties gebeuren in 2D, waarbij zowel de detector als het raster door eendimensionale lijnobjecten gesimuleerd worden. Bijgevolg is ook het gesimuleerde detectorbeeld inherent eendimensionaal. Om de resultaten beter te kunnen visualiseren wordt dit 1D-beeld omgevormd in een 2D-beeld door het \textit{uitproduct} te nemen. De 1D vector $\mathbf{v}$, die het D-gesimuleerde beeld voorstelt, wordt vermeligvuldigd met zijn eigen getransponeerde zodat we een tweedimensionale matrix $A=\mathbf{vv}^T$ krijgen waarvan de rijen en kolommen het oorspronkelijke lijnprofiel weerspiegelen.
+Al deze simulaties gebeuren in 2D, waarbij zowel de detector als het raster door eendimensionale lijnobjecten gesimuleerd worden. Bijgevolg is ook het gesimuleerde detectorbeeld inherent eendimensionaal. Om de resultaten beter te kunnen visualiseren wordt dit 1D-beeld omgevormd in een 2D-beeld door het \textit{uitproduct} te nemen. De vector $\mathbf{v}$, die het 1D-gesimuleerde beeld voorstelt, wordt vermeligvuldigd met zijn eigen getransponeerde zodat we een tweedimensionale matrix $A=\mathbf{vv}^T$ krijgen waarvan de rijen en kolommen het oorspronkelijke lijnprofiel weerspiegelen.\\
+
+Met deze functionaliteit werd er besloten om het raster op $\sim 40$~mm, en de detector op $\sim 130$~mm van de lens te plaatsen. Daarnaast werd er gekozen voor een PELCO 1GC100 grid, met een periode van $\sim 254 ~\mu$m en een rasterlijndikte van $\sim 50 ~\mu$m \cite{TedPella2018}. Figuur \ref{fig:Monte_Carlo_2} toont een gesimuleerd experiment met deze parameters, waarbij de object-puntbron voor het focaalvlak ligt en er een reëel beeld-puntbron wordt afgebeeld.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{Images/Monte_Carlo_1.png}
+    \includegraphics[width=1\linewidth]{Images/Monte_Carlo_1.png}
     \caption{Voorbeeld van een Monte Carlo simulatie van de rear mesh shadowgraph methode met een virtuele beeld-puntbron.}
     \label{fig:Monte_Carlo_1}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{Images/Monte_Carlo_2.png}
+    \includegraphics[width=1\linewidth]{Images/Monte_Carlo_2.png}
     \caption{Voorbeeld van een Monte Carlo simulatie van de rear mesh shadowgraph methode met een reëele beeld-puntbron.}
     \label{fig:Monte_Carlo_2}
 \end{figure}
 
+\subsection{3D-geprinte opstellingsonderdelen}
+Een bijkomende bevinding van deze thesis is de haalbaarheid van 3D-geprinte opstellingsonderdelen voor gebruik in een elektronenmicroscopieopstelling. Om de componenten op nauwkeurig instelbare posities te plaatsen, is een flexibeler opstellingssysteem vereist dan in eerdere experimenten werd gehanteerd, waar gebruik werd gemaakt van aluminium tussenringen en de z-rail van de microscoop. Er werd gekozen om het 30mm \textit{optical cage} systeem van ThorLabs te gebruiken, zoals afgebeeld op Figuur \ref{fig:ThorLabs_cage}. Hierbij wordt er gebruik gemaakt van vier parallelle aluminium staven waarop $30\mathrm{mm}\times30\mathrm{mm}$ kooiplaten bevestigd kunnen worden. Op deze manier is het mogelijk om in de microscoop een modulaire, verticale kolom van opstellingsonderdelen met nauwkeurig instelbare onderlinge afstanden op te bouwen.
 
-\subsubsection{3D-geprinte opstellingsonderdelen}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/ThorLabs_cage.png}
+    \caption{ThorLabs 30mm optical cage systeem. \cite{Thorlabs}}
+    \label{fig:ThorLabs_cage}
+\end{figure}
+
+Om de permanente magneetlens en het raster te kunnen positioneren, zijn op maat gemaakte houders vereist die compatibel zijn met het Thorlabs systeem. Hoewel deze via een externe CNC-service vervaardigd kunnen worden, biedt 3D-printen een aantrekkelijk alternatief dat zowel tijd- als kostenefficiënter is. Er zijn echter twee problemen met het gebruik van 3D-geprinte onderdelen in elektronenmicroscopie-opstellingen:
+
+\begin{enumerate}
+    \item 3D-geprinte onderdelen uit PLA (polymelkzuur, het meest gangbare 3D-printing materiaal) zijn isolatoren en kunnen een lading opbouwen die de elektronenbundel beïnvloedt.
+    \item PLA kan uitgassen waardoor het vacuum in de microscoop slechter wordt.
+\end{enumerate}
+Het eerste probleem kan worden aangepakt door het gebruik van geleidende PLA materialen, waarbij het polymeer wordt gedopeerd met elektrisch geleidende koolstofdeeltjes. Recent werd aangetoond dat deze het opladingseffect voldoende kunnen onderdrukken om in een elektronenmicroscoop gebruikt te worden \cite{Meloni2017}. Daarnaast is de druk in de MIRA microscoop bij de uitgevoerde experimenten groot genoeg ($\sim 0.1$~Pa) zodat het outgassen in de context van dit specifiek experiment geen groot effect heeft.\\
+
+Op basis van deze overwegingen werden een lenshouder, een rasterhouder en een apertuur ontworpen in Blender en geprint in een commercieel beschikbaar geleidend PLA \cite{hyuduo_conductive_pla} met een BambuLab A1 printer. De bijhorende \texttt{.step}-bestanden zijn samen met de broncode beschikbaar op GitHub. Figuur \ref{fig:3D_prints_measurements} toont de vervaardigde opstellingsonderdelen.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{Images/3D_prints_measurements.jpeg}
-    \caption{3D-geprinte opstellingsonderdelen gemaakt uit een geleidend PLA. Van links naar rechts: lenshouder, gridhouder, apertuur. Deze onderdelen zijn compatibel met ThorLabs $30$~mm cage plates.}
-    \label{fig:Monte_Carlo_2}
+    \caption{3D-geprinte opstellingsonderdelen gemaakt uit een geleidend PLA. Van links naar rechts: lenshouder, gridhouder, apertuur. Deze onderdelen zijn compatibel met ThorLabs $30$~mm kooiplaten.}
+    \label{fig:3D_prints_measurements}
 \end{figure}
 
-\subsubsection{Resultaten}
+\subsection{Resultaten}
+
 
 \chapter{Vooruitzicht}\label{ch:vooruitzicht}
 

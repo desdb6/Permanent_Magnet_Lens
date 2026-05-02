@@ -14,7 +14,7 @@
 \backcite {MyscopeCourse}{{8}{2.1}{figure.caption.4}}
 \backcite {MyscopeCourse}{{9}{2.2}{figure.caption.5}}
 \backcite {ravaka2011asbestos_sem}{{9}{2.3}{figure.caption.6}}
-\backcite {klementova2021hematite_hrtem}{{10}{2.4}{figure.caption.7}}
+\backcite {VanAert2013}{{10}{2.4}{figure.caption.7}}
 \backcite {ElektronenLenzenGuzzinati}{{10}{2.2}{section.2.2}}
 \backcite {MyscopeCourse}{{11}{2.5}{figure.caption.8}}
 \backcite {PWHawkes}{{11}{2.2.2.1}{subsubsection.2.2.2.1}}
@@ -28,13 +28,17 @@
 \backcite {el_kareh_1970}{{30}{3.4.2.1}{equation.3.4.18}}
 \backcite {hawkes_kasper_1989}{{32}{3.4.3}{subsection.3.4.3}}
 \backcite {Abbas_2016}{{33}{3}{Item.14}}
-\backcite {MagnetFAQ}{{34}{4}{Item.15}}
+\backcite {MagnetFAQ}{{33}{4}{Item.15}}
 \backcite {Buchenau_2014}{{34}{4.1}{figure.caption.26}}
-\backcite {Magnet_Outlet}{{40}{4.1.1}{table.caption.35}}
-\backcite {Magnet_Grade}{{40}{4.1.1}{table.caption.35}}
-\backcite {arnold_ndfeb_2019}{{40}{4.1.1}{table.caption.35}}
-\backcite {Hubs}{{41}{4.1.1}{figure.caption.37}}
-\backcite {MALLER199828}{{41}{4.1.1}{figure.caption.37}}
-\backcite {advacam_minipix_2024, advacam_advapix_2023}{{44}{4.2}{section.4.2}}
-\backcite {meshshadowgraphs}{{51}{4.2.2}{subsection.4.2.2}}
-\backcite {meshshadowgraphs}{{51}{4.2.2.1}{paragraph*.53}}
+\backcite {Magnet_Outlet}{{40}{4.2}{table.caption.35}}
+\backcite {Magnet_Grade}{{40}{4.2}{table.caption.35}}
+\backcite {arnold_ndfeb_2019}{{40}{4.2}{table.caption.35}}
+\backcite {Hubs}{{41}{4.2}{figure.caption.37}}
+\backcite {MALLER199828}{{41}{4.2}{figure.caption.37}}
+\backcite {advacam_minipix_2024, advacam_advapix_2023}{{45}{5}{chapter.5}}
+\backcite {meshshadowgraphs}{{52}{5.2}{section.5.2}}
+\backcite {meshshadowgraphs}{{52}{5.2.1}{paragraph*.53}}
+\backcite {TedPella2018}{{55}{5.2.2}{subsection.5.2.2}}
+\backcite {Thorlabs}{{57}{5.17}{figure.caption.61}}
+\backcite {Meloni2017}{{57}{5.2.3}{Item.21}}
+\backcite {hyuduo_conductive_pla}{{57}{5.2.3}{Item.21}}

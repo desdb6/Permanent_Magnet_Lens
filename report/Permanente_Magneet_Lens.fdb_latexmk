@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex Permanente_Magneet_Lens"] 1777669003.47373 "Permanente_Magneet_Lens.aux" "Permanente_Magneet_Lens.bbl" "Permanente_Magneet_Lens" 1777669016.62223 0
-  "./bibliography.bib" 1777655714.523 20972 7702b899c8976f0f79eccb47269be157 ""
+["bibtex Permanente_Magneet_Lens"] 1777716193.11268 "Permanente_Magneet_Lens.aux" "Permanente_Magneet_Lens.bbl" "Permanente_Magneet_Lens" 1777716206.3878 0
+  "./bibliography.bib" 1777712676.13531 22938 e179c4fff009212fe33bfdb457cb9c58 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/abbrv.bst" 1292289607 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "Permanente_Magneet_Lens.aux" 1777669016.44417 62015 33883852ae44567d944814f6254b5d06 "pdflatex"
+  "Permanente_Magneet_Lens.aux" 1777716206.20748 65682 1ac36a6d849250858320d7a053bc657c "pdflatex"
   (generated)
   "Permanente_Magneet_Lens.bbl"
   "Permanente_Magneet_Lens.blg"
   (rewritten before read)
-["pdflatex"] 1777669003.49307 "/home/des/Permanent_Magnet_Lens/report/Permanente_Magneet_Lens.tex" "Permanente_Magneet_Lens.pdf" "Permanente_Magneet_Lens" 1777669016.62245 0
+["pdflatex"] 1777716193.1352 "/home/des/Permanent_Magnet_Lens/report/Permanente_Magneet_Lens.tex" "Permanente_Magneet_Lens.pdf" "Permanente_Magneet_Lens" 1777716206.38805 0
   "/etc/texmf/web2c/texmf.cnf" 1776803370.79235 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/des/Permanent_Magnet_Lens/report/Permanente_Magneet_Lens.tex" 1777668990.04264 132605 04d7f52aebdf855c5da7277ddbd5f331 ""
+  "/home/des/Permanent_Magnet_Lens/report/Permanente_Magneet_Lens.tex" 1777716179.60458 136773 9660c95df1e435df19c376eec091bed5 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -272,8 +272,9 @@
   "Images/SEM_image.jpg" 1777317841.60256 319879 7b0236db94c8b15c518a2f97a9be1897 ""
   "Images/SEM_principle.png" 1776800886.91209 120761 adfca639d19ad86d10d3494b58ce2fb6 ""
   "Images/Sech_field.png" 1777539509.84335 91471 47f3cc9746b847f4b2ef321c3650ae18 ""
-  "Images/TEM_image.png" 1777318127.51954 109674 98fca297f0ef542e914145ffa32a54fa ""
+  "Images/TEM_image2.png" 1777710345.38971 335266 6bbc37cd05c152d0ece8cea566460585 ""
   "Images/TEM_principle.jpg" 1776800886.91509 239757 16e45e80f7995f7f8bd2587661379d9a ""
+  "Images/ThorLabs_cage.png" 1777712325.88629 252956 19c6bae23260b7e8db62800897e15fd1 ""
   "Images/Twin_Images.png" 1777663617.50064 137156 4d0eb35f9154127bbae3d1d0b3c5e8a5 ""
   "Images/analytic_expression_1_ring.png" 1776800886.91609 80894 b104ecb2b939e71a40450073fee47087 ""
   "Images/analytic_expression_2_rings.png" 1776800886.91709 127286 865164b2d82fbd702b4bd8c592d9a3b1 ""
@@ -305,12 +306,12 @@
   "Images/variable_d_ab.png" 1777539509.86506 85752 f99b3c0d7a42f75ba2e9e55418178786 ""
   "Logos/logo-uantwerpen-we-en-rgb-pos.pdf" 1776800886.96409 8462 da1ad7b8d9445e1bc658d46022dd4afa ""
   "Logos/logo-uantwerpen-we-nl-rgb-pos.pdf" 1776800886.96509 9551 18d75edb0e42308466208df32b9ba7bf ""
-  "Permanente_Magneet_Lens.aux" 1777669016.44417 62015 33883852ae44567d944814f6254b5d06 "pdflatex"
-  "Permanente_Magneet_Lens.bbl" 1777669003.48903 6340 252d0a5cd31a933719709321b1f94b33 "bibtex Permanente_Magneet_Lens"
-  "Permanente_Magneet_Lens.brf" 1777669016.48917 2239 f740485d38d33ac4d99bc6570973793e "pdflatex"
-  "Permanente_Magneet_Lens.out" 1777669005.01211 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Permanente_Magneet_Lens.tex" 1777668990.04264 132605 04d7f52aebdf855c5da7277ddbd5f331 ""
-  "Permanente_Magneet_Lens.toc" 1777669016.4911 4223 58fb468809d65f3e40f5989b9cf2fc19 "pdflatex"
+  "Permanente_Magneet_Lens.aux" 1777716206.20748 65682 1ac36a6d849250858320d7a053bc657c "pdflatex"
+  "Permanente_Magneet_Lens.bbl" 1777716193.13045 7370 8284adbb58564fa638b0185575732fa4 "bibtex Permanente_Magneet_Lens"
+  "Permanente_Magneet_Lens.brf" 1777716206.25333 2408 72916a2ac02ad399ced1ca6839844bcf "pdflatex"
+  "Permanente_Magneet_Lens.out" 1777716194.65454 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Permanente_Magneet_Lens.tex" 1777716179.60458 136773 9660c95df1e435df19c376eec091bed5 ""
+  "Permanente_Magneet_Lens.toc" 1777716206.25393 4134 f39348813fd293f11bb4af6b9f8eac18 "pdflatex"
   "uantwerpenbamathesis.cls" 1776800887.00509 17317 543b78871425bd418f17b8c69ea55a4d ""
   "uantwerpencolorlogoscheme.sty" 1776800887.00509 3997 60fa40da65f1cc76f44a56ad0903d87d ""
   "uantwerpencommonoptions.clo" 1776800887.00509 4339 d337bd93e0dd3d7f4efe9370b7db1688 ""
