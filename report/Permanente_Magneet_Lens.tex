@@ -53,7 +53,7 @@
 
 \bamadegree{we-nl-ba-fy}
 
-\title{Een compacte en betaalbare permanente magneet elektronenlens: van simulatie tot realisatie} % either don't split titles, or do so with hypen
+\title{Een compacte en open-source permanente magneet elektronenlens: van simulatie tot realisatie} % either don't split titles, or do so with hypen
                      % and a newline
 \subtitle{}
 \author{Des De Borger}
@@ -305,10 +305,10 @@ De relativistisch correcte versie van deze vergelijking is:
 \end{equation}
 Met $V=\Phi\left(1+\frac{e}{2mc^2}\Phi\right)$. Voor een versnelspanning van $30$~keV is dit een correctie van $2.93\%$. Deze vergelijking moet numeriek opgelost worden voor het geschatte magnetisch veld om de lenseigenschappen van lens te simuleren. \\
 
-Merk op dat de paraxiale bewegingsvergelijking lineair is. Dit betekent dat twee lineair onafhankelijke oplossingen voldoende is om de algemene oplossing van deze vergelijking op te stellen. Conventioneel noemt men $z_0$ de positie van het vlak van het voorwerp dat men met een magnetische lens wil uitvergroten, en kiest met twee basisoplossingen $g(z)$ en $h(z)$ zodanig dat:
+Merk op dat de paraxiale bewegingsvergelijking lineair is. Dit betekent dat twee lineair onafhankelijke oplossingen voldoende is om de algemene oplossing van deze vergelijking op te stellen. Conventioneel noemt men $z_o$ de positie van het vlak van het voorwerp dat men met een magnetische lens wil uitvergroten, en kiest met twee basisoplossingen $g(z)$ en $h(z)$ zodanig dat:
 \begin{align}\label{eq:BVW}
-    g(z_0)=1, g'(z_0)=0 \\[6pt]
-    h(z_0)=0, h'(z_0)=1
+    g(z_o)=1, g'(z_o)=0 \\[6pt]
+    h(z_o)=0, h'(z_o)=1
 \end{align}
 Merk op dat de oplossing $g$ het gedrag van een parallelle bundel beschrijft. Immers, de oplossing voor de paraxiale bewegingsvergelijking van een parallel elektron dat initieel op een constante afstand $r_0$ van de optische as beweegt kan geschreven worden als $r_0g(z)$. Stel dat $g(z)$ een nulpunt heeft, dan kruisen alle initieel parallel bewegende elektronen de optische as in dat nulpunt. Dit is exact de gewenste werking van een magnetische elektronenlens; het nulpunt van $g(z)$ is dan het brandpunt van de lens. Vergelijking \ref{eq:paraxialevgl_rel} lijkt erg op een harmonische oscillator (met een frequentie afhankelijk van $B^2$), wat betekent dat de elektronen steeds naar de optische as worden afgebogen. In het algemeen zal $g(z)$ daarom altijd een nulpunt hebben als $B(z)\neq0$. Dit effect zorgt er ook voor dat het onmogelijk is om een divergerende cilindersymmetrische magnetische lens te maken, wat voor het eerst werd aangetoond door Otto Scherzer in 1936 \cite{scherzer1936}.
 
@@ -365,7 +365,7 @@ Om een het ontwerp voor een werkende elektronenlens te realiseren moeten de geom
     \end{enumerate}
 \end{tcolorbox}
 
-\section{Opbouw en principe permanente magneetlens}
+\section{Opbouw en principe permanente magneetlens (Objectief 1)}
 Het doel is om geometrie te ontwerpen die een magnetisch veld veroorzaakt dat de elektronen op zo'n manier afbuigt zodanig dat een paralelle bundel geconcentreerd zal worden in een punt op de optische as. Deze volgende twee criteria zijn hierbij belangrijk.\\
 
 \begin{enumerate}
@@ -393,7 +393,7 @@ Het ontwerp dat in deze thesis wordt beschouwd bestaat uit een homogeen gemagnet
     Een permanente magneet lens kan gerealiseerd worden met een ontwerp waarbij een NdFeB ringmagneet gecombineerd wordt met axissymetrische poolschoenen. Dit vormt een magnetisch veld dat geconcentreerd wordt in de luchtspleet tussen de poolschoenen, waardoor de elektronen zeer kort interageren met dit magnetisch veld.
 \end{tcolorbox}
 
-\section{Analytische afschatting magnetisch veld}
+\section{Analytische afschatting magnetisch veld (Objectief 2)}
 Vooraleer de lenseigenschappen van de lens kunnen worden gesimuleerd, is het nuttig om een analytische schatting te maken van het magnetisch veld $B(z)$ op de symmetrieas van de lens. Hiervoor worden enkele belangrijke benaderingen gemaakt om de berekeningen te vereenvoudigen.\\
 
 \begin{enumerate}
@@ -539,7 +539,7 @@ De analytische afschatting kan numeriek gevalideerd met het ionen- en elektronen
     Het magnetisch veld op de symmetrie-as werd met een analytische uitdrukking benaderd door de oppervlakken van de poolschoenen te modelleren als twee oppervlakken met een homogene, tegengestelde poolladingsdichtheid. Het gebruiken van een analytische uitdrukking laat toe om ook de analytische afgeleiden te berekenen welke gebruikt kunnen worden om aberratiecoëfficienten te schatten. Een vergelijking van de analytische uitdrukking met een numerieke oplossing m.b.v. SIMION van de Laplace-vergelijking geeft een vrijwel perfecte overeenkomst.
 \end{tcolorbox}
 
-\section{Magnetische reluctantie van het circuit}\label{ch:reluctantie}
+\section{Magnetische reluctantie van het circuit (Objectief 3)}\label{ch:reluctantie}
 Om de analytische uitdrukking toe te passen om simulaties uit te voeren, is het cruciaal dat er een accurare waarde voor de oppervlaktepoolladingsdichtheden $\sigma_M$ gebruikt wordt. Hiervoor is moet er rekening gehouden worden met twee factoren: het \textit{demagnetiserend veld}, en de oppervlakte van de poolschoenoppervlakken.\\
 
 De eerste factor waar rekening mee moet worden gehouden is het demagnetiserend veld $H_d$. De Nd-magneet heeft een remanent magneetveld $B_r$, dit is het magnetisch veld dat in de magneet overblijft wanneer er geen uitwendige magnetische velden aangelegd worden. Wanneer de magneet in een magnetisch circuit met een luchtspleet wordt gebruikt, zorgen de oppervlakteladingen aan de luchtspleet voor een demagnetiserend veld in de poolschoenen en de magneet, dat het remanent veld tegenwerkt. Hierdoor is het werkelijke veld in de magneet $B_m$ kleiner dan het remanent veld $B_r$ dat typisch vermeld wordt op de databladeren van permanente magneten.\\
@@ -621,7 +621,7 @@ Dit invullen vullen in \ref{eq:H_m_H_g} leidt to:
     H_m = \frac{B_m A_g d_g}{\mu_0 A_g d_m} \Leftrightarrow \frac{B_m}{\mu_0 H_m} = \frac{A_g d_m}{A_g d_g} = P_c
 \end{equation}
 Deze coëfficiënt $P_c$ wordt de \textit{permeantiecoëccifient} genoemd en drukt de verhouding uit tussen de overgebleven magnetische fluxdichtheid $B_r$ en het demagnetiserend veld $H_d$ in de magneet \cite{mmpa_permanent_magnet_guidelines}. Voor de verdere analyse is het handiger om te werken met de intrinsieke permeantiecoëccifient $P_{ci}$, welke het verband uitdrukt tussen het remanent veld $B_r$ en het demagnetiserend veld $H_d$.
-\begin{equation}
+\begin{equation}\label{eq:Pci}
     P_{ci}=\frac{B_r}{\mu_0 H_m}=\frac{B_m+\mu_0 H_m}{\mu_0 H_m}=1+\frac{B_m}{\mu_0 H_m}=1+P_c = 1+\frac{A_g d_m}{A_g d_g}. 
 \end{equation}
 
@@ -670,7 +670,7 @@ De volledige analytische uitdrukking van het magnetisch veld op de optische as v
     Er wordt rekening gehouden met het demagnetiserend veld, dat de poolladingsdichtheden op de oppervlakken van de poolschoenen doet verkleinen. Een analogie met elektrische circuits laat toe om de permeantiecoëfficiënt van het magnetisch circuit van de lens te berekenen, waarna het werkingspunt op de $\mathrm{BH}$-curve gevonden kan worden. De oppervlaktepoolladingsdichtheid wordt berekend door de benadering te maken dat alle flux in de magneet wordt verdeeld over de oppervlakkes van de poolschoenen.
 \end{tcolorbox}
 
-\section{Implementatie in Python}
+\section{Implementatie in Python (Objectief 4)}
 Om de afhankelijkheid van de lenseigenschappen ($f, z_{Fi}, z_{Pi}$, etc.) van de lensparameters ($R_1, R_2, d_g, B_r$, etc.) te analyseren, werd een toolbox in Python ontwikkeld. Deze laat toe om snel de het magnetisch veld berekenen en plotten voor een bepaalde geometrie van de magneet en de poolschoenen, en vervolgens de paraxiale bewegingsvergelijking voor dit veld oplossen om zo de lenseigenschappen te berekenen. De broncode is publiek te vinden via \url{https://github.com/desdb6/Permanent_Magnet_Lens}.
 
 \subsection{Paraxiaal magnetisch veld}
@@ -746,7 +746,7 @@ We zien dat de piek van het Glaser's field en het $\operatorname*{sech}(z)$ veld
 \subsubsection{Numerieke oplossing}
 Om de paraxiale bewegingsvergelijking numeriek op te lossen, wordt de solve\_ivp functie van de scipy.integrate bibliotheek gebruikt. Figuur \ref{fig:setup_1} toont een plot van een numerieke oplossing en de berekende lenseigenschappen. De lenseigenschappen worden bepaald in de volgende stappen:
 \begin{enumerate}
-    \item Het objectvlak $z_0$ kan ingesteld worden op een positie ver van het lenscentrum weg. De paraxiale bewegingsvergelijking wordt voor de bijhorende beginvoorwaarden (zie \ref{eq:BVW}) opgelost met een 8ste orde Runge-Kutta methode (DOP853) om de twee lineair onafhankelijke oplossingen $g(z)$ en $h(z)$ te berekenen.
+    \item Het objectvlak $z_o$ kan ingesteld worden op een positie ver van het lenscentrum weg. De paraxiale bewegingsvergelijking wordt voor de bijhorende beginvoorwaarden (zie \ref{eq:BVW}) opgelost met een 8ste orde Runge-Kutta methode (DOP853) om de twee lineair onafhankelijke oplossingen $g(z)$ en $h(z)$ te berekenen.
     \item De oplossing $g(z)$ kan gebruikt worden om de lenseigenschappen te berekenen. Ten eerste wordt er gekeken in welk vlak de twee asymtoten van $g(z)$ (de object en beeld \textit{asymptotische bundels}) elkaar snijden. Dit vlak is het achterste/beeld hoofdvlak van de lens $z_{Pi}$.
     \item Er wordt berekend waar de beeld asymptotische bundel de symmetrie-as van de lens snijdt. Alle parallel bewegende elektronen zullen door dit punt passeren, dus dit is het brandpunt in het focusvlak $z_{Fi}$ van de lens.
     \item Door de symmetrie van het magnetisch veld kunnen het object beeldvlak en het object focusvlak eenvoudig berekend worden uit $z_{Po}=-z_{Pi}$ en $z_{Fo}=-z_{Fi}$.
@@ -774,7 +774,7 @@ Met de analystische afschatting van het veld en de analytische afgeleiden zijn i
     D&=\frac{3}{8f^2}+\frac{\eta^2}{48V}\int_{-\infty}^{+\infty}\left(\frac{4\eta^2}{V}B^4+5B'^2-BB''\right)g^4dz\\
 \end{align}
 Merk op dat de oplossing $g(z)$ van vergelijking \ref{eq:BVW} optreedt. Deze oplossingen moeten hierbij als dimensieloos beschouwd worden. Deze integralen zijn zeer zelden analytisch oplosbaar, en ook aangezien er geen analytische uitdrukkingen voor $g(z)$ en $h(z)$ berschikbaar zijn moeten deze numeriek worden opgelost door de Riemann-som met een kleine $\Delta z$ te nemen. 
-%Bovendien zijn deze oplossingen afhankelijk van de objectpositie $z_0$, dus zijn ook de aberratiecoëfficienten afhankelijk van de afstand tussen de lens en het object.
+%Bovendien zijn deze oplossingen afhankelijk van de objectpositie $z_o$, dus zijn ook de aberratiecoëfficienten afhankelijk van de afstand tussen de lens en het object.
 
 \begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 4]
     Er werd een Python-toolbox geïmplementeerd om de werking van de lens te simuleren waarmee op numerieke wijze de lenseigenschappen voor een bepaalde geometrie bepaald kunnen worden. De paraxiale bewegingsvergelijking wordt opgelost met een $8$ste orde Runge-Kuta methode om  thee linear onafhankelijk oplossingen $g(z)$ en $h(z)$ te vinden, waarna beeldvorming gesimuleerd kan worden door lineaire combinaties van de twee oplossingen te maken. De distortie en chromatische aberratiecoëfficiënten worden geëvalueerd door de integralen van het analytische veld $B(z)$ en haar afgeleiden te benaderen als Riemann-som.
@@ -792,7 +792,7 @@ Eens een simulatietoolbox in Python geïmplmenteerd is, kan deze toegepast worde
 \end{tcolorbox}
 
 
-\section{Criteria voor het lensontwerp}\label{ch:lensontwerp}
+\section{Criteria voor het lensontwerp (Objectief 5)}\label{ch:lensontwerp}
 Bij het ontwerpen van de lens moeten er rekening worden gehouden met het volgende:
 \begin{enumerate}
     \item De lens moet een dunne lenswerking vertonen, dus moet de positie van het hoofdvlak $z_{Pi}$ zo dicht mogelijk bij het centrum van de lens liggen, m.a.w. $\left|z_{Pi}\right|<0.1$~mm. Dit betekent dat dat $B(z)$ een smalle piek moet vertonen.
@@ -842,7 +842,7 @@ Bij het ontwerpen van de lens moeten er rekening worden gehouden met het volgend
     Daarnaast moet de geometrie voldoen aan beperkingen opgelegd door de CNC-toleranties en beschikbare magneetdimensies.
 \end{tcolorbox}
 
-\section{Simulatie van de lenseigenschappen}
+\section{Simulatie van de lenseigenschappen (Objectief 6)}
 Zoals beschreven in hoofdstuk \ref{ch:methodologie}, werd en een Python-toolbox ontwikkeld waarmee efficiënt de lenseigenschappen van een bepaald lensontwerp kunnen worden berekend. Deze toolbox maakt het mogelijk om de optimale lensparameters te bepalen via trial-and-error, door steeds de lensparameters aan te passen en de lenseigenschappen te berekenen. Het is echter nuttig om de invloed van de verschillende parameters te onderscheiden om ze individueel te kunnen onderzoeken. De toolbox wordt daarom uitgebreid om dit in kaart te brengen. Voorbeelden van \textit{variatieplots} die hierbij helpen worden getoond op Figuren \ref{fig:variable_R_1} tot \ref{fig:variable_T}.\\
 
 Er wordt voor een bepaalde lensparameter een boven- en ondergrens gekozen waarvoor (voor vaste overige lensparameters) de lenseigenschappen voor een groot aantal punten tussen deze twee grenzen worden berekend. De resultaten kunnen op een grafiek worden weergegeven om zo nog efficiënter de lensparameters te optimaliseren. Voor vier verschillende lensparameters ($R_1$, $R_2$, $d_g$, en $B_r$) is deze methode relevant, en hiervoor werd een functie geïmplementeerd waarmee dit soort grafieken kunnen worden geplot. Naast de lensparameters wordt op deze grafieken ook de permeantiecoëfficiënt $P_{ci}$ en de maximale magnetische fluxdichtheid $B_{max}$ geplot. Dit is handig om te voorkomen dat de reluctantie van het magnetisch circuit te groot gemaakt wordt, en om saturatie van de poolschoenen te voorkomen. Voor de variatie $B_r$ worden deze bijkomende eigenschappen niet getoond, aangezien $P_{ci}$ onveranderd blijft onder een herschaling van de $\mathrm{BH}$-curve en $B_{max}$ lineair schaalt met $B_{r}$. Daarnaast heeft het variëren van de afmetingen van de magneet enkel een verandering van $B_m$ als gevolg, war ook kan worden gemodelleerd door het variëren van $B_r$.\\
@@ -886,7 +886,7 @@ Naast de vier genoemde lensparameters is het ook nuttig om een variatieplot van 
 \end{figure}
 
 Er werden gelijkaardige variatieplots geïmplementeerd om ook de distortiecoëfficiënt $D$ in functie van de lensparameters $R_1$, $R_2$, $d_g$, en $B_r$ te bepalen. Grafieken van de distortiecoëfficiënt in functie van de lensparameters worden getoond op Figuur \ref{fig:ab_grid_2x2}.
-% Zoals eerder vermeld zijn $D$ en $C_M$ afhankelijk van de objectafstand $z_0$, dus om een correcte vergelijking tussen verschillende lensiegenschappen te maken, houden we de objectafstand constant op $z_0=25$~mm, wat een typicshe afstand is bij een focales lengtes waarbij we werken ()$f\sim 10$~mm). 
+% Zoals eerder vermeld zijn $D$ en $C_M$ afhankelijk van de objectafstand $z_o$, dus om een correcte vergelijking tussen verschillende lensiegenschappen te maken, houden we de objectafstand constant op $z_o=25$~mm, wat een typicshe afstand is bij een focales lengtes waarbij we werken ()$f\sim 10$~mm). 
 \begin{figure}[H]
     \centering
 
@@ -1067,11 +1067,11 @@ Figuur \ref{fig:Lens_in_MIRA} toont een SEM beeld van de permanente magneet elek
     \label{fig:MIRA_setup}
 \end{figure}
 
-\section{Kwalitatieve bespreking beeldvorming}\label{ch:kwalitatief}
-De focale lengte van de lens werd enkel m.b.v. de toolbox voorspeld en is in principe niet gekend. In het ideale geval stemt de werkelijke focale lengte hier nauwkeurig mee overeen, maar afwijkingen zijn in de praktijk niet uit te sluiten en zelfs verwacht, aangezien we in de toolbox een perfecte lenswerking wordt verondersteld. Bovendien is het belangrijk om eerst te onderzoeken of de lens überhaupt een bruikbare werking heeft, alvorens over te gaan naar een gedetailleerde experimentele bepaling van de focale lengte. Om deze reden heeft het voor de eerste experimenten dan ook weinig zin om een opstelling te maken waarin de object- en beeldafstand nauwkeurig worden gekozen om een vooraf bepaalde magnificatie te krijgen; de lenswerking wordt eerst getest door arbitraire afstanden te kiezen en het resulterend beeld kwalitatief te beoordelen.\\
+\section{Kwalitatieve bespreking beeldvorming (Objectief 7)}\label{ch:kwalitatief}
+De focale lengte van de lens werd enkel m.b.v. de toolbox voorspeld en is in principe niet gekend. In het ideale geval stemt de werkelijke focale lengte hier nauwkeurig mee overeen, maar afwijkingen zijn in de praktijk niet uit te sluiten en zelfs verwacht, aangezien we in de toolbox een perfecte lenswerking wordt verondersteld. Bovendien is het belangrijk om eerst te onderzoeken of de lens überhaupt een bruikbare werking heeft, alvorens over te gaan naar een gedetailleerde experimentele bepaling van de focale lengte. Om deze reden heeft het voor de eerste experimenten dan ook weinig zin om een opstelling te maken waarin de object- en beeldafstand nauwkeurig worden gekozen om een vooraf bepaalde vergroting te krijgen; de lenswerking wordt eerst getest door arbitraire afstanden te kiezen en het resulterend beeld kwalitatief te beoordelen.\\
 
-\subsection{Eerste experiment: EMAT logo}
-Het eerste uitgevoerde experiment trachtte een uitvergroot beeld te vormen van een TEM-raster waarbij het EMAT-logo wordt gevormd door de rasterlijnen. Figuren \ref{fig:Emat_Feature_SEM} en \ref{fig:Emat_Feature_STEM} tonen SEM beelden van het beschouwde raster. In dit experiment werd de volledige kolom van de microscoop gebruikt. Het raster werd op houder op de z-rail vastgemaakt en zo hoog mogelijk ingesteld. De lens werd vastgemaakt met kopertape op een PCB-plaat, welke op het platform in de microscoop werd gelegd, met het centrum op $\sim20$~mm van het raster. De detector werd ingesteld op de laagst mogelijke positie, op $\sim200$~mm van de lens.
+\subsection{Eerste experiment: letter E}
+Het eerste uitgevoerde experiment trachtte een uitvergroot beeld te vormen van een TEM-raster waarbij de letter E wordt gevormd door de rasterlijnen. Figuren \ref{fig:Emat_Feature_SEM} en \ref{fig:Emat_Feature_STEM} tonen SEM beelden van het beschouwde raster. In dit experiment werd de volledige kolom van de microscoop gebruikt. Het raster werd op houder op de z-rail vastgemaakt en zo hoog mogelijk ingesteld. De lens werd vastgemaakt met kopertape op een PCB-plaat, welke op het platform in de microscoop werd gelegd, met het centrum op $\sim20$~mm van het raster. De detector werd ingesteld op de laagst mogelijke positie, op $\sim200$~mm van de lens.
 
 
 \begin{figure}[H]
@@ -1089,7 +1089,7 @@ Het eerste uitgevoerde experiment trachtte een uitvergroot beeld te vormen van e
         \caption{}
         \label{fig:Emat_Feature_STEM}
     \end{subfigure}
-    \caption{SEM beelden van een raster waarbij het EMAT logo wordt gevormd door rasterbalken.}
+    \caption{SEM beelden van een raster waarbij de letter E wordt gevormd door rasterbalken.}
     \label{fig:Emat_Feature_SEM_full}
 \end{figure}
 
@@ -1208,8 +1208,11 @@ Op Figuur \ref{fig:18.03.26_raster} is de kruisvormige bundel, karakteristiek aa
     \label{fig:Twin_Images}
 \end{figure}
 
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 7]
+    De lens vertoont een correcte werking waarmee ik er in ben geslaagd om uitvergrote beelden van TEM-rasters te maken. Deze beelden vertonen een grote distortie waarbij beeldpunten die zich ver van de optische as bevinden met een hogere vergroting worden afgebeeld dan beeldpunten die zich dicht bij de optische as bevinden. Dit effect is mitigeerbaar dooe kleinere objecten met een grotere magnificatie af te beelden. Wegens de aanwezigheid van een secundaire elektronenbundel met een andere energie in de MIRA SEM worden er in sommige gevallen twee overlappende beelden gevormd.
+\end{tcolorbox}
 
-\section{Kwantitatieve validatie focale lengte}
+\section{Kwantitatieve validatie focale lengte (Objectief 8)}
 Om de accuraatheid van de resultaten verkregen m.b.v. de simulatietoolbox te valideren, moet de focale lengte van de lens ook experimenteel bepaald worden. Dit proces vereist enkele stappen.
 \begin{enumerate}
     \item Er moet een experimentele methode gekozen worden waarmee de focale lengte bepaald kan worden.
@@ -1224,9 +1227,9 @@ Om de focale lengte en van de lens te bepalen wordt er een aangepaste versie geb
 
 \paragraph{Reëel beeld}
 
-De opstelling die men toepast wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph}. In de methode beschreven in \cite{meshshadowgraphs} wordt er een puntbron op de optische as gevormd die zich op een afstand $z_0>f$ van de lens gevindt. Dit wordt de \textit{object-puntbron} genoemd. Als men de lens als dun veronderstelt, dan kan de dunne lensformule toegepast worden:
+De opstelling die men toepast wordt getoond op Figuur \ref{fig:rear_mesh_shadowgraph}. In de methode beschreven in \cite{meshshadowgraphs} wordt er een puntbron op de optische as gevormd die zich op een afstand $z_o>f$ van de lens gevindt. Dit wordt de \textit{object-puntbron} genoemd. Als men de lens als dun veronderstelt, dan kan de dunne lensformule toegepast worden:
 \begin{equation}\label{eq:thin_lens_formula}
-    \frac{1}{f}=\frac{1}{z_0}+\frac{1}{z_i}
+    \frac{1}{f}=\frac{1}{z_o}+\frac{1}{z_i}
 \end{equation}
 De puntbron wordt dan achter de lens afgebeeld op een afstand $z_i>f$ van de lens. Dit noemt men de \textit{beeld-puntbron}. Men plaatst nu een raster met een nauwkeurig gekende periode van $e_1$ op een afstand $b$ van de lens, waarbij $b>z_i$ zodat de elektronenbundel wordt gefocusseerd voor het raster. Op een afstand $d$ van het raster bevindt zich een elektronendetector. Het beeld van de puntbron op $z_i$ veroorzaakt nu een divergerende elektronenbundel die een uitvergroot schaduwbeeld van het raster op de detector werpt. 
 \begin{figure}[H]
@@ -1258,18 +1261,18 @@ Het is mogelijk dat de werkelijke focale lengte van de lens onderschat wordt bij
     \caption{Rear mesh shadowgraph methode waarbij de object-puntbron achter het focaalvlak van de lens ligt. De elektronenbundel wordt nu niet gefocusseerd in een punt, maar de elektronenbundel is nog steeds divergerend wat een vergroting $M>1$ geeft. }
     \label{fig:rear_mesh_shadowgraph_virtual}
 \end{figure}
-Het is met deze opstelling nog steeds mogelijk om op deze manier de focale lengte te berekenen. Opnieuw volgt uit gelijkvormigheid dat:
+Het is met deze opstelling nog steeds mogelijk om op deze manier de focale lengte te berekenen. Het verschil met het reëele geval is dat $z_i$ nu als negatief wordt gedefiniëerd aangezien het beeld virtueel is. Uit gelijkvormigheid volgt dan:
 \begin{equation}
-    \frac{e}{z_i+b}=\frac{E}{z_i+c+d}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{z_i+b}
+    \frac{e}{-z_i+b}=\frac{E}{-z_i+b+d}\Leftrightarrow\frac{E}{e}=M=1+\frac{d}{-z_i+b}
 \end{equation}
 Dit omvormen naar $z_i$ geeft:
 \begin{equation}
     z_i=b-\frac{d}{M-1}
 \end{equation}
 
-Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:image_dist_real}). Opnieuw wordt \ref{eq:thin_lens_formula} gebruikt om $f$ te berekenen.\\
+Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:image_dist_real}). Dit betekent dat we in feite geen onderscheid hoeven te maken tussen de twee mogelijke scenarios; door de gevonden waarden in te vullen in vergelijking \ref{eq:image_dist_real}, zal uitgewezen worden of de beeld-puntbron reëel of virtueel is afhankelijk van het teken van $z_i$.\\
 
-In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks metingen van $z_i$ voor verschillende waarden van $z_0$. In de microscoop kan dit gerelaiseerd worden door de \textit{werkingsafstand} aan te passen. Deze instelling geeft de verticale afstand van de elektronenbron tot het punt waar de elektronenbundel geconvergeerd wordt. De werkingsafstand komt met andere woorden overeen met $z_0$.\\
+In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks metingen van $z_i$ voor verschillende waarden van $z_o$. In de microscoop kan dit gerelaiseerd worden door de \textit{werkingsafstand} aan te passen. Deze instelling geeft de verticale afstand van de elektronenbron tot het punt waar de elektronenbundel geconvergeerd wordt. De werkingsafstand $z_{werking}$ komt met andere woorden overeen met $z_{lens}-z_o$.\\
 
 % \paragraph{Parallelle bundel}
 
@@ -1303,14 +1306,14 @@ Met deze functionaliteit werd er besloten om het raster op $\sim 40$~mm, en de d
     \label{fig:Monte_Carlo_2}
 \end{figure}
 
-Met deze simulaties is het mogelijk om de nauwkeurigheid van de rear mesh shadowgraph methode te vallideren. Het is mogelijk om op basis van het gesimuleerde detectorbeeld de magnificatie van het schaduwbeeld in te schatten en in te vullen in \ref{eq:image_dist_real}. Als we hieruit de focale lengte berekenen, dan vinden we een waarde die binnen $\pm 0.1$~mm van de werkelijke gesimuleerde waarde ligt. Dit is een indicatie dat de methode voldoende nauwkeurig is om de focale lengte te berekenen.
+Met deze simulaties is het mogelijk om de nauwkeurigheid van de rear mesh shadowgraph methode te vallideren. Het is mogelijk om op basis van het gesimuleerde detectorbeeld de vergroting van het schaduwbeeld in te schatten en in te vullen in \ref{eq:image_dist_real}. Als we hieruit de focale lengte berekenen, dan vinden we een waarde die binnen $\pm 0.1$~mm van de werkelijke gesimuleerde waarde ligt. Dit is een indicatie dat de methode voldoende nauwkeurig is om de focale lengte te berekenen.
 
 \subsection{3D-geprinte opstellingsonderdelen}
 Om de componenten op nauwkeurig instelbare posities te plaatsen, is een flexibeler opstellingssysteem vereist dan in eerdere experimenten werd gehanteerd, waar gebruik werd gemaakt van aluminium tussenringen en de z-rail van de microscoop. Er werd gekozen om het 30mm \textit{optical cage} systeem van ThorLabs te gebruiken, zoals afgebeeld op Figuur \ref{fig:ThorLabs_cage}. Hierbij wordt er gebruik gemaakt van vier parallelle aluminium staven waarop $30\mathrm{mm}\times30\mathrm{mm}$ kooiplaten bevestigd kunnen worden. Op deze manier is het mogelijk om in de microscoop een modulaire, verticale kolom van opstellingsonderdelen met nauwkeurig instelbare onderlinge afstanden op te bouwen.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{Images/ThorLabs_cage.png}
+    \includegraphics[width=0.5\linewidth]{Images/ThorLabs_cage.png}
     \caption{ThorLabs 30mm optical cage systeem. \cite{Thorlabs}}
     \label{fig:ThorLabs_cage}
 \end{figure}
@@ -1324,36 +1327,35 @@ Om de permanente magneetlens en het raster te kunnen positioneren, zijn op maat 
 
 Het eerste probleem kan worden aangepakt door het gebruik van geleidende PLA materialen, waarbij het polymeer wordt gedopeerd met elektrisch geleidende koolstofdeeltjes. Recent werd aangetoond dat deze het opladingseffect voldoende kunnen onderdrukken om in een elektronenmicroscoop gebruikt te worden \cite{Meloni2017}. Daarnaast is de druk in de MIRA microscoop bij de uitgevoerde experimenten groot genoeg ($\sim 0.1$~Pa) zodat het outgassen in de context van dit specifiek experiment geen groot effect heeft.\\
 
-Op basis van deze overwegingen werden een lenshouder, een rasterhouder en een apertuur ontworpen in Blender en geprint in een commercieel beschikbaar geleidend PLA \cite{hyuduo_conductive_pla} met een BambuLab A1 printer. De bijhorende \texttt{.step}-bestanden zijn samen met de broncode beschikbaar op GitHub. Figuur \ref{fig:3D_prints_measurements} toont de vervaardigde opstellingsonderdelen.
+Op basis van deze overwegingen werden een lenshouder, een rasterhouder en een apertuur ontworpen in het 3D-programma Blender en geprint in een commercieel beschikbaar geleidend PLA \cite{hyuduo_conductive_pla} met een BambuLab A1 printer. De \texttt{.step}-bestanden van deze onderdelen zijn samen met de broncode beschikbaar op GitHub. Figuur \ref{fig:3D_prints_measurements} toont de vervaardigde opstellingsonderdelen.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{Images/3D_prints_measurements.jpeg}
+    \includegraphics[width=0.6\linewidth]{Images/3D_prints_measurements.jpeg}
     \caption{3D-geprinte opstellingsonderdelen gemaakt uit een geleidend PLA. Van links naar rechts: lenshouder, gridhouder, apertuur. Deze onderdelen zijn compatibel met ThorLabs $30$~mm kooiplaten.}
     \label{fig:3D_prints_measurements}
 \end{figure}
 
 \subsection{Uitvoering experiment}
-In deze sectie bespreken we de uitvoering en de resultaten van het experiment. De foutenvlaggen die bij de waarden worden vermeld volgen uit een foutenpropagatie die wordt uitgewerkt in appendix \ref{ch:foutenpropagatie}. Figuur \ref{fig:tower} toont de kolom die in dit experiment gebruikt werd met de 3D-geprinte lens- en rasterhouders. De kolom wordt op de detector, recht onder de elektronenbron geplaatst. Figuur \ref{fig:tower_schematic} geeft een schematische illustratie de uitvoering van het experiment. 
-
+In deze sectie bespreken we de uitvoering en de resultaten van het experiment. De foutenvlaggen die bij de waarden worden vermeld volgen uit een foutenpropagatie die wordt uitgewerkt in appendix \ref{ch:foutenpropagatie}. Figuur \ref{fig:tower} toont de kolom met de 3D-geprinte lens- en rasterhouders die in dit experiment gebruikt werd. De kolom wordt op de detector, recht onder de elektronenbron geplaatst. Figuur \ref{fig:tower_schematic} geeft een schematische illustratie van de werking van het experiment. 
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.28\linewidth}
+    \begin{subfigure}[b]{0.29\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{Images/tower_4_crop.png}
+        \includegraphics[width=\linewidth]{Images/tower_7_crop.png}
         \caption{}
         \label{fig:tower_4_crop}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.28\linewidth}
+    \begin{subfigure}[b]{0.29\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{Images/tower_7_crop.png}
+        \includegraphics[width=\linewidth]{Images/tower_4_crop.png}
         \caption{}
         \label{fig:tower_7_crop}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.4\linewidth}
+    \begin{subfigure}[b]{0.35\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Images/tower_schematic.png}
         \caption{}
@@ -1363,7 +1365,7 @@ In deze sectie bespreken we de uitvoering en de resultaten van het experiment. D
     \label{fig:tower}
 \end{figure}
 
-De afstanden $z_{lens}$, $z_{raster}$ en $z_{detector}$ moeten nauwkeurig worden opgemeten om een nauwkeurige waarde voor de focale lengte te verkrijgen. De resultaten worden hieronder weergegeven:
+De afstanden $z_{lens}$, $z_{raster}$ en $z_{detector}$ moeten nauwkeurig worden opgemeten om een nauwkeurige waarde voor de focale lengte te verkrijgen. De resultaten worden weergegeven in Tabel \ref{tb:z_lens_grid_detector}:
 
 \begin{table}[H]
     \centering
@@ -1374,29 +1376,219 @@ De afstanden $z_{lens}$, $z_{raster}$ en $z_{detector}$ moeten nauwkeurig worden
     \multicolumn{1}{|c|}{$z_\mathrm{raster}$}   & \multicolumn{1}{c|}{$144.22$}      & \multicolumn{1}{c|}{$0.14$}      \\ \midrule
     \multicolumn{1}{|c|}{$z_\mathrm{detector}$} & \multicolumn{1}{c|}{$228.00$}      & \multicolumn{1}{c|}{$0.10$}      \\ \bottomrule
     \end{tabular}
+    \caption{Opgemeten waarden voor $z_{lens}$, $z_{raster}$ en $z_{detector}$.}
+    \label{tb:z_lens_grid_detector}
 \end{table}
 
-Voor deze waarden werd er een reeks beelden opgenomen voor werkingsafstanden van 
-
-Op elk beeld worden er zo veel mogelijk afstanden van de rasteropeningen opgemeten via een interactief Python-script waarbij de gebruiker de hoeken van een rasteropening kan aanklikken. Dit wordt getoond op Figuur \ref{fig:measure_pitch_distances}. Deze waarden worden uitgemiddeld. Met de berekende reeks waarden voor $z_i$ kan dan voor elke $z_0$ waarde de focale lengte berekend, waarna een uitmiddeling de finale waarde voor $f$ levert. 
+Voor deze waarden werden er beelden opgenomen voor werkingsafstanden van $84$, $86$, $88$, $90$, $92$, en $95$~mm. Dit komt dan overeen met waarden voor $z_o$ van $17.48$, $15.48$, $13.48$, $11.48$, $9.48$, en $6.48$~mm. Figuur \ref{fig:rearmeshshadowgraphimages} toont twee beelden uit deze reeks. De volledige beeldenreeks wordt getoond in appendix \ref{ch:supp_beelden}. Op deze beelden is duidelijk zichtbaar dat de vergroting van het schaduwbeeld toeneemt bij een grotere werkingsafstand. Op elk beeld uit deze reeks worden er zo veel mogelijk afstanden van de rasteropeningen opgemeten via een interactief Python-script waarbij de gebruiker de hoeken van een rasteropening kan aanklikken. Dit wordt getoond op Figuur \ref{fig:measure_pitch_distances}. Deze waarden worden uitgemiddeld om zo voor elk beeld een gemiddelde en een standaardfout te verkrijgen.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{Images/measure_pitch_distances.png}
-    \caption{Er wordt gebruik gemaakt van een Python-script waarmee de hoekpunten van de rasteropeningen kunnen worden aangeklikt, waarmee de magnificatie van het beeld berekend kan worden om uiteindelijk de focale lengte te vinden.}
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/92mm.png}
+        \caption{}
+        \label{fig:92mm}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/86mm.png}
+        \caption{}
+        \label{fig:86mm}
+    \end{subfigure}
+    \caption{AdvaPIX beelden bij werkingsafstanden van $92$mm en $86$mm. De vergroting neemt toe bij een grotere werkingsafstand.}
+    \label{fig:rearmeshshadowgraphimages}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Images/measure_pitch_distances.png}
+    \caption{Er wordt gebruik gemaakt van een Python-script waarmee de hoekpunten van de rasteropeningen kunnen worden aangeklikt, waarmee de vergroting van het beeld berekend kan worden om uiteindelijk de focale lengte te vinden.}
     \label{fig:measure_pitch_distances}
 \end{figure}
 
+Tabel \ref{tb:vergroting_werkingsafstand} geeft de gemeten rasteropeningen en hun standaardfout, zowel in pixels als in mm, alsook de berekende vergroting van het schaduwbeeld. De berekende vergrotingen $M$ kunnen dan worden ingevuld in vergelijking \ref{eq:image_dist_real} om een reeks waarden voor $z_i$ te vinden. Met de objectafstanden $z_o$ die we verkregen uit de werkingsafstanden en de berekende beeldafstanden $z_i$ is het vervolgens mogelijk om een reeks waarden voor de focale lengte $f$ te berekenen. Deze resultaten worden getoond in Tabel \ref{tb:brandpuntsafstand}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}cccc@{}}
+    \toprule
+    $z_{werking}$ (mm) & Gemeten rasteropening (pixels) & Gemeten rasteropening (mm) & Vergroting \\ \midrule
+    \multicolumn{1}{|c|}{$84$} & \multicolumn{1}{c|}{$6.57 \pm 0.13$}  & \multicolumn{1}{c|}{$0.362 \pm 0.007$} & \multicolumn{1}{c|}{$1.772 \pm 0.036$} \\ \midrule
+    \multicolumn{1}{|c|}{$86$} & \multicolumn{1}{c|}{$7.31 \pm 0.12$}  & \multicolumn{1}{c|}{$0.402 \pm 0.006$} & \multicolumn{1}{c|}{$1.971 \pm 0.032$} \\ \midrule
+    \multicolumn{1}{|c|}{$88$} & \multicolumn{1}{c|}{$8.36 \pm 0.24$}  & \multicolumn{1}{c|}{$0.460 \pm 0.013$} & \multicolumn{1}{c|}{$2.254 \pm 0.065$} \\ \midrule
+    \multicolumn{1}{|c|}{$90$} & \multicolumn{1}{c|}{$8.87 \pm 0.07$}  & \multicolumn{1}{c|}{$0.488 \pm 0.004$} & \multicolumn{1}{c|}{$2.392 \pm 0.019$} \\ \midrule
+    \multicolumn{1}{|c|}{$92$} & \multicolumn{1}{c|}{$9.40 \pm 0.04$}  & \multicolumn{1}{c|}{$0.517 \pm 0.002$} & \multicolumn{1}{c|}{$2.535 \pm 0.011$} \\ \midrule
+    \multicolumn{1}{|c|}{$95$} & \multicolumn{1}{c|}{$10.14 \pm 0.10$} & \multicolumn{1}{c|}{$0.558 \pm 0.005$} & \multicolumn{1}{c|}{$2.735 \pm 0.026$} \\ \bottomrule
+    \end{tabular}
+    \caption{Gemeten rasteropening en vergroting bij verschillende werkingsafstanden.}
+    \label{tb:vergroting_werkingsafstand}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}ccc@{}}
+    \toprule
+    $z_o$ (mm) & $z_i$ (mm) & $f$ (mm) \\ \midrule
+    \multicolumn{1}{|c|}{$17.48 \pm 1.02$} & \multicolumn{1}{c|}{$-65.3 \pm 5.1$}  & \multicolumn{1}{c|}{$23.9 \pm 2.0$}  \\ \midrule
+    \multicolumn{1}{|c|}{$15.48 \pm 1.02$} & \multicolumn{1}{c|}{$-43.1 \pm 2.8$}  & \multicolumn{1}{c|}{$24.1 \pm 2.6$}  \\ \midrule
+    \multicolumn{1}{|c|}{$13.48 \pm 1.02$} & \multicolumn{1}{c|}{$-23.7 \pm 3.5$}  & \multicolumn{1}{c|}{$31.3 \pm 8.2$}  \\ \midrule
+    \multicolumn{1}{|c|}{$11.48 \pm 1.02$} & \multicolumn{1}{c|}{$-17.03 \pm 0.82$} & \multicolumn{1}{c|}{$35 \pm 10$}     \\ \midrule
+    \multicolumn{1}{|c|}{$9.48 \pm 1.02$}  & \multicolumn{1}{c|}{$-11.45 \pm 0.39$} & \multicolumn{1}{c|}{$55 \pm 36$}     \\ \midrule
+    \multicolumn{1}{|c|}{$6.48 \pm 1.02$}  & \multicolumn{1}{c|}{$-5.16 \pm 0.73$}  & \multicolumn{1}{c|}{$-25 \pm 23$}   \\ \bottomrule
+    \end{tabular}
+    \caption{Berekende $z_i$ bij de verschillende werkingsafsanden met bijbehorende berekende focale lengtes.}
+    \label{tb:brandpuntsafstand}
+\end{table}
+
+We zien dat alle berekende waarden voor $z_i$ negatief zijjn, wat betekent dat er enkel virtuele beelden gevormd werden. Dit is een eerste indicatie dat ik de focale lengte van de lens heb onderschat. Ook wanneer we de berekende waarden voor $f$ met de gesimuleerde waarde van $11.437$~mm vergelijken zien we dat de werkelijke waarde meer dan een factor $2$ groter is dan verwacht. De laatste waarde voor $f$, met een werkingsafstand van $95$~mm is negatief, wat een eigenschap is van een divergerende elektronenlens. Zoals eerder vermeld kan een magnetische elektronenlens met een cilindersymmetrisch magnetisch veld niet diveregnt zijn \cite{scherzer1936}, dus is dit hoogstwaarschijnlijk een gevolg van een meetfout bijv. een verkeerd aangegeven werkingsafstand.  Dit resultaat is onfysisch en waardoor deze meting wordt uitgesloten uit de verdere analyse. Om een finale waarde voor $f$ te bekomen wordt het gewogen gemiddelde van deze resultaten genomen aangezien de fouten op de waarden meer dan $\%10$ verschillen. De uiteindelijke experimentele waarde is dan:
+
+\begin{equation}\label{eq:exp_focal_length}
+    f = 24.6 \pm 1.6 \mathrm{mm}
+\end{equation}
+
+Deze waarde is groter dan voorspeld. De meest waarschijnlijke verklaring voor dit effect is dat er veldlijnen weglekken, waardoor de magnetische veldsterkte in het gat van de lens kleiner is dan voorspeld. In de simulatietoolbox veronderstelt men immers een perfecte lenswerking zonder uitwendig magnetisch veld. Experimenteel werd echter vastgesteld dat de lens magnetiseerbare voorwerpen aantrekt, wat het bestaan van een uitwendig veld bevestigt en dus een indicatie van het weglekken van magnetisch veld is. \\
+
+Bovendien zijn er geen databladeren van de gebruikte ringmagneet beschikbaar, waardoor de toolbox een $\mathrm{BH}$-curve van een andere magneet met dezelfde graad hanteert. Ook dit kan voor een onverwachte werking van de lens zorgen. Daarnaast is het mogelijk dat de interne permeantiecoëfficiënt kleiner is dan voorspeld door de analytische uitdrukking (zie \ref{eq:Pci}), wat voor een groter demagnetiserend veld en een zwakkere lenswerking zorgt.\\
+
+Hierbij is het belangrijk om te onthouden dat de afbuiging van de elektronen evenredig is met $B^2$, wat betekent dat bijv. een halvering van het magnetisch veld de focale lengte met een factor $\sim 4$ vergroot. Om dit kwantitatief te onderbouwen werd gesimuleerd welke reductie van $B$ nodig is om de experimentele focale lengte te reproduceren. Een verkleining van $B$ met een factor $0.67$ geeft een focale lengte van $24.663$~mm, wat in goede overeenstemming met de experimentele waarde is. Figuur \ref{fig:leak_67} toont de lenswerking in dit geval.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/leak_67.png}
+    \caption{De lens is zwakker dan voorspeld, wat een indicatie is dat er magnetische veldlijnen uitwendig weglekken en niet deelnemen aan de lenswerking. Een verkleining met factor $0.67$ van het magnetisch veld in het gat van de lens geeft een gesimuleerde focale lengte van $24.663$~mm, wat goed overeenkomt met de experimentele geobserveerde waarde.}
+    \label{fig:leak_67}
+\end{figure}
+
+De conclusie hier is daarom dat er verschillende factoren kunnen bijdragen aan het verzwakken van de lens. Er zijn vervolgexperimenten nodig om de invloed van deze factoren te kwantificeren, zoals een meting van het magnetisch veldprofiel langs de $z$-as m.b.v. een kleine Hall-sensor.
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!40!white, sharp corners,title=Realisatie objectief 8]
+    De focale lengte werd kwantitatief bepaald m.b.v. de rear mesh shadowgraph methode. Een uitmiddeling over beelden opgenomen met verschillende werkingsafstanden geeft een waarde voor de focale lengte van de lens:
+    \begin{equation*}
+        f = 25 \pm 2 \mathrm{mm}
+    \end{equation*}
+    Deze waarde is beduidend groter dan de gesimuleerde waarde van $11.4$~mm. Hiervoor zijn verschillende factoren verantwoordelijk, met name het weglekken van veldlijnen die een uitwendig magnetisch veld veroorzaken.
+\end{tcolorbox}
+
 \chapter{Vooruitzicht}\label{ch:vooruitzicht}
+
 
 \chapter{Besluit}\label{ch:besluit}
 
 \appendix
 
 \chapter{Foutenpropagatie rear mesh shadowgraph methode}\label{ch:foutenpropagatie}
+In deze sectie wordt de foutenpropagatie voor het bepalen van de focale lengte in meer detail uitgelegd.\\
+
+Voor de lengte van de totale verticale kolom in de microscoop $z_{detector}$ werd de waarde van de blauwdruk van de MIRA microscoop genomen. Om eventuele toleranties in rekening te nemen werd er gekozen voor een fout op deze meting van $s_{z_{detector}}=0.1$~mm.\\
+
+Bij het meten van de afstanden tussen de lens, het raster en de detector werd er een digitale schuifmaat met een precisie van $0.01$~mm. Om menselijke meetfouten in rekening te nemen werd er gekozen voor een fout op deze metingen van $0.1$~mm. De posities van de lens en het raster in de verticale kolom (m.a.w. $z_{lens}$ en $z_{raster}$) werden echter berekend door respectievelijk de afstand van de lens en het raster tot de detector van $z_{detector}$ af te trekken. Bijgevolg heeft deze meting een fout $s_{z_{lens}}=s_{z_{raster}}=\sqrt{(0.1\mathrm{mm})^2+(0.1\mathrm{mm})^2}=0.142\mathrm{mm}$.\\
+
+Voor de fout op de werkingsafstand wordt er een fout van $1\mathrm{mm}$ gekozen. De ingestelde werkingsafstand wordt immers niet direct gemeten, dus de ingestelde waarde kan van de werkelijke waarde afwijken. Hiermee wordt de fout op de $z_o$ waarden $s_{z_{werking}}=\sqrt{(0.1\mathrm{mm})^2+(0.142\mathrm{mm})^2+(1\mathrm{mm})^2}=1.02\mathrm{mm}$\\
+
+Voor de fout op de gemeten rasteropeningen wordt de standaardfout genomen:
+\begin{equation*}
+    s_E=\sqrt{\sum_i^n \frac{(E_i-<E>)^2}{n(n-1)}}
+\end{equation*}
+De fout op de magnificatie wordt gevonden door de fout op de gemeten rasteropening te delen door de werkelijke rasteropening, aangezien men er van uit gaat dat de werkelijke opening perfect gekend en zonder fout is:
+\begin{equation*}
+    s_M=\frac{s_E}{e}
+\end{equation*}
+
+Met deze fouten kan de fout op $z_i$ berekend worden door de propagatieformule:
+\begin{equation*}
+    s_f=\sqrt{\sum_i^n \left(\frac{\partial f}{\partial x_i}\cdot s_{x_i}\right)^2}
+\end{equation*}
+Deze kan toegepast worden op:
+\begin{equation*}
+    z_i=b-\frac{d}{M-1}
+\end{equation*}
+Hierbij zijn $b$ en $d$ respectievelijk de afstanden van de lens tot het raster, en van het raster tot de detector. Deze waarden zijn rechtstreeks gemeten met een fout $s_b=s_d=0.1$~mm. De propagatieformule wordt nu uitgewerkt:
+\begin{align*}
+    \frac{\partial z_i}{\partial b}&=1\\
+    \frac{\partial z_i}{\partial d}&=-\frac{1}{M-1}\\
+    \frac{\partial z_i}{\partial M}&=-\frac{d}{(M-1)^2}\\
+    s_{z_i}&=\sqrt{\left(\frac{\partial z_i}{\partial b}\cdot s_{b}\right)^2+\left(\frac{\partial z_i}{\partial d}\cdot s_{d}\right)^2+\left(\frac{\partial z_i}{\partial M}\cdot s_{M}\right)^2}\\
+\end{align*}
+De fout op de focale lengte kan worden gevonden door eerst de dunne lensformule om te vormen:
+\begin{equation*}
+    f = \frac{z_i z_o}{z_i+z_o}
+\end{equation*}
+Opnieuw wordt de propagatrieformule toegepast:
+\begin{align*}
+    \frac{\partial f}{\partial z_i}&=\left(\frac{z_o}{z_i+z_o}\right)^2\\
+    \frac{\partial f}{\partial z_o}&=\left(\frac{z_i}{z_i+z_o}\right)^2\\
+    s_{f}&=\sqrt{\left(\frac{\partial f}{\partial z_i}\cdot s_{z_i}\right)^2+\left(\frac{\partial f}{\partial z_o}\cdot s_{z_o}\right)^2}=\frac{\sqrt{z_o^4s_{z_i}^2 + z_i^4s_{z_o}^2}}{(z_i+z_o)^2}\\
+\end{align*}
+
+\chapter{Supplementaire beelden}\label{ch:supp_beelden}
+In deze sectie worden enkele supplementaire figuren getoond.\\
+
+Hieronder wordt de volledige beeldenreeks voor de rear mesh shadowgraph methode getoond.
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/82mm.png}
+        \caption{AdvaPIX beeld bij een werkingsafstand van 82mm}
+        \label{fig:82mm_supp}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/84mm.png}
+        \caption{AdvaPIX beeld bij een werkingsafstand van 84mm}
+        \label{fig:84mm_supp}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/86mm.png}
+        \caption{AdvaPIX beeld bij een werkingsafstand van 86mm}
+        \label{fig:86mm_supp}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/88mm.png}
+        \caption{AdvaPIX beeld bij een werkingsafstand van 88mm}
+        \label{fig:88mm_supp}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/90mm.png}
+        \caption{AdvaPIX beeld bij een werkingsafstand van 90mm}
+        \label{fig:90mm_supp}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/92mm.png}
+        \caption{AdvaPIX beeld bij een werkingsafstand van 92mm}
+        \label{fig:92mm_supp}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/95mm.png}
+        \caption{AdvaPIX beeld bij een werkingsafstand van 95mm}
+        \label{fig:95mm_supp}
+    \end{minipage}
+\end{figure}
 
 \bibliographystyle{abbrv}
-\bibliography{bibliography}   % your .bib filename without .bib extension
+\bibliography{bibliography}
 
 \end{document}
 

@@ -55,7 +55,8 @@ def load_image(index):
 
     img_display = ax.imshow(img, cmap='gray')
     # ax.set_title('Detectorbeeld', fontsize=14)
-    ax.set_title(f'Working distance: {wd}  |  Image {index + 1}/{len(image_path_list)}', fontsize=14)
+    # ax.set_title(f'Working distance: {wd}  |  Image {index + 1}/{len(image_path_list)}', fontsize=14)
+    ax.set_title(f'Werkingsafstand: {wd}', fontsize=14)
     ax.set_xlabel('x (px)', fontsize=12)
     ax.set_ylabel('y (px)', fontsize=12)
 

@@ -494,7 +494,7 @@ class Lens:
         ax.set_ylim(-5, 5)
         ax.set_xlabel("$z$ (mm)", fontsize=14)
         ax.set_ylabel("$r$ (mm)", fontsize=14)
-        ax.set_title("Lens eigenschappen", fontsize=16)
+        ax.set_title("Lenseigenschappen", fontsize=16)
         ax.grid()
         ax.legend()
         plt.tight_layout()
@@ -1037,26 +1037,26 @@ if __name__ == "__main__":
     d = 0.8
     d_magnet=2
     B_r_magnet_theoretical=1.17
-    leak_factor=1
+    leak_factor=0.67
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
     # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
-    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T)
-    permanent_magnet_lens.setup_parameters(object_pos=82, object_height=1.5, lens_pos=101.08)
-    mesh1 = Mesh(pos=144.22, line_dist=254e-3, line_thickness=50e-3)
-    permanent_magnet_lens.add_mesh(mesh1)
-    # permanent_magnet_lens.calculate_aberration_coeff()
-    # permanent_magnet_lens.display_properties()
+    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=60)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=30)
+    # mesh1 = Mesh(pos=144.22, line_dist=254e-3, line_thickness=50e-3)
+    # permanent_magnet_lens.add_mesh(mesh1)
+    permanent_magnet_lens.calculate_aberration_coeff()
+    permanent_magnet_lens.display_properties()
 
     # plot_operating_point(BH_curve_magnet(), 0.4)
 
-    opening_angle=100e-3
-    initial_values = np.linspace(-1, 1, 3)
-    initial_angles = np.linspace(-opening_angle, opening_angle, 5)
-    combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
-    permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=228, pixel_count=256, voxel_length=0.05)
+    # opening_angle=100e-3
+    # initial_values = np.linspace(-1, 1, 3)
+    # initial_angles = np.linspace(-opening_angle, opening_angle, 5)
+    # combinations = np.array(np.meshgrid(initial_values, initial_angles)).T.reshape(-1, 2)
+    # permanent_magnet_lens.monte_carlo(object_height=0e-3, opening_angle=opening_angle, pixel_size=55e-3, camera_pos=228, pixel_count=256, voxel_length=0.05)
 
     # permanent_magnet_lens.variable_T(28, 32, 100)
 

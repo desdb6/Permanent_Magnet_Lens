@@ -495,6 +495,25 @@ def immersion_abmiguity_plot():
     print("Saved ambiguity focal length plot")
     plt.close()
 
+def leak_plot():
+    R_1 = 0.8
+    R_2 = 3.25
+    R_1_magnet=4.5
+    R_2_magnet=6
+    d = 0.8
+    d_magnet=2
+    B_r_magnet_theoretical=1.17
+    leak_factor=0.67
+    B_r_magnet=B_r_magnet_theoretical*leak_factor
+    T = 30*10**3
+
+
+    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=60)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=30)
+    permanent_magnet_lens.calculate_aberration_coeff()
+    permanent_magnet_lens.display_properties(output_path='report/Images/leak_67.png', dpi=DPI)
+    print('Saved leak plot')
+
 def main():
     plot_B_field_ring_report()
     plot_B_field_lens_report()
@@ -514,6 +533,7 @@ def main():
     variable_plots()
     real_asymptotic_properties()
     immersion_abmiguity_plot()
+    leak_plot()
 
 
 if __name__ == "__main__":

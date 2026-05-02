@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 14:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.2)  2 MAY 2026 22:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -996,7 +996,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 65.
 
-Underfull \hbox (badness 1803) has occurred while \output is active
+Underfull \hbox (badness 1147) has occurred while \output is active
 [][][][] [] [] [] 
  []
 
@@ -1119,7 +1119,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
-<Images/Phillips_CrossSection.jpg, id=127, 1284.8pt x 1712.3975pt>
+<Images/Phillips_CrossSection.jpg, id=129, 1284.8pt x 1712.3975pt>
 File: Images/Phillips_CrossSection.jpg Graphic file (type jpg)
 <use Images/Phillips_CrossSection.jpg>
 Package pdftex.def Info: Images/Phillips_CrossSection.jpg  used on input line 120.
@@ -1134,7 +1134,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
-<Images/NanoMI.jpg, id=144, 828.09375pt x 692.5875pt>
+<Images/NanoMI.jpg, id=146, 828.09375pt x 692.5875pt>
 File: Images/NanoMI.jpg Graphic file (type jpg)
 <use Images/NanoMI.jpg>
 Package pdftex.def Info: Images/NanoMI.jpg  used on input line 131.
@@ -1188,12 +1188,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
 
 ]
-<Images/SEM_principle.png, id=191, 467.94826pt x 368.577pt>
+<Images/SEM_principle.png, id=193, 467.94826pt x 368.577pt>
 File: Images/SEM_principle.png Graphic file (type png)
 <use Images/SEM_principle.png>
 Package pdftex.def Info: Images/SEM_principle.png  used on input line 180.
 (pdftex.def)             Requested size: 316.67767pt x 249.4311pt.
-<Images/TEM_principle.JPG, id=195, 1906.12125pt x 1962.33125pt>
+<Images/TEM_principle.JPG, id=197, 1906.12125pt x 1962.33125pt>
 File: Images/TEM_principle.JPG Graphic file (type jpg)
 <use Images/TEM_principle.JPG>
 Package pdftex.def Info: Images/TEM_principle.JPG  used on input line 187.
@@ -1202,12 +1202,12 @@ Package pdftex.def Info: Images/TEM_principle.JPG  used on input line 187.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8 <./Images/SEM_principle.png>]
-<Images/SEM_image.jpg, id=207, 1284.8pt x 1071.00125pt>
+<Images/SEM_image.jpg, id=209, 1284.8pt x 1071.00125pt>
 File: Images/SEM_image.jpg Graphic file (type jpg)
 <use Images/SEM_image.jpg>
 Package pdftex.def Info: Images/SEM_image.jpg  used on input line 194.
 (pdftex.def)             Requested size: 271.44194pt x 226.2733pt.
-<Images/TEM_image2.png, id=210, 467.7475pt x 528.97626pt>
+<Images/TEM_image2.png, id=212, 467.7475pt x 528.97626pt>
 File: Images/TEM_image2.png Graphic file (type png)
 <use Images/TEM_image2.png>
 Package pdftex.def Info: Images/TEM_image2.png  used on input line 201.
@@ -1220,7 +1220,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--210
 
  []
 
-<Images/Magnetic_Electron_Lens_illustration.jpg, id=223, 1244.65pt x 781.92125pt>
+<Images/Magnetic_Electron_Lens_illustration.jpg, id=225, 1244.65pt x 781.92125pt>
 File: Images/Magnetic_Electron_Lens_illustration.jpg Graphic file (type jpg)
 <use Images/Magnetic_Electron_Lens_illustration.jpg>
 Package pdftex.def Info: Images/Magnetic_Electron_Lens_illustration.jpg  used on input line 216.
@@ -1234,7 +1234,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 247--248
  []
 
 [11 <./Images/Magnetic_Electron_Lens_illustration.jpg>]
-<Images/maxwell_2_cilinder.png, id=249, 510.927pt x 185.055pt>
+<Images/maxwell_2_cilinder.png, id=251, 510.927pt x 185.055pt>
 File: Images/maxwell_2_cilinder.png Graphic file (type png)
 <use Images/maxwell_2_cilinder.png>
 Package pdftex.def Info: Images/maxwell_2_cilinder.png  used on input line 270.
@@ -1245,7 +1245,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 305--307
  []
 
 [13]
-<Images/f_ambiguity.png, id=285, 1300.86pt x 433.62pt>
+<Images/f_ambiguity.png, id=287, 1300.86pt x 433.62pt>
 File: Images/f_ambiguity.png Graphic file (type png)
 <use Images/f_ambiguity.png>
 Package pdftex.def Info: Images/f_ambiguity.png  used on input line 320.
@@ -1254,7 +1254,7 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 32
  (C:\Users\desde\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [14 <./Images/f_ambiguity.png>]
-<Images/reeel_asymptotisch.png, id=295, 462.528pt x 346.896pt>
+<Images/reeel_asymptotisch.png, id=297, 462.528pt x 346.896pt>
 File: Images/reeel_asymptotisch.png Graphic file (type png)
 <use Images/reeel_asymptotisch.png>
 Package pdftex.def Info: Images/reeel_asymptotisch.png  used on input line 334.
@@ -1284,7 +1284,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 377--378
 
  []
 
-<Images/lens_circuit_diagram.png, id=314, 658.971pt x 478.734pt>
+<Images/lens_circuit_diagram.png, id=316, 658.971pt x 478.734pt>
 File: Images/lens_circuit_diagram.png Graphic file (type png)
 <use Images/lens_circuit_diagram.png>
 Package pdftex.def Info: Images/lens_circuit_diagram.png  used on input line 383.
@@ -1307,18 +1307,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 405--406
 
  []
 
-<Images/analytic_expression_1_ring.png, id=331, 428.145pt x 378.651pt>
+<Images/analytic_expression_1_ring.png, id=333, 428.145pt x 378.651pt>
 File: Images/analytic_expression_1_ring.png Graphic file (type png)
 <use Images/analytic_expression_1_ring.png>
 Package pdftex.def Info: Images/analytic_expression_1_ring.png  used on input line 412.
 (pdftex.def)             Requested size: 226.19933pt x 200.04852pt.
 [20 <./Images/analytic_expression_1_ring.png>]
-<Images/B_field_1_annulus.png, id=340, 462.528pt x 346.896pt>
+<Images/B_field_1_annulus.png, id=342, 462.528pt x 346.896pt>
 File: Images/B_field_1_annulus.png Graphic file (type png)
 <use Images/B_field_1_annulus.png>
 Package pdftex.def Info: Images/B_field_1_annulus.png  used on input line 431.
 (pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
-<Images/analytic_expression_2_rings.png, id=344, 472.821pt x 398.142pt>
+<Images/analytic_expression_2_rings.png, id=346, 472.821pt x 398.142pt>
 File: Images/analytic_expression_2_rings.png Graphic file (type png)
 <use Images/analytic_expression_2_rings.png>
 Package pdftex.def Info: Images/analytic_expression_2_rings.png  used on input line 439.
@@ -1327,7 +1327,7 @@ Package pdftex.def Info: Images/analytic_expression_2_rings.png  used on input l
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21 <./Images/B_field_1_annulus.png>]
-<Images/B_field_2_annula.png, id=355, 462.528pt x 346.896pt>
+<Images/B_field_2_annula.png, id=357, 462.528pt x 346.896pt>
 File: Images/B_field_2_annula.png Graphic file (type png)
 <use Images/B_field_2_annula.png>
 Package pdftex.def Info: Images/B_field_2_annula.png  used on input line 464.
@@ -1342,7 +1342,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 470--471
 
  []
 
-<Images/B_field_1_annulus_d1.png, id=368, 462.528pt x 346.896pt>
+<Images/B_field_1_annulus_d1.png, id=370, 462.528pt x 346.896pt>
 File: Images/B_field_1_annulus_d1.png Graphic file (type png)
 <use Images/B_field_1_annulus_d1.png>
 Package pdftex.def Info: Images/B_field_1_annulus_d1.png  used on input line 498.
@@ -1351,17 +1351,17 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 499.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 499.
-<Images/B_field_1_annulus_d2.png, id=369, 462.528pt x 346.896pt>
+<Images/B_field_1_annulus_d2.png, id=371, 462.528pt x 346.896pt>
 File: Images/B_field_1_annulus_d2.png Graphic file (type png)
 <use Images/B_field_1_annulus_d2.png>
 Package pdftex.def Info: Images/B_field_1_annulus_d2.png  used on input line 505.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/B_field_2_annula_d1.png, id=370, 462.528pt x 346.896pt>
+<Images/B_field_2_annula_d1.png, id=372, 462.528pt x 346.896pt>
 File: Images/B_field_2_annula_d1.png Graphic file (type png)
 <use Images/B_field_2_annula_d1.png>
 Package pdftex.def Info: Images/B_field_2_annula_d1.png  used on input line 513.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/B_field_2_annula_d2.png, id=371, 462.528pt x 346.896pt>
+<Images/B_field_2_annula_d2.png, id=373, 462.528pt x 346.896pt>
 File: Images/B_field_2_annula_d2.png Graphic file (type png)
 <use Images/B_field_2_annula_d2.png>
 Package pdftex.def Info: Images/B_field_2_annula_d2.png  used on input line 520.
@@ -1370,7 +1370,7 @@ Package pdftex.def Info: Images/B_field_2_annula_d2.png  used on input line 520.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
-<Images/B_field_SIMION.png, id=383, 462.528pt x 346.896pt>
+<Images/B_field_SIMION.png, id=385, 462.528pt x 346.896pt>
 File: Images/B_field_SIMION.png Graphic file (type png)
 <use Images/B_field_SIMION.png>
 Package pdftex.def Info: Images/B_field_SIMION.png  used on input line 533.
@@ -1394,17 +1394,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 545--546
  []
 
 [25 <./Images/B_field_SIMION.png>]
-<Images/magnetic_circuit.png, id=404, 462.966pt x 357.408pt>
+<Images/magnetic_circuit.png, id=406, 462.966pt x 357.408pt>
 File: Images/magnetic_circuit.png Graphic file (type png)
 <use Images/magnetic_circuit.png>
 Package pdftex.def Info: Images/magnetic_circuit.png  used on input line 556.
 (pdftex.def)             Requested size: 158.34229pt x 122.24243pt.
-<Images/magnetic_circuit_Hd.png, id=405, 287.109pt x 302.439pt>
+<Images/magnetic_circuit_Hd.png, id=407, 287.109pt x 302.439pt>
 File: Images/magnetic_circuit_Hd.png Graphic file (type png)
 <use Images/magnetic_circuit_Hd.png>
 Package pdftex.def Info: Images/magnetic_circuit_Hd.png  used on input line 563.
 (pdftex.def)             Requested size: 113.09966pt x 119.13673pt.
-<Images/magnetic_circuit_symbolic.png, id=406, 381.936pt x 328.062pt>
+<Images/magnetic_circuit_symbolic.png, id=408, 381.936pt x 328.062pt>
 File: Images/magnetic_circuit_symbolic.png Graphic file (type png)
 <use Images/magnetic_circuit_symbolic.png>
 Package pdftex.def Info: Images/magnetic_circuit_symbolic.png  used on input line 570.
@@ -1415,12 +1415,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 628--629
  []
 
 [26 <./Images/magnetic_circuit.png> <./Images/magnetic_circuit_Hd.png> <./Images/magnetic_circuit_symbolic.png>]
-<Images/BH_curve_NdFeB.JPG, id=427, 797.98125pt x 519.44063pt>
+<Images/BH_curve_NdFeB.JPG, id=429, 797.98125pt x 519.44063pt>
 File: Images/BH_curve_NdFeB.JPG Graphic file (type jpg)
 <use Images/BH_curve_NdFeB.JPG>
 Package pdftex.def Info: Images/BH_curve_NdFeB.JPG  used on input line 634.
 (pdftex.def)             Requested size: 271.44194pt x 176.69466pt.
-<Images/operating_point_15.png, id=430, 462.528pt x 346.896pt>
+<Images/operating_point_15.png, id=432, 462.528pt x 346.896pt>
 File: Images/operating_point_15.png Graphic file (type png)
 <use Images/operating_point_15.png>
 Package pdftex.def Info: Images/operating_point_15.png  used on input line 641.
@@ -1429,28 +1429,28 @@ Package pdftex.def Info: Images/operating_point_15.png  used on input line 641.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [27 <./Images/BH_curve_NdFeB.JPG>] [28 <./Images/operating_point_15.png>]
-<Images/Interactive_B_field.JPG, id=451, 1098.35344pt x 613.54219pt>
+<Images/Interactive_B_field.JPG, id=453, 1098.35344pt x 613.54219pt>
 File: Images/Interactive_B_field.JPG Graphic file (type jpg)
 <use Images/Interactive_B_field.JPG>
 Package pdftex.def Info: Images/Interactive_B_field.JPG  used on input line 680.
 (pdftex.def)             Requested size: 407.15602pt x 227.4377pt.
  [29 <./Images/Interactive_B_field.JPG>]
-<Images/Glasers_B_field.png, id=469, 462.528pt x 346.896pt>
+<Images/Glasers_B_field.png, id=471, 462.528pt x 346.896pt>
 File: Images/Glasers_B_field.png Graphic file (type png)
 <use Images/Glasers_B_field.png>
 Package pdftex.def Info: Images/Glasers_B_field.png  used on input line 713.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/Constant_B_field.png, id=470, 462.528pt x 346.896pt>
+<Images/Constant_B_field.png, id=472, 462.528pt x 346.896pt>
 File: Images/Constant_B_field.png Graphic file (type png)
 <use Images/Constant_B_field.png>
 Package pdftex.def Info: Images/Constant_B_field.png  used on input line 720.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/Sech_field.png, id=471, 462.528pt x 346.896pt>
+<Images/Sech_field.png, id=473, 462.528pt x 346.896pt>
 File: Images/Sech_field.png Graphic file (type png)
 <use Images/Sech_field.png>
 Package pdftex.def Info: Images/Sech_field.png  used on input line 729.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/Actual_B_field.png, id=472, 462.528pt x 346.896pt>
+<Images/Actual_B_field.png, id=474, 462.528pt x 346.896pt>
 File: Images/Actual_B_field.png Graphic file (type png)
 <use Images/Actual_B_field.png>
 Package pdftex.def Info: Images/Actual_B_field.png  used on input line 736.
@@ -1465,12 +1465,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 754--755
 
  []
 
-<Images/setup_1.png, id=490, 462.528pt x 346.896pt>
+<Images/setup_1.png, id=492, 462.528pt x 346.896pt>
 File: Images/setup_1.png Graphic file (type png)
 <use Images/setup_1.png>
 Package pdftex.def Info: Images/setup_1.png  used on input line 760.
 (pdftex.def)             Requested size: 271.44194pt x 203.59233pt.
-<Images/setup_2.png, id=491, 462.528pt x 346.896pt>
+<Images/setup_2.png, id=493, 462.528pt x 346.896pt>
 File: Images/setup_2.png Graphic file (type png)
 <use Images/setup_2.png>
 Package pdftex.def Info: Images/setup_2.png  used on input line 767.
@@ -1486,12 +1486,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 804--805
 
 
 ]
-<Images/BH_curve_ASI1018.png, id=534, 853.1875pt x 476.78125pt>
+<Images/BH_curve_ASI1018.png, id=536, 853.1875pt x 476.78125pt>
 File: Images/BH_curve_ASI1018.png Graphic file (type png)
 <use Images/BH_curve_ASI1018.png>
 Package pdftex.def Info: Images/BH_curve_ASI1018.png  used on input line 816.
 (pdftex.def)             Requested size: 339.29898pt x 189.61058pt.
-<Images/operating_point_25.png, id=537, 462.528pt x 346.896pt>
+<Images/operating_point_25.png, id=539, 462.528pt x 346.896pt>
 File: Images/operating_point_25.png Graphic file (type png)
 <use Images/operating_point_25.png>
 Package pdftex.def Info: Images/operating_point_25.png  used on input line 823.
@@ -1510,12 +1510,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 848--849
  []
 
 [35 <./Images/operating_point_25.png>]
-<Images/variable_R_1.png, id=557, 462.528pt x 346.896pt>
+<Images/variable_R_1.png, id=559, 462.528pt x 346.896pt>
 File: Images/variable_R_1.png Graphic file (type png)
 <use Images/variable_R_1.png>
 Package pdftex.def Info: Images/variable_R_1.png  used on input line 855.
 (pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
-<Images/variable_R_2.png, id=558, 462.528pt x 346.896pt>
+<Images/variable_R_2.png, id=560, 462.528pt x 346.896pt>
 File: Images/variable_R_2.png Graphic file (type png)
 <use Images/variable_R_2.png>
 Package pdftex.def Info: Images/variable_R_2.png  used on input line 862.
@@ -1524,12 +1524,12 @@ Package pdftex.def Info: Images/variable_R_2.png  used on input line 862.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [36 <./Images/variable_R_1.png>]
-<Images/variable_d.png, id=564, 462.528pt x 346.896pt>
+<Images/variable_d.png, id=566, 462.528pt x 346.896pt>
 File: Images/variable_d.png Graphic file (type png)
 <use Images/variable_d.png>
 Package pdftex.def Info: Images/variable_d.png  used on input line 869.
 (pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
-<Images/variable_B_r.png, id=565, 462.528pt x 346.896pt>
+<Images/variable_B_r.png, id=567, 462.528pt x 346.896pt>
 File: Images/variable_B_r.png Graphic file (type png)
 <use Images/variable_B_r.png>
 Package pdftex.def Info: Images/variable_B_r.png  used on input line 876.
@@ -1538,27 +1538,27 @@ Package pdftex.def Info: Images/variable_B_r.png  used on input line 876.
 Underfull \vbox (badness 7631) has occurred while \output is active []
 
  [37 <./Images/variable_R_2.png> <./Images/variable_d.png>]
-<Images/variable_T.png, id=574, 462.528pt x 346.896pt>
+<Images/variable_T.png, id=576, 462.528pt x 346.896pt>
 File: Images/variable_T.png Graphic file (type png)
 <use Images/variable_T.png>
 Package pdftex.def Info: Images/variable_T.png  used on input line 883.
 (pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
-<Images/variable_R_1_ab.png, id=576, 462.528pt x 346.896pt>
+<Images/variable_R_1_ab.png, id=578, 462.528pt x 346.896pt>
 File: Images/variable_R_1_ab.png Graphic file (type png)
 <use Images/variable_R_1_ab.png>
 Package pdftex.def Info: Images/variable_R_1_ab.png  used on input line 895.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/variable_R_2_ab.png, id=577, 462.528pt x 346.896pt>
+<Images/variable_R_2_ab.png, id=579, 462.528pt x 346.896pt>
 File: Images/variable_R_2_ab.png Graphic file (type png)
 <use Images/variable_R_2_ab.png>
 Package pdftex.def Info: Images/variable_R_2_ab.png  used on input line 902.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/variable_d_ab.png, id=578, 462.528pt x 346.896pt>
+<Images/variable_d_ab.png, id=580, 462.528pt x 346.896pt>
 File: Images/variable_d_ab.png Graphic file (type png)
 <use Images/variable_d_ab.png>
 Package pdftex.def Info: Images/variable_d_ab.png  used on input line 910.
 (pdftex.def)             Requested size: 203.578pt x 152.68234pt.
-<Images/variable_B_r_ab.png, id=579, 462.528pt x 346.896pt>
+<Images/variable_B_r_ab.png, id=581, 462.528pt x 346.896pt>
 File: Images/variable_B_r_ab.png Graphic file (type png)
 <use Images/variable_B_r_ab.png>
 Package pdftex.def Info: Images/variable_B_r_ab.png  used on input line 917.
@@ -1576,22 +1576,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 959--960
 
  []
 
-<Images/FreeCAD_2D.JPG, id=606, 590.95781pt x 483.30562pt>
+<Images/FreeCAD_2D.JPG, id=608, 590.95781pt x 483.30562pt>
 File: Images/FreeCAD_2D.JPG Graphic file (type jpg)
 <use Images/FreeCAD_2D.JPG>
 Package pdftex.def Info: Images/FreeCAD_2D.JPG  used on input line 967.
 (pdftex.def)             Requested size: 180.9567pt x 147.98691pt.
-<Images/FreeCAD_3D_1.JPG, id=607, 525.46312pt x 413.29407pt>
+<Images/FreeCAD_3D_1.JPG, id=609, 525.46312pt x 413.29407pt>
 File: Images/FreeCAD_3D_1.JPG Graphic file (type jpg)
 <use Images/FreeCAD_3D_1.JPG>
 Package pdftex.def Info: Images/FreeCAD_3D_1.JPG  used on input line 974.
 (pdftex.def)             Requested size: 180.9567pt x 142.32803pt.
-<Images/FreeCAD_3D_2.JPG, id=608, 568.37344pt x 483.30562pt>
+<Images/FreeCAD_3D_2.JPG, id=610, 568.37344pt x 483.30562pt>
 File: Images/FreeCAD_3D_2.JPG Graphic file (type jpg)
 <use Images/FreeCAD_3D_2.JPG>
 Package pdftex.def Info: Images/FreeCAD_3D_2.JPG  used on input line 983.
 (pdftex.def)             Requested size: 180.9567pt x 153.87187pt.
-<Images/FreeCAD_3D_4.JPG, id=609, 655.69969pt x 491.58656pt>
+<Images/FreeCAD_3D_4.JPG, id=611, 655.69969pt x 491.58656pt>
 File: Images/FreeCAD_3D_4.JPG Graphic file (type jpg)
 <use Images/FreeCAD_3D_4.JPG>
 Package pdftex.def Info: Images/FreeCAD_3D_4.JPG  used on input line 990.
@@ -1601,7 +1601,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 999--1000
 
  []
 
-<Images/Polepieces_separated.jpg, id=624, 406.51875pt x 232.87pt>
+<Images/Polepieces_separated.jpg, id=626, 406.51875pt x 232.87pt>
 File: Images/Polepieces_separated.jpg Graphic file (type jpg)
 <use Images/Polepieces_separated.jpg>
 Package pdftex.def Info: Images/Polepieces_separated.jpg  used on input line 1003.
@@ -1610,12 +1610,12 @@ Package pdftex.def Info: Images/Polepieces_separated.jpg  used on input line 100
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [41 <./Images/FreeCAD_2D.JPG> <./Images/FreeCAD_3D_1.JPG> <./Images/FreeCAD_3D_2.JPG> <./Images/FreeCAD_3D_4.JPG>]
-<Images/lens_assembled.jpeg, id=634, 1606.0pt x 1606.0pt>
+<Images/lens_assembled.jpeg, id=636, 1606.0pt x 1606.0pt>
 File: Images/lens_assembled.jpeg Graphic file (type jpg)
 <use Images/lens_assembled.jpeg>
 Package pdftex.def Info: Images/lens_assembled.jpeg  used on input line 1010.
 (pdftex.def)             Requested size: 294.05635pt x 294.04216pt.
-<Images/lens_magnet_measurements.jpeg, id=635, 1564.84625pt x 1606.0pt>
+<Images/lens_magnet_measurements.jpeg, id=637, 1564.84625pt x 1606.0pt>
 File: Images/lens_magnet_measurements.jpeg Graphic file (type jpg)
 <use Images/lens_magnet_measurements.jpeg>
 Package pdftex.def Info: Images/lens_magnet_measurements.jpeg  used on input line 1017.
@@ -1633,7 +1633,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1038--1039
 
  []
 
-<Images/MIRA_inside.png, id=652, 766.719pt x 542.025pt>
+<Images/MIRA_inside.png, id=654, 766.719pt x 542.025pt>
 File: Images/MIRA_inside.png Graphic file (type png)
 <use Images/MIRA_inside.png>
 Package pdftex.def Info: Images/MIRA_inside.png  used on input line 1042.
@@ -1644,12 +1644,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1047--1048
  []
 
 [45 <./Images/MIRA_inside.png>]
-<Images/grid_holder_rail.jpg, id=664, 1445.4pt x 1927.2pt>
+<Images/grid_holder_rail.jpg, id=666, 1445.4pt x 1927.2pt>
 File: Images/grid_holder_rail.jpg Graphic file (type jpg)
 <use Images/grid_holder_rail.jpg>
 Package pdftex.def Info: Images/grid_holder_rail.jpg  used on input line 1055.
 (pdftex.def)             Requested size: 217.14941pt x 289.50864pt.
-<Images/Lens_in_MIRA.jpg, id=665, 439.6425pt x 438.8897pt>
+<Images/Lens_in_MIRA.jpg, id=667, 439.6425pt x 438.8897pt>
 File: Images/Lens_in_MIRA.jpg Graphic file (type jpg)
 <use Images/Lens_in_MIRA.jpg>
 Package pdftex.def Info: Images/Lens_in_MIRA.jpg  used on input line 1062.
@@ -1660,12 +1660,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1071--1072
  []
 
 [46 <./Images/grid_holder_rail.jpg> <./Images/Lens_in_MIRA.jpg>]
-<Images/18.02.26_Emat_Feature_SEM.png, id=673, 449.169pt x 333.099pt>
+<Images/18.02.26_Emat_Feature_SEM.png, id=675, 449.169pt x 333.099pt>
 File: Images/18.02.26_Emat_Feature_SEM.png Graphic file (type png)
 <use Images/18.02.26_Emat_Feature_SEM.png>
 Package pdftex.def Info: Images/18.02.26_Emat_Feature_SEM.png  used on input line 1081.
 (pdftex.def)             Requested size: 217.14941pt x 161.03946pt.
-<Images/18.02.26_Emat_Feature_STEM.png, id=674, 860.7357pt x 607.068pt>
+<Images/18.02.26_Emat_Feature_STEM.png, id=676, 860.7357pt x 607.068pt>
 File: Images/18.02.26_Emat_Feature_STEM.png Graphic file (type png)
 <use Images/18.02.26_Emat_Feature_STEM.png>
 Package pdftex.def Info: Images/18.02.26_Emat_Feature_STEM.png  used on input line 1088.
@@ -1675,7 +1675,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1096--1097
 
  []
 
-<Images/18.02.26_Emat_Feature_1mmunderfocus.png, id=676, 721.9773pt x 691.6239pt>
+<Images/18.02.26_Emat_Feature_1mmunderfocus.png, id=678, 721.9773pt x 691.6239pt>
 File: Images/18.02.26_Emat_Feature_1mmunderfocus.png Graphic file (type png)
 <use Images/18.02.26_Emat_Feature_1mmunderfocus.png>
 Package pdftex.def Info: Images/18.02.26_Emat_Feature_1mmunderfocus.png  used on input line 1102.
@@ -1685,22 +1685,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 1110--1111
 
  []
 
-<Images/02.03.26_Hexagons_Setup.png, id=687, 514.92375pt x 322.20375pt>
+<Images/02.03.26_Hexagons_Setup.png, id=689, 514.92375pt x 322.20375pt>
 File: Images/02.03.26_Hexagons_Setup.png Graphic file (type png)
 <use Images/02.03.26_Hexagons_Setup.png>
 Package pdftex.def Info: Images/02.03.26_Hexagons_Setup.png  used on input line 1116.
 (pdftex.def)             Requested size: 248.82063pt x 155.6934pt.
-<Images/02.03.26_Hexagons_Setup_2.png, id=688, 406.464pt x 375.366pt>
+<Images/02.03.26_Hexagons_Setup_2.png, id=690, 406.464pt x 375.366pt>
 File: Images/02.03.26_Hexagons_Setup_2.png Graphic file (type png)
 <use Images/02.03.26_Hexagons_Setup_2.png>
 Package pdftex.def Info: Images/02.03.26_Hexagons_Setup_2.png  used on input line 1123.
 (pdftex.def)             Requested size: 194.52809pt x 179.64668pt.
-<Images/02.03.26_Hexagons_SEM.png, id=689, 449.169pt x 333.099pt>
+<Images/02.03.26_Hexagons_SEM.png, id=691, 449.169pt x 333.099pt>
 File: Images/02.03.26_Hexagons_SEM.png Graphic file (type png)
 <use Images/02.03.26_Hexagons_SEM.png>
 Package pdftex.def Info: Images/02.03.26_Hexagons_SEM.png  used on input line 1134.
 (pdftex.def)             Requested size: 217.14941pt x 161.03946pt.
-<Images/02.03.26_Hexagons_Measurements.png, id=690, 576.65437pt x 574.39594pt>
+<Images/02.03.26_Hexagons_Measurements.png, id=692, 576.65437pt x 574.39594pt>
 File: Images/02.03.26_Hexagons_Measurements.png Graphic file (type png)
 <use Images/02.03.26_Hexagons_Measurements.png>
 Package pdftex.def Info: Images/02.03.26_Hexagons_Measurements.png  used on input line 1141.
@@ -1711,7 +1711,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1149--1150
  []
 
 [48 <./Images/02.03.26_Hexagons_Setup.png> <./Images/02.03.26_Hexagons_Setup_2.png> <./Images/02.03.26_Hexagons_SEM.png> <./Images/02.03.26_Hexagons_Measurements.png>]
-<Images/02.03.26_Hexagons_10mmunderfocus.png, id=704, 648.021pt x 584.4234pt>
+<Images/02.03.26_Hexagons_10mmunderfocus.png, id=706, 648.021pt x 584.4234pt>
 File: Images/02.03.26_Hexagons_10mmunderfocus.png Graphic file (type png)
 <use Images/02.03.26_Hexagons_10mmunderfocus.png>
 Package pdftex.def Info: Images/02.03.26_Hexagons_10mmunderfocus.png  used on input line 1155.
@@ -1722,17 +1722,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 1166--1167
  []
 
 [49 <./Images/02.03.26_Hexagons_10mmunderfocus.png>]
-<Images/18.03.26_grid_Measurements.png, id=717, 696.35156pt x 608.2725pt>
+<Images/18.03.26_grid_Measurements.png, id=719, 696.35156pt x 608.2725pt>
 File: Images/18.03.26_grid_Measurements.png Graphic file (type png)
 <use Images/18.03.26_grid_Measurements.png>
 Package pdftex.def Info: Images/18.03.26_grid_Measurements.png  used on input line 1172.
 (pdftex.def)             Requested size: 271.44194pt x 237.10466pt.
-<Images/18.03.26_grid.png, id=718, 627.3036pt x 512.6352pt>
+<Images/18.03.26_grid.png, id=720, 627.3036pt x 512.6352pt>
 File: Images/18.03.26_grid.png Graphic file (type png)
 <use Images/18.03.26_grid.png>
 Package pdftex.def Info: Images/18.03.26_grid.png  used on input line 1179.
 (pdftex.def)             Requested size: 316.67767pt x 258.79659pt.
-<Images/18.03.26_grid_Rescaled.png, id=719, 621.0402pt x 512.6352pt>
+<Images/18.03.26_grid_Rescaled.png, id=721, 621.0402pt x 512.6352pt>
 File: Images/18.03.26_grid_Rescaled.png Graphic file (type png)
 <use Images/18.03.26_grid_Rescaled.png>
 Package pdftex.def Info: Images/18.03.26_grid_Rescaled.png  used on input line 1186.
@@ -1753,7 +1753,7 @@ LaTeX Warning: Reference `fig:18.03.26_raster' on page 51 undefined on input lin
 
 LaTeX Warning: Reference `fig:18.03.26_raster_Rescaled' on page 51 undefined on input line 1202.
 
-<Images/Twin_Images.png, id=732, 510.2262pt x 431.9337pt>
+<Images/Twin_Images.png, id=734, 510.2262pt x 431.9337pt>
 File: Images/Twin_Images.png Graphic file (type png)
 <use Images/Twin_Images.png>
 Package pdftex.def Info: Images/Twin_Images.png  used on input line 1206.
@@ -1762,119 +1762,216 @@ Package pdftex.def Info: Images/Twin_Images.png  used on input line 1206.
 Underfull \vbox (badness 2197) has occurred while \output is active []
 
  [51 <./Images/18.03.26_grid_Rescaled.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1223--1224
+Underfull \hbox (badness 10000) in paragraph at lines 1226--1227
 
  []
 
 [52 <./Images/Twin_Images.png>]
-<Images/rear_mesh_shadowgraph.png, id=753, 927.246pt x 475.011pt>
+<Images/rear_mesh_shadowgraph.png, id=755, 927.246pt x 475.011pt>
 File: Images/rear_mesh_shadowgraph.png Graphic file (type png)
 <use Images/rear_mesh_shadowgraph.png>
-Package pdftex.def Info: Images/rear_mesh_shadowgraph.png  used on input line 1234.
+Package pdftex.def Info: Images/rear_mesh_shadowgraph.png  used on input line 1237.
 (pdftex.def)             Requested size: 407.15602pt x 208.57785pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1249--1251
+Underfull \hbox (badness 10000) in paragraph at lines 1252--1254
 
  []
 
-<Images/rear_mesh_shadowgraph_virtual_image.png, id=756, 927.246pt x 475.011pt>
+<Images/rear_mesh_shadowgraph_virtual_image.png, id=758, 927.246pt x 475.011pt>
 File: Images/rear_mesh_shadowgraph_virtual_image.png Graphic file (type png)
 <use Images/rear_mesh_shadowgraph_virtual_image.png>
-Package pdftex.def Info: Images/rear_mesh_shadowgraph_virtual_image.png  used on input line 1257.
+Package pdftex.def Info: Images/rear_mesh_shadowgraph_virtual_image.png  used on input line 1260.
 (pdftex.def)             Requested size: 407.15602pt x 208.57785pt.
 [53 <./Images/rear_mesh_shadowgraph.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1270--1271
+Underfull \hbox (badness 10000) in paragraph at lines 1273--1274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1272--1273
+Underfull \hbox (badness 10000) in paragraph at lines 1275--1276
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1286--1287
+Underfull \hbox (badness 10000) in paragraph at lines 1289--1290
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1288--1289
+Underfull \hbox (badness 10000) in paragraph at lines 1291--1292
 
  []
 
 [54 <./Images/rear_mesh_shadowgraph_virtual_image.png>]
-<Images/Monte_Carlo_1.png, id=785, 1155.5973pt x 516.0078pt>
+<Images/Monte_Carlo_1.png, id=787, 1155.5973pt x 516.0078pt>
 File: Images/Monte_Carlo_1.png Graphic file (type png)
 <use Images/Monte_Carlo_1.png>
-Package pdftex.def Info: Images/Monte_Carlo_1.png  used on input line 1294.
+Package pdftex.def Info: Images/Monte_Carlo_1.png  used on input line 1297.
 (pdftex.def)             Requested size: 452.39865pt x 202.00597pt.
-<Images/Monte_Carlo_2.png, id=786, 1011.78pt x 361.35pt>
+<Images/Monte_Carlo_2.png, id=788, 1011.78pt x 361.35pt>
 File: Images/Monte_Carlo_2.png Graphic file (type png)
 <use Images/Monte_Carlo_2.png>
-Package pdftex.def Info: Images/Monte_Carlo_2.png  used on input line 1301.
+Package pdftex.def Info: Images/Monte_Carlo_2.png  used on input line 1304.
 (pdftex.def)             Requested size: 452.39865pt x 161.57492pt.
-<Images/ThorLabs_cage.png, id=789, 782.925pt x 501.875pt>
+ [55 <./Images/Monte_Carlo_1.png> <./Images/Monte_Carlo_2.png>]
+<Images/ThorLabs_cage.png, id=798, 782.925pt x 501.875pt>
 File: Images/ThorLabs_cage.png Graphic file (type png)
 <use Images/ThorLabs_cage.png>
-Package pdftex.def Info: Images/ThorLabs_cage.png  used on input line 1313.
-(pdftex.def)             Requested size: 271.44194pt x 174.00475pt.
- [55 <./Images/Monte_Carlo_1.png> <./Images/Monte_Carlo_2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1325--1326
+Package pdftex.def Info: Images/ThorLabs_cage.png  used on input line 1316.
+(pdftex.def)             Requested size: 226.19933pt x 144.99629pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1328--1329
 
  []
 
-<Images/3D_prints_measurements.jpeg, id=803, 1606.0pt x 726.715pt>
+<Images/3D_prints_measurements.jpeg, id=804, 1606.0pt x 726.715pt>
 File: Images/3D_prints_measurements.jpeg Graphic file (type jpg)
 <use Images/3D_prints_measurements.jpeg>
-Package pdftex.def Info: Images/3D_prints_measurements.jpeg  used on input line 1331.
-(pdftex.def)             Requested size: 339.29898pt x 153.53502pt.
+Package pdftex.def Info: Images/3D_prints_measurements.jpeg  used on input line 1334.
+(pdftex.def)             Requested size: 271.44194pt x 122.81914pt.
 [56 <./Images/ThorLabs_cage.png> <./Images/3D_prints_measurements.jpeg>]
-<Images/tower_4_crop.png, id=817, 665.48625pt x 1093.83656pt>
-File: Images/tower_4_crop.png Graphic file (type png)
-<use Images/tower_4_crop.png>
-Package pdftex.def Info: Images/tower_4_crop.png  used on input line 1344.
-(pdftex.def)             Requested size: 126.67107pt x 208.1983pt.
-<Images/tower_7_crop.png, id=818, 558.58687pt x 925.95938pt>
+<Images/tower_7_crop.png, id=819, 558.58687pt x 925.95938pt>
 File: Images/tower_7_crop.png Graphic file (type png)
 <use Images/tower_7_crop.png>
-Package pdftex.def Info: Images/tower_7_crop.png  used on input line 1351.
-(pdftex.def)             Requested size: 126.67107pt x 209.97083pt.
-<Images/tower_schematic.png, id=819, 387.849pt x 538.302pt>
+Package pdftex.def Info: Images/tower_7_crop.png  used on input line 1346.
+(pdftex.def)             Requested size: 131.19257pt x 217.47333pt.
+<Images/tower_4_crop.png, id=820, 665.48625pt x 1093.83656pt>
+File: Images/tower_4_crop.png Graphic file (type png)
+<use Images/tower_4_crop.png>
+Package pdftex.def Info: Images/tower_4_crop.png  used on input line 1353.
+(pdftex.def)             Requested size: 131.19257pt x 215.62561pt.
+<Images/tower_schematic.png, id=821, 452.016pt x 538.302pt>
 File: Images/tower_schematic.png Graphic file (type png)
 <use Images/tower_schematic.png>
-Package pdftex.def Info: Images/tower_schematic.png  used on input line 1358.
-(pdftex.def)             Requested size: 180.9567pt x 251.15387pt.
-<Images/measure_pitch_distances.png, id=821, 512.1534pt x 427.5975pt>
-File: Images/measure_pitch_distances.png Graphic file (type png)
-<use Images/measure_pitch_distances.png>
-Package pdftex.def Info: Images/measure_pitch_distances.png  used on input line 1385.
-(pdftex.def)             Requested size: 407.15602pt x 339.95143pt.
+Package pdftex.def Info: Images/tower_schematic.png  used on input line 1360.
+(pdftex.def)             Requested size: 158.34229pt x 188.5728pt.
+<Images/92mm.png, id=826, 518.6577pt x 428.0793pt>
+File: Images/92mm.png Graphic file (type png)
+<use Images/92mm.png>
+Package pdftex.def Info: Images/92mm.png  used on input line 1389.
+(pdftex.def)             Requested size: 217.14941pt x 179.22379pt.
+<Images/86mm.png, id=827, 518.6577pt x 428.0793pt>
+File: Images/86mm.png Graphic file (type png)
+<use Images/86mm.png>
+Package pdftex.def Info: Images/86mm.png  used on input line 1396.
+(pdftex.def)             Requested size: 217.14941pt x 179.22379pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [57 <./Images/tower_4_crop.png> <./Images/tower_7_crop.png> <./Images/tower_schematic.png>] [58 <./Images/measure_pitch_distances.png>]
+ [57 <./Images/tower_7_crop.png> <./Images/tower_4_crop.png> <./Images/tower_schematic.png>]
+<Images/measure_pitch_distances.png, id=840, 512.1534pt x 427.5975pt>
+File: Images/measure_pitch_distances.png Graphic file (type png)
+<use Images/measure_pitch_distances.png>
+Package pdftex.def Info: Images/measure_pitch_distances.png  used on input line 1406.
+(pdftex.def)             Requested size: 361.92029pt x 302.18051pt.
+
+Underfull \vbox (badness 1092) has occurred while \output is active []
+
+ [58 <./Images/92mm.png> <./Images/86mm.png> <./Images/measure_pitch_distances.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1451--1452
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1453--1454
+
+ []
+
+<Images/leak_67.png, id=856, 462.528pt x 346.896pt>
+File: Images/leak_67.png Graphic file (type png)
+<use Images/leak_67.png>
+Package pdftex.def Info: Images/leak_67.png  used on input line 1459.
+(pdftex.def)             Requested size: 407.15602pt x 305.38057pt.
+[59] [60 <./Images/leak_67.png>]
 chapter 6.
-[59
+[61
 
 
-] [60
+] [62
 
 
 ]
 chapter 7.
-[61] [62
+[63] [64
 
 
 ]
 chapter A.
-(Permanente_Magneet_Lens.bbl (Permanente_Magneet_Lens.brf)
+
+Underfull \hbox (badness 10000) in paragraph at lines 1482--1483
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1484--1485
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1486--1487
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1488--1489
+
+ []
+
+[65] [66]
+chapter B.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1526--1527
+
+ []
+
+<Images/82mm.png, id=893, 518.6577pt x 428.0793pt>
+File: Images/82mm.png Graphic file (type png)
+<use Images/82mm.png>
+Package pdftex.def Info: Images/82mm.png  used on input line 1533.
+(pdftex.def)             Requested size: 217.14941pt x 179.22379pt.
+<Images/84mm.png, id=894, 518.6577pt x 428.0793pt>
+File: Images/84mm.png Graphic file (type png)
+<use Images/84mm.png>
+Package pdftex.def Info: Images/84mm.png  used on input line 1540.
+(pdftex.def)             Requested size: 217.14941pt x 179.22379pt.
+File: Images/86mm.png Graphic file (type png)
+<use Images/86mm.png>
+Package pdftex.def Info: Images/86mm.png  used on input line 1550.
+(pdftex.def)             Requested size: 217.14941pt x 179.22379pt.
+<Images/88mm.png, id=895, 518.6577pt x 428.0793pt>
+File: Images/88mm.png Graphic file (type png)
+<use Images/88mm.png>
+Package pdftex.def Info: Images/88mm.png  used on input line 1557.
+(pdftex.def)             Requested size: 217.14941pt x 179.22379pt.
+<Images/90mm.png, id=896, 518.6577pt x 428.0793pt>
+File: Images/90mm.png Graphic file (type png)
+<use Images/90mm.png>
+Package pdftex.def Info: Images/90mm.png  used on input line 1567.
+(pdftex.def)             Requested size: 217.14941pt x 179.22379pt.
+File: Images/92mm.png Graphic file (type png)
+<use Images/92mm.png>
+Package pdftex.def Info: Images/92mm.png  used on input line 1574.
+(pdftex.def)             Requested size: 217.14941pt x 179.22379pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [67
+
+
+ <./Images/82mm.png> <./Images/84mm.png> <./Images/88mm.png>]
+<Images/95mm.png, id=906, 512.1534pt x 428.0793pt>
+File: Images/95mm.png Graphic file (type png)
+<use Images/95mm.png>
+Package pdftex.def Info: Images/95mm.png  used on input line 1584.
+(pdftex.def)             Requested size: 217.14941pt x 181.50345pt.
+ (Permanente_Magneet_Lens.bbl (Permanente_Magneet_Lens.brf)
 \tf@brf=\write5
 \openout5 = `Permanente_Magneet_Lens.brf'.
 
- [63] [64
+ [68 <./Images/90mm.png> <./Images/95mm.png>] [69
 
 
-] [65]
+]
 Underfull \hbox (badness 10000) in paragraph at lines 159--159
 []\OT1/ptm/m/n/10 Modus En-gi-nee-ring Team.  Cnc ma-chine to-le-rance ca-pa-bi-li-ties: Un-der-stan-ding
  []
@@ -1889,7 +1986,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 159--159
 \OT1/cmtt/m/n/10 cnc-[]machine-[]tolerance-[]capabilities-[]understanding-[]what-[]your-[]shop-[]can-[]deliver$[][]\OT1/ptm/m/n/10 , sep
  []
 
-) [66] (Permanente_Magneet_Lens.aux)
+) [70] (Permanente_Magneet_Lens.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1899,20 +1996,20 @@ L3 programming layer <2025-12-24>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `Permanente_Magneet_Lens.brf' has not changed.
-(rerunfilecheck)             Checksum: 15811056BB90F1E6AF1344BDE54B71CF;2403.
+(rerunfilecheck)             Checksum: 7A70FC18A62FEAF386EBD5BD8A77A5E8;2459.
  ) 
 Here is how much of TeX's memory you used:
- 32892 strings out of 467871
- 663720 string characters out of 5418377
- 1201881 words of memory out of 5000000
- 60930 multiletter control sequences out of 15000+600000
+ 32990 strings out of 467871
+ 665662 string characters out of 5418377
+ 1205773 words of memory out of 5000000
+ 61014 multiletter control sequences out of 15000+600000
  682777 words of font info for 148 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,23n,131p,11338b,1442s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/desde/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Permanente_Magneet_Lens.pdf (70 pages, 30912205 bytes).
+Output written on Permanente_Magneet_Lens.pdf (74 pages, 31731569 bytes).
 PDF statistics:
- 1155 PDF objects out of 1200 (max. 8388607)
- 281 named destinations out of 1000 (max. 500000)
- 694 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1217 PDF objects out of 1440 (max. 8388607)
+ 295 named destinations out of 1000 (max. 500000)
+ 742 words of extra memory for PDF output out of 10000 (max. 10000000)
 
