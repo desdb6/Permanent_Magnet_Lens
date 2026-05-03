@@ -1034,16 +1034,16 @@ if __name__ == "__main__":
     R_2 = 3.25
     R_1_magnet=4.5
     R_2_magnet=6
-    d = 0.8
-    d_magnet=2
+    d = 4.8
+    d_magnet=6
     B_r_magnet_theoretical=1.17
-    leak_factor=0.67
+    leak_factor=1
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
     # plot_B_field_interactive(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet)
 
-    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=60)
+    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet, T, setup_length=60)
     permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=30)
     # mesh1 = Mesh(pos=144.22, line_dist=254e-3, line_thickness=50e-3)
     # permanent_magnet_lens.add_mesh(mesh1)

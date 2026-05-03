@@ -146,9 +146,9 @@ Hoofdstuk \ref{ch:methodologie} betreft de ontwikkeling van een Python-toolbox v
 
 Hoofdstuk \ref{ch:optimalisatie} zal dieper ingaan op het toepassen van de Python-toolbox om de geometrie van de lens te optimaliseren, en het vervaardigen van de lens door een CNC-service.\\
 
-Hoofdstuk \ref{ch:karakterisering} betreft de experimentele karakterisering van de permanente magneetlens in de MIRA elektronenmicroscoop waarbij de aberraties kwalitatief worden besproken en de focale lengte kwantitatief wordt bepaald.
+Hoofdstuk \ref{ch:karakterisering} betreft de experimentele karakterisering van de permanente magneetlens in de MIRA elektronenmicroscoop waarbij de aberraties kwalitatief worden besproken en de focale lengte kwantitatief wordt bepaald.\\
 
-Hoofdstuk \ref{ch:vooruitzicht} bespreekt hoe het ontwerp van de lens verbeterd kan worden en hoe dit onderzoek kan bijdragen aan het ontwikkelen van een toegankelijkere open-source elektronenmicroscoop.\\
+Hoofdstuk \ref{ch:vooruitzicht} bespreekt hoe het ontwerp van de lens verbeterd kan worden en hoe dit onderzoek kan bijdragen aan het ontwikkelen van een gebruiksvriendelijkere open-source elektronenmicroscoop.\\
 
 Hoofdstuk \ref{ch:besluit} geeft nog enkele laatste opmerkingen en een conclusie van dit onderzoek.\\
 
@@ -199,7 +199,7 @@ Figuur \ref{fig:TEM_principle} toont een illustratie van het werkingsprincipe va
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Images/TEM_image2.png}
-    \caption{Beeld van hematiet langs de $[001]$ as opgenomen met een TEM. \cite{VanAert2013}}
+    \caption{Beeld van een gouden nanorod opgenomen met een TEM. \cite{VanAert2013}}
     \label{fig:TEM_image}
 \end{figure}
 
@@ -218,20 +218,14 @@ Figuur \ref{fig:Magnetic_Electron_Lens_illustration} toont een illustratie van d
     \label{fig:Magnetic_Electron_Lens_illustration}
 \end{figure}
 
+\subsection{Lenseigenschappen}
+
 \subsection{Condenser/objectief/projector lenzen}
 
 \subsection{Aberraties}\label{ch:aberraties}
 
-\subsubsection{Distortie}
-\cite{PWHawkes}
-\begin{equation}\label{eq:distortion}
-    \begin{split}
-        x_i & = M\left(x_0+Dx_0\left(x_0^2+y_0^2\right)\right)\\
-        y_i & = M\left(y_0+Dy_0\left(x_0^2+y_0^2\right)\right)\\
-    \end{split}
-\end{equation}
-
 \subsubsection{Chromatische aberratie}
+\cite{PWHawkes}
 \begin{equation}\label{eq:chr_ab}
     \begin{split}
         x_i & = M\left(x_0+C_Mx_0\frac{\Delta\Phi}{\Phi}\right)\\
@@ -240,8 +234,23 @@ Figuur \ref{fig:Magnetic_Electron_Lens_illustration} toont een illustratie van d
 \end{equation}
 
 \subsubsection{Sferische aberratie}
+\begin{equation}\label{eq:sf_ab}
+    \begin{split}
+        x_i & = M\left(x_0+C_s\alpha_0\left(\alpha_0^2+\gamma_0^2\right)\right)\\
+        y_i & = M\left(y_0+C_s\gamma_0\left(\alpha_0^2+\gamma_0^2\right)\right)\\
+    \end{split}
+\end{equation}
 
-\section{Permanente magneet elektronenlenzen voor elektronenmicroscopie}
+
+\subsubsection{Distortie}
+\begin{equation}\label{eq:distortion}
+    \begin{split}
+        x_i & = M\left(x_0+Dx_0\left(x_0^2+y_0^2\right)\right)\\
+        y_i & = M\left(y_0+Dy_0\left(x_0^2+y_0^2\right)\right)\\
+    \end{split}
+\end{equation}
+
+\section{Permanente magneet elektronenlenzen voor elektronenmicroscopie}\label{ch:permanent_magnet_lenses}
 
 \section{Paraxiale beweginsvergelijking}\label{ch:paraxialevgl}
 De beweging van een bundel elektronen doorheen een elektromagnetische elektronenlens met cilindrisch symmetrische velden kan worden beschreven met behulp van een beweginsvergeljking. Deze bewegingsvergelijking is een differentiaalvergelijking voor de radiale afstand $r$ in functie van de positie langs de optische as van de lens $z$. Hierbij worden er meestal enkel \textit{paraxiale} elektronen beschouwd, d.w.z. elektronen die zich dicht bij de optische as bevinden. Dit laat toe om een Taylor-ontwikkeling van het magnetisch (of elektrostatisch) veld $\mathbf{B}$ rond het veld op de optische as $\mathbf{B}(z=0)$ te maken. Dit geeft een relatief eenvoudige homogene differentiaalvergelijking, welke de paraxiale bewegingsvergelijking wordt genoemd. Door steeds hogere orde termen in de Taylorontwikkeling mee te nemen kunnen aberraties van oplopende ordes berekend worden. In deze sectie wordt een afleiding van de paraxiale vergelijking gegeven voor een magnetische lens. De afleiding is een verkorte versie gebaseerd op het standaardwerk van \cite{PWHawkes}.\\
@@ -365,7 +374,7 @@ Om een het ontwerp voor een werkende elektronenlens te realiseren moeten de geom
     \end{enumerate}
 \end{tcolorbox}
 
-\section{Opbouw en principe permanente magneetlens (Objectief 1)}
+\section{Opbouw en principe permanente magneetlens (Objectief 1)}\label{ch:criteria}
 Het doel is om geometrie te ontwerpen die een magnetisch veld veroorzaakt dat de elektronen op zo'n manier afbuigt zodanig dat een paralelle bundel geconcentreerd zal worden in een punt op de optische as. Deze volgende twee criteria zijn hierbij belangrijk.\\
 
 \begin{enumerate}
@@ -539,7 +548,7 @@ De analytische afschatting kan numeriek gevalideerd met het ionen- en elektronen
     Het magnetisch veld op de symmetrie-as werd met een analytische uitdrukking benaderd door de oppervlakken van de poolschoenen te modelleren als twee oppervlakken met een homogene, tegengestelde poolladingsdichtheid. Het gebruiken van een analytische uitdrukking laat toe om ook de analytische afgeleiden te berekenen welke gebruikt kunnen worden om aberratiecoëfficienten te schatten. Een vergelijking van de analytische uitdrukking met een numerieke oplossing m.b.v. SIMION van de Laplace-vergelijking geeft een vrijwel perfecte overeenkomst.
 \end{tcolorbox}
 
-\section{Magnetische reluctantie van het circuit (Objectief 3)}\label{ch:reluctantie}
+\section{Invloed van het demagnetiserend veld (Objectief 3)}\label{ch:reluctantie}
 Om de analytische uitdrukking toe te passen om simulaties uit te voeren, is het cruciaal dat er een accurare waarde voor de oppervlaktepoolladingsdichtheden $\sigma_M$ gebruikt wordt. Hiervoor is moet er rekening gehouden worden met twee factoren: het \textit{demagnetiserend veld}, en de oppervlakte van de poolschoenoppervlakken.\\
 
 De eerste factor waar rekening mee moet worden gehouden is het demagnetiserend veld $H_d$. De Nd-magneet heeft een remanent magneetveld $B_r$, dit is het magnetisch veld dat in de magneet overblijft wanneer er geen uitwendige magnetische velden aangelegd worden. Wanneer de magneet in een magnetisch circuit met een luchtspleet wordt gebruikt, zorgen de oppervlakteladingen aan de luchtspleet voor een demagnetiserend veld in de poolschoenen en de magneet, dat het remanent veld tegenwerkt. Hierdoor is het werkelijke veld in de magneet $B_m$ kleiner dan het remanent veld $B_r$ dat typisch vermeld wordt op de databladeren van permanente magneten.\\
@@ -614,15 +623,15 @@ De totale reluctantie van het circuit kan berekend worden door de reluctanties i
 \end{equation}
 Waarbij $d_m$ en $d_g$ respectievelijk de dikte van de magneet en van de luchtspleet voorstellen. In de luchtspleet geldt dat $H_g = \frac{B_g}{\mu_0}$, wat ingevuld kan worden in \ref{eq:B_m_B_g}:
 \begin{equation}
-    H_g = \frac{B_m A_g}{\mu_0 A_g}
+    H_g = \frac{B_m A_m}{\mu_0 A_g}
 \end{equation}
 Dit invullen vullen in \ref{eq:H_m_H_g} leidt to:
 \begin{equation}
-    H_m = \frac{B_m A_g d_g}{\mu_0 A_g d_m} \Leftrightarrow \frac{B_m}{\mu_0 H_m} = \frac{A_g d_m}{A_g d_g} = P_c
+    H_m = \frac{B_m A_m d_g}{\mu_0 A_g d_m} \Leftrightarrow \frac{B_m}{\mu_0 H_m} = \frac{A_g d_m}{A_m d_g} = P_c
 \end{equation}
 Deze coëfficiënt $P_c$ wordt de \textit{permeantiecoëccifient} genoemd en drukt de verhouding uit tussen de overgebleven magnetische fluxdichtheid $B_r$ en het demagnetiserend veld $H_d$ in de magneet \cite{mmpa_permanent_magnet_guidelines}. Voor de verdere analyse is het handiger om te werken met de intrinsieke permeantiecoëccifient $P_{ci}$, welke het verband uitdrukt tussen het remanent veld $B_r$ en het demagnetiserend veld $H_d$.
 \begin{equation}\label{eq:Pci}
-    P_{ci}=\frac{B_r}{\mu_0 H_m}=\frac{B_m+\mu_0 H_m}{\mu_0 H_m}=1+\frac{B_m}{\mu_0 H_m}=1+P_c = 1+\frac{A_g d_m}{A_g d_g}. 
+    P_{ci}=\frac{B_r}{\mu_0 H_m}=\frac{B_m+\mu_0 H_m}{\mu_0 H_m}=1+\frac{B_m}{\mu_0 H_m}=1+P_c = 1+\frac{A_g d_m}{A_m d_g}. 
 \end{equation}
 
 Het demagnetiserend veld heeft een dubbel effect: enerzijds werkt het het remanent veld van de magneet tegen (zoals hierboven beschreven), anderzijds reduceert het de grootte van het remanent veld zelf, aangezien $B_r$ expliciet afhangt van uitwendige demagnetiserende velden. Hiervoor moet er rekening worden gehouden $\mathrm{BH}$-curve van de gebruikte magneet, die het verband tussen het remanent veld en het demagnetiserend veld uitdrukt. Figuur \ref{fig:BH_curve_NdFeB} toont de $\mathrm{BH}$-curve van graad N35 NdFeB voor verschillende temperaturen. Op de figuur staan zowel de normale ($B_m(H_d)$) als de intrinsieke ($B_r(H_d)$) $\mathrm{BH}$-curve voor 6 verschillende temperaturen. In het kader van deze thesis is de intrinsieke $\mathrm{BH}$-curve bij kamertemperatuur relevant, welke wordt gegeven door de gekromde blauwe lijn. Deze wordt gebruikt om het \textit{werkingspunt} van de magneet te bepalen, dit is het $(B_r, H_d)$ punt op de curve waarop het systeem zich bevindt. Deze kan gevonden worden door het snijpunt te vinden tussen de interne $\mathrm{BH}$-curve en de rechte gegeven door $P_{ci} \mu_0 H_m=B_r$, de \textit{belastingslijn}. Een voorbeeld wordt getoond op Figuur \ref{fig:operating_point} waarbij $P_{ci}=1.5$.\\
@@ -1452,7 +1461,7 @@ Deze waarde is groter dan voorspeld. De meest waarschijnlijke verklaring voor di
 
 Bovendien zijn er geen databladeren van de gebruikte ringmagneet beschikbaar, waardoor de toolbox een $\mathrm{BH}$-curve van een andere magneet met dezelfde graad hanteert. Ook dit kan voor een onverwachte werking van de lens zorgen. Daarnaast is het mogelijk dat de interne permeantiecoëfficiënt kleiner is dan voorspeld door de analytische uitdrukking (zie \ref{eq:Pci}), wat voor een groter demagnetiserend veld en een zwakkere lenswerking zorgt.\\
 
-Hierbij is het belangrijk om te onthouden dat de afbuiging van de elektronen evenredig is met $B^2$, wat betekent dat bijv. een halvering van het magnetisch veld de focale lengte met een factor $\sim 4$ vergroot. Om dit kwantitatief te onderbouwen werd gesimuleerd welke reductie van $B$ nodig is om de experimentele focale lengte te reproduceren. Een verkleining van $B$ met een factor $0.67$ geeft een focale lengte van $24.663$~mm, wat in goede overeenstemming met de experimentele waarde is. Figuur \ref{fig:leak_67} toont de lenswerking in dit geval.
+Hierbij is het belangrijk om te onthouden dat de afbuiging van de elektronen evenredig is met $B^2$, wat betekent dat bijv. een halvering van het magnetisch veld de focale lengte met een factor $\sim 4$ vergroot. Om dit kwantitatief te onderbouwen werd gesimuleerd welke reductie van $B$ nodig is om de experimentele focale lengte te reproduceren. Een verkleining van $B$ met een factor $0.67$ geeft een focale lengte van $24.663$~mm, wat in goede overeenstemming met de experimentele waarde is. Figuur \ref{fig:leak_67} toont de lenswerking en Tabel \ref{tab:lens_properties_67} toont de lenseigenschappen in dit geval.
 
 \begin{figure}[H]
     \centering
@@ -1460,6 +1469,21 @@ Hierbij is het belangrijk om te onthouden dat de afbuiging van de elektronen eve
     \caption{De lens is zwakker dan voorspeld, wat een indicatie is dat er magnetische veldlijnen uitwendig weglekken en niet deelnemen aan de lenswerking. Een verkleining met factor $0.67$ van het magnetisch veld in het gat van de lens geeft een gesimuleerde focale lengte van $24.663$~mm, wat goed overeenkomt met de experimentele geobserveerde waarde.}
     \label{fig:leak_67}
 \end{figure}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}cl@{}}
+\toprule
+Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
+\multicolumn{1}{|c|}{$f$}        & \multicolumn{1}{c|}{$24.636$~mm}  \\ \midrule
+\multicolumn{1}{|c|}{$z_{Pi}$}        & \multicolumn{1}{c|}{$-0.027$~mm} \\ \midrule
+\multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{c|}{$24.663$~mm}  \\ \midrule
+\multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{c|}{$2.575$}  \\ \midrule
+\multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{c|}{$0.754$~T}    \\ \midrule
+\multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{c|}{$1.23\mathrm{mm}^{-2}$}    \\ \midrule
+\end{tabular}
+\caption{Lenseigenschappen wanneer we het magnetisch veld met een factor $0.67$ vekleinen.}\label{tab:lens_properties_67}
+\end{table}
 
 De conclusie hier is daarom dat er verschillende factoren kunnen bijdragen aan het verzwakken van de lens. Er zijn vervolgexperimenten nodig om de invloed van deze factoren te kwantificeren, zoals een meting van het magnetisch veldprofiel langs de $z$-as m.b.v. een kleine Hall-sensor.
 
@@ -1472,9 +1496,86 @@ De conclusie hier is daarom dat er verschillende factoren kunnen bijdragen aan h
 \end{tcolorbox}
 
 \chapter{Vooruitzicht}\label{ch:vooruitzicht}
+In dit hoofdstuk wil ik aangeven hoe er op dit onderzoek verder kan worden gebouwd. Daarbij wil ik het concreet hebben over eventuele vervolgexperimenten die de lenswerking verder zouden kunnen karakteriseren, uitbreidingen in de simulatietoolbox en enkele ideeën voor verbeteringen aan het ontwerp van de lens.
+\section{Vervolgexperimenten}
+Zoals eerder vermeld is het zinvol om een meer rechtstreekse meting van het magnetisch veldprofiel uit te voeren. Hiervoor is er echter een Hall-sensor nodig die door het nauwe gat van de lens past. Dit soort kleine componenten zijn moeilijk te verwerken in een elektrisch circuit, wat noodzakelijk is voor het aansturen en uitlezen van de Hall-sensor. Daarnaast moet het praktisch mogelijk gemaakt worden om de Hall-sensor met een voldoende grote precisie doorheen de lens laten te bewegen; om een duidelijk magnetisch veldprofiel met genoeg datapunten op te stellen is een precisie van $\sim 50 ~\mu$m gewenst.\\
 
+In het experimenteel deel van deze thesis werd slechts 1 lenseigenschap (de focale lengte) bepaald. De rear mesh shadowgraph methode kan echter ook uitgebreid worden om de chromatische aberratie en de distortie te kwantificeren, welke ook met gesimuleerde waarden kunnen worden vergeleken. Daarnaast veronderstelden we steeds een dunne lenswerking, dus een experimentele validatie van de positie van het hoofdvlak zou ook nuttig kunnen zijn om na te gaan hoe goed deze veronderstelling is.\\
+
+Aangezien er 3 lenzen vervaardigd werden, zou het ook interessant zijn om de lenseigenschappen van deze drie lenzen onderling te vergelijken. Zowel de kwalitatieve bespreking als de kwantitatieve bepaling van $f$ werden immers met dezelfde lens uitgevoerd. Het zou nuttig zijn om na te gaan of de overige twee lenzen, die in een vacuumkast bewaard werden, een andere lenswerking dan de gekarakteriseerde lens vertonen. De distortie zou bovendien gemitigeerd kunnen worden door een kleiner object met een hogere vergroting af te beelden. Het is mogelijk om met behulp van 2 of 3 lenzen een opstelling te bouwen waarmee hogere vergrotingen kunnen worden bereikt, maar dit vereist een uiterst precieze uitlijning in de microscoop.
+
+\section{Uitbreiding simulatietoolbox}
+De experimentele focale lengte overschrijdt de voorspelde waarde met een factor $>2$, wat hoogstwaarschijnlijk een gevolg is van het weglekken van het magnetisch veld. Een doelgerichte manier om dit effect in meer detail te bestuderen, is om een \textit{Eindige-Elementenanalyse} (Finite Element Analysis, FEA) van de lens uit te voeren. Een voorbeeld van dit soort analyse wordt getoond op Figuur \ref{fig:Elmer_FEM}, waarbij gebruik wordt gemaakt van het open-source Elmer FEM programma om twee staafmagneten te simuleren.\\
+
+Bij een FEA wordt de lens en het luchtvolume er rond in een groot aantal kleine volumes opgedeeld waarbij elk volume geassocieerd wordt met een magnetische veldvector $\mathbf{B}$. Vervolgens kunnen de Maxwellvergelijkingen voor deze volumes worden opgelost m.b.v. iteratieve oplossingsmethoden waarbij de afgeleiden numeriek worden berekend. Het resulterende gesimuleerde magnetisch veldprofiel kan worden vergeleken met de analytische afschatting die ik in deze thesis heb gemaakt om te controleren hoe accuraat deze is, en de piekwaarden kunnen worden vergeleken om te kwantificeren hoeveel magnetisch veld er uit de polepieces weglekt.\\
+
+De toolbox is in staat om de distortiecoëfficiënt te berekenen, maar zou uitgebreid kunnen worden om ook de coëfficiênten voor chromatische aberratie, sferische aberratie, coma, astigmatisme enz. te berekenen. Daarnaast zou het nuttig kunnen zijn om rekening te houden met deze aberraties in de gesimuleerde detectorbeelden, zodat de simulaties een getrouwer beeld geven dat beter vergeleken kan worden met de experimentele resultaten.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/Elmer_FEM.png}
+    \caption{Voorbeeld van een FEA uitgevoerd met het programma Elmer FEM. Door iteratieve oplossingsmethoden voor de Maxwellvergelijkingen wordt het uitwendig magnetisch veld rond twee staafmagneten gesimuleerd. \cite{benally2024elmer}}
+    \label{fig:Elmer_FEM}
+\end{figure}
+
+\section{Ontwerpverbeteringen}
+De bevindingen van deze thesis bieden waardevolle inzichten die kunnen worden gebruikt om het ontwerp voor de permanente magneetlens te verbeteren. De experimentele focale lengte is kleiner dan verwacht, wat betekent dat het magnetisch veld in de luchtspleet van de lens vergroot moet worden. Hiervoor zijn enkele mogelijkheden, zoals het gebruik van een magneet met een hogere graad of een groter oppervlak, of het verkleinen van de oppervlakken van de poolschoenen waardoor de magnetische oppervlaktepoolladingsdichtheden toenemen. \\
+
+Zoals vermeld in sectie \ref{ch:permanent_magnet_lenses} is een van de fundamentele beperkingen van een permanente magneetlens dat de focale lengte niet instelbaar is. Het ontwerp van een permanente magneetlens kan echter zo gemaakt worden om toch enige variatie van de focale lengte toe te laten.
+\begin{enumerate}
+    \item Een interessante mogelijkheid die ik in deze thesis nog niet heb vermeld, is om een stapel van meer dan 1 ringmagneet tussen de poolschoenen te plaatsen. Dit zorgt ervoor dat zowel dikte van de magneet $d_m$ als de dikte van de luchtspleet $d_g$ toenemen. Dit heeft enerzijds een invloed op de interne permeantiecoëfficiënt $P_{ci}$ waardoor het demagnetiserend veld verandert (zie \ref{eq:Pci}), en heeft anderzijds een invloed op het magnetisch veldprofiel gegeven door de analytische afschatting (zie \ref{eq:analytical_B_field_final}). Figuren en Tabellen \ref{fig:lens_properties_2_magnets} en \ref{fig:lens_properties_3_magnets} tonen de lenseigeschappen wanneer we respectievelijk 2 en 3 ringmagneten tussen de poolschoenen zouden plaatsen.\\
+    
+    Deze lenzen hebben een kortere focale lengte en een kleinere distortiecoëfficiënt, maar hebben een te kleine $P_{ci}$ en een dikkere lenswerking waardoor ze niet aan de criteria opgesteld in sectie \ref{ch:criteria} voldoen. Desondanks is dit een erg interessant concept met veel potentieel aangezien het op deze manier mogelijk is om modulaire elektronenlenzen te ontwerpen die met een kleine aanpassing totaal verschillende lenseigenschappen kunnen vertonen. 
+    \item Men kan er ook voor kiezen om de permanete magneetlens te combineren met een kleine solenoïde waardbij de lens in de spoel wordt geplaatst. Op deze manier zorgt de ringmagneet nog voor een sterk magnetisch (basis-)veld, maar kan de solenoïde de lenswerking nauwkeurig bijsturen om de focale lengte iets te variëren rond de standaardwaarde van de permanente magneetlens. Bij dit ontwerp moet men echter opletten dat de solenoïde geen te groot tegenwerkend veld biedt wat demagnetisatie van de magneet kan veroorzaken.
+\end{enumerate}
+
+Ten slotte kan de lensprestatie worden verbeterd door een cilindrische huls met kleine toleranties rondom de lens aan te brengen. Deze huls fixeert de poolschoenen ten opzichte van elkaar, wat de cilindersymmetrie van het veld verbetert en anisotrope distorties vermindert. Dit omhulsel moet uiteraard uit een materiaal met een kleine permeabiliteit bestaan, om een een uitwendige kortsluiting van het magnetisch circuit te voorkomen.\\
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \begin{tabular}{@{}cl@{}}
+    \toprule
+    Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
+    \multicolumn{1}{|c|}{$f$}        & \multicolumn{1}{c|}{$4.538$~mm}  \\ \midrule
+    \multicolumn{1}{|c|}{$z_{Pi}$}        & \multicolumn{1}{c|}{$-0.464$~mm} \\ \midrule
+    \multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{c|}{$4.074$~mm}  \\ \midrule
+    \multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{c|}{$1.900$}  \\ \midrule
+    \multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{c|}{$0.863$~T}    \\ \midrule
+    \multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{c|}{$0.422\mathrm{mm}^{-2}$}    \\ \midrule
+    \end{tabular}
+    \vspace{1em}
+    \includegraphics[width=\linewidth]{Images/2_magnets_lens.png}
+    \captionof{figure}{Lenseigenschappen en lenswerking voor een lens met 2 ringmagneten tussen de poolschoenen ($d_m=4$~mm, $d_g=2.8$~mm).}\label{fig:lens_properties_2_magnets}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \begin{tabular}{@{}cl@{}}
+    \toprule
+    Lenseigenschap                     & \multicolumn{1}{c}{Waarde}  \\ \midrule
+    \multicolumn{1}{|c|}{$f$}        & \multicolumn{1}{c|}{$5.128$~mm}  \\ \midrule
+    \multicolumn{1}{|c|}{$z_{Pi}$}        & \multicolumn{1}{c|}{$-1.248$~mm} \\ \midrule
+    \multicolumn{1}{|c|}{$z_{Fi}$}        & \multicolumn{1}{c|}{$3.880$~mm}  \\ \midrule
+    \multicolumn{1}{|c|}{$P_{ci}$} & \multicolumn{1}{c|}{$1.789$}  \\ \midrule
+    \multicolumn{1}{|c|}{$B_{max}$} & \multicolumn{1}{c|}{$0.802$~T}    \\ \midrule
+    \multicolumn{1}{|c|}{$D$}        & \multicolumn{1}{c|}{$0.262\mathrm{mm}^{-2}$}    \\ \midrule
+    \end{tabular}
+    \vspace{1em}
+    \includegraphics[width=\linewidth]{Images/3_magnets_lens.png}
+    \captionof{figure}{Lenseigenschappen en lenswerking voor een lens met 3 ringmagneten tussen de poolschoenen ($d_m=6$~mm, $d_g=4.8$~mm).}\label{fig:lens_properties_3_magnets}
+\end{minipage}
+\end{figure}
 
 \chapter{Besluit}\label{ch:besluit}
+In deze thesis heb ik de haalbaarheid van een miniatuur permanete magneetlens voor elektronenmicroscopie aangetoond. Om dit te bereiken heb ik een ontwerp met een ringvormige NdFeB magneet en ferromagnetische ASI1018 poolschoenen opgesteld en een analytische afschatting van het cilindersymmetrisch magnetisch veld gegenereerd door dit ontwerp gemaakt. Vervolgens heb ik een simulatietoolbox ontworpen waarmee het mogelijk is om de lenswerking m.b.v. de opgestelde analytische uitdrukking te simuleren. Deze toolbox werd dan toegepast om een optimale set lensparameters te vinden die maximaal voldoen aan nauwkeurig gekozen criteria. De lensonderdelen werden vervaardigd door een externe CNC-service en de lens werd ten slotte gekarakteriseerd in een SEM waarbij de lenswerking en de aberraties kwalitatief werden onderzocht en de focale lengte kwantitatief werd bepaald via de rear mesh shadowgraph methode.\\
+
+Uit de experimentele karakterisering van de lens is gebleken dat dit lensontwerp en de gekozen parameters tot een correcte lenswerking leiden waarmee uitvergrote beelden kunnen worden gevormd. Zowel de focale lengte als de aberraties vallen binnen aanvaardbare grenzen voor bruikbare beeldvorming. Dit is een erg hoopvol resultaat aangezien de bestudeerde lens veel kleiner, lichter en goedkoper is dan traditioneel gebruikte solenoïdelenzen.\\
+
+De experimenteel gemeten focale lengte bedraagt $25 \pm 2$~mm, wat beduidend groter is dan de gesimuleerde focale lengte van $11.437$~mm. Dit heeft hoogstwaarschijnlijk te maken met het weglekken van magnetische veldlijnen die een utiwendig magnetisch veld veroorzaken. Er echter zijn verschillende manieren om in toekomstige intwerpen de focale lengte te verkleinen, zoals het gebruiken van een sterkere magneet met een hogere graad, het verkleinen van het demagnetiserend veld door het gebruik van een dikkere magneet, of het verkleinen van de poolschoenoppervlakken om de oppervlaktepoolladingsdichtheden meer te concentreren.\\
+
+De resultaten van dit onderzoek kunnen een concrete bijdrage leveren aan de ontwikkeling van een goedkopere en toegankelijkere open-source elektronenmicroscoop. De ontworpen permanente magneetlens biedt een compact en energieloos alternatief voor grote magnetische solenoïdelenzen en hoogvermogen elektrostatische Einzellenzen. Verdere optimalisatie van het ontwerp, een uitbreiding van de simulatietoolbox en een uitvoerige experimentele validatie kunnen dit concept tillen naar een volwaardig instrument dat inzetbaar is in praktische elektronenmicroscopen.
 
 \appendix
 

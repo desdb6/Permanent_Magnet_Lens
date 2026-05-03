@@ -514,6 +514,43 @@ def leak_plot():
     permanent_magnet_lens.display_properties(output_path='report/Images/leak_67.png', dpi=DPI)
     print('Saved leak plot')
 
+def twothree_magnets_plot():
+    R_1 = 0.8
+    R_2 = 3.25
+    R_1_magnet=4.5
+    R_2_magnet=6
+    d = 2.8
+    d_magnet=4
+    B_r_magnet_theoretical=1.17
+    leak_factor=0.67
+    B_r_magnet=B_r_magnet_theoretical*leak_factor
+    T = 30*10**3
+
+
+    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=60)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=30)
+    permanent_magnet_lens.calculate_aberration_coeff()
+    permanent_magnet_lens.display_properties(output_path='report/Images/2_magnets_lens.png', dpi=DPI)
+    print('Saved 2_magnets_lens plot')
+
+    R_1 = 0.8
+    R_2 = 3.25
+    R_1_magnet=4.5
+    R_2_magnet=6
+    d = 4.8
+    d_magnet=6
+    B_r_magnet_theoretical=1.17
+    leak_factor=0.67
+    B_r_magnet=B_r_magnet_theoretical*leak_factor
+    T = 30*10**3
+
+
+    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=60)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=30)
+    permanent_magnet_lens.calculate_aberration_coeff()
+    permanent_magnet_lens.display_properties(output_path='report/Images/3_magnets_lens.png', dpi=DPI)
+    print('Saved 3_magnets_lens plot')
+
 def main():
     plot_B_field_ring_report()
     plot_B_field_lens_report()
@@ -537,4 +574,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    twothree_magnets_plot()

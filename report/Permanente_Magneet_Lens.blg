@@ -1,51 +1,49 @@
-This is BibTeX, Version 0.99e
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Permanente_Magneet_Lens.aux
-Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: abbrv.bst
-Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliography.bib
 Warning--there's a number but no volume in meshshadowgraphs
 Warning--empty year in meshshadowgraphs
-You've used 34 entries,
+You've used 35 entries,
             2118 wiz_defined-function locations,
-            729 strings with 9864 characters,
-and the built_in function-call counts, 9351 in all, are:
-= -- 895
-> -- 467
+            735 strings with 10037 characters,
+and the built_in function-call counts, 9570 in all, are:
+= -- 917
+> -- 474
 < -- 0
-+ -- 190
-- -- 156
-* -- 589
-:= -- 1650
-add.period$ -- 116
-call.type$ -- 34
-change.case$ -- 171
++ -- 193
+- -- 158
+* -- 597
+:= -- 1687
+add.period$ -- 120
+call.type$ -- 35
+change.case$ -- 175
 chr.to.int$ -- 0
-cite$ -- 36
-duplicate$ -- 313
-empty$ -- 744
-format.name$ -- 156
-if$ -- 1912
+cite$ -- 37
+duplicate$ -- 320
+empty$ -- 766
+format.name$ -- 158
+if$ -- 1960
 int.to.chr$ -- 0
-int.to.str$ -- 34
+int.to.str$ -- 35
 missing$ -- 18
-newline$ -- 187
-num.names$ -- 66
-pop$ -- 216
+newline$ -- 193
+num.names$ -- 68
+pop$ -- 224
 preamble$ -- 1
-purify$ -- 147
+purify$ -- 150
 quote$ -- 0
-skip$ -- 208
+skip$ -- 214
 stack$ -- 0
-substring$ -- 374
-swap$ -- 38
+substring$ -- 379
+swap$ -- 39
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 130
+type$ -- 134
 warning$ -- 2
-while$ -- 78
-width$ -- 36
-write$ -- 387
+while$ -- 80
+width$ -- 37
+write$ -- 399
 (There were 2 warnings)
