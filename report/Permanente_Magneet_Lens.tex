@@ -220,8 +220,6 @@ Figuur \ref{fig:Magnetic_Electron_Lens_illustration} toont een illustratie van d
 
 \subsection{Lenseigenschappen}
 
-\subsection{Condenser/objectief/projector lenzen}
-
 \subsection{Aberraties}\label{ch:aberraties}
 
 \subsubsection{Chromatische aberratie}
@@ -249,6 +247,8 @@ Figuur \ref{fig:Magnetic_Electron_Lens_illustration} toont een illustratie van d
         y_i & = M\left(y_0+Dy_0\left(x_0^2+y_0^2\right)\right)\\
     \end{split}
 \end{equation}
+
+\subsection{Condenser/objectief/projector lenzen}
 
 \section{Permanente magneet elektronenlenzen voor elektronenmicroscopie}\label{ch:permanent_magnet_lenses}
 
@@ -322,7 +322,7 @@ Merk op dat de paraxiale bewegingsvergelijking lineair is. Dit betekent dat twee
 Merk op dat de oplossing $g$ het gedrag van een parallelle bundel beschrijft. Immers, de oplossing voor de paraxiale bewegingsvergelijking van een parallel elektron dat initieel op een constante afstand $r_0$ van de optische as beweegt kan geschreven worden als $r_0g(z)$. Stel dat $g(z)$ een nulpunt heeft, dan kruisen alle initieel parallel bewegende elektronen de optische as in dat nulpunt. Dit is exact de gewenste werking van een magnetische elektronenlens; het nulpunt van $g(z)$ is dan het brandpunt van de lens. Vergelijking \ref{eq:paraxialevgl_rel} lijkt erg op een harmonische oscillator (met een frequentie afhankelijk van $B^2$), wat betekent dat de elektronen steeds naar de optische as worden afgebogen. In het algemeen zal $g(z)$ daarom altijd een nulpunt hebben als $B(z)\neq0$. Dit effect zorgt er ook voor dat het onmogelijk is om een divergerende cilindersymmetrische magnetische lens te maken, wat voor het eerst werd aangetoond door Otto Scherzer in 1936 \cite{scherzer1936}.
 
 \section{Reële/Asymptotische lenseigenschappen}
-Bij het bepalen van lenseigenschappen zoals de focale lengte doet zich een subtiel probleem voor dat aanleiding geeft tot ambiguïteit. Figuur \ref{fig:f_ambiguity} illustreert dit effect, dat optreedt wanneer het object zich \textit{binnen} het magnetisch veld van de lens bevindt. Dit effect treedt op wanneer het object waar men een beeld van wil vormen \textit{in} het magnetisch veld van de lens ligt. In dit geval zal slechts een deel van het veld, nl. het veld dat achter het object bevindt, bijdragen aan de totale afbuiging van de elektronen. Bijgevolg heeft de lens in dat geval een zwakkere werking, en verschuift het brandpunt van de lens verder naar achter. \cite{PWHawkes}
+Bij het bepalen van lenseigenschappen zoals de focale lengte doet zich een subtiel probleem voor dat aanleiding geeft tot ambiguïteit. Figuur \ref{fig:f_ambiguity} illustreert dit effect, dat optreedt wanneer het object zich \textit{binnen} het magnetisch veld van de lens bevindt. In dit geval zal slechts een deel van het veld, nl. het veld dat achter het object bevindt, bijdragen aan de totale afbuiging van de elektronen. Bijgevolg heeft de lens in dat geval een zwakkere werking, en verschuift het brandpunt van de lens verder naar achter. \cite{PWHawkes}
 
 \begin{figure}[H]
     \centering
@@ -625,7 +625,7 @@ Waarbij $d_m$ en $d_g$ respectievelijk de dikte van de magneet en van de luchtsp
 \begin{equation}
     H_g = \frac{B_m A_m}{\mu_0 A_g}
 \end{equation}
-Dit invullen vullen in \ref{eq:H_m_H_g} leidt to:
+Dit invullen vullen in \ref{eq:H_m_H_g} leidt tot:
 \begin{equation}
     H_m = \frac{B_m A_m d_g}{\mu_0 A_g d_m} \Leftrightarrow \frac{B_m}{\mu_0 H_m} = \frac{A_g d_m}{A_m d_g} = P_c
 \end{equation}
@@ -640,7 +640,7 @@ De intrinsieke $\mathrm{BH}$-curve van de magneet vertoont een \textit{elleboog}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{Images/BH_curve_NdFeB.JPG}
+    \includegraphics[width=0.9\linewidth]{Images/BH_curve_NdFeB.JPG}
     \caption{$\mathrm{BH}$-curve van graad N35 NdFeB voor verschillende temperaturen. Het aanleggen van een demagnetiserend veld doet de intrinsieke sterkte van de magneet licht verkleinen. Bij een zeer groot (extern) demagnetiserend veld passeert het werkingspunt de elleboog van de $\mathrm{BH}$-curve en demagnetiseert de magneet, of wordt deze zelfs omgepoold. \cite{arnold_ndfeb_2019}}
     \label{fig:BH_curve_NdFeB}
 \end{figure}
@@ -1281,7 +1281,7 @@ Dit omvormen naar $z_i$ geeft:
 
 Merk op dat dit exact dezelfde formule geeft als bij een reëel beeld (\ref{eq:image_dist_real}). Dit betekent dat we in feite geen onderscheid hoeven te maken tussen de twee mogelijke scenarios; door de gevonden waarden in te vullen in vergelijking \ref{eq:image_dist_real}, zal uitgewezen worden of de beeld-puntbron reëel of virtueel is afhankelijk van het teken van $z_i$.\\
 
-In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks metingen van $z_i$ voor verschillende waarden van $z_o$. In de microscoop kan dit gerelaiseerd worden door de \textit{werkingsafstand} aan te passen. Deze instelling geeft de verticale afstand van de elektronenbron tot het punt waar de elektronenbundel geconvergeerd wordt. De werkingsafstand $z_{werking}$ komt met andere woorden overeen met $z_{lens}-z_o$.\\
+In het experiment dat in deze thesis uitgevoerd zal worden, maken we een reeks metingen van $z_i$ voor verschillende waarden van $z_o$. In de microscoop kan dit gerelaiseerd worden door de \textit{werkingsafstand} aan te passen. Deze instelling geeft de verticale afstand van de elektronenbron tot het punt waar de elektronenbundel geconvergeerd wordt. De werkingsafstand $z_{werking}$ komt met andere woorden overeen met $z_{lens}-z_o$, waarbij $z_{lens}$ de $z$-positie van de lens in de microscoop voorstelt.\\
 
 % \paragraph{Parallelle bundel}
 
@@ -1573,9 +1573,9 @@ In deze thesis heb ik de haalbaarheid van een miniatuur permanete magneetlens vo
 
 Uit de experimentele karakterisering van de lens is gebleken dat dit lensontwerp en de gekozen parameters tot een correcte lenswerking leiden waarmee uitvergrote beelden kunnen worden gevormd. Zowel de focale lengte als de aberraties vallen binnen aanvaardbare grenzen voor bruikbare beeldvorming. Dit is een erg hoopvol resultaat aangezien de bestudeerde lens veel kleiner, lichter en goedkoper is dan traditioneel gebruikte solenoïdelenzen.\\
 
-De experimenteel gemeten focale lengte bedraagt $25 \pm 2$~mm, wat beduidend groter is dan de gesimuleerde focale lengte van $11.437$~mm. Dit heeft hoogstwaarschijnlijk te maken met het weglekken van magnetische veldlijnen die een utiwendig magnetisch veld veroorzaken. Er echter zijn verschillende manieren om in toekomstige intwerpen de focale lengte te verkleinen, zoals het gebruiken van een sterkere magneet met een hogere graad, het verkleinen van het demagnetiserend veld door het gebruik van een dikkere magneet, of het verkleinen van de poolschoenoppervlakken om de oppervlaktepoolladingsdichtheden meer te concentreren.\\
+De experimenteel gemeten focale lengte bedraagt $25 \pm 2$~mm, wat beduidend groter is dan de gesimuleerde focale lengte van $11.437$~mm. Dit heeft hoogstwaarschijnlijk te maken met het weglekken van magnetische veldlijnen die een utiwendig magnetisch veld veroorzaken. Er echter zijn verschillende manieren om in toekomstige ontwerpen de focale lengte te verkleinen, zoals het gebruiken van een sterkere magneet met een hogere graad, het verkleinen van het demagnetiserend veld door het gebruik van een dikkere magneet, of het verkleinen van de poolschoenoppervlakken om de oppervlaktepoolladingsdichtheden meer te concentreren.\\
 
-De resultaten van dit onderzoek kunnen een concrete bijdrage leveren aan de ontwikkeling van een goedkopere en toegankelijkere open-source elektronenmicroscoop. De ontworpen permanente magneetlens biedt een compact en energieloos alternatief voor grote magnetische solenoïdelenzen en hoogvermogen elektrostatische Einzellenzen. Verdere optimalisatie van het ontwerp, een uitbreiding van de simulatietoolbox en een uitvoerige experimentele validatie kunnen dit concept tillen naar een volwaardig instrument dat inzetbaar is in praktische elektronenmicroscopen.
+De resultaten van dit onderzoek kunnen een concrete bijdrage leveren aan de ontwikkeling van een goedkopere en toegankelijkere open-source elektronenmicroscoop. De ontworpen permanente magneetlens biedt een compact en energieloos alternatief voor grote magnetische solenoïdelenzen en hoogvermogen elektrostatische Einzellenzen. Ook het gebruik van 3D-geprinte houders werd gevalideerd. Verdere optimalisatie van het ontwerpvan de lens, een uitbreiding van de simulatietoolbox en een uitvoerige experimentele validatie kunnen dit concept tillen naar een volwaardig instrument dat inzetbaar is in praktische elektronenmicroscopen.
 
 \appendix
 
@@ -1584,7 +1584,7 @@ In deze sectie wordt de foutenpropagatie voor het bepalen van de focale lengte i
 
 Voor de lengte van de totale verticale kolom in de microscoop $z_{detector}$ werd de waarde van de blauwdruk van de MIRA microscoop genomen. Om eventuele toleranties in rekening te nemen werd er gekozen voor een fout op deze meting van $s_{z_{detector}}=0.1$~mm.\\
 
-Bij het meten van de afstanden tussen de lens, het raster en de detector werd er een digitale schuifmaat met een precisie van $0.01$~mm. Om menselijke meetfouten in rekening te nemen werd er gekozen voor een fout op deze metingen van $0.1$~mm. De posities van de lens en het raster in de verticale kolom (m.a.w. $z_{lens}$ en $z_{raster}$) werden echter berekend door respectievelijk de afstand van de lens en het raster tot de detector van $z_{detector}$ af te trekken. Bijgevolg heeft deze meting een fout $s_{z_{lens}}=s_{z_{raster}}=\sqrt{(0.1\mathrm{mm})^2+(0.1\mathrm{mm})^2}=0.142\mathrm{mm}$.\\
+Bij het meten van de afstanden tussen de lens, het raster en de detector werd er een digitale schuifmaat met een precisie van $0.01$~mm. Om menselijke meetfouten in rekening te nemen werd er gekozen voor een fout op deze metingen van $0.1$~mm, m.a.w. $s_{b}=s_{d}=0.1$~mm. De posities van de lens en het raster in de verticale kolom (m.a.w. $z_{lens}$ en $z_{raster}$) werden echter berekend door respectievelijk de afstand van de lens en het raster tot de detector van $z_{detector}$ af te trekken. Bijgevolg heeft deze meting een fout $s_{z_{lens}}=s_{z_{raster}}=\sqrt{(0.1\mathrm{mm})^2+(0.1\mathrm{mm})^2}=0.142\mathrm{mm}$.\\
 
 Voor de fout op de werkingsafstand wordt er een fout van $1\mathrm{mm}$ gekozen. De ingestelde werkingsafstand wordt immers niet direct gemeten, dus de ingestelde waarde kan van de werkelijke waarde afwijken. Hiermee wordt de fout op de $z_o$ waarden $s_{z_{werking}}=\sqrt{(0.1\mathrm{mm})^2+(0.142\mathrm{mm})^2+(1\mathrm{mm})^2}=1.02\mathrm{mm}$\\
 

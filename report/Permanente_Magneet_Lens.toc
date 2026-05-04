@@ -7,11 +7,11 @@
 \contentsline {subsection}{\numberline {2.1.1}Raster/Transmissie Elektronenmicroscopie}{7}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Magnetische elektronenlenzen voor elektronenmicroscopie}{10}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Lenseigenschappen}{11}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Condenser/objectief/projector lenzen}{11}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Aberraties}{11}{subsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.3.1}Chromatische aberratie}{11}{subsubsection.2.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.2.3.2}Sferische aberratie}{11}{subsubsection.2.2.3.2}%
-\contentsline {subsubsection}{\numberline {2.2.3.3}Distortie}{11}{subsubsection.2.2.3.3}%
+\contentsline {subsection}{\numberline {2.2.2}Aberraties}{11}{subsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2.1}Chromatische aberratie}{11}{subsubsection.2.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2.2}Sferische aberratie}{11}{subsubsection.2.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2.3}Distortie}{11}{subsubsection.2.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.3}Condenser/objectief/projector lenzen}{11}{subsection.2.2.3}%
 \contentsline {section}{\numberline {2.3}Permanente magneet elektronenlenzen voor elektronenmicroscopie}{11}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Paraxiale beweginsvergelijking}{11}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Reële/Asymptotische lenseigenschappen}{14}{section.2.5}%
