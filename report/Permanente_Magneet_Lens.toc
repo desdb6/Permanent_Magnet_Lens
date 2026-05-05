@@ -6,10 +6,10 @@
 \contentsline {section}{\numberline {1.2}Open-source elektronenmicroscopen}{3}{section.1.2}%
 \contentsline {chapter}{\numberline {2}Literatuurstudie}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Elektronenoptica}{7}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Raster/Transmissie Elektronenmicroscopie}{8}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.1}Raster/Transmissie Elektronenmicroscopie}{7}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Magnetische elektronenlenzen voor elektronenmicroscopie}{10}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Lenseigenschappen}{11}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Reële/Asymptotische lenseigenschappen}{13}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.2}Reële/Asymptotische lenseigenschappen}{12}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}Aberraties}{15}{section.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.0.1}Sferische aberratie}{15}{subsubsection.2.3.0.1}%
 \contentsline {subsubsection}{\numberline {2.3.0.2}Distortie}{16}{subsubsection.2.3.0.2}%
@@ -25,7 +25,7 @@
 \contentsline {subsection}{\numberline {3.4.1}Paraxiaal magnetisch veld}{35}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Paraxiale bewegingsvergelijking}{35}{subsection.3.4.2}%
 \contentsline {subsubsection}{\numberline {3.4.2.1}Analytische oplossingsmethoden}{35}{subsubsection.3.4.2.1}%
-\contentsline {subsubsection}{\numberline {3.4.2.2}Numerieke oplossing}{37}{subsubsection.3.4.2.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.2}Numerieke oplossingsmethoden}{37}{subsubsection.3.4.2.2}%
 \contentsline {subsection}{\numberline {3.4.3}Distortiecoëfficiënt}{38}{subsection.3.4.3}%
 \contentsline {chapter}{\numberline {4}Optimalisatie van de lensparameters}{39}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Criteria voor het lensontwerp (Objectief 5)}{39}{section.4.1}%
@@ -35,11 +35,11 @@
 \contentsline {subsection}{\numberline {5.1.1}Eerste experiment: letter E}{52}{subsection.5.1.1}%
 \contentsline {subsection}{\numberline {5.1.2}Tweede experiment: hexagonaal raster}{54}{subsection.5.1.2}%
 \contentsline {subsection}{\numberline {5.1.3}Derde experiment: vierkant raster}{55}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}Kwantitatieve validatie focale lengte (Objectief 8)}{58}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Mesh shadowgraph methode}{58}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.2}Kwantitatieve validatie focale lengte (Objectief 8)}{59}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Mesh shadowgraph methode}{59}{subsection.5.2.1}%
 \contentsline {paragraph}{\nonumberline Reëel beeld}{59}{paragraph*.59}%
 \contentsline {paragraph}{\nonumberline Virtueel beeld}{60}{paragraph*.62}%
-\contentsline {subsection}{\numberline {5.2.2}Monte Carlo simulatie van het experiment}{60}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.2}Monte Carlo simulatie van het experiment}{61}{subsection.5.2.2}%
 \contentsline {subsection}{\numberline {5.2.3}3D-geprinte opstellingsonderdelen}{62}{subsection.5.2.3}%
 \contentsline {subsection}{\numberline {5.2.4}Uitvoering experiment}{63}{subsection.5.2.4}%
 \contentsline {chapter}{\numberline {6}Vooruitzicht}{69}{chapter.6}%

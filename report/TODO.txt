@@ -1,13 +1,5 @@
 TODO
 
-- Conclusie
 - literatuurstudie
 - Abstracts (Ook in het engels?) schrijven
 - Foto poolschoenen resolutie
-
-
-Conclusie
-- Korte samenvatting van eigen realisaties
-- Het ontwerp in deze thesis is haalbaar, correcte lenswerking
-- Grote focale lengte maar effecten zijn te vermijden
-- Open source en alles beschikbaar + 3D geprinte onderdelen
