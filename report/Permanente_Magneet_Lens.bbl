@@ -5,6 +5,11 @@ T.~M. Abbas.
 \newblock Correction of distortion aberration in electron magnetic lenses.
 \newblock {\em International Journal of Applied Physics}, 3(2):1--5, 2016.
 
+\bibitem{adamec1995miniature}
+P.~Adamec, A.~Delong, and B.~Lencová.
+\newblock Miniature magnetic electron lenses with permanent magnets.
+\newblock {\em Journal of Microscopy}, 179(2):129--132, 1995.
+
 \bibitem{advacam_advapix_2023}
 ADVACAM s.r.o., Prague, Czech Republic.
 \newblock {\em {AdvaPIX} Datasheet}, 6 2023.
@@ -78,6 +83,12 @@ L.~de~Broglie.
 A.~B. El-Kareh and J.~C.~J. El-Kareh.
 \newblock {\em Electron Beams, Lenses, and Optics, Volume 1}.
 \newblock Academic Press, New York, 1970.
+
+\bibitem{frank2002advances}
+L.~Frank.
+\newblock Advances in scanning electron microscopy.
+\newblock In {\em Advances in Imaging and Electron Physics}, volume 123, pages
+  327--373. Elsevier, 2002.
 
 \bibitem{gonzalez2023}
 A.~Gonzalez.
@@ -163,6 +174,13 @@ G.~N. Meloni and M.~Bertotti.
   sep 2025.
 \newblock Accessed: 2026-04-26.
 
+\bibitem{nelliyan2011permanent}
+K.~Nelliyan and A.~Khursheed.
+\newblock Permanent magnet finger-size scanning electron microscope columns.
+\newblock {\em Nuclear Instruments and Methods in Physics Research Section A:
+  Accelerators, Spectrometers, Detectors and Associated Equipment},
+  645(1):41--45, 2011.
+
 \bibitem{Hubs}
 {Protolabs Network}.
 \newblock Protolabs network (formerly {Hubs}): On-demand manufacturing for
@@ -175,6 +193,11 @@ Ravaka.
 \newblock Scanning electron microscope image of asbestos fibres (grunerite var.
   amosite), 2011.
 \newblock Own work. Accessed: 2026-04-27.
+
+\bibitem{reisner1951permanent}
+J.~H. Reisner and E.~G. Dornfeld.
+\newblock Permanent magnet lenses.
+\newblock {\em Journal of Applied Physics}, 22:561, 5 1951.
 
 \bibitem{scherzer1936}
 O.~Scherzer.
@@ -199,6 +222,11 @@ V.~Soares.
   USA, 2018.
 \newblock Product catalogue, revised 7 July 2018.
   \url{https://www.tedpella.com}.
+
+\bibitem{thermofisher_pharos}
+{Thermo Fisher Scientific}.
+\newblock Phenom pharos g2 desktop feg-sem features, 2026.
+\newblock Accessed: 2026-05-05.
 
 \bibitem{Thorlabs}
 {Thorlabs, Inc.}

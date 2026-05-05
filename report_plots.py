@@ -467,7 +467,7 @@ def immersion_abmiguity_plot():
         lens.setup_parameters(object_plane, 1, lens_position)
         lens.calculate_GH(object_plane)
         focal_z = lens.z_eval[np.argmin(np.abs(lens.G))]
-        ax.plot(lens.z_eval, lens.G, label="$g(z)$", color="#000000")
+        ax.plot(lens.z_eval, lens.G, label="Elektronenstraal", color="#000000")
         ax.annotate(
             "Object",
             xy=(object_plane, 1),
@@ -478,8 +478,8 @@ def immersion_abmiguity_plot():
             color="#000000",
         )
         
-        ax.plot(lens.z_eval_full, np.zeros(len(lens.z_eval_full)), label=None, color="#379DF1", linestyle='dashed')
-        ax.plot(focal_z, 0, 'o', color="#FF0000", zorder=5, label="Brandpunt")
+        ax.axhline(0,    color='black',   linewidth=0.8, linestyle=':')
+        ax.plot(focal_z, 0, 'o', color="#FF0000", zorder=5, label="Focaalvlak")
         ax.grid(True, alpha=0.4)
         ax.set_ylim(-1, 5)
         ax.tick_params(labelbottom=False, labelleft=False, length=0)
@@ -544,12 +544,59 @@ def twothree_magnets_plot():
     B_r_magnet=B_r_magnet_theoretical*leak_factor
     T = 30*10**3
 
-
     permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=60)
     permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=30)
     permanent_magnet_lens.calculate_aberration_coeff()
     permanent_magnet_lens.display_properties(output_path='report/Images/3_magnets_lens.png', dpi=DPI)
     print('Saved 3_magnets_lens plot')
+
+def principal_plane_def():
+    R_1 = 0.8
+    R_2 = 3.25
+    R_1_magnet = 4.5
+    R_2_magnet = 6
+    d = 4.8
+    d_magnet = 6
+    B_r_magnet_theoretical = 1.17
+    leak_factor = 1
+    B_r_magnet = B_r_magnet_theoretical * leak_factor
+    T = 30 * 10**3
+
+    permanent_magnet_lens = Lens(R_1, R_2, R_1_magnet, R_2_magnet, d, d_magnet, B_r_magnet, B_r_magnet_theoretical, T, setup_length=60)
+    permanent_magnet_lens.setup_parameters(object_pos=0, object_height=1.5, lens_pos=30)
+    permanent_magnet_lens.calculate_GH(0)
+    n = len(permanent_magnet_lens.G)
+
+    z = permanent_magnet_lens.z_eval
+    G = permanent_magnet_lens.G
+    asym = permanent_magnet_lens.asymptotic_image_ray
+    Z_Pi = permanent_magnet_lens.Z_Pi + permanent_magnet_lens.lens_position
+
+    fig, ax = plt.subplots(figsize=(10, 7))
+
+    ray_fractions = np.linspace(0, 1, 4)[1:]
+    for i, frac in enumerate(ray_fractions):
+        label_g   = 'Elektronenstraal'   if i == 0 else None
+        label_asy = 'Beeld asymptotische straal' if i == 0 else None
+        label_inc = 'Object asymptotische straal'     if i == 0 else None
+        ax.plot(z, G * frac,    color='black',  linewidth=1.5, label=label_g)
+        ax.plot(z, asym * frac, color='darkorange', linewidth=1.5, linestyle='--', label=label_asy)
+        ax.plot(z, np.ones(n) * frac, color='gray', linewidth=1.0, linestyle='--', label=label_inc)
+
+    ax.axvline(Z_Pi, color='crimson', linewidth=1.5, linestyle='--', label='$z_{Pi}$')
+    ax.axhline(0,    color='black',   linewidth=0.8, linestyle=':')
+
+    ax.set_xlabel('$z$', fontsize=16)
+    ax.set_ylabel('$r(z)$', fontsize=16)
+    ax.set_title('Positie van het beeldhoofdvlak $z_{Pi}$', fontsize=18)
+    ax.set_ylim(-1.5, 1.5)
+    ax.legend(fontsize=10, loc='upper right')
+    ax.grid(True, linestyle=':', alpha=0.6)
+
+    plt.tight_layout()
+    plt.savefig('report/Images/principal_plane_def.png', dpi=DPI)
+    print("Saved principal_plane_def.png")
+    plt.close()
 
 def main():
     plot_B_field_ring_report()
@@ -571,7 +618,8 @@ def main():
     real_asymptotic_properties()
     immersion_abmiguity_plot()
     leak_plot()
+    principal_plane_def()
 
 
 if __name__ == "__main__":
-    twothree_magnets_plot()
+    main()

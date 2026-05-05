@@ -1034,8 +1034,8 @@ if __name__ == "__main__":
     R_2 = 3.25
     R_1_magnet=4.5
     R_2_magnet=6
-    d = 4.8
-    d_magnet=6
+    d = 0.8
+    d_magnet=2
     B_r_magnet_theoretical=1.17
     leak_factor=1
     B_r_magnet=B_r_magnet_theoretical*leak_factor
