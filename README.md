@@ -215,17 +215,6 @@ The lens holder, grid holder, and aperture were 3D-printed in conductive PLA (re
 
 ---
 
-## Citing this work
-
-If you use this toolbox or CAD files in your research, please cite:
-
-```
-De Borger, D. (2026). A compact and open-source permanent magnet electron lens:
-from simulation to realisation. Bachelor's thesis, University of Antwerp.
-Supervisor: Prof. Dr. J. Verbeeck. EMAT, Department of Physics.
-```
-
----
 
 ## License
 
