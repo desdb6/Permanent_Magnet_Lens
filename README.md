@@ -19,7 +19,7 @@ The goal is to contribute to the development of compact, energy-efficient, and o
 ```
 ├── sim.py                   # Full simulation toolbox (Lens class + helper functions)
 ├── NdFeB_BH_curve.csv       # BH-curve data for grade N35 Nd₂Fe₁₄B magnet
-├── cad/
+├── 3D_Models/
 │   ├── polepiece.FCStd      # FreeCAD parametric model of the pole pieces
 │   ├── polepiece.step       # STEP file for CNC manufacturing
 │   ├── lens_holder.blend    # Blender model of the 3D-printed lens holder
