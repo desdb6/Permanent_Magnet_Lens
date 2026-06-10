@@ -225,4 +225,3 @@ MIT License — free to use, modify, and distribute with attribution.
 ## Contact
 
 Des De Borger — [Des.deborger@student.uantwerpen.be](mailto:Des.deborger@student.uantwerpen.be)  
-EMAT | Electron Microscopy for Materials Science, University of Antwerp
